@@ -39,3 +39,14 @@ La rete è divisa in **nodi di commutazione** e **linee di trasmissione/comunica
 Le linee sono in grado di far comunicare solo tra nodo e nodo? No, posso essere instradate informazione partite da un altro nodo precedente.
 Per questo si dividono in  linee di trasmissione e linee di comunicazione.
 
+![[Pasted image 20260309171632.png]]
+Modello token ring: c'è un token che indica quando un nodo può comunicare (si rferisce a (b))
+Mod token bus: uguale ma è un bus
+
+### Wireless Networks 
+
+Tipologie:
+- System interconnection
+- Wireless LANs
+- Wireless WANs
+
