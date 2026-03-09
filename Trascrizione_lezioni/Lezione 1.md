@@ -50,3 +50,41 @@ Tipologie:
 - Wireless LANs
 - Wireless WANs
 
+### Inter network 
+Due reti collegate da un **gateway**.
+
+![[Pasted image 20260309171949.png]]
+
+Il gateway è una macchina che interfaccia su 7 livelli (?)
+
+Le due reti sono diverse, con protocolli, algoritmi, token, controlli, etc... diversi.
+Spesso capita che una WAN sia divisa in due (o più) reti con protocolli differenti, che quindi necessitano di un gateway per comunicare.
+L'operazione utilizzata dai gateway è il **Tunnelling**.
+
+## PASSIAMO AL SOFTWARE DELLE RETI 
+
+L'obiettivo è ridurre la complessità (e quindi i tempi).
+
+"Come posso renderlo più semplice?" "Ridurre/dividere i problemi"
+Ma cosa significa ridurre i problemi in una rete?
+In una rete si dividono in layer, con ciascuno un compito diverso.
+
+ Una macchina di livello n per comunicare con un altra di livello n deve utilizzare delle regole per il colloquio dette **protocolli**.
+Protocolli: Regole per il colloquio di due macchine di livello n.
+
+Se organizzo un file da inviare in 10 trame, e la trama 4 arriva errata, devo chiedere l'invio solo della trama 4. Questo è il compito dei protocolli. Risparmiano quindi dati.
+
+Ho quindi diviso i compiti in livelli diversi. (già detto 10 minuti fà)
+
+![[Pasted image 20260309172955.png]]
+
+Il livello n-esimo di una macchina colloquia con il livello n-esimo di un altra macchina.
+
+Quindi se le macchine sono diverse basta che abbiano gli stessi livelli e protocolli per poter comunicare.
+Tutto però passa attraverso il mezzo fisico.
+
+I dati non passano da livello a livello direttamente, ma gli attraversano tutti venendo incapsulati man mano che passano fino ad arrivare a quello più alto.
+
+
+
+

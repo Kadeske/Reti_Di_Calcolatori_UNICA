@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lezione 1.md",
+                "file": "Trascrizione_lezioni/Lezione 1.md",
                 "mode": "source",
                 "source": false
               },
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lezione 1.md",
+                "file": "Trascrizione_lezioni/Lezione 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Lezione 1.md",
+                "file": "Trascrizione_lezioni/Lezione 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Lezione 1.md",
+                "file": "Trascrizione_lezioni/Lezione 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -184,12 +184,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8b652fd1ae78d679",
+  "active": "304b3b272d1f4f02",
   "lastOpenFiles": [
-    "Pasted image 20260309171632.png",
+    "img/Pasted image 20260309172955.png",
+    "img/Pasted image 20260309171949.png",
+    "img/Pasted image 20260309171632.png",
     "img/Pasted image 20260309171258.png",
     "Senza nome 1.canvas",
-    "Lezione 1.md",
+    "Trascrizione_lezioni/Lezione 1.md",
     "Senza nome.canvas",
     "img",
     "img/Pasted image 20260309170134.png",
