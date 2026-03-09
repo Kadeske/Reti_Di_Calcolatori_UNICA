@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "aad28f6b99310659",
@@ -184,9 +184,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8b652fd1ae78d679",
+  "active": "304b3b272d1f4f02",
   "lastOpenFiles": [
+    "img/Pasted image 20260309171258.png",
+    "Senza nome 1.canvas",
     "Lezione 1.md",
+    "Senza nome.canvas",
+    "img",
+    "img/Pasted image 20260309170134.png",
     "Trascrizione_lezioni",
     "Benvenuto.md"
   ]
