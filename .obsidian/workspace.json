@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "4af5aae0c75fa68e",
+    "type": "split",
+    "children": [
+      {
+        "id": "ac8f4939043bb770",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b652fd1ae78d679",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nuova scheda"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f3058e34f28faa00",
+    "type": "split",
+    "children": [
+      {
+        "id": "555b79db35f6f92f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "304b3b272d1f4f02",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Esplora risorse"
+            }
+          },
+          {
+            "id": "356e600d3494158d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Ricerca"
+            }
+          },
+          {
+            "id": "88ef673a46c14a2c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Segnalibri"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aad28f6b99310659",
+    "type": "split",
+    "children": [
+      {
+        "id": "96436be890e40773",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "83302371e86910ed",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Riferimenti"
+            }
+          },
+          {
+            "id": "ad1720d7a155e7c9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Collegamenti in uscita"
+            }
+          },
+          {
+            "id": "b21cf1d61c88d12f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etichette"
+            }
+          },
+          {
+            "id": "6fb0908693eb618e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tutte le proprietà"
+            }
+          },
+          {
+            "id": "4ff51cd2e6f2e901",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Struttura"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Crea nuova Base": false
+    }
+  },
+  "active": "304b3b272d1f4f02",
+  "lastOpenFiles": [
+    "Trascrizione_lezioni",
+    "Benvenuto.md"
+  ]
+}
