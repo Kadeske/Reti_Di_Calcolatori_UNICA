@@ -124,3 +124,17 @@ I messaggi non possono essere troppo lunghi, in modo tale che se si corrompe un 
 I SAP sono l'identificativo di connessione di quel livello. es. MAC, IP, etc..
 Gli chiamiamo SAP in modo generico, così se cambiamo protocollo possiamo utilizzare lo stesso nome delle varie cose.
 
+
+![[Pasted image 20260309175137.png]]
+Questo schema rappresenta il NPDU -> Unità dati del livello n-esimo
+
+
+Servizi orientati alla connessione e non orientati alla connessione.
+
+Se orientato alla connessione l'obiettivo è creare un canale (come un tubo) in cui inviare pacchetti sequenziali che arrivano sempre nello stesso punto dallo stesso percorso. Il contro è che tutti i rami utilizzati sono bloccati mentre la connessione è aperta.
+Es. A->B->C->D. A e D comunicano, quindi B e C sono bloccati perchè devono fare "da tramite".
+
+Non orientati alla comunicazione: come la posta, invio 10 lettere a 10 persone differenti: 
+arriveranno in ogni cassetta allo stesso momento? NO, seguiranno percorsi diversi, utilizzando in modo ottimo l'intera rete. 
+hai la certezza che arrivino? NO. 
+
