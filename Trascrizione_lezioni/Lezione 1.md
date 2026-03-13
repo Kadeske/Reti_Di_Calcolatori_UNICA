@@ -138,3 +138,18 @@ Non orientati alla comunicazione: come la posta, invio 10 lettere a 10 persone d
 arriveranno in ogni cassetta allo stesso momento? NO, seguiranno percorsi diversi, utilizzando in modo ottimo l'intera rete. 
 hai la certezza che arrivino? NO. 
 
+
+QoS: Quality of Service -> dà la certezza che i dati arrivino o no.
+Se per esempio devo trasferire un intero archivio, voglio la certezza che ogni bit venga comunicato. 
+Mentre in una comunicazione voce/video se perdo qualche bit non è un problema.
+
+Ogni volta che invio una certa quantità di dati ricevo una conferma di ricezione.
+
+![[Pasted image 20260309180030.png]]
+
+![[Pasted image 20260309180109.png]]![[Pasted image 20260309180119.png]]
+
+Cosa assumo per avere un'economia della rete? PIU' affidabilità, così posso evitare l'utilizzo di primitive per la conferma della ricezione, avendo già la sicurezza che i dati vengano ricevuti.
+
+![[Pasted image 20260309180317.png]]![[Pasted image 20260309180426.png]]
+
