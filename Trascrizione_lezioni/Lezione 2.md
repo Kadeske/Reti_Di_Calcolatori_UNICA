@@ -87,10 +87,13 @@ Serve a host per avere una conversazione:
 ### Livello applicativo
 
 Esempi di applicazioni:
-- TELNET: sviluppato per scopi militari, invia messaggi in modo stabile, ovvero se perde connessione è in grado di riconnettersi
+- TELNET: 
 - FTP -> scambio di file e archivi
 - SMTP -> posta elettronica sicura
 - DNS -> Associa indirizzi ip a nomi di dominio
 - HTTP -> trasferimento dati ipertestuali
 - SNMP -> gestione di rete
 - NNTP -> 
+
+
+Arpanet: sviluppato per scopi militari, invia messaggi in modo stabile, ovvero se perde connessione è in grado di riconnettersi
