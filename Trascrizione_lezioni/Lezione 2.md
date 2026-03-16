@@ -96,4 +96,17 @@ Esempi di applicazioni:
 - NNTP -> 
 
 
-Arpanet: sviluppato per scopi militari, invia messaggi in modo stabile, ovvero se perde connessione è in grado di riconnettersi
+Arpanet: sviluppato per scopi militari, invia messaggi in modo stabile, ovvero se perde connessione è in grado di riconnettersi.
+
+
+
+![[Pasted image 20260316172904.png]]
+In x.25 non è possibile frammentare
+
+
+Quando faccio un instradamento statico su linee dedicate?
+Quando ho la certezza dell'uso e dei tempi.
+
+
+Reti ISDN
+i sistemi telefonici sono differenti tra loro
