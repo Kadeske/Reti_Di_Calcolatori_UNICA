@@ -67,3 +67,30 @@ n conn. di rete -> n conn. di trasporto
 
 ![[Pasted image 20260316171449.png]]
 
+# Modello TCP/IP
+
+### Livello internet
+
+SI basa su un livello privo di conessione.
+E' analogo al sistema postale.
+E' compito del destinatario riordinare i pacchetti ricevuti.
+Compito: scegliere il cammino per evitare congestioni.
+
+
+### Livello di trasporto
+Serve a host per avere una conversazione:
+- TCP -> orientato alla connessione affidabile, utilizza l'IP per consegnare i pacchetti
+- UDP -> protocollo datagramma senza connessione e non affidabile. Utilizza l'IP.
+
+
+
+### Livello applicativo
+
+Esempi di applicazioni:
+- TELNET: sviluppato per scopi militari, invia messaggi in modo stabile, ovvero se perde connessione è in grado di riconnettersi
+- FTP -> scambio di file e archivi
+- SMTP -> posta elettronica sicura
+- DNS -> Associa indirizzi ip a nomi di dominio
+- HTTP -> trasferimento dati ipertestuali
+- SNMP -> gestione di rete
+- NNTP -> 
