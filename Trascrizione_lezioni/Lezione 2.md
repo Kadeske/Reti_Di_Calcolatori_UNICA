@@ -110,3 +110,13 @@ Quando ho la certezza dell'uso e dei tempi.
 
 Reti ISDN
 i sistemi telefonici sono differenti tra loro
+
+reti ATM (Asincrone)
+Usa piccoli pacchetti di dimensione fissa. Commuta a celle (cell relay)
+
+la commutazione di celle consente:
+- traffico costante (voce/video) e traffico variabile;
+- commutazione digitale delle celle;
+- celle orientate alla connessione (viene stabilito un circuito virtuale 
+permanente);
+- ordine di consegna (ma non la consegna).
