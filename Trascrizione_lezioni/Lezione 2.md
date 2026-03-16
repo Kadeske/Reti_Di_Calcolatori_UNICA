@@ -122,8 +122,13 @@ permanente);
 - ordine di consegna (ma non la consegna).
 
 
-
-Architettra della rete UMTS
 Và studiata bene ma non si sente nulla dio porco maledetto cane
 
+
+
+
+![[Pasted image 20260316173854.png]]
+
+
+wifi: parte terminale di una rete fisica
 
