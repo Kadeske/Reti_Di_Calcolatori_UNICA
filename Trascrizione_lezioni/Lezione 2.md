@@ -120,3 +120,10 @@ la commutazione di celle consente:
 - celle orientate alla connessione (viene stabilito un circuito virtuale 
 permanente);
 - ordine di consegna (ma non la consegna).
+
+
+
+Architettra della rete UMTS
+Và studiata bene ma non si sente nulla dio porco maledetto cane
+
+
