@@ -19,3 +19,14 @@ Segment è un pezzo di informazione del livello di sessione. (?)
 
 Un livello ha più di un protocollo.
 
+Il mezzo deve avere delle standardizzazioni chiare: voltaggio da utilizzare, tipo di connettori, tempo per ogni segnale, etc..
+
+"Perchè ho necessità di limitare i bit nel livello inferiore?" "Perchè in caso io perda un pezzo non saprei quale ripetere"
+Quindi divido in trame.
+
+Trasmissione veloce e ricezione lenta vs T lenta e R lenta
+Chi regolamenta la velocità della comunicazione? Il protocollo: Analizza e decide la velocità massima della trasmissione.
+
+Nella parte iniziale della trama sarà presente il destinatario. Nella rete locale potrebbero essere più di uno.
+Come identifico il destinatario?
+
