@@ -24,9 +24,25 @@ Il mezzo deve avere delle standardizzazioni chiare: voltaggio da utilizzare, tip
 "Perchè ho necessità di limitare i bit nel livello inferiore?" "Perchè in caso io perda un pezzo non saprei quale ripetere"
 Quindi divido in trame.
 
+
+### Livello fisico
 Trasmissione veloce e ricezione lenta vs T lenta e R lenta
 Chi regolamenta la velocità della comunicazione? Il protocollo: Analizza e decide la velocità massima della trasmissione.
+
+### Livello di commegamento
+Organizza i bit in frame, li invia, attende conferma di ricezione (ack)
 
 Nella parte iniziale della trama sarà presente il destinatario. Nella rete locale potrebbero essere più di uno.
 Come identifico il destinatario?
 
+### Livello di rete
+
+I pacchetti sono numerati, come le trame. 
+Utilizza delle tabelle di instradamento (statiche e dinamiche)
+
+### Livello di trasporto
+
+Accetta dati dal livello superiore, li spezza in pacchetti più piccoli e li invia ai livelli superiori.
+
+connessione di rete -> conn. di trasporto
+n conn. di rete -> n conn. di trasporto
