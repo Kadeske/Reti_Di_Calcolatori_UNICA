@@ -17,3 +17,5 @@ Segment è un pezzo di informazione del livello di sessione. (?)
 
 "Qual'e la struttura del livello bla bala?" -> APDU (Application PDU), PPDU(Presentazione), SPDU(segmento (livello di sessione))
 
+Un livello ha più di un protocollo.
+
