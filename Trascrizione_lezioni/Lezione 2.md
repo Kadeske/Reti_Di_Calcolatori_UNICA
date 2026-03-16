@@ -46,3 +46,24 @@ Accetta dati dal livello superiore, li spezza in pacchetti più piccoli e li inv
 
 connessione di rete -> conn. di trasporto
 n conn. di rete -> n conn. di trasporto
+
+![[Pasted image 20260316171121.png]]
+## Livello di sessione
+
+![[Pasted image 20260316171151.png]]
+
+## Livello di presentazione
+
+![[Pasted image 20260316171245.png]]
+
+
+
+## Livello di applicazione
+
+![[Pasted image 20260316171316.png]]
+"L'invio di un pacchetto avviene in modo tale che rimanga intonso, con le stesse dimensioni?" No.
+
+
+
+![[Pasted image 20260316171449.png]]
+
