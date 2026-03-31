@@ -36,3 +36,9 @@ Trenitalia non possiede le ferrovie, le possiede FDS.
 é il più grande gruppo di standardizzazione. Comprende 157 stati (quasi tutto il mondo)
 
 Ha tutti gli enti di normazione statali (es. ANSI, etc.)
+
+--- 
+![[Pasted image 20260331150319.png]]
+
+Questo processo dura 3 mesi.
+
