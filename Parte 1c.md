@@ -52,6 +52,10 @@ Sono intrecciati per elidere i segnali tra loro.
 
 ![[Pasted image 20260331152652.png]]
 
+Tecnica in grado di consentire molte comunicazione temporanee.
+Utile per unire due centrali molto distanti tra loro.
+![[Pasted image 20260331154018.png]]
+
 ---
 
 ### 3. Mezzi di Trasmissione Guidati: La Fibra Ottica
