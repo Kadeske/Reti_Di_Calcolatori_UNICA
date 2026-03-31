@@ -89,8 +89,9 @@ Internet ha un ecosistema di normazione separato e peculiare, nato in un ambient
     
 - L'IAB coordina due entità operative: l'**IRTF** (Internet Research Task Force) che si occupa della ricerca a lungo termine, e l'**IETF** (Internet Engineering Task Force) focalizzata sull'ingegneria e sulla tecnologia attuale.
     
-- Ai processi di studio e discussione partecipa anche la **ISOC** (Internet Society).
-    
+- Ai processi di studio e discussione partecipa anche la **ISOC** (Internet Society), chiunque ci si può associare ed è presente in ogni nazione. "Raggruppa i lavoratori da tutto il mondo".
+
+![[Pasted image 20260331150835.png]]
 
 **Il processo di standardizzazione di un RFC**
 
