@@ -18,6 +18,7 @@ La somma delle onde (o armoniche) combina i valori con un approssimarsi successi
 - **Tasso massimo per un canale senza rumore (Teorema di Nyquist):** Il massimo tasso di dati è definito dalla formula $2H \log_2 V$ bit/s, dove $H$ è la larghezza di banda e $V$ sono i livelli discreti del segnale .
     
 - **Tasso massimo per un canale con rumore (Formula di Shannon):** Il numero massimo di bit/s si calcola con la formula $H \log_2(1+S/N)$, dove $S/N$ è il rapporto segnale/rumore espresso solitamente in decibel (dB) calcolato come $10 \log_{10} S/N$ .
+![[Pasted image 20260331152406.png]]
     
 
 ---
