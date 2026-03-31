@@ -123,7 +123,7 @@ Quando non è possibile stendere cavi fisici, l'informazione viene fatta viaggia
 - **Onde Luminose (Laser):** Monodirezionali a vista, e perciò fortemente limitate da agenti atmosferici, calore o turbolenze dell'aria .
     
 
-> **[INSERIRE QUI: Diagramma dello Spettro Elettromagnetico con le bande ITU (LF, MF, HF, VHF, ecc.) e illustrazioni sulla propagazione delle onde di terra/ionosfera e sui laser disturbati dal calore degli edifici]**
+![[Pasted image 20260331160028.png]]
 
 **Comunicazioni Satellitari**
 
