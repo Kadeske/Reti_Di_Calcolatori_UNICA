@@ -10,10 +10,11 @@ Per comprendere come i dati viaggino su un mezzo trasmissivo, è necessario part
 - **Limiti fisici dei mezzi:** Nessun mezzo trasmissivo è in grado di trasmettere un segnale senza alcuna perdita di potenza. Ogni singola componente di Fourier subisce infatti attenuazioni differenti a seconda del mezzo utilizzato.
     
 - **Baud vs. Bit:** Il segnale trasmesso varia in base ai cambiamenti al secondo (come variazioni di voltaggio), misurati in baud. A seconda di quanti stati diversi può assumere il segnale, un singolo baud può trasportare più bit alla volta.
-    
 
+La somma delle onde (o armoniche) combina i valori con un approssimarsi successivo, fino ad arrivare a dei valori determinati.
 ![[Pasted image 20260331151617.png]]
-
+![[Pasted image 20260331152134.png]]
+![[Pasted image 20260331152145.png]]
 - **Tasso massimo per un canale senza rumore (Teorema di Nyquist):** Il massimo tasso di dati è definito dalla formula $2H \log_2 V$ bit/s, dove $H$ è la larghezza di banda e $V$ sono i livelli discreti del segnale .
     
 - **Tasso massimo per un canale con rumore (Formula di Shannon):** Il numero massimo di bit/s si calcola con la formula $H \log_2(1+S/N)$, dove $S/N$ è il rapporto segnale/rumore espresso solitamente in decibel (dB) calcolato come $10 \log_{10} S/N$ .
