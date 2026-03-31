@@ -19,7 +19,11 @@ ITU -> Pensato per il telegrafo e poi inserito nell'ONU
 E' un ente articolato che deve fare attenzione alla compatibilità.
 
 ---
-Da cosa è costituito ITU-T
+Da cosa è costituito ITU-T.
+
+Trenitalia non possiede le ferrovie, le possiede FDS. 
+
+
 
 --- 
 - ITU-T è coposoto da Gruppi di studio (10)
