@@ -141,11 +141,12 @@ E' un laser monodirezionale 'a vista'. E' limitato da agenti atmosferici.
 **Comunicazioni Satellitari**
 
 - **GEO (Satelliti geostazionari):** Orbitano a 35.000 km, ne bastano 3 per coprire la Terra ma hanno un'elevata latenza (270 ms) .
-	- Se ne mandano pochi in orbita
+	- Se ne mandano pochi in orbita perchè costa molto mandarli a quella distanza ed è difficile manutenzionarli.
     
 - **MEO (Orbite medie):** Orbitano a circa 10.000 km, tra le due fasce di Van Allen.
     
 - **LEO (Orbite basse):** Orbitano molto vicino alla Terra, richiedono reti di molti satelliti (es. sistemi Iridium o Globalstar, 50 satelliti, latenza 1-7 ms) .
+	- Come quelli utilizzati per starlink a circa 5 km posti all'altezza dell'equatore. Ne utilizza molti per evitare il sovraccarico del singolo satellite e averne di backup in caso di guasto.
     
 - **Bande satellitari:** Si dividono in L, S, C (che soffre l'interferenza terrestre), Ku e Ka (che soffrono l'attenuazione dovuta alla pioggia) .
     
