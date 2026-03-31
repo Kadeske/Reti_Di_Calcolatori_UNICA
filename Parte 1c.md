@@ -141,6 +141,7 @@ E' un laser monodirezionale 'a vista'. E' limitato da agenti atmosferici.
 **Comunicazioni Satellitari**
 
 - **GEO (Satelliti geostazionari):** Orbitano a 35.000 km, ne bastano 3 per coprire la Terra ma hanno un'elevata latenza (270 ms) .
+	- Se ne mandano pochi in orbita
     
 - **MEO (Orbite medie):** Orbitano a circa 10.000 km, tra le due fasce di Van Allen.
     
@@ -150,6 +151,8 @@ E' un laser monodirezionale 'a vista'. E' limitato da agenti atmosferici.
     
 ![[Pasted image 20260331161122.png]]
 ![[Pasted image 20260331161144.png]]
+![[Pasted image 20260331161247.png]]
+
 ---
 
 ### 5. Il Sistema Telefonico e le reti dati
