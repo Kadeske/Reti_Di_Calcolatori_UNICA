@@ -160,7 +160,7 @@ E' un laser monodirezionale 'a vista'. E' limitato da agenti atmosferici.
 
 Il sistema telefonico globale è la più vasta rete di cavi esistente, originariamente pensata solo per la voce e poi riadattata per trasmettere enormi flussi di dati informatici.
 
-- **PSTN e ISDN:** La PSTN nasce per la trasmissione vocale analogica, mentre la ISDN nasce per la trasmissione dati numerica.
+- **PSTN e ISDN:** La ***PSTN*** nasce per la *trasmissione vocale analogica*, mentre la ***ISDN*** nasce per la t*rasmissione dati numerica*.
     
 - **Il Local Loop:** È il circuito locale che connette l'abitazione dell'utente alla centrale. Per far viaggiare i dati digitali dei computer su linee analogiche si utilizza un "modem" (modulatore/demodulatore).
     
