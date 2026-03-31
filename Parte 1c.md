@@ -46,6 +46,8 @@ Sono intrecciati per elidere i segnali tra loro.
 - Di norma esiste una comparazione tra frequenza e velocità: ad esempio 300MHz consentono velocità di 300 Mbps.
     
 - In questo cavo, gli amplificatori fanno un refresh del segnale che è monodirezionale; per questo motivo le reti coassiali richiedono o un doppio cavo (uno per trasmettere, uno per ricevere) oppure un singolo cavo gestito assegnando bande di frequenza diverse per upload e download (subsplit o midsplit) .
+	- subspliti: in 5.30MHz, out 40-300MHz
+	- midsplit: in 5-116MHz out 168-300MHz
     
 
 ![[Pasted image 20260331152652.png]]
