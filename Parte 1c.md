@@ -65,8 +65,10 @@ Le reti in fibra ottica utilizzano la luce per trasmettere i dati, offrendo pres
 - **Velocità:** La velocità teorica massima per le fibre monomodali è di 100.000 Gbps (100 Tbps), ma quella reale è limitata a circa 10 Gbps a causa dei limiti di conversione dei convertitori elettro-ottici.
     
 - **Principio di funzionamento:** Il segnale è costituito da impulsi di luce (luce = bit 1, assenza di luce = bit 0). È un sistema intrinsecamente unidirezionale .
+![[Pasted image 20260331154423.png]]
     
 - **Modi di propagazione:** A seconda di come l'angolo di incidenza e la rifrazione agiscono all'interno del mezzo, le fibre si dividono in monomodali (più performanti, fino a 100 Gbps) e multimodali.
+![[Pasted image 20260331154442.png]]
     
 - **Giunzioni:** I collegamenti presentano diverse perdite di luce: connettorizzate (perdita del 10-20%), giunzione meccanica (perdita del 10%), giunzione a caldo (perdita del 5-10%).
     
