@@ -71,7 +71,7 @@ Le reti in fibra ottica utilizzano la luce per trasmettere i dati, offrendo pres
 - **Giunzioni:** I collegamenti presentano diverse perdite di luce: connettorizzate (perdita del 10-20%), giunzione meccanica (perdita del 10%), giunzione a caldo (perdita del 5-10%).
     
 
-> **[INSERIRE QUI: Schemi sulla rifrazione e sulla riflessione totale all'interno del silicio e illustrazione della sezione del cavo in fibra con nucleo e cladding]**
+![[Pasted image 20260331154318.png]]
 
 **Sorgenti Luminose**
 
@@ -82,7 +82,7 @@ Esistono due principali tecnologie per generare la luce nella fibra:
 - **Laser a semiconduttore:** Alta cadenza dei dati, usata per fibre multimodali o monomodali a lunga distanza. Ha una breve durata, è sensibile alla temperatura e ha un costo alto .
     
 
-> **[INSERIRE QUI: Grafico dell'Attenuazione della luce nella fibra in relazione alla lunghezza d'onda, con le bande a 0,85µ, 1,30µ e 1,55µ]**
+![[Pasted image 20260331154242.png]]
 
 ---
 
