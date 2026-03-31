@@ -226,7 +226,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -240,10 +241,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2edb52c9ea84073c",
+  "active": "8b652fd1ae78d679",
   "lastOpenFiles": [
-    "img/Pasted image 20260331152406.png",
     "Parte 1c.md",
+    "img/Pasted image 20260331152406.png",
     "pdf/Reti part1c-2025.pdf",
     "img/Pasted image 20260331152145.png",
     "img/Pasted image 20260331152134.png",
