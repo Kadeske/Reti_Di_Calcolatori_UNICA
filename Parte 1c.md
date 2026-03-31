@@ -26,17 +26,16 @@ La somma delle onde (o armoniche) combina i valori con un approssimarsi successi
 ### 2. Mezzi di Trasmissione Guidati: Il Rame
 
 I cavi in rame sono stati il primo e più diffuso mezzo di comunicazione, sfruttando l'elettricità per trasportare l'informazione. Ne esistono di diverse tipologie a seconda delle necessità di isolamento e larghezza di banda.
+Sono intrecciati per elidere i segnali tra loro.
 
 **Il Doppino Telefonico (Twisted Pair)**
 
 - È costituito da fili di rame isolati, spessi circa 1 mm.
-    
 - I fili vengono intrecciati (da qui "twisted") perché dei fili diritti si comporterebbero come l'antenna di una radio, catturando interferenze esterne.
-    
 - La larghezza di banda dipende strettamente dalla sezione del conduttore e dalla distanza tra sorgente e destinatario (legge di Joule).
-    
+- Più viene avvolto, migliore è la qualità e il costo.
 
-> **[INSERIRE QUI: Immagine dei cavi intrecciati UTP cat3 e UTP cat5]**
+![[Pasted image 20260331152633.png]]
 
 **Il Cavo Coassiale**
 
@@ -47,7 +46,7 @@ I cavi in rame sono stati il primo e più diffuso mezzo di comunicazione, sfrutt
 - In questo cavo, gli amplificatori fanno un refresh del segnale che è monodirezionale; per questo motivo le reti coassiali richiedono o un doppio cavo (uno per trasmettere, uno per ricevere) oppure un singolo cavo gestito assegnando bande di frequenza diverse per upload e download (subsplit o midsplit) .
     
 
-> **[INSERIRE QUI: Sezione del cavo coassiale con indicazione dell'anima in rame, isolante, calza e guaina e schema delle reti "Dual cable" vs "Single cable"]**
+![[Pasted image 20260331152652.png]]
 
 ---
 
