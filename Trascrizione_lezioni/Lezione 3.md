@@ -1,6 +1,27 @@
 Inizia parte 2. Parla di standard in generale.
 
+
+# Standardizzazione delle reti
+
 - de facto
 	- standard definiti come tali anche se non erano pensati come tali dall'inizio
 - de jure
 	- sono stati pensati come tali
+
+
+
+--- 
+ITU -> Pensato per il telegrafo e poi inserito nell'ONU
+
+--- 
+![[Pasted image 20260331145118.png]]
+
+E' un ente articolato che deve fare attenzione alla compatibilità.
+
+---
+Da cosa è costituito ITU-T
+
+--- 
+- ITU-T è coposoto da Gruppi di studio (10)
+- I gruppi di studio da gruppi di lavoro
+- I gruppi di lavoro da gruppi di esperti
