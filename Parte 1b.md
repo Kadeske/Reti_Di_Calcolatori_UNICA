@@ -104,8 +104,7 @@ Come per l'ISO, anche la trasformazione di un RFC in standard ufficiale segue un
 - **IS (Internet Standard)**: Dopo ulteriori 4 mesi di test e validazioni, il protocollo diventa uno standard ufficiale di Internet.
     
 ![[Pasted image 20260331151002.png]]
-
-(Ci sono molti )
+(Ci sono molti RFC sul file transfer)
 
 ---
 
