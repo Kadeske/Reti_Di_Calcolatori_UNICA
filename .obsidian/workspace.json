@@ -236,11 +236,14 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "markdown-importer:Apri importazione Markdown": false
     }
   },
   "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
+    "Pasted image 20260331162243.png",
+    "Pasted image 20260331162228.png",
     "Pasted image 20260331161247.png",
     "pdf/Reti part1c-2025.pdf",
     "Parte 1c.md",
@@ -253,8 +256,6 @@
     "img/Pasted image 20260331160712.png",
     "img/Pasted image 20260331160649.png",
     "img/Pasted image 20260331160028.png",
-    "img/Pasted image 20260331155500.png",
-    "img/Pasted image 20260331155347.png",
     "Parte 1b.md",
     "Senza nome",
     "pdf/Reti part1b-2025.pdf",
