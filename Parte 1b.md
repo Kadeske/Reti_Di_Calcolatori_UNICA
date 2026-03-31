@@ -115,3 +115,5 @@ Per comprendere le prestazioni delle reti (es. velocità di trasmissione o dimen
 - **Multipli (Prefissi accrescitivi)**: Partono dal Kilo (1.000, 10^3) per salire a Mega (1.000.000, annotato nel documento con un probabile refuso tipografico come 10^8 al posto del corretto 10^6), Giga (10^9), Tera (10^12), Peta (10^15), Exa (10^18), Zetta (10^21) e Yotta (10^24).
     
 - **Sottomultipli (Prefissi diminutivi)**: Partono da milli (0,001, 10^-3) per scendere a micro, nano (10^-9), pico (10^-12), femto (10^-15), atto (10^-18), zepto (10^-21) e yocto (10^-24).
+
+![[Pasted image 20260331151130.png]]
