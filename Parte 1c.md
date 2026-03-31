@@ -125,6 +125,19 @@ Quando non è possibile stendere cavi fisici, l'informazione viene fatta viaggia
 
 ![[Pasted image 20260331160028.png]]
 
+**Comunicazioni radio**
+![[Pasted image 20260331160712.png]]
+**Comuniczioni microonde**
+![[Pasted image 20260331160759.png]]
+
+**Onde infrarosse e millimetriche**
+E' nell'ordine dei GHz, viene utilizzato per telecomandi ed elettrodomestici.
+Utilizza delle onde monodirezionali (un ripetitore e un ricevitore) e non trapassa gli oggetti solidi.
+
+**Trasmissione a onde luminose**
+E' un laser monodirezionale 'a vista'. E' limitato da agenti atmosferici.
+![[Pasted image 20260331161038.png]]
+
 **Comunicazioni Satellitari**
 
 - **GEO (Satelliti geostazionari):** Orbitano a 35.000 km, ne bastano 3 per coprire la Terra ma hanno un'elevata latenza (270 ms) .
@@ -135,9 +148,8 @@ Quando non è possibile stendere cavi fisici, l'informazione viene fatta viaggia
     
 - **Bande satellitari:** Si dividono in L, S, C (che soffre l'interferenza terrestre), Ku e Ka (che soffrono l'attenuazione dovuta alla pioggia) .
     
-
-> **[INSERIRE QUI: Schemi delle reti VSAT con Hub e disegni delle costellazioni LEO Iridium e Globalstar]**
-
+![[Pasted image 20260331161122.png]]
+![[Pasted image 20260331161144.png]]
 ---
 
 ### 5. Il Sistema Telefonico e le reti dati
