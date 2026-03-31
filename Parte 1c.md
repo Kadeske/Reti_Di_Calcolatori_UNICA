@@ -86,6 +86,20 @@ Esistono due principali tecnologie per generare la luce nella fibra:
 Quali sono le principali differenze?
     ![[Pasted image 20260331155052.png]]
 
+Interfacce:
+- Passive (non interrompono il circuito)
+	- trasmissione con led o laser, ricezione con fotodiodo
+- attive (possono interrompere il circuito)
+	- ingresso di rigenerazione e reinvio
+![[Pasted image 20260331155347.png]]
+
+
+#### Fibra multimodo e monomodo
+![[Pasted image 20260331155500.png]]
+
+#### Attenuazione della luce
+Posso utilizzare solamente delle "finestre" di luce rappresentate nello schema.
+
 ![[Pasted image 20260331154242.png]]
 
 ---

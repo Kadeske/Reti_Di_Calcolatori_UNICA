@@ -226,8 +226,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -241,20 +240,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8b652fd1ae78d679",
+  "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
+    "img/Pasted image 20260331155500.png",
     "Parte 1c.md",
-    "Pasted image 20260331155052.png",
     "pdf/Reti part1c-2025.pdf",
-    "Pasted image 20260331154442.png",
-    "Pasted image 20260331154423.png",
-    "Pasted image 20260331154318.png",
-    "Pasted image 20260331154242.png",
-    "Pasted image 20260331154018.png",
-    "Pasted image 20260331152652.png",
-    "Pasted image 20260331152633.png",
-    "img/Pasted image 20260331152406.png",
-    "img/Pasted image 20260331152145.png",
+    "img/Pasted image 20260331155347.png",
+    "img/Pasted image 20260331155052.png",
+    "img/Pasted image 20260331154442.png",
+    "img/Pasted image 20260331154423.png",
+    "img/Pasted image 20260331154318.png",
+    "img/Pasted image 20260331154242.png",
+    "img/Pasted image 20260331154018.png",
+    "img/Pasted image 20260331152652.png",
+    "img/Pasted image 20260331152633.png",
     "Parte 1b.md",
     "Senza nome",
     "pdf/Reti part1b-2025.pdf",
