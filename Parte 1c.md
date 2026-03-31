@@ -109,6 +109,8 @@ Posso utilizzare solamente delle "finestre" di luce rappresentate nello schema.
 Quando non è possibile stendere cavi fisici, l'informazione viene fatta viaggiare attraverso lo spazio libero sfruttando le onde elettromagnetiche.
 
 - **Principi Base:** Gli elettroni in movimento creano onde. La frequenza ($f$) è il numero di oscillazioni al secondo, mentre la lunghezza d'onda ($\lambda$) è la distanza tra due massimi consecutivi . Nel vuoto, tutte viaggiano alla velocità della luce ($c = 3 \times 10^8 m/s$) secondo l'equazione $\lambda f = c$.
+	- Definizioni: 
+		- Freq
     
 - **Onde Radio:** Hanno una grande facilità di generazione e diffusione, e sono onnidirezionali. Le basse frequenze seguono la curvatura terrestre ma subiscono un forte decadimento di potenza, mentre le alte frequenze rimbalzano sulla ionosfera e sugli edifici .
     
