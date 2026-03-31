@@ -42,6 +42,8 @@ Sono intrecciati per elidere i segnali tra loro.
 - **A banda base (50 $\Omega$):** Usato per le trasmissioni digitali. Su distanze di 1 km può raggiungere velocità fino a 2 Gbps.
     
 - **A larga banda (75 $\Omega$):** Usato storicamente per le trasmissioni analogiche e la TV via cavo.
+	- In genere si impiegano sottocanali a 6MHz (tipico del canale TV via cavo)
+- Di norma esiste una comparazione tra frequenza e velocità: ad esempio 300MHz consentono velocità di 300 Mbps.
     
 - In questo cavo, gli amplificatori fanno un refresh del segnale che è monodirezionale; per questo motivo le reti coassiali richiedono o un doppio cavo (uno per trasmettere, uno per ricevere) oppure un singolo cavo gestito assegnando bande di frequenza diverse per upload e download (subsplit o midsplit) .
     
