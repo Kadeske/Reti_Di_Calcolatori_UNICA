@@ -70,10 +70,10 @@ Le reti in fibra ottica utilizzano la luce per trasmettere i dati, offrendo pres
 - **Modi di propagazione:** A seconda di come l'angolo di incidenza e la rifrazione agiscono all'interno del mezzo, le fibre si dividono in monomodali (più performanti, fino a 100 Gbps) e multimodali.
 ![[Pasted image 20260331154442.png]]
     
-- **Giunzioni:** I collegamenti presentano diverse perdite di luce: connettorizzate (perdita del 10-20%), giunzione meccanica (perdita del 10%), giunzione a caldo (perdita del 5-10%).
-    
-
+- **Giunzioni:** Non riscalda, non è sottoposta a campi elettromagnetici, e non consuma, tuttavia i collegamenti presentano diverse perdite di luce: connettorizzate (perdita del 10-20%), giunzione meccanica (perdita del 10%), giunzione a caldo (perdita del 5-10%).
 ![[Pasted image 20260331154318.png]]
+Sia il nucleo che il cladding sono composti da silicio, ma il materiale del nucleo è nettamente più puro.
+E' rappresentato da 3 sezioni interne anche se in europa ne usiamo 8 (non vengono usate tutte e 8).
 
 **Sorgenti Luminose**
 
@@ -81,8 +81,10 @@ Esistono due principali tecnologie per generare la luce nella fibra:
 
 - **LED:** Bassa cadenza dei dati, usata per fibre multimodali a breve distanza. Ha una lunga durata, scarsa sensibilità alla temperatura e un costo basso .
     
-- **Laser a semiconduttore:** Alta cadenza dei dati, usata per fibre multimodali o monomodali a lunga distanza. Ha una breve durata, è sensibile alla temperatura e ha un costo alto .
-    
+- **Laser a semiconduttore:** Alta cadenza dei dati, usata per fibre multimodali o monomodali a lunga distanza. Ha una breve durata, è sensibile alla temperatura e ha un costo alto.
+
+Quali sono le principali differenze?
+    ![[Pasted image 20260331155052.png]]
 
 ![[Pasted image 20260331154242.png]]
 
