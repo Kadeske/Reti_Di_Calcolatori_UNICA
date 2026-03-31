@@ -26,6 +26,13 @@ Trenitalia non possiede le ferrovie, le possiede FDS.
 
 
 --- 
-- ITU-T è coposoto da Gruppi di studio (10)
+- ITU-T è coposoto da Gruppi di studio (11)
 - I gruppi di studio da gruppi di lavoro
 - I gruppi di lavoro da gruppi di esperti
+
+--- 
+# iso
+
+é il più grande gruppo di standardizzazione. Comprende 157 stati (quasi tutto il mondo)
+
+Ha tutti gli enti di normazione statali (es. ANSI, etc.)
