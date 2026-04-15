@@ -100,13 +100,14 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 -  **Progettazione dei Livelli:** Ogni strato fa solo il suo compito, fornisce tolleranza di guasto (es. controlli di errore ripetuti) per garantire che i livelli superiori ricevano dati intatti.
 **Componenti e Compiti all'interno dei Livelli:**
 
-- **Indirizzamento:** Metodo per identificare in modo univoco sorgente e destinazione in ogni livello. I **SAP (Service Access Point)** sono i punti (gli indirizzi) in cui uno strato offre un servizio a quello superiore (es. porte per il Trasporto, IP per la Rete, MAC per il livello Datalink).
+- **[[Indirizzamento]]:**  *Meccanismo essenziale utilizzato da ogni livello di una rete al fine di identificare in modo specifico le sorgenti e le destinazioni delle comunicazioni*. I **SAP (Service Access Point)** sono i punti (gli indirizzi) in cui uno strato offre un servizio a quello superiore (es. porte per il Trasporto, IP per la Rete, MAC per il livello Datalink).
     
-- **Regole di trasferimento:** * _Simplex:_ Unica direzione.
+- **Regole di trasferimento:** determinano in quale senso possono viaggiare i dati.
+	- **Simplex:** Comunicazione in una sola direzione (e in un unico canale).
     
-    - _Half-duplex:_ Bidirezionale ma una sola macchina alla volta.
+    - _Half-duplex:_ Bidirezionale ma una sola macchina alla volta. Ad ogni lato viene dato un tempo in cui poter utilizzare il canale.
         
-    - _Duplex:_ Bidirezionale contemporaneo.
+    - _Duplex:_ Bidirezionale contemporaneo. (Viene suddiviso in due parti)
         
 - **Controllo errori:** Verifica la correttezza dei bit. Può agire per _Rilevamento e Ritrasmissione_ (se l'esito del calcolo indica un errore, si chiede di rimandare) oppure _Rilevamento e Correzione_ (tramite codifiche come Hamming per correggere errori lievi direttamente).
     
