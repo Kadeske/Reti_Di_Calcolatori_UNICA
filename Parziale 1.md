@@ -130,11 +130,11 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 ### 5. [[Interfacce e Servizi]]
 
 - **Passaggio dei Servizi:** L'informazione _n-PDU_ in un livello viene calata al livello $(n-1)$ tramite un'interfaccia (SAP). Diventa _$(n-1)$-SDU_, le viene aggiunto l'Header e si trasforma nella _$(n-1)$-PDU_.
-- Servizi orientati alla connessione e servizi privi di connessione
 
-- **Servizi orientati alla connessione:** Ordine dei dati garantito. Funziona in 3 stadi: instaurazione, trasferimento, rilascio (Es. telefonata, TCP).
-    
-- **Servizi privi di connessione (Datagramma):** Nessun canale precostituito, il percorso non è garantito e l'ordine d'arrivo nemmeno. Ogni pacchetto viaggia per conto suo. (Es. posta, UDP) .
+- **[[Servizi orientati alla connessione e servizi privi di connessione]]:**
+	- **Servizi orientati alla connessione:** Ordine dei dati garantito. Funziona in 3 stadi: instaurazione, trasferimento, rilascio (Es. telefonata, TCP).
+	    
+	- **Servizi privi di connessione (Datagramma):** Nessun canale precostituito, il percorso non è garantito e l'ordine d'arrivo nemmeno. Ogni pacchetto viaggia per conto suo. (Es. posta, UDP) .
     
 - **[[Quality of Service]](QoS):** Determina i parametri di garanzia (affidabilità, ordine, latenza, banda). Molto costosa in termini di tempo se si vuole affidabilità al 100%.
     
@@ -167,7 +167,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 7. **Livello Applicazione:** Protocolli per software utente e l'interfaccia finale (es. visualizzazione risultato web).
     
 
-**Modello TCP/IP (De facto** Quattro livelli molto più flessibili, creati per unire reti eterogenee (Internet).
+**[[Modello TCP-IP (De facto)]]l** Quattro livelli molto più flessibili, creati per unire reti eterogenee (Internet).
 
 1. **Livello Link:** Copre il ruolo dei livelli Fisico e Collegamento Dati dell'OSI.
     

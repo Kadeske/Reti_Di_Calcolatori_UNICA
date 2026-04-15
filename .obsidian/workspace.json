@@ -20,6 +20,16 @@
               "icon": "lucide-file",
               "title": "Parziale 1"
             }
+          },
+          {
+            "id": "86308d71dc15b80c",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Vista grafo"
+            }
           }
         ]
       }
