@@ -35,8 +35,7 @@
               "title": "Gerarchie di protocolli"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,10 +223,11 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "7eafd9faad18bc90",
+  "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
-    "Parziale 1.md",
     "Approfondimenti P1/Gerarchie di protocolli.md",
+    "Pasted image 20260415140626.png",
+    "Parziale 1.md",
     "Approfondimenti P1/IEEE 802.11 -> WLAN.md",
     "Approfondimenti P1/IEEE 802.6 -> DQBD.md",
     "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
@@ -247,7 +247,6 @@
     "img/Pasted image 20260415121314.png",
     "img/Pasted image 20260331155901.png",
     "pdf/Reti part1c-2025.pdf",
-    "img/Pasted image 20260331162243.png",
     "Trascrizione_lezioni/Lezione 3.md",
     "Trascrizione_lezioni/Parte 1b.md",
     "pdf/Reti part1b-2025.pdf",

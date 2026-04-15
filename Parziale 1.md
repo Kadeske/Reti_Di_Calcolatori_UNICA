@@ -85,7 +85,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 
 - **Perché usare i livelli:** Serve a ridurre la complessità del problema di networking. Ogni livello ha funzionalità precise e ben delimitate.
     
-- **Gerarchie di protocolli:** I nodi non comunicano tutti in blocco, ma il "livello N" di una macchina parla virtualmente con il "livello N" di un'altra. Le regole di questa conversazione virtuale sono i protocolli.
+- **[[Gerarchie di protocolli]]:** I nodi non comunicano tutti in blocco, ma il "livello N" di una macchina parla virtualmente con il "livello N" di un'altra. Le regole di questa conversazione virtuale sono i protocolli.
 
 	- **Interfaccia:** Dato che la comunicazione in realtà avviene tramite mezzo fisico, tra livelli adiacenti c'è un *interfaccia* che definisce le operazioni e i servizi offerti al livello superiore.
     
