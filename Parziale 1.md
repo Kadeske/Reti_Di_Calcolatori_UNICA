@@ -1,0 +1,77 @@
+
+argomenti:
+
+- reti di calcolatori
+- sistema distribuito
+- digital divide
+- cosa è un pacchetto
+- caratterizzazione delle reti
+	- per tecnologia
+		- point to point
+		- broadcast
+		- multicast
+		- unicast
+	- per topologia
+		- paramentri della topologia
+		- bus (pro e contro)
+		- anello (pro e contro)
+		- stella (pro e contro)
+	- per scala di interconnessione
+		- pan
+		- lan con allocazione dinamica e statica
+		- man
+		- wlan
+		- internetworks
+- Standard IEEE 802
+	- CSMA/CD (3)
+	- Token bus (4)
+	- Token ring (5)
+	- DQDB (6)
+	- WLAN (11)
+- Perche le reti vengono divise in livelli
+- gerarchie di protocolli
+- archietettura di rete: solo definizione
+- pila di protocolli: solo definizione
+- Come funziona in generale l'invio di un messaggio tra due host
+- Progettazione dei livelli di una rete
+	- cosa deve fare ogni strato e perchè 
+- Indirizzamento
+	- definizione generale del meccanismo
+	- Definizione SAP (service accesso point)
+	- Regole di trasferimento (simplex, half duplex, duplex)
+- Controllo degli errori
+	- cosa è
+	- in che modo avviene
+	- ritrasmissione
+	- correzione
+- Controllo della sequenza
+- Controllo di flusso
+- multiplexing e demultiplexing
+- routing
+- Interfacce e Servizi
+	- Come funziona il passaggio dei servizi ad altri livelli.
+- Servizi orientati alla connessione e non
+- Quality of service
+- primitive (routine di servizio)
+- Relazione tra protocolli e servizi
+- Modelli di riferimento
+	- ISO-OSI (elenco di tutti i livelli e descizione)
+	- TCP/IP (elendo livelli e descrizione)
+	- Confronto tra ISO-OSI e TCP/IP
+- **Esempi di reti**
+	- ARPANET
+	- X.25
+	- Frame Relay
+	- Broadband-ISDN
+	- ATM
+	- IEEE 802.11 (wifi)		
+	- RFID e reti di sensori
+- STANDARDIZZAZIONE DELLE RETI
+	- de facto e de jure
+	- ITU
+		- itu r
+		- itu t 
+		- itu d
+	- ISO
+	- IEEE (con elenco gruppi di lavoro)
+	- IAB
