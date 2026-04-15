@@ -49,8 +49,7 @@
               "title": "Controllo d'errore"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -238,10 +237,10 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "e333f6e7b9b963fa",
+  "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
-    "Parziale 1.md",
     "Approfondimenti P1/Quality of Service.md",
+    "Parziale 1.md",
     "Approfondimenti P1/Servizi orientati alla connessione e servizi privi di connessione.md",
     "Pasted image 20260415161412.png",
     "Approfondimenti P1/Interfacce e Servizi.md",

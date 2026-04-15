@@ -136,7 +136,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
     
 - **Servizi privi di connessione (Datagramma):** Nessun canale precostituito, il percorso non è garantito e l'ordine d'arrivo nemmeno. Ogni pacchetto viaggia per conto suo. (Es. posta, UDP) .
     
-- **Quality of Service (QoS):** Determina i parametri di garanzia (affidabilità, ordine, latenza, banda). Molto costosa in termini di tempo se si vuole affidabilità al 100%.
+- **[[Quality of Service]](QoS):** Determina i parametri di garanzia (affidabilità, ordine, latenza, banda). Molto costosa in termini di tempo se si vuole affidabilità al 100%.
     
 - **Primitive (Routine di servizio):** Chiamate fondamentali, per es.: LISTEN (attesa passiva), CONNECT (chiama attivamente l'altro host), RECEIVE (riceve), SEND (invia), DISCONNECT (chiude connessione).
     
