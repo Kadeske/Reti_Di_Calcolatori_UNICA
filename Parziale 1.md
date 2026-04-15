@@ -130,7 +130,8 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 ### 5. Interfacce e Servizi
 
 - **Passaggio dei Servizi:** L'informazione _n-PDU_ in un livello viene calata al livello $(n-1)$ tramite un'interfaccia (SAP). Diventa _$(n-1)$-SDU_, le viene aggiunto l'Header e si trasforma nella _$(n-1)$-PDU_.
-    
+- Servizi orientati alla connessione e servizi privi di connessione
+
 - **Servizi orientati alla connessione:** Ordine dei dati garantito. Funziona in 3 stadi: instaurazione, trasferimento, rilascio (Es. telefonata, TCP).
     
 - **Servizi privi di connessione (Datagramma):** Nessun canale precostituito, il percorso non è garantito e l'ordine d'arrivo nemmeno. Ogni pacchetto viaggia per conto suo. (Es. posta, UDP) .
