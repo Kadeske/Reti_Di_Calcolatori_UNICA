@@ -150,7 +150,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 
 ### 6. Modelli di Riferimento
 
-**Modello ISO-OSI (De jure)** Sette livelli concettuali standardizzati.
+**[[Modello ISO-OSI (De jure)]]** Sette livelli concettuali standardizzati.
 
 1. **Livello Fisico:** Invia i singoli bit sul canale (si occupa di cavi, segnali, voltaggi).
     
@@ -167,7 +167,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 7. **Livello Applicazione:** Protocolli per software utente e l'interfaccia finale (es. visualizzazione risultato web).
     
 
-**Modello TCP/IP (De facto)** Quattro livelli molto più flessibili, creati per unire reti eterogenee (Internet).
+**Modello TCP/IP (De facto** Quattro livelli molto più flessibili, creati per unire reti eterogenee (Internet).
 
 1. **Livello Link:** Copre il ruolo dei livelli Fisico e Collegamento Dati dell'OSI.
     
@@ -178,23 +178,26 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 4. **Livello Applicazione:** Accorpa Applicazione, Presentazione e Sessione dell'OSI.
     
 
-**Confronto:** L'OSI è perfetto didatticamente (chiara distinzione Servizi/Interfacce/Protocolli) ma carente e troppo complesso dal vivo. Il TCP/IP non aveva queste distinzioni precise all'inizio, ma conteneva protocolli collaudati ed efficienti nati dall'esperienza, imponendosi per praticità.
+**Confronto tra ISO-OSI e TCP/IP (Punti chiave)**
+Il modello TCP/IP è, ingenerale, più flessible.
+![[Pasted image 20260415163051.png]]
+![[Pasted image 20260415163130.png]]
 
 ---
 
 ### 7. Esempi di Reti
 
-- **ARPANET:** Prima rete a pacchetto basata sui router (chiamati IMP). Obiettivo: resistere a guerre nucleari per non far cadere il sistema.
+- **[[ARPANET]]:** Prima rete a pacchetto basata sui router (chiamati IMP). Obiettivo: resistere a guerre nucleari per non far cadere il sistema.
     
-- **X.25:** Rete europea degli anni 70 orientata alla connessione con un fortissimo controllo errori nodo per nodo. Robusta ma con alta latenza.
+- **[[X.25]]** Rete europea degli anni 70 orientata alla connessione con un fortissimo controllo errori nodo per nodo. Robusta ma con alta latenza.
     
-- **Frame Relay:** Erede dell'X.25. Usa connessioni virtuali per LAN distanti. Non fa controllo d'errore (scarta i pacchetti corrotti per guadagnare altissime velocità) e non ha livello di rete.
+- **[[Frame Relay]]:** Erede dell'X.25. Usa connessioni virtuali per LAN distanti. Non fa controllo d'errore (scarta i pacchetti corrotti per guadagnare altissime velocità) e non ha livello di rete.
     
-- **ATM:** Rete basata sulla "commutazione a celle" fisse (48 byte dati + 5 indirizzamento) a grandissima velocità per fonia, video e dati. Implementata specialmente nelle dorsali telefoniche.
+- **[[ATM]]:** Rete basata sulla "commutazione a celle" fisse (48 byte dati + 5 indirizzamento) a grandissima velocità per fonia, video e dati. Implementata specialmente nelle dorsali telefoniche.
     
 - **IEEE 802.11 (WLAN):** Il Wi-Fi moderno. Le stazioni si servono di un Access Point che si collega a internet per far viaggiare pacchetti wireless.
     
-- **RFID:** Sistemi per identificare oggetti a onde radio: composti da lettore (Reader) e tag (Etichette). _RFID attivi_ hanno una batteria, _RFID passivi_ no (vengono alimentati dal campo elettromagnetico del lettore).
+- **[[RFID]]:** Sistemi per identificare oggetti a onde radio: composti da lettore (Reader) e tag (Etichette). _RFID attivi_ hanno una batteria, _RFID passivi_ no (vengono alimentati dal campo elettromagnetico del lettore).
     
 
 ---
