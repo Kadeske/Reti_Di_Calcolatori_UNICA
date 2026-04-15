@@ -56,10 +56,10 @@ Per Topologia La topologia è il modello geometrico dei collegamenti. Parametri 
     - _Statica:_ Il tempo è diviso in slot discreti; se un host non trasmette, il suo slot viene sprecato.
     - _Dinamica:_ Il tempo/canale viene assegnato solo a chi richiede attivamente di trasmettere.
         
-- **MAN (Metropolitan Area Network):** Estensione urbana. Solitamente basata su 2 bus broadcast.
-- **WAN (Wide Area Network):** Estensione nazione/continente. Gli host sono collegati tramite una sottorete (subnet) formata da router e linee trasmissive.
+- **MAN (Metropolitan Area Network):** Estensione urbana. Solitamente basata su 2 bus broadcast(802.6).
+- **WAN (Wide Area Network):** Estensione nazione/continente. Gli host sono collegati tramite una sottorete (subnet) formata da router e linee trasmissive. Non si ha mai una rete collettiva ma tante sottoreti composte da router connesse tra loro.
 - **WLAN:** LAN senza fili.
-- **Internetworks:** Reti diverse collegate tra loro che comunicano grazie a dispositivi Gateway/Router.
+- **Internetworks:** rete che si interpone tra due reti diverse tra loro. Permetta la comunicazione tra reti diverse attraverso un gateway.
     
 
 ---
