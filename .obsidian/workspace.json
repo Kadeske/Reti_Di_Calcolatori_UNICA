@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Controllo di flusso.md",
+                "file": "Approfondimenti P1/Interfacce e Servizi.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Controllo di flusso"
+              "title": "Interfacce e Servizi"
             }
           },
           {
@@ -49,7 +49,8 @@
               "title": "Controllo d'errore"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -237,9 +238,10 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "2edb52c9ea84073c",
+  "active": "7eafd9faad18bc90",
   "lastOpenFiles": [
     "Approfondimenti P1/Controllo di flusso.md",
+    "Approfondimenti P1/Interfacce e Servizi.md",
     "Parziale 1.md",
     "Approfondimenti P1/Indirizzamento.md",
     "Approfondimenti P1/Controllo d'errore.md",
