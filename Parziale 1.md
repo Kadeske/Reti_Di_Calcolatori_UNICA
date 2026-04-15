@@ -237,95 +237,100 @@ Parte 2
 
 # Livello fisico
 
-Cosa definisce in generale il livello fisico.
+Il livello fisico ha un solo e unico scopo: **trasmettere bit grezzi (0 e 1) da un nodo all'altro attraverso un canale di comunicazione**. Non sa cosa stia trasmettendo (se sia un video, un'email o un virus), si preoccupa solo dei voltaggi, della luce o delle onde radio necessarie per far arrivare il segnale.
 
-basi teoriche per la comunicazione dei dati
-	- l'analisi di fourier
-	- segnale elettrico
-	- mezzo trasmissivo
-	- cosa comporta la trasmissione a frequenze più basse
+### 1. Basi Teoriche e Segnali
 
-Segnali a larghezza di banda limitata
-- cosa è la banda (dal punto di vista analogico e da quello digitale)
-- cosa è la larghezza di banda (sia analogica che logica)
-- cosa comporta una banda più ampia
+- **Analisi di Fourier:** Dimostra matematicamente che qualsiasi segnale periodico (come un'onda quadra che rappresenta i bit) può essere scomposto in una somma infinita di onde sinusoidali (armoniche) di frequenze diverse.
+    
+- **Segnali a banda limitata:** I mezzi trasmissivi reali non possono trasportare frequenze infinite. Tagliare le frequenze alte "arrotonda" il segnale, mentre le **frequenze più basse** trasportano la maggior parte dell'energia. Se il canale taglia le frequenze basse, il segnale si distrugge e diventa illeggibile.
+    
+- **Cos'è la Banda:**
+    
+    - _Analogica (Hertz - Hz):_ L'intervallo di frequenze che il cavo riesce a far passare senza attenuarle troppo (è una proprietà fisica del cavo).
+        
+    - _Digitale (Bit per second - bps):_ La quantità di bit trasferiti nell'unità di tempo (velocità).
+        
+    - _Regola d'oro:_ Una banda analogica più ampia permette di far passare più armoniche. Più armoniche passano, meno il segnale si distorce, e quindi possiamo inviare i bit più velocemente (maggiore banda digitale).
+        
+- **Limiti Teorici del Canale:**
+    
+    - **Teorema di Nyquist (Canale Ideale senza rumore):** Definisce la capacità massima $C$ di un canale perfetto:
+        
+        $$C = 2B \log_2(V)$$
+        
+        (dove $B$ è la banda in Hz e $V$ è il numero di livelli discreti del segnale, es. voltaggi diversi).
+        
+    - **Formula di Shannon (Canale Reale con rumore):** Considera il rumore termico ineliminabile.
+        
+        $$C = B \log_2(1 + S/N)$$
+        
+        (dove $S/N$ è il rapporto tra la potenza del segnale e quella del rumore). Nessun trucco ingegneristico può superare il limite di Shannon.
+        
 
-Velocità massima di trasmissione di un canale 
-	- teorema di Nyquits
-	- formula di shannon
+---
 
-Mezzi di trasmissione a fili (wired)
-- sono mezzi guidati (spiega)
-- da cosa è caratterizzato un mezzo fisico
+### 2. Mezzi di Trasmissione a fili (Wired / Guidati)
 
-- doppino telefonico
-	- da cosa è composto
-	- limiti
-	- varietà di doppini
-	- differenza tra categorie
-	- schermatura (interna ed esterna)
+Sono "guidati" perché il segnale (corrente o luce) è costretto fisicamente a viaggiare all'interno del mezzo.
 
-- cavo coassiale
-	- differenze dal doppino
-	- utilizzi 
-	- schermatura 
-	- vantaggi
-	- modalità trasmissive
-		- come suddividere la banda in due canali 
+- **Doppino Telefonico (Twisted Pair):** Due fili di rame intrecciati. L'intreccio serve a cancellare le reciproche interferenze elettromagnetiche (diafonia). Le **Categorie** (Cat 5, Cat 6, ecc.) differiscono per il numero di intrecci per centimetro: più intrecci = banda maggiore. Può essere _UTP_ (non schermato) o _STP_ (con guaina metallica per proteggere dai rumori esterni). Limite: alta attenuazione sulle lunghe distanze.
+    
+- **Cavo Coassiale:** Ha un'anima centrale in rame, isolante, maglia metallica (schermo) e guaina esterna. Differenza dal doppino: schermatura quasi perfetta, banda molto più ampia. Usato per vecchie LAN e TV via cavo.
+    
+- **Fibra Ottica:** Sfrutta il vetro o il silicio per trasmettere luce.
+    
+    - _Come funziona:_ Basata sulla **riflessione totale interna**. Se il raggio di luce colpisce il bordo del vetro con un angolo superiore a un certo "angolo critico", non esce ma rimbalza all'infinito dentro il cavo.
+        
+    - _Tipi:_ **Multimodale** (core largo, la luce rimbalza creando vari percorsi/modi, usata per brevi distanze); **Monomodale** (core sottilissimo, la luce viaggia dritta come un laser, usata per lunghissime distanze/dorsali oceaniche).
+        
+    - _Componenti:_ Sorgente (LED o Laser) $\rightarrow$ Cavo $\rightarrow$ Ricevitore (Fotodiodo che ritraduce la luce in elettricità). I bit sono semplici: c'è luce = 1, buio = 0.
+        
+    - _Splicing (Giunzioni):_ Connettori meccanici (perdita 10-20%), incollaggio, o fusione ottica (si fonde il vetro a caldo, perdita vicina allo 0%).
+        
 
-- fibra ottica 
-	- materiali
-	- vantaggi
-	- come funziona e convenzione dei bit
-	- fenomeno della riflessione totale
-	- da cosa dipende la riflessione
-	- fibre monomodali e fibre multimodali
-	- come si genera il segnale luminoso
-	- come si riceve il segnale luminoso
-	- come si possono collegare le fibre (3 modi)
-	- utilizzi pratici della fibra ottica
-	- differenza dai cavi in rame
-	
- trasmissione senza filo (wireless)
+---
 
-- spettro elettromagnetico
-	- alg a salto di frequenza e alg a banda larga
+### 3. Trasmissione senza filo (Wireless)
 
-- Trasmissioni radio
+Il segnale viaggia nello spazio libero irradiando energia dallo spettro elettromagnetico.
 
-- Trasmissioni a microonde
+- **Onde Radio:** Omnidirezionali, attraversano i muri. Soffrono di interferenze e attenuazione (soprattutto per rimbalzi multipli).
+    
+- **Microonde:** Altamente direzionali (servono parabole allineate "a vista"). Non attraversano ostacoli solidi e sono assorbite dalla pioggia.
+    
+- **Infrarossi/Luminose:** Non attraversano i muri, a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (non possono essere intercettate dall'esterno).
+    
+- **Satelliti:** Funzionano come ripetitori a microonde nel cielo.
+    
+    - _GEO (Geostazionari):_ ~36.000 km. Sembrano fermi nel cielo. Latenza altissima (~250ms), ma bastano 3 satelliti per coprire il mondo (es. VSAT).
+        
+    - _MEO (Media orbita):_ ~10.000 km. Usati per il GPS.
+        
+    - _LEO (Bassa orbita):_ ~500-1500 km. Latenza minima (simile alla fibra), ma ruotano velocemente, quindi serve una costellazione di decine/centinaia di satelliti interconnessi (es. Iridium, Globalstar, Starlink).
+        
+    - _Wired vs Sat:_ Il satellite è insostituibile per navi, aerei o zone remote, ma la fibra vince sempre per latenza e banda nelle comunicazioni terrestri punto-punto.
+        
 
-- onde infrarosse e millimetriche
+---
 
-- onde luminose
+### 4. Sistema Telefonico e Multiplexing
 
-Comunicazioni satellitari
-- in generale 
-- satelliti GEO
-- satelliti MEO 
-- satelliti LEO
+La **PSTN** (Public Switched Telephone Network) è nata per trasportare la voce analogica umana, tagliando drasticamente le frequenze sotto i 300Hz e sopra i 3400Hz.
 
-- VSAT
-- Irdium
-- Globalstar
-- satellite vs wired
-
-Sistema telefonico 
-- servizi PSTN
-- Storia del sistema telefonico
-	- acronimi: CU (o CRU), SGU, SGT, CN
-- Cosa è un ISP
-- Come si ottiene la trasmissione di sengali analogici 
-- problemi principali delle linee di trasmissione 
-	- attenuazione, distorsione, rumore
-- modem 
-- linee DSL  
-- linee ADLS
-- sistema FTTH
-- wireless Local Loop (WLL)
-- Integrated Services Digital Network (ISDN)
-- Multiplexing (nelle radiofrequenze)
-	- FDM (Frequency Division Multiplexing)
-	- WDM (Wavelenght Division Multiplexing)
-	- TDM (Time division Multiplexing)
-	- 
+- **Problemi fisici:** _Attenuazione_ (il segnale perde potenza viaggiando), _Distorsione_ (le frequenze diverse viaggiano a velocità diverse, deformando il segnale d'arrivo), _Rumore_ (energia elettrica indesiderata).
+    
+- **Modem:** Dato che la rete PSTN è fatta per segnali analogici (onde continue), i computer (digitali) usano il MOdem (MOdulatore/DEModulatore) per "travestire" i bit in suoni.
+    
+- **Banda Larga:** * _xDSL (es. ADSL):_ Sfrutta le frequenze alte del doppino in rame (che la voce non usa) per inviare dati. È Asimmetrica (A-DSL) perché offre più banda per scaricare che per caricare dati.
+    
+    - _FTTH (Fiber to the Home):_ Sostituisce il vecchio doppino portando la fibra ottica pura fino dentro casa, garantendo velocità Gigabit.
+        
+- **Multiplexing:** Tecniche per far viaggiare più segnali contemporaneamente sullo stesso cavo.
+    
+    - **FDM (Frequency Division):** Divide la banda disponibile in diverse frequenze (es. radio FM o i canali TV).
+        
+    - **WDM (Wavelength Division):** È l'FDM applicato alla fibra ottica. Si inviano più segnali di luce di "colori" (lunghezze d'onda) differenti contemporaneamente.
+        
+    - **TDM (Time Division):** I segnali si alternano nel tempo. Il canale è usato a turno per brevissime frazioni di secondo.
+        
