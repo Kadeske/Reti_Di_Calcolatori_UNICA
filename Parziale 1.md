@@ -204,7 +204,9 @@ Il modello TCP/IP è, ingenerale, più flessible.
 
 ### 8. Standardizzazione delle Reti
 
-Gli standard garantiscono che i dispositivi di diverse aziende possano dialogare tra loro.
+La **standardizzazione** è il processo fondamentale che permette a dispositivi prodotti da aziende diverse (come un PC Dell e un router Cisco) di comunicare tra loro senza problemi. Senza standard, il mercato delle reti sarebbe frammentato in sistemi proprietari chiusi e incompatibili.
+
+Il termine **standard** indica una norma amministrativa che regola le caratteristiche e/o il funzionamento di un bene/servizio, **è costituito tipicamente da un insieme di documenti tecnici** in cui si perviene dopo un processo di normazione o standardizzazione.
 
 - **De Facto (dalla realtà):** Nascono per emulazione senza una delibera vera e propria di un ente, ma s'impongono perché validi o famosi (Es. TCP/IP).
     
@@ -212,8 +214,8 @@ Gli standard garantiscono che i dispositivi di diverse aziende possano dialogare
     
 
 **Gli Enti:**
-
-- **ITU (International Telecommunication Union):** Agenzia ONU. Si divide in:
+![[Pasted image 20260415164102.png]]
+- **[[ITU]] (International Telecommunication Union):** Agenzia ONU. Si divide in:
     
     - _ITU-R:_ Radio (assegna lo spettro radio e le orbite satellitari mondiali).
         
@@ -221,8 +223,8 @@ Gli standard garantiscono che i dispositivi di diverse aziende possano dialogare
         
     - _ITU-D:_ Sviluppo per combattere il digital divide globale.
         
-- **ISO (International Standard Organization):** Il colosso che unisce enti nazionali di quasi 160 paesi. Regola praticamente tutti gli ambiti tecnologici e manufatturieri.
+- **[[ISO]] (International Standard Organization):** Il colosso che unisce enti nazionali di quasi 160 paesi. Regola praticamente tutti gli ambiti tecnologici e manufatturieri.
     
-- **IEEE:** Organizzazione per l'Ingegneria Elettrica e dei Computer. Si divide in vari Working Group (es. 802.1 architetture, 802.3 Ethernet, 802.11 WiFi, ecc.).
+- **[[IEEE]]:** Organizzazione per l'Ingegneria Elettrica e dei Computer. Si divide in vari Working Group (es. 802.1 architetture, 802.3 Ethernet, 802.11 WiFi, ecc.).
     
-- **IAB (Internet Architecture Board):** Gestisce la supervisione e la ricerca del mondo Internet/TCP-IP.
+- **[[IAB]] (Internet Architecture Board):** Gestisce la supervisione e la ricerca del mondo Internet/TCP-IP.
