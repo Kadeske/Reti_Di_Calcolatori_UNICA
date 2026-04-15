@@ -138,10 +138,13 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
     
 - **[[Quality of Service]](QoS):** Determina i parametri di garanzia (affidabilità, ordine, latenza, banda). Molto costosa in termini di tempo se si vuole affidabilità al 100%.
     
-- **Primitive (Routine di servizio):** Chiamate fondamentali, per es.: LISTEN (attesa passiva), CONNECT (chiama attivamente l'altro host), RECEIVE (riceve), SEND (invia), DISCONNECT (chiude connessione).
+- **[[Primitive]] (Routine di servizio):** Chiamate fondamentali, per es.: LISTEN (attesa passiva), CONNECT (chiama attivamente l'altro host), RECEIVE (riceve), SEND (invia), DISCONNECT (chiude connessione).
     
-- **Relazione Servizi-Protocolli:** Sono disaccoppiati. Il _Servizio_ definisce le funzionalità offerte allo strato superiore (l'interfaccia). Il _Protocollo_ definisce le regole con cui entità equivalenti comunicano tra calcolatori diversi per implementare quel servizio.
-    
+- **Relazione Servizi-Protocolli:** Sono disaccoppiati. 
+	- Il _Servizio_ definisce le funzionalità offerte allo strato superiore (l'interfaccia). 
+	- Il _Protocollo_ definisce le regole con cui entità equivalenti comunicano tra calcolatori diversi per implementare quel servizio.
+	- L'*interfaccia* definisce le operazioni elementari e i servizi che lo strato inferiore offre a quello superiore.
+    Le entità possono modificare o sostituire i protocolli a patto di mantenere lo stesso tipo di servizio.
 
 ---
 

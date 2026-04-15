@@ -27,29 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Quality of Service.md",
+                "file": "Approfondimenti P1/Primitive.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quality of Service"
-            }
-          },
-          {
-            "id": "f00db812d927ba80",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Approfondimenti P1/Controllo d'errore.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Controllo d'errore"
+              "title": "Primitive"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -237,10 +224,12 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "2edb52c9ea84073c",
+  "active": "304b3b272d1f4f02",
   "lastOpenFiles": [
-    "Approfondimenti P1/Quality of Service.md",
     "Parziale 1.md",
+    "Approfondimenti P1/Primitive.md",
+    "Approfondimenti P1/Controllo d'errore.md",
+    "Approfondimenti P1/Quality of Service.md",
     "Approfondimenti P1/Servizi orientati alla connessione e servizi privi di connessione.md",
     "Pasted image 20260415161412.png",
     "Approfondimenti P1/Interfacce e Servizi.md",
@@ -252,7 +241,6 @@
     "Pasted image 20260415144916.png",
     "Approfondimenti P1/Controllo di flusso.md",
     "Approfondimenti P1/Indirizzamento.md",
-    "Approfondimenti P1/Controllo d'errore.md",
     "Approfondimenti P1/Invio di un messaggio (come funziona fisicamente).md",
     "Pasted image 20260415141221.png",
     "Approfondimenti P1/Gerarchie di protocolli.md",
