@@ -70,11 +70,11 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 
 - **[[IEEE 802.3 -> CSMA-CD]]** I nodi ascoltano il canale (Carrier Sense). Mezzo condiviso (Multiple Access). Se due trasmettono insieme (Collision Detection), si attende un tempo casuale e si ritenta.
     
-- **802.4 Token bus:** I nodi sono cablati a bus fisico, ma lavorano ad anello logico in cui circola un _Token_. Solo chi possiede il token può trasmettere.
+- **[[IEEE 802.4 -> Token Bus]]:** I nodi sono cablati a bus fisico, ma lavorano ad anello logico in cui circola un _Token_. Solo chi possiede il token può trasmettere.
     
-- **802.5 Token ring:** Connessione sia fisica che logica ad anello. Il token circola, la stazione lo prende, invia il pacchetto, e quando questo finisce il giro rimuove il pacchetto e rilascia il token.
+- **[[IEEE 802.5 -> Token Ring]]:** Connessione sia fisica che logica ad anello. Il token circola, la stazione lo prende, invia il pacchetto, e quando questo finisce il giro rimuove il pacchetto e rilascia il token.
     
-- **802.6 DQDB:** Standard usato in passato per MAN ad altissima velocità.
+- **[[IEEE 802.6 -> DQBD]]:** Standard usato in passato per MAN ad altissima velocità.
     
 - **802.11 WLAN (Wi-Fi):** LAN wireless. Usa un Access Point o una rete ad-hoc diretta. Frequenze e bande varie (a, b, g, n).
     
