@@ -18,12 +18,13 @@ Per Tecnologia Trasmissiva
 - **Point-to-point (Punto a Punto):** Canale trasmissivo riservato tra due host (unicasting). I pacchetti possono attraversare nodi intermedi, richiedendo l'uso di algoritmi di "routing" per trovare il percorso migliore.
     
 - **Broadcast:** Canale di comunicazione condiviso tra tutti i nodi. I pacchetti sono ricevuti da tutti, ma solo il nodo con l'indirizzo corrispondente li legge (gli altri li scartano). Richiede meccanismi per gestire le collisioni. Rientrano in questo gruppo:
-    
+    ![[Pasted image 20260415121327.png]]
     - _Broadcasting:_ Messaggio indirizzato a tutti i dispositivi della rete.
         
     - _Multicasting:_ Messaggio rivolto solo ad un gruppo specifico di destinatari.
         
     - _Unicasting (in rete broadcast):_ Messaggio inviato nel mezzo condiviso, ma indirizzato a un singolo destinatario.
+	
         
 
 Per Topologia La topologia è il modello geometrico dei collegamenti. Parametri per sceglierla: numero di nodi, canali trasmissivi e ridondanza.
