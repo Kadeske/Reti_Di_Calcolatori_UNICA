@@ -228,3 +228,104 @@ Il termine **standard** indica una norma amministrativa che regola le caratteris
 - **[[IEEE]]:** Organizzazione per l'Ingegneria Elettrica e dei Computer. Si divide in vari Working Group (es. 802.1 architetture, 802.3 Ethernet, 802.11 WiFi, ecc.).
     
 - **[[IAB]] (Internet Architecture Board):** Gestisce la supervisione e la ricerca del mondo Internet/TCP-IP.
+
+
+
+
+--- 
+Parte 2
+
+# Livello fisico
+
+Cosa definisce in generale il livello fisico.
+
+basi teoriche per la comunicazione dei dati
+	- l'analisi di fourier
+	- segnale elettrico
+	- mezzo trasmissivo
+	- cosa comporta la trasmissione a frequenze più basse
+
+Segnali a larghezza di banda limitata
+- cosa è la banda (dal punto di vista analogico e da quello digitale)
+- cosa è la larghezza di banda (sia analogica che logica)
+- cosa comporta una banda più ampia
+
+Velocità massima di trasmissione di un canale 
+	- teorema di Nyquits
+	- formula di shannon
+
+Mezzi di trasmissione a fili (wired)
+- sono mezzi guidati (spiega)
+- da cosa è caratterizzato un mezzo fisico
+
+- doppino telefonico
+	- da cosa è composto
+	- limiti
+	- varietà di doppini
+	- differenza tra categorie
+	- schermatura (interna ed esterna)
+
+- cavo coassiale
+	- differenze dal doppino
+	- utilizzi 
+	- schermatura 
+	- vantaggi
+	- modalità trasmissive
+		- come suddividere la banda in due canali 
+
+- fibra ottica 
+	- materiali
+	- vantaggi
+	- come funziona e convenzione dei bit
+	- fenomeno della riflessione totale
+	- da cosa dipende la riflessione
+	- fibre monomodali e fibre multimodali
+	- come si genera il segnale luminoso
+	- come si riceve il segnale luminoso
+	- come si possono collegare le fibre (3 modi)
+	- utilizzi pratici della fibra ottica
+	- differenza dai cavi in rame
+	
+ trasmissione senza filo (wireless)
+
+- spettro elettromagnetico
+	- alg a salto di frequenza e alg a banda larga
+
+- Trasmissioni radio
+
+- Trasmissioni a microonde
+
+- onde infrarosse e millimetriche
+
+- onde luminose
+
+Comunicazioni satellitari
+- in generale 
+- satelliti GEO
+- satelliti MEO 
+- satelliti LEO
+
+- VSAT
+- Irdium
+- Globalstar
+- satellite vs wired
+
+Sistema telefonico 
+- servizi PSTN
+- Storia del sistema telefonico
+	- acronimi: CU (o CRU), SGU, SGT, CN
+- Cosa è un ISP
+- Come si ottiene la trasmissione di sengali analogici 
+- problemi principali delle linee di trasmissione 
+	- attenuazione, distorsione, rumore
+- modem 
+- linee DSL  
+- linee ADLS
+- sistema FTTH
+- wireless Local Loop (WLL)
+- Integrated Services Digital Network (ISDN)
+- Multiplexing (nelle radiofrequenze)
+	- FDM (Frequency Division Multiplexing)
+	- WDM (Wavelenght Division Multiplexing)
+	- TDM (Time division Multiplexing)
+	- 

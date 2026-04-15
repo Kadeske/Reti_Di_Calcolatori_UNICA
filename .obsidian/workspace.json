@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/ITU.md",
+                "file": "Parziale 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ITU"
+              "title": "Parziale 1"
             }
           }
         ]
@@ -208,12 +208,12 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "b5b5eb461e21f79d",
+  "active": "4be5a997337b1a17",
   "lastOpenFiles": [
+    "Approfondimenti P1/ITU.md",
     "img/Pasted image 20260415164619.png",
     "Parziale 1.md",
     "802.3 CSMA/CD (802.3).md",
-    "Approfondimenti P1/ITU.md",
     "Approfondimenti P1/IEEE.md",
     "img/Pasted image 20260415164559.png",
     "img/Pasted image 20260415164541.png",
