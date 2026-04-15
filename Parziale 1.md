@@ -68,7 +68,7 @@ Per Topologia La topologia è il modello geometrico dei collegamenti. Parametri 
 
 Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 
-- **[[802.3 CSMA/CD (802.3)]]** I nodi ascoltano il canale (Carrier Sense). Mezzo condiviso (Multiple Access). Se due trasmettono insieme (Collision Detection), si attende un tempo casuale e si ritenta.
+- **802.3 CSMA/CD (802.3)** I nodi ascoltano il canale (Carrier Sense). Mezzo condiviso (Multiple Access). Se due trasmettono insieme (Collision Detection), si attende un tempo casuale e si ritenta.
     
 - **802.4 Token bus:** I nodi sono cablati a bus fisico, ma lavorano ad anello logico in cui circola un _Token_. Solo chi possiede il token può trasmettere.
     

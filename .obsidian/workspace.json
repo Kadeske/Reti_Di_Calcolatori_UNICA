@@ -35,8 +35,7 @@
               "title": "CSMA-CD (IEEE 802.3)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -189,14 +188,23 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "4be5a997337b1a17",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -208,15 +216,18 @@
       "command-palette:Apri riquadro comandi": false,
       "bases:Crea nuova Base": false,
       "obsidian-git:Open Git source control": false,
-      "markdown-importer:Apri importazione Markdown": false
+      "markdown-importer:Apri importazione Markdown": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "7eafd9faad18bc90",
+  "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
+    "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
     "Parziale 1.md",
     "802.3 CSMA/CD (802.3).md",
     "802.3 CSMA",
-    "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
     "Approfondimenti P1",
     "Trascrizione_lezioni/Parte 1c.md",
     "img/Pasted image 20260331161247.png",
