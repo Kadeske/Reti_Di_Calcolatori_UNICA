@@ -76,7 +76,7 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
     
 - **[[IEEE 802.6 -> DQBD]]:** Standard usato in passato per MAN ad altissima velocità.
     
-- **802.11 WLAN (Wi-Fi):** LAN wireless. Usa un Access Point o una rete ad-hoc diretta. Frequenze e bande varie (a, b, g, n).
+- **[[IEEE 802.11 -> WLAN]]** LAN wireless. Usa un Access Point o una rete ad-hoc diretta. Frequenze e bande varie (a, b, g, n).
     
 
 ---
@@ -86,10 +86,12 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
 - **Perché usare i livelli:** Serve a ridurre la complessità del problema di networking. Ogni livello ha funzionalità precise e ben delimitate.
     
 - **Gerarchie di protocolli:** I nodi non comunicano tutti in blocco, ma il "livello N" di una macchina parla virtualmente con il "livello N" di un'altra. Le regole di questa conversazione virtuale sono i protocolli.
+
+	- **Interfaccia:** Dato che la comunicazione in realtà avviene tramite mezzo fisico, tra livelli adiacenti c'è un *interfaccia* che definisce le operazioni e i servizi offerti al livello superiore.
     
-- **Architettura di rete:** L'insieme di tutti i livelli e dei protocolli utilizzati.
+	- **Architettura di rete:** L'insieme di tutti i livelli e dei protocolli utilizzati.
     
-- **Pila di protocolli:** La serie concreta di protocolli attivi usati livello per livello su una macchina.
+	- **Pila di protocolli:** La serie concreta di protocolli attivi usati livello per livello su una macchina.
     
 - **Invio di un messaggio (come funziona):** All'Host 1, il messaggio scende i livelli. Ogni livello aggiunge le sue informazioni operative (Header) e talvolta suddivide il pacchetto. Raggiunto il livello fisico, i bit viaggiano sul cavo. Arrivati all'Host 2, i livelli processano il proprio Header e lo scartano, riassemblando i dati puliti fino all'applicazione.
     

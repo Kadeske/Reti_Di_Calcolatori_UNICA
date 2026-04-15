@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/IEEE 802.11 -> WLAN.md",
+                "file": "Approfondimenti P1/Gerarchie di protocolli.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IEEE 802.11 -> WLAN"
+              "title": "Gerarchie di protocolli"
             }
           }
         ],
@@ -227,9 +227,10 @@
   "active": "7eafd9faad18bc90",
   "lastOpenFiles": [
     "Parziale 1.md",
+    "Approfondimenti P1/Gerarchie di protocolli.md",
     "Approfondimenti P1/IEEE 802.11 -> WLAN.md",
-    "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
     "Approfondimenti P1/IEEE 802.6 -> DQBD.md",
+    "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
     "img/Pasted image 20260415134524.png",
     "Approfondimenti P1/IEEE 802.5 -> Token Ring.md",
     "img/Pasted image 20260415134721.png",

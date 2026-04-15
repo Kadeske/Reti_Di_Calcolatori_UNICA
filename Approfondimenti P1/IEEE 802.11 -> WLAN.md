@@ -4,4 +4,15 @@
 Le stazioni possono connettersi fra loro tramite un access point o in maniera diretta (ad-hoc).
 
 Gli standard della sottofamiglia 802.11 comprendono:
-- 802.11a: 54Mbps
+
+| **IEEE Standard** | **Frequenza** | **Larghezza di banda** |
+| ----------------- | ------------- | ---------------------- |
+| 802.11a           | 5 GHz         | 54 Mbps                |
+| 802.11b           | 2.4 GHz       | 11 Mbps                |
+| 802.11g           | 2.4 GHz       | 54 Mbps                |
+| 802.11n           | 2.4 e 5 GHz   | fino a 300 Mbps        |
+**Problematiche del mezzo trasmissivo:** L'aria è un canale molto più difficile da gestire rispetto a un cavo. Le reti Wi-Fi devono fare i conti con:
+
+- **Interferenze:** Altri dispositivi possono usare le stesse frequenze radio (altre reti Wi-Fi vicine, Bluetooth, o persino i forni a microonde).
+- **Ostacoli e riflessioni:** I muri e gli oggetti indeboliscono e disperdono il segnale.
+- **Il problema del Terminale Nascosto:** (A questo livello base ti basta sapere che esiste) Due computer collegati allo stesso Access Point potrebbero essere troppo lontani per "sentirsi" tra loro. Rischierebbero quindi di trasmettere nello stesso istante, causando una collisione sull'Access Point.
