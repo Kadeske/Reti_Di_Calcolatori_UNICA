@@ -49,21 +49,16 @@ Per Topologia La topologia è il modello geometrico dei collegamenti. Parametri 
         
 
 **Per Scala di Interconnessione**
-
+![[Pasted image 20260415121647.png]]
 - **PAN (Personal Area Network):** Estensione massima di un metro (es. Bluetooth, dispositivi indossabili). Usa logica _master-slave_.
-    
 - **LAN (Local Area Network):** Rete per stanza/edificio (fino a 2km). Di solito usa broadcast. Metodi di _allocazione del canale_:
     
     - _Statica:_ Il tempo è diviso in slot discreti; se un host non trasmette, il suo slot viene sprecato.
-        
     - _Dinamica:_ Il tempo/canale viene assegnato solo a chi richiede attivamente di trasmettere.
         
 - **MAN (Metropolitan Area Network):** Estensione urbana. Solitamente basata su 2 bus broadcast.
-    
 - **WAN (Wide Area Network):** Estensione nazione/continente. Gli host sono collegati tramite una sottorete (subnet) formata da router e linee trasmissive.
-    
 - **WLAN:** LAN senza fili.
-    
 - **Internetworks:** Reti diverse collegate tra loro che comunicano grazie a dispositivi Gateway/Router.
     
 
