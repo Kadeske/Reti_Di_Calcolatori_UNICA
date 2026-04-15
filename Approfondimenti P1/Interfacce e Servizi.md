@@ -10,6 +10,7 @@ I concetti chiave del passaggio dei dati sono:
 Quando le informazioni scendono la pila dei protocolli attraversando i SAP, cambiano nome e struttura seguendo questa precisa sequenza (dal livello _N_ al livello _N-1_):
 
 1. **PDU (Protocol Data Unit):** È il "pacchetto finito" di uno specifico livello. L'informazione di partenza nel livello superiore si chiama **n-PDU**.
+![[Pasted image 20260415144923.png]]
     
 2. **SDU (Service Data Unit):** Quando l'_n-PDU_ attraversa il SAP e scende al livello inferiore, diventa una **(n-1)-SDU**. In parole povere, diventa il "carico utile" (payload) da trasportare, senza che il livello inferiore ne capisca il contenuto.
     
@@ -20,7 +21,7 @@ Quando le informazioni scendono la pila dei protocolli attraversando i SAP, camb
     > **(n-1)-SDU** _[Dati]_ + **(n-1)-PCI** _[Header]_ = **(n-1)-PDU** _[Pacchetto Completo]_
     
 5. Questo nuovo _(n-1)-PDU_ è ora pronto per essere passato al livello ancora inferiore _(N-2)_ attraverso il prossimo SAP, e il ciclo si ripete.
-    
+![[Pasted image 20260415144958.png]]
 
 **I due tipi di Informazioni di Controllo (Da non confondere!)**
 
