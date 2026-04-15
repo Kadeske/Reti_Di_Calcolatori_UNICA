@@ -11,12 +11,14 @@
             "id": "2edb52c9ea84073c",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20260331161247.png"
+                "file": "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260331161247"
+              "icon": "lucide-file",
+              "title": "CSMA-CD (IEEE 802.3)"
             }
           }
         ]
@@ -196,22 +198,23 @@
   },
   "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
-    "Pasted image 20260331162228.png",
     "Parziale 1.md",
-    "Pasted image 20260415121647.png",
-    "Pasted image 20260415121327.png",
-    "Pasted image 20260415121314.png",
-    "Parte 1c.md",
+    "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
+    "Approfondimenti P1",
+    "Trascrizione_lezioni/Parte 1c.md",
+    "img/Pasted image 20260331161247.png",
+    "img/Pasted image 20260331162228.png",
+    "img/Pasted image 20260415121647.png",
+    "img/Pasted image 20260415121327.png",
+    "img/Pasted image 20260415121314.png",
     "img/Pasted image 20260331155901.png",
     "pdf/Reti part1c-2025.pdf",
-    "Pasted image 20260331162243.png",
-    "Pasted image 20260331161247.png",
+    "img/Pasted image 20260331162243.png",
     "Trascrizione_lezioni/Lezione 3.md",
     "img/Pasted image 20260331161144.png",
     "img/Pasted image 20260331161122.png",
     "img/Pasted image 20260331161038.png",
-    "Parte 1b.md",
-    "Senza nome",
+    "Trascrizione_lezioni/Parte 1b.md",
     "pdf/Reti part1b-2025.pdf",
     "pdf",
     "Trascrizione_lezioni/Lezione 2.md",
