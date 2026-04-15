@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Gerarchie di protocolli.md",
+                "file": "Approfondimenti P1/Invio di un messaggio (come funziona fisicamente).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Gerarchie di protocolli"
+              "title": "Invio di un messaggio (come funziona fisicamente)"
             }
           }
         ]
@@ -225,9 +225,11 @@
   },
   "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
+    "Approfondimenti P1/Invio di un messaggio (come funziona fisicamente).md",
+    "Pasted image 20260415141221.png",
+    "Parziale 1.md",
     "Approfondimenti P1/Gerarchie di protocolli.md",
     "Pasted image 20260415140626.png",
-    "Parziale 1.md",
     "Approfondimenti P1/IEEE 802.11 -> WLAN.md",
     "Approfondimenti P1/IEEE 802.6 -> DQBD.md",
     "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
@@ -245,7 +247,6 @@
     "img/Pasted image 20260415121647.png",
     "img/Pasted image 20260415121327.png",
     "img/Pasted image 20260415121314.png",
-    "img/Pasted image 20260331155901.png",
     "pdf/Reti part1c-2025.pdf",
     "Trascrizione_lezioni/Lezione 3.md",
     "Trascrizione_lezioni/Parte 1b.md",

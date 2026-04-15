@@ -93,11 +93,11 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
     
 	- **Pila di protocolli:** La serie concreta di protocolli attivi usati livello per livello su una macchina.
     
-- **Invio di un messaggio (come funziona):** All'Host 1, il messaggio scende i livelli. Ogni livello aggiunge le sue informazioni operative (Header) e talvolta suddivide il pacchetto. Raggiunto il livello fisico, i bit viaggiano sul cavo. Arrivati all'Host 2, i livelli processano il proprio Header e lo scartano, riassemblando i dati puliti fino all'applicazione.
+- **[[Invio di un messaggio (come funziona fisicamente)]]:** All'Host 1, il messaggio scende i livelli. Ogni livello aggiunge le sue informazioni operative (Header) e talvolta suddivide il pacchetto. Raggiunto il livello fisico, i bit viaggiano sul cavo. Arrivati all'Host 2, i livelli processano il proprio Header e lo scartano, riassemblando i dati puliti fino all'applicazione.
     
-- **Progettazione dei Livelli:** Ogni strato fa solo il suo compito, fornisce tolleranza di guasto (es. controlli di errore ripetuti) per garantire che i livelli superiori ricevano dati intatti.
-    
+--- 
 
+-  **Progettazione dei Livelli:** Ogni strato fa solo il suo compito, fornisce tolleranza di guasto (es. controlli di errore ripetuti) per garantire che i livelli superiori ricevano dati intatti.
 **Componenti e Compiti all'interno dei Livelli:**
 
 - **Indirizzamento:** Metodo per identificare in modo univoco sorgente e destinazione in ogni livello. I **SAP (Service Access Point)** sono i punti (gli indirizzi) in cui uno strato offre un servizio a quello superiore (es. porte per il Trasporto, IP per la Rete, MAC per il livello Datalink).
