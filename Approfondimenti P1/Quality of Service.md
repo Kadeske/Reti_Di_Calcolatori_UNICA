@@ -1,16 +1,7 @@
 
 La **Quality of Service (QoS)** definisce l'insieme di parametri che descrivono le prestazioni, le garanzie e l'affidabilità che un livello della rete offre al livello superiore per una specifica comunicazione.
 
-Il concetto di base è che **non tutti i tipi di traffico sono uguali** e non tutte le applicazioni hanno le stesse necessità. I parametri fondamentali per definire la QoS sono:
 
-- **Ritardo (Latenza):** Il tempo che impiega un pacchetto ad arrivare dalla sorgente alla destinazione.
-    
-- **Jitter (Variazione del ritardo):** La differenza di tempo di arrivo tra i vari pacchetti (se i pacchetti arrivano a "singhiozzo" o in modo fluido).
-    
-- **Throughput (Banda):** La quantità di dati che la rete riesce a far passare nell'unità di tempo.
-    
-- **Affidabilità (Tasso di errore):** La percentuale di pacchetti persi o rovinati durante il tragitto.
-    
 
 **Il Compromesso (Trade-off) della QoS:**
 
