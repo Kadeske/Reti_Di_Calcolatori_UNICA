@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
+                "file": "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSMA-CD (IEEE 802.3)"
+              "title": "IEEE 802.3 -> CSMA-CD"
             }
           }
         ]
@@ -204,7 +204,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -224,7 +225,7 @@
   },
   "active": "2edb52c9ea84073c",
   "lastOpenFiles": [
-    "Approfondimenti P1/CSMA-CD (IEEE 802.3).md",
+    "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
     "Parziale 1.md",
     "802.3 CSMA/CD (802.3).md",
     "802.3 CSMA",
