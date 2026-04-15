@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "1d29d8a14c5fe1a7",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Note di rilascio 1.12.7"
+            }
+          },
+          {
             "id": "83ebbc82f6a39309",
             "type": "leaf",
             "state": {
@@ -33,7 +45,8 @@
               "title": "Pasted image 20260331155901"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "1da317398d7c34fd",
@@ -240,13 +253,13 @@
       "markdown-importer:Apri importazione Markdown": false
     }
   },
-  "active": "2edb52c9ea84073c",
+  "active": "1d29d8a14c5fe1a7",
   "lastOpenFiles": [
+    "pdf/Reti part1c-2025.pdf",
+    "Parte 1c.md",
     "Pasted image 20260331162243.png",
     "Pasted image 20260331162228.png",
     "Pasted image 20260331161247.png",
-    "pdf/Reti part1c-2025.pdf",
-    "Parte 1c.md",
     "img/Pasted image 20260331155901.png",
     "Trascrizione_lezioni/Lezione 3.md",
     "img/Pasted image 20260331161144.png",
@@ -255,7 +268,6 @@
     "img/Pasted image 20260331160759.png",
     "img/Pasted image 20260331160712.png",
     "img/Pasted image 20260331160649.png",
-    "img/Pasted image 20260331160028.png",
     "Parte 1b.md",
     "Senza nome",
     "pdf/Reti part1b-2025.pdf",
