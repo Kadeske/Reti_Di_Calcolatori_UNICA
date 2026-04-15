@@ -109,15 +109,20 @@ Dedicati a LAN e MAN con pacchetti a lunghezza variabile.
         
     - _Duplex:_ Bidirezionale contemporaneo. (Viene suddiviso in due parti)
         
-- **Controllo errori:** Verifica la correttezza dei bit. Può agire per _Rilevamento e Ritrasmissione_ (se l'esito del calcolo indica un errore, si chiede di rimandare) oppure _Rilevamento e Correzione_ (tramite codifiche come Hamming per correggere errori lievi direttamente).
+- **[[Controllo d'errore]]:** Verifica la correttezza dei bit. Può agire per _Rilevamento e Ritrasmissione_ (se l'esito del calcolo indica un errore, si chiede di rimandare) oppure _Rilevamento e Correzione_ (tramite codifiche come Hamming per correggere errori lievi direttamente).
     
-- **Controllo della sequenza:** Appone dei numeri sequenziali ai dati per assicurare che il destinatario possa riordinarli nella sequenza originale, specialmente per i servizi senza connessione.
+- **Controllo della sequenza:** Meccanismo che consente al destinatario di verificare e ricostruire i dati nell’ordine esatto in cui sono stati inviati dal mittente.
+  A ciascun dato viene assegnata un etichetta indicante l'ordine originale.
+	- con comunicazioni **orientate alla connessione** l'ordine di arrivo dei dati è garantito.
+	- con comunicazioni **senza connessione** i dati potrebbero arrivare in maniera non sequenziale.
     
-- **Controllo di flusso:** Evita che un mittente "veloce" anneghi e ingolfi un destinatario "lento". Regola la frequenza di invio o attende conferme (Ack).
+- **[[Controllo di flusso]]:** Evita che un mittente "veloce" anneghi e ingolfi un destinatario "lento". Regola la frequenza di invio o attende conferme (Ack).
     
 - **Multiplexing/Demultiplexing:** Disassembla pacchetti troppo grandi per i mezzi fisici e riassembla pacchetti a destinazione; o accorpa flussi troppo leggeri per usarli in una sola connessione ad alta capacità.
     
 - **Routing:** Scelta del miglior percorso, ad ogni istante, in una rete magliata o tramite nodi (router) intermedi.
+	- **Router**: dispositivi che implementano solo i primi 3 livelli di una rete (fino al livello di rete).
+	- **Algoritmo di routing**: ha l'obiettivo di trovare il miglior persorso.
     
 
 ---
