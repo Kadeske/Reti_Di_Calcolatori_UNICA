@@ -81,11 +81,18 @@ Se devi unire due cavi rotti o prolungarne uno, hai tre strade, con costi e prec
 
 **7. Utilizzi pratici vs Cavi in Rame**
 
-- **Utilizzi:** Dorsali transoceaniche (che collegano i continenti sott'acqua), reti metropolitane, connessioni FTTH (la fibra che arriva fin dentro i nostri modem di casa).
+- **Utilizzi:** Dorsali transoceaniche (che collegano i continenti sott'acqua), reti metropolitane, connessioni FTTH (la fibra che arriva fin dentro i nostri modem di casa). In generale in LAN e trasmissioni a lunga distanza.
     
-- **Differenza dal rame (Pro e Contro):** La fibra stravince per velocità e distanza. Tuttavia, le terminazioni e i macchinari per la fibra costano molto di più rispetto alle porte Ethernet. Inoltre, la fibra non può trasportare corrente per alimentare dispositivi (come fa il rame con il PoE) e, se piegata troppo bruscamente, il vetro interno si spezza irreparabilmente, mentre il rame si piega senza problemi.
-    
-
+| **Caratteristica**                 | **Cavi in Rame (Doppino / Coassiale)**                                                                                                        | **Fibra Ottica**                                                                                                                   |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Segnale trasmesso**              | Impulsi elettrici (Elettroni)                                                                                                                 | Impulsi luminosi (Fotoni)                                                                                                          |
+| **Larghezza di Banda (Velocità)**  | Limitata (fino a qualche Gbps sui cavi migliori)                                                                                              | Teoricamente infinita (Terabit al secondo)                                                                                         |
+| **Attenuazione e Distanza**        | Alta. Il segnale si degrada in fretta, servono ripetitori ogni pochi chilometri (o metri per velocità altissime).<br>**Ripetitore ogni 5km.** | Bassissima. Il segnale viaggia per decine di chilometri senza bisogno di essere rigenerato.<br>**Ripetitore ogni 50km.**           |
+| **Interferenze Elettromagnetiche** | Vulnerabile (soffre di diafonia e rumori esterni, richiede schermature costose per proteggersi).                                              | **Totalmente immune**. Essendo di vetro, non subisce alcuna interferenza elettromagnetica.                                         |
+| **Sicurezza (Intercettazioni)**    | Facile da intercettare (basta un sensore vicino al cavo per leggere il campo elettromagnetico).                                               | Altissima. Per intercettare i dati devi tagliare fisicamente il cavo, interrompendo la comunicazione e facendo scattare l'allarme. |
+| **Installazione e Fragilità**      | Facile da posare. I cavi si possono piegare ad angolo retto senza rompersi.                                                                   | Più complessa. Il vetro interno è fragile: se il cavo viene piegato troppo (oltre il raggio di curvatura), si spezza.              |
+| **Costo (Apparati e Giunzioni)**   | Basso. Le porte Ethernet e i cavi costano pochissimo.                                                                                         | Alto. I cavi costano poco, ma i laser, i fotodiodi e i macchinari per fondere il vetro (fusione ottica) sono molto costosi.        |
+| **Alimentazione Elettrica**        | Può trasportare sia dati che corrente elettrica (es. per alimentare le telecamere di sicurezza tramite il cavo LAN).                          | Non può trasportare corrente elettrica, solo luce.                                                                                 |
 ### Rete ad anello (con fibra)
 collegarsi ad una rete in fibra è più difficile rispetto a una ethernet.
 Per renderlo più semplice si può utilizzare una **rete ad anello**.

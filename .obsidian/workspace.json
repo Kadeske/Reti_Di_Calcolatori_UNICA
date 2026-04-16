@@ -35,8 +35,7 @@
               "title": "Fibra ottica"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,15 +223,15 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "304b3b272d1f4f02",
+  "active": "372a64b700965d2b",
   "lastOpenFiles": [
+    "Approfondimenti P1/Fibra ottica.md",
     "img/Pasted image 20260416141526.png",
     "img/Pasted image 20260416141037.png",
     "Parziale 1.md",
     "Approfondimenti P1/Modello TCP-IP (De facto).md",
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
     "Approfondimenti P1/Interfacce e Servizi.md",
-    "Approfondimenti P1/Fibra ottica.md",
     "img/Pasted image 20260416124440.png",
     "img/Pasted image 20260416124356.png",
     "img/Pasted image 20260416124221.png",
@@ -246,7 +245,6 @@
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
     "Approfondimenti P1/Analisi di Fourier.md",
     "Approfondimenti P1/ITU.md",
-    "img/Pasted image 20260415164619.png",
     "802.3 CSMA/CD (802.3).md",
     "Approfondimenti P1/IEEE.md",
     "Approfondimenti P1/ISO.md",
