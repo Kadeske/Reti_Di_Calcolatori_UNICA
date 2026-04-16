@@ -32,14 +32,37 @@ _Curiosità storica:_ Inizialmente, le frequenze vennero divise in **LF** (basse
 
 Di seguito la classificazione ufficiale dell'ITU. Noterai che man mano che la frequenza sale, la lunghezza d'onda si accorcia in modo inversamente proporzionale:
 
-|**Acronimo**|**Nome Completo**|**Lunghezza d'onda (λ)**|**Frequenza (f)**|
-|---|---|---|---|
-|**LF**|Low Frequency|Da 10 Km a 1 Km|30 KHz – 300 KHz|
-|**MF**|Medium Frequency|Da 1 Km a 100 m|300 KHz – 3000 KHz|
-|**HF**|High Frequency|Da 100 m a 10 m|3 MHz – 30 MHz|
-|**VHF**|Very High Frequency|Da 10 m a 1 m|30 MHz – 300 MHz|
-|**UHF**|Ultra High Frequency|Da 1 m a 10 cm|300 MHz – 3000 MHz|
-|**SHF**|Super High Frequency|Da 10 cm a 1 cm|3 GHz – 30 GHz|
-|**EHF**|Extremely High Frequency|Da 1 cm a 1 mm|30 GHz – 300 GHz|
-|**THF**|Tremendously High Frequency|Da 1 mm a 0,1 mm|300 GHz – 3000 GHz|
+| **Acronimo** | **Nome Completo**           | **Lunghezza d'onda (λ)** | **Frequenza (f)**  |
+| ------------ | --------------------------- | ------------------------ | ------------------ |
+| **LF**       | Low Frequency               | Da 10 Km a 1 Km          | 30 KHz – 300 KHz   |
+| **MF**       | Medium Frequency            | Da 1 Km a 100 m          | 300 KHz – 3000 KHz |
+| **HF**       | High Frequency              | Da 100 m a 10 m          | 3 MHz – 30 MHz     |
+| **VHF**      | Very High Frequency         | Da 10 m a 1 m            | 30 MHz – 300 MHz   |
+| **UHF**      | Ultra High Frequency        | Da 1 m a 10 cm           | 300 MHz – 3000 MHz |
+| **SHF**      | Super High Frequency        | Da 10 cm a 1 cm          | 3 GHz – 30 GHz     |
+| **EHF**      | Extremely High Frequency    | Da 1 cm a 1 mm           | 30 GHz – 300 GHz   |
+| **THF**      | Tremendously High Frequency | Da 1 mm a 0,1 mm         | 300 GHz – 3000 GHz |
+La quantità di informazione che un'onda può trasportare dipende dalla sua **larghezza di banda**. Solitamente è pari alla larghezza di banda per *basse frequenze*(sino a 200/300Mhz).
+
 La luce ultravioletta, i raggi X e i raggi gamma funzionerebbero anche meglio, per le loro elevate frequenze, ma sono difficili da generare e da modulare, non si propagano bene attraverso i muri e sono dannose per gli esseri viventi.
+
+### **Banda Ristretta vs. Banda Larga**
+
+Di base, quasi tutte le comunicazioni tradizionali (come le vecchie radio) usano una **banda ristretta**: concentrano tutta la loro potenza (Watt) su una singola, stretta frequenza per avere il segnale più forte possibile.
+
+Tuttavia, se qualcuno disturba o intercetta quella specifica frequenza, la comunicazione è perduta. Per ovviare a questo, si passa alla **banda larga** usando due algoritmi:
+##### **Algoritmo a Salto di Frequenza (Frequency Hopping / FHSS)**
+
+- **Come funziona:** Invece di restare fermo su un canale, il trasmettitore "salta" continuamente da una frequenza all'altra, cambiando canale centinaia di volte al secondo in modo pseudo-casuale. (Il ricevitore conosce la sequenza segreta e salta in perfetta sincronia).
+    
+- **Vantaggi:** È nato per scopi **militari**: è difficilissimo da intercettare (chi ascolta sente solo un fruscio momentaneo) e quasi impossibile da disturbare (jamming), perché un disturbatore non sa mai su quale frequenza salterà il segnale nell'istante successivo.
+    - Resiste bene al _multipath fading_ (il degrado del segnale dovuto ai rimbalzi multipli sugli edifici).
+        
+
+##### **Algoritmo a Banda Larga (Direct Sequence / DSSS)**
+
+- **Come funziona:** Invece di saltare nel tempo, il segnale viene "spalmato" simultaneamente su un intervallo di frequenze molto ampio. Si abbassa il picco di potenza, trasformando il segnale in una sorta di "rumore di fondo" largo e basso.
+    
+- **Vantaggi:** È il re dell'ambito **commerciale**. Anche se un'interferenza copre una piccola parte della banda, il resto del segnale spalmato arriva a destinazione integro.
+    - È stato la base per i telefoni cellulari di seconda generazione (2G) e per le reti **Wi-Fi (LAN wireless)**.
+        

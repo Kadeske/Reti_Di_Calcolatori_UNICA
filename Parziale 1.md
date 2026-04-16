@@ -302,7 +302,7 @@ Ogni mezzo fisico è caratterizzato da:
 
 Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro elettromagnetico]]***.
 
-- **Onde Radio:** Omnidirezionali, attraversano i muri. Soffrono di interferenze e attenuazione (soprattutto per rimbalzi multipli).
+- **[[Onde Radio]]:** Omnidirezionali, attraversano i muri. Soffrono di interferenze e attenuazione (soprattutto per rimbalzi multipli).
     
 - **Microonde:** Altamente direzionali (servono parabole allineate "a vista"). Non attraversano ostacoli solidi e sono assorbite dalla pioggia.
     
