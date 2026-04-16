@@ -86,3 +86,7 @@ Se devi unire due cavi rotti o prolungarne uno, hai tre strade, con costi e prec
 - **Differenza dal rame (Pro e Contro):** La fibra stravince per velocità e distanza. Tuttavia, le terminazioni e i macchinari per la fibra costano molto di più rispetto alle porte Ethernet. Inoltre, la fibra non può trasportare corrente per alimentare dispositivi (come fa il rame con il PoE) e, se piegata troppo bruscamente, il vetro interno si spezza irreparabilmente, mentre il rame si piega senza problemi.
     
 
+### Rete ad anello (con fibra)
+collegarsi ad una rete in fibra è più difficile rispetto a una ethernet.
+Per renderlo più semplice si può utilizzare una **rete ad anello**.
+
