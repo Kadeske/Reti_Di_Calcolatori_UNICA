@@ -329,7 +329,7 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
 
 ### 4. Sistema Telefonico e Multiplexing
 
-La **PSTN** (Public Switched Telephone Network) è nata per trasportare la voce analogica umana, tagliando drasticamente le frequenze sotto i 300Hz e sopra i 3400Hz.
+La **[[PSTN]]** (Public Switched Telephone Network) è nata per trasportare la voce analogica umana, tagliando drasticamente le frequenze sotto i 300Hz e sopra i 3400Hz.
 
 - **Problemi fisici:** _Attenuazione_ (il segnale perde potenza viaggiando), _Distorsione_ (le frequenze diverse viaggiano a velocità diverse, deformando il segnale d'arrivo), _Rumore_ (energia elettrica indesiderata).
     
