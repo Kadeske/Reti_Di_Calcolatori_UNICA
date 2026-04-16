@@ -1,4 +1,10 @@
-Il **cavo coassiale** (spesso chiamato semplicemente _coax_) è stato progettato per risolvere i due più grandi difetti del doppino telefonico: la scarsa larghezza di banda e la vulnerabilità alle interferenze.
+Il **cavo coassiale** (spesso chiamato semplicemente _coax_) è stato progettato per risolvere i due più grandi difetti del doppino telefonico: la scarsa larghezza di banda e la vulnerabilità alle interferenze. 
+Infatti è più isolato del doppino e raggiunge distanze più lunghe.
+
+Esistono 2 tipi di cavo coassiale:
+- 50 $\ohm$: su distanze da 1km arriva a **2Gbps** utilizzato per le trasmissioni **digitali** fin dall'inizio.
+- 75 $\ohm$: non ha differenze dal 50 $\ohm$, è solamente arrivato dopo ed è stato assegnato a scopi differenti: trasmissioni **analogiche** (come le TV via cavo)
+
 
 **Composizione e Schermatura**
 
@@ -11,8 +17,9 @@ A differenza dei due fili affiancati del doppino, il cavo coassiale ha una strut
 3. **Maglia metallica (Schermatura):** Una fitta rete di rame intrecciato (o un foglio di alluminio) che avvolge l'isolante. Finge da "gabbia di Faraday".
     
 4. **Guaina esterna:** Il rivestimento in plastica nera o bianca che protegge il cavo dalle intemperie.
-    
 
+![[Pasted image 20260416122121.png]]
+    
 Questa struttura garantisce una **schermatura quasi perfetta**. La maglia metallica esterna blocca totalmente i rumori elettromagnetici dell'ambiente (impedendo che entrino) e al contempo evita che l'energia del segnale interno si disperda verso l'esterno.
 
 **Vantaggi e Differenze rispetto al doppino**
