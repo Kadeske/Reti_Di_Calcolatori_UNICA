@@ -313,7 +313,7 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
 	- Richiedono **grande precisione**
 	- Sono **poco utilizzate**
     
-- **Satelliti:** Funzionano come ripetitori a microonde nel cielo.
+- **[[Comunicazioni satellitari]]:** Funzionano come ripetitori a microonde nel cielo.
     
     - _GEO (Geostazionari):_ ~36.000 km. Sembrano fermi nel cielo. Latenza altissima (~250ms), ma bastano 3 satelliti per coprire il mondo (es. VSAT).
         

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Parziale 1.md",
+                "file": "Approfondimenti P1/Comunicazioni satellitari.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Parziale 1"
+              "title": "Comunicazioni satellitari"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Microonde.md",
+                "file": "Parziale 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Microonde"
+              "title": "Parziale 1"
             }
           }
         ]
@@ -225,9 +225,10 @@
   },
   "active": "372a64b700965d2b",
   "lastOpenFiles": [
-    "Pasted image 20260416152828.png",
-    "Approfondimenti P1/Microonde.md",
     "Parziale 1.md",
+    "Approfondimenti P1/Microonde.md",
+    "Approfondimenti P1/Comunicazioni satellitari.md",
+    "Pasted image 20260416152828.png",
     "Pasted image 20260416145250.png",
     "Approfondimenti P1/Onde Radio.md",
     "img/Pasted image 20260416144625.png",
@@ -243,7 +244,6 @@
     "img/Pasted image 20260416124440.png",
     "img/Pasted image 20260416124356.png",
     "img/Pasted image 20260416124221.png",
-    "img/Pasted image 20260416124000.png",
     "Approfondimenti P1/Cavo coassiale.md",
     "Approfondimenti P1/Doppino telefonico.md",
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
