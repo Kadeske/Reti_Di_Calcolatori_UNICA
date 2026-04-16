@@ -1,0 +1,11 @@
+L'**Analisi di Fourier** è il fondamento matematico che ci permette di capire fisicamente perché i dati (i bit) si rovinano o si limitano in velocità quando viaggiano all'interno di un cavo reale.
+
+Nei computer, i dati vengono trasmessi sotto forma di segnali elettrici digitali, che graficamente assumono la forma di un'**onda quadra**: ci sono salti netti e verticali tra un voltaggio alto (che rappresenta il bit "1") e un voltaggio basso (che rappresenta il bit "0").
+
+Il matematico Jean-Baptiste Joseph Fourier dimostrò un principio controintuitivo ma fondamentale: **qualsiasi segnale periodico (inclusa la nostra onda quadra "spigolosa") può essere matematicamente scomposto in una somma infinita di onde sinusoidali perfette**, chiamate _armoniche_. Ogni armonica ha una frequenza diversa (multipla della frequenza di base). Sommando all'infinito tutte queste onde curve, si ricreano esattamente gli spigoli netti dell'onda quadra.
+
+**Il problema del mezzo trasmissivo (Larghezza di banda limitata):** Qui il concetto matematico si scontra con la realtà fisica dei tuoi appunti. Nessun cavo di rame o fibra ottica è perfetto. Ogni mezzo trasmissivo si comporta come un "imbuto" o un filtro: ha una **larghezza di banda limitata**. Questo significa che riesce a far passare senza problemi le frequenze più basse (le prime armoniche), ma inizia a frenare, indebolire e infine "tagliare" completamente le frequenze più alte.
+
+**Cosa comporta la perdita delle frequenze alte?** Se il cavo taglia le armoniche superiori, al ricevitore arriveranno solo le prime onde (quelle a bassa frequenza). Sommando solo queste poche onde rimaste, non si riescono più a ricostruire gli angoli retti dell'onda quadra originale.
+
+Il segnale che arriva a destinazione risulta quindi **arrotondato, sbavato e distorto**. Se cerchiamo di trasmettere i bit troppo velocemente su un cavo con poca banda, l'arrotondamento sarà così severo che l'onda diventerà quasi piatta, e il computer ricevente non riuscirà più a distinguere uno "0" da un "1", generando errori.
