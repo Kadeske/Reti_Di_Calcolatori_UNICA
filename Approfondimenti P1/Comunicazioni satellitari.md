@@ -97,3 +97,16 @@ L'HUB è una gigantesca e potentissima stazione terrestre (con parabole enormi a
     - _Il grande vantaggio:_ Mantiene tutta la tecnologia complessa (i computer, i commutatori) **sulla Terra**, dove è infinitamente più facile, economico e veloce fare manutenzione o aggiornare i software.
         
 ![[Pasted image 20260416154704.png]]
+
+
+## **Confronto satellite vs fibra/doppino**
+
+La fibra ottica, ormai "liberalizzata", offre notevoli vantaggi, sebbene il satellite sia di ancora maggiormente impiegato in alcune situazioni, come ad esempio:
+
+- **Luoghi poco accessibili**: difficile stendere la fibra ovunque, ma chiunque posizioni un'antenna sul tetto riesce a comunicare con il satellite;
+    
+- **Comunicazioni in mobilità**: auto, camion, barche;
+    
+- **Broadcasting**: trasmissione di dati ad una vasta gamma di riceventi;
+    
+- **Comunicazioni temporanee**: comunicazioni militari in periodo di guerra oppure durante i gran premi della Formula 1.

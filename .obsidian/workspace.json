@@ -35,8 +35,7 @@
               "title": "Comunicazioni satellitari"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,14 +223,14 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "372a64b700965d2b",
+  "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "Approfondimenti P1/Comunicazioni satellitari.md",
+    "Parziale 1.md",
     "Pasted image 20260416154704.png",
     "Pasted image 20260416154604.png",
     "Pasted image 20260416154544.png",
     "Pasted image 20260416154520.png",
-    "Parziale 1.md",
-    "Approfondimenti P1/Comunicazioni satellitari.md",
     "Approfondimenti P1/Microonde.md",
     "Pasted image 20260416152828.png",
     "Pasted image 20260416145250.png",
@@ -242,7 +241,6 @@
     "img/Pasted image 20260416142634.png",
     "Approfondimenti P1/Fibra ottica.md",
     "img/Pasted image 20260416141526.png",
-    "img/Pasted image 20260416141037.png",
     "Approfondimenti P1/Modello TCP-IP (De facto).md",
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
     "Approfondimenti P1/Interfacce e Servizi.md",
