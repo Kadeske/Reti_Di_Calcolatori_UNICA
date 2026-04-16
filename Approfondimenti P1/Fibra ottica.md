@@ -35,7 +35,13 @@ I tuoi appunti fanno una distinzione cruciale su come la luce viaggia all'intern
     
 - **Fibra Monomodale (Single-mode):** Ha un core sottilissimo (circa 8-10 micron), grande quanto la lunghezza d'onda della luce stessa. La luce non può rimbalzare a zig-zag, ma è **costretta a viaggiare in un'unica linea retta** (un solo "modo"). Non c'è dispersione, rendendola perfetta per le grandissime distanze (dorsali oceaniche).
 	- La **velocità** teorica massima è di **100.000 Gbps**(100 Tbps), quella reale è di *10 Gbps*, che è il limite di conversione dei segnali elettrici in segnali luminosi (ottici).
-    
+	
+|**Tipo Fibra**|**Diametro Core [μm]**|**Diametro Cladding [μm]**|
+|---|---|---|
+|Fibra Monomodale|8,0 - 12,0|125,0|
+|Fibra Multimodale|50,0 - 62,5|125,0|
+![[Pasted image 20260416124356.png]]
+
 
 **5. Generazione e Ricezione del segnale**
 
