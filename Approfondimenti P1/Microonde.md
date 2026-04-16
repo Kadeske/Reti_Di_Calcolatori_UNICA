@@ -35,15 +35,4 @@ Dato che viaggiano dritte come un raggio laser, le microonde non possono seguire
 
 - **Impieghi comuni:** Telefonia cellulare, televisione, e comunicazioni telefoniche su lunga distanza (le dorsali che collegano le città).
     
-- **Perché si usano?** Il vantaggio principale è puramente **economico e logistico**. Se devi collegare due città separate da una montagna, una valle o un'area urbana super-congestionata, installare due semplici tralicci (pali controventati) con delle parabole in cima costa infinitamente meno rispetto a scavare trincee per 50 Km per posare un cavo in fibra ottica.
-    
-
----
-
-Per aiutarti a visualizzare il problema del punto 2 (che di solito all'esame viene chiesto chiedendo di commentare proprio quel disegno delle due antenne), ho generato un piccolo simulatore della curvatura terrestre.
-
-Prova ad abbassare l'antenna e guarda come il pianeta blocca letteralmente il raggio a microonde!
-
-Mostrami la visualizzazione
-
-Vuoi passare ora a come questo concetto viene portato nello spazio con i **Satelliti**?
+- **Perché si usano?** Il vantaggio principale è puramente **economico e logistico**. Se devi collegare due città separate da una montagna, una valle o un'area urbana super-congestionata, installare due semplici tralicci con delle parabole in cima costa infinitamente meno rispetto a scavare trincee per 50 Km per posare un cavo in fibra ottica.
