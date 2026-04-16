@@ -255,24 +255,31 @@ Il livello fisico ha un solo e unico scopo: **trasmettere bit grezzi (0 e 1) da 
         
 - **Limiti Teorici del Canale:**
     
-    - **Teorema di Nyquist (Canale Ideale senza rumore):** Definisce la capacità massima $C$ di un canale perfetto:
+    - **Teorema di Nyquist (Canale Ideale senza rumore):** 
+    - Nyquist dimostrò che un segnale analogico, trasmesso lungo un canale dotato di ampiezza di banda pari a H, può essere ricostruito mediante una campionatura effettuata 2H volte per secondo.Definisce la capacità massima $C$ di un canale perfetto:
         
-        $$C = 2B \log_2(V)$$
+        $$\text{maxDataRate} = 2H \log_2(V)$$
+        (dove H è la banda in Hz e V è il numero di livelli discreti del segnale, es. voltaggi diversi)
         
-        (dove $B$ è la banda in Hz e $V$ è il numero di livelli discreti del segnale, es. voltaggi diversi).
+    - **Formula di Shannon (Canale Reale con rumore):**  ci dice come riusciamo a trasferire nonostante il rumore. Considera il rumore termico ineliminabile.
         
-    - **Formula di Shannon (Canale Reale con rumore):** Considera il rumore termico ineliminabile.
-        
-        $$C = B \log_2(1 + S/N)$$
+        $$\text{maxDataRate} = H \log_2(1 + \frac{S}{N})$$
         
         (dove $S/N$ è il rapporto tra la potenza del segnale e quella del rumore). Nessun trucco ingegneristico può superare il limite di Shannon.
         
 
 ---
 
-### 2. Mezzi di Trasmissione a fili (Wired / Guidati)
+### 2. Mezzi di Trasmissione a fili (Wired / *Guidati*)
 
-Sono "guidati" perché il segnale (corrente o luce) è costretto fisicamente a viaggiare all'interno del mezzo.
+Sono "**guidati**" perché il segnale (corrente o luce) è costretto fisicamente a viaggiare all'interno del mezzo.
+
+Ogni mezzo fisico è caratterizzato da:
+- banda passante 
+- ritardo
+- costo 
+- installabiltà
+- manutenibilità
 
 - **Doppino Telefonico (Twisted Pair):** Due fili di rame intrecciati. L'intreccio serve a cancellare le reciproche interferenze elettromagnetiche (diafonia). Le **Categorie** (Cat 5, Cat 6, ecc.) differiscono per il numero di intrecci per centimetro: più intrecci = banda maggiore. Può essere _UTP_ (non schermato) o _STP_ (con guaina metallica per proteggere dai rumori esterni). Limite: alta attenuazione sulle lunghe distanze.
     
