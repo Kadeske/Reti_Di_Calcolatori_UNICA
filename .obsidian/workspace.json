@@ -35,8 +35,7 @@
               "title": "Modem"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,10 +223,12 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "372a64b700965d2b",
+  "active": "404eefb17cf28692",
   "lastOpenFiles": [
-    "Parziale 1.md",
     "Approfondimenti P1/Modem.md",
+    "img/Pasted image 20260416170632.png",
+    "img/Pasted image 20260416170600.png",
+    "Parziale 1.md",
     "Approfondimenti P1/PSTN.md",
     "img/Pasted image 20260416145250.png",
     "Pasted image 20260416165413.png",
@@ -240,9 +241,7 @@
     "Approfondimenti P1/Microonde.md",
     "img/Pasted image 20260416152828.png",
     "Approfondimenti P1/Onde Radio.md",
-    "img/Pasted image 20260416144625.png",
     "Approfondimenti P1/Spettro elettromagnetico.md",
-    "img/Pasted image 20260416142814.png",
     "Approfondimenti P1/Fibra ottica.md",
     "Approfondimenti P1/Modello TCP-IP (De facto).md",
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
@@ -261,7 +260,6 @@
     "Approfondimenti P1/RFID.md",
     "Approfondimenti P1/Frame Relay.md",
     "Approfondimenti P1/ARPANET.md",
-    "Approfondimenti P1/Primitive.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",

@@ -4,14 +4,17 @@ Abbiamo visto che il doppino in rame è pessimo per trasmettere segnali digitali
 
 Per aggirare il problema, il modem genera un "suono" continuo (chiamato **portante d'onda sinusoidale**, di solito tra 1000 e 2000 Hz). Per trasmettere i bit (0 e 1), il modem altera leggermente questo suono continuo. Le tre tecniche base sono:
 
-- **Modulazione d'ampiezza (AM):** Cambia il "volume" dell'onda. Es. volume alto = 1, volume basso = 0.
+- **Modulazione d'ampiezza (AM):** Utilizza due diverse ampiezze per rappresentare 0 e 1.
     
-- **Modulazione di frequenza (FSK):** Cambia il "tono" dell'onda usando toni diversi per 0 e 1.
+- **Modulazione di frequenza (FSK):** Utilizza due o più toni.
     
-- **Modulazione di fase:** Sfasa l'onda (la sposta in avanti o indietro nel tempo).
-    
+- **Modulazione di fase:** L'onda portante viene spostata di 0 o 180 gradi ad intervalli uniformi.
+
+
 
 ### **2. La Regola d'Oro: Baud vs. Bit per secondo (bps)**
+
+Il teorema di Nyquist afferma che anche con una linea a 3.000 Hz perfetta  non c’è alcun modo di ottenere un campionamento più veloce di 6.000 Hz.
 
 Questa è la classica domanda a trabocchetto dell'esame. Baud rate e Bit rate **non sono la stessa cosa**!
 
@@ -34,6 +37,7 @@ I grafici coi puntini nei tuoi appunti (le figure _b_ e _c_) sono i **diagrammi 
     
 - **QAM-64:** Ha 64 puntini. Ogni puntino trasporta **6 bit**.
     
+![[Pasted image 20260416170600.png]]
 
 **Il problema del Rumore e la correzione TCM:**
 
@@ -44,6 +48,8 @@ Più puntini metti nel grafico, più questi sono vicini tra loro. Se la linea è
 I tuoi appunti si chiudono spiegando il tetto massimo invalicabile dei vecchi modem.
 
 Con i vari standard (V.32, V.34, ecc.), stringendo sempre di più i puntini della costellazione, si era arrivati a un limite fisico di **33.600 bps**. Oltre questa soglia, il rumore del cavo analogico locale rendeva i puntini troppo vicini per essere distinti.
+
+![[Pasted image 20260416170632.png]]
 
 **Come si è arrivati al famoso standard V.90 a 56 kbps?**
 
