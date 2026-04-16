@@ -4,7 +4,7 @@ Nei computer, i dati vengono trasmessi sotto forma di segnali elettrici digitali
 
 Il matematico Jean-Baptiste Joseph Fourier dimostrò un principio controintuitivo ma fondamentale: **qualsiasi segnale periodico (inclusa la nostra onda quadra "spigolosa") può essere matematicamente scomposto in una somma infinita di onde sinusoidali perfette**, chiamate _armoniche_. Ogni armonica ha una frequenza diversa (multipla della frequenza di base). Sommando all'infinito tutte queste onde curve, si ricreano esattamente gli spigoli netti dell'onda quadra.
 
-**Il problema del mezzo trasmissivo (Larghezza di banda limitata):** Qui il concetto matematico si scontra con la realtà fisica dei tuoi appunti. Nessun cavo di rame o fibra ottica è perfetto. Ogni mezzo trasmissivo si comporta come un "imbuto" o un filtro: ha una **larghezza di banda limitata**. Questo significa che riesce a far passare senza problemi le frequenze più basse (le prime armoniche), ma inizia a frenare, indebolire e infine "tagliare" completamente le frequenze più alte.
+**Il problema del mezzo trasmissivo ([[Segnali a larghezza di banda limitata]]):** Nessun cavo di rame o fibra ottica è perfetto. Ogni mezzo trasmissivo si comporta come un "imbuto" o un filtro: ha una **larghezza di banda limitata**. Questo significa che riesce a far passare senza problemi le frequenze più basse (le prime armoniche), ma inizia a frenare, indebolire e infine "tagliare" completamente le frequenze più alte.
 
 **Cosa comporta la perdita delle frequenze alte?** Se il cavo taglia le armoniche superiori, al ricevitore arriveranno solo le prime onde (quelle a bassa frequenza). Sommando solo queste poche onde rimaste, non si riescono più a ricostruire gli angoli retti dell'onda quadra originale.
 
