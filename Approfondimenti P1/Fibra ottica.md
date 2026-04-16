@@ -31,9 +31,9 @@ La fibra è composta da un cilindro interno (**Core** o nucleo) avvolto da un ci
 
 I tuoi appunti fanno una distinzione cruciale su come la luce viaggia all'interno:
 
-- **Fibra Multimodale:** Ha un core abbastanza largo (es. 50 o 62.5 micron). La luce entra formando vari raggi che rimbalzano sulle pareti con angolazioni diverse. Questi diversi percorsi sono chiamati "modi". Poiché i raggi fanno percorsi diversi, alcuni arrivano prima e altri dopo, "spalmando" il segnale nel tempo. È usata per distanze medie (es. all'interno di un campus).
+- **Fibra Multimodale:** Ha un core abbastanza largo (es. 50 o 62.5 micron). La luce entra formando **vari raggi che rimbalzano sulle pareti con angolazioni diverse**. Questi diversi percorsi sono chiamati "modi". Poiché i raggi fanno percorsi diversi, alcuni arrivano prima e altri dopo, "spalmando" il segnale nel tempo. È usata per distanze medie (es. all'interno di un campus).
     
-- **Fibra Monomodale (Single-mode):** Ha un core sottilissimo (circa 8-10 micron), grande quanto la lunghezza d'onda della luce stessa. La luce non può rimbalzare a zig-zag, ma è costretta a viaggiare in un'unica linea retta (un solo "modo"). Non c'è dispersione, rendendola perfetta per le grandissime distanze (dorsali oceaniche).
+- **Fibra Monomodale (Single-mode):** Ha un core sottilissimo (circa 8-10 micron), grande quanto la lunghezza d'onda della luce stessa. La luce non può rimbalzare a zig-zag, ma è **costretta a viaggiare in un'unica linea retta** (un solo "modo"). Non c'è dispersione, rendendola perfetta per le grandissime distanze (dorsali oceaniche).
 	- La **velocità** teorica massima è di **100.000 Gbps**(100 Tbps), quella reale è di *10 Gbps*, che è il limite di conversione dei segnali elettrici in segnali luminosi (ottici).
     
 
