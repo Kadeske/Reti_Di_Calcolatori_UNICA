@@ -104,3 +104,26 @@ Seguendo lo schema in basso nei tuoi appunti, ecco il percorso che risolve il pr
     
 5. **La Dorsale (Trunk):** Ora che il segnale è tornato digitale, viene "sparato" sulle fibre ottiche ad alta capacità (_Medium/High-bandwidth trunk_) verso l'ISP (Internet Service Provider) o verso un'altra città.
     
+
+Il **segnale analogico** funziona *variando la tensione elettrica nel tempo*. Se il cavo di rame fosse magico e perfetto, l'onda arriverebbe identica a come è partita. Ma nel mondo reale, il mezzo trasmissivo degrada fisicamente il segnale.
+
+Ecco i tre nemici principali delle linee di trasmissione:
+
+- **Attenuazione (La perdita di forza)**
+    
+    Man mano che il segnale elettrico viaggia nel cavo, perde letteralmente energia (espressa in dB per chilometro). Immagina di urlare in un lungo tubo: chi sta dall'altra parte sentirà un sussurro. Inoltre, frequenze diverse perdono energia in modo diverso.
+    
+    _La soluzione:_ Si usano i **ripetitori**, degli apparecchi messi lungo la linea che "ascoltano" il segnale debole e lo urlano di nuovo a piena potenza verso il tratto successivo.
+    
+- **Distorsione (La perdita di forma)**
+    
+    Questo è un concetto un po' più subdolo. Un segnale complesso è composto da tante frequenze mescolate insieme (le famose componenti di Fourier). Il problema del rame è che frequenze diverse viaggiano a velocità leggermente diverse al suo interno. Di conseguenza, i vari "pezzi" dell'onda non arrivano tutti nello stesso esatto istante. Il segnale arriva "spalmato" e con una forma diversa da quella originale.
+    
+- **Rumore (L'energia intrusa)**
+    
+    È tutta quell'energia elettrica indesiderata che si mischia al tuo segnale. I tuoi appunti ne citano due tipi:
+    
+    - _Rumore termico:_ È inevitabile. Gli elettroni dentro il cavo di rame, a causa della temperatura dell'ambiente, si muovono in modo casuale creando un fruscio di fondo costante.
+        
+    - _Interferenza (o diafonia):_ Se due cavi passano molto vicini (come in un grande condominio), il campo elettromagnetico di uno "sporca" l'altro. È il motivo per cui, nei vecchi telefoni, a volte sentivi le voci della telefonata del vicino in sottofondo!
+        
