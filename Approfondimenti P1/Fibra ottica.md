@@ -15,11 +15,12 @@ Il principio di comunicazione è il più semplice possibile: si accende e si spe
 - **Convenzione:** Un impulso di luce = **bit 1**. Assenza di luce = **bit 0**.
     
 
-**3.  Come funzionaIl Fenomeno della Riflessione Totale Interna**
+**3.  Come funziona fisicamente (Il Fenomeno della Riflessione Totale Interna)**
 
 Come fa la luce a curvare e seguire il cavo senza uscire fuori? Sfrutta la fisica dell'ottica.
 
 La fibra è composta da un cilindro interno (**Core** o nucleo) avvolto da un cilindro esterno (**Cladding** o mantello). Entrambi sono di vetro, ma hanno densità diverse (indici di rifrazione differenti).
+![[Pasted image 20260416124221.png]]
 
 - Se un raggio di luce colpisce il confine tra core e cladding con un angolo molto piatto (superiore all'angolo critico), **rimbalza completamente all'interno come se fosse uno specchio**, senza disperdersi. Questo fenomeno si chiama _riflessione totale interna_.
     
