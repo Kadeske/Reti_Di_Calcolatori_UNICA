@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Cavo coassiale.md",
+                "file": "Approfondimenti P1/Fibra ottica.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Cavo coassiale"
+              "title": "Fibra ottica"
             }
           },
           {
@@ -238,13 +238,13 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "304b3b272d1f4f02",
+  "active": "86308d71dc15b80c",
   "lastOpenFiles": [
+    "Approfondimenti P1/Cavo coassiale.md",
+    "Parziale 1.md",
     "img/Pasted image 20260416122121.png",
     "img/Pasted image 20260416121007.png",
     "img/Pasted image 20260416121741.png",
-    "Approfondimenti P1/Cavo coassiale.md",
-    "Parziale 1.md",
     "Approfondimenti P1/Doppino telefonico.md",
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
     "Approfondimenti P1/Fibra ottica.md",
@@ -263,7 +263,6 @@
     "img/Pasted image 20260415164102.png",
     "img/Pasted image 20260415140626.png",
     "Approfondimenti P1/ATM.md",
-    "img/Pasted image 20260415163702.png",
     "Approfondimenti P1/X.25.md",
     "Approfondimenti P1/RFID.md",
     "Approfondimenti P1/Frame Relay.md",

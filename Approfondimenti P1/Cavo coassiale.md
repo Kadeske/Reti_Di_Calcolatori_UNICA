@@ -26,8 +26,22 @@ Questa struttura garantisce una **schermatura quasi perfetta**. La maglia metall
 
 - **Banda molto più ampia:** Grazie alla schermatura eccellente, il cavo coassiale offre una larghezza di banda analogica enormemente superiore rispetto al doppino.
     
-- **Distanza e Velocità:** Può trasportare i dati a velocità più elevate e su distanze molto più lunghe prima di aver bisogno di un ripetitore per rinvigorire il segnale.
-    
+- **Distanza e Velocità (buona immunità al rumore):** Può trasportare i dati a velocità più elevate e su distanze molto più lunghe prima di aver bisogno di un ripetitore per rinvigorire il segnale.
+
+**Modalità trasmissive**
+- **doppio cavo:** con uno trasmetto e con uno ricevo
+- **singolo cavo**: divido la frequenza in due canali con frequenze diverse.
+
+Esepio: se si dispone di una banda di 300 MHz con cavo singolo, è possibile dividere la banda per trasmettere contemporaneamente sullo stesso cavo. Questa tecnica si chiama **splitting**:
+**Esempio di splitting**: È possibile dividere in due canali nei seguenti modi:
+	• *Subsplit*
+		– inbound 5-30MHz
+		– outbound 40-300MHz
+	• *Midsplit*
+		– inbound 5-116MHz
+		– outbound 168-300MHz
+Tuttavia, è importante notare che questa suddivisione non è una divisione equa in termini di ampiezza di banda: *si lascia uno spazio significativo all’interno delle suddivisioni per evitare sovrapposizioni di segnale.*
+
 
 **Utilizzi**
 
