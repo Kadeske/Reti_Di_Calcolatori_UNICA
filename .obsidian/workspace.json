@@ -35,7 +35,8 @@
               "title": "PSTN"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -223,11 +224,12 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "404eefb17cf28692",
+  "active": "372a64b700965d2b",
   "lastOpenFiles": [
+    "Pasted image 20260416165257.png",
+    "Parziale 1.md",
     "Approfondimenti P1/PSTN.md",
     "Approfondimenti P1/Comunicazioni satellitari.md",
-    "Parziale 1.md",
     "Pasted image 20260416154704.png",
     "Pasted image 20260416154604.png",
     "Pasted image 20260416154544.png",
@@ -260,7 +262,6 @@
     "Approfondimenti P1/Frame Relay.md",
     "Approfondimenti P1/ARPANET.md",
     "Approfondimenti P1/Primitive.md",
-    "Approfondimenti P1/Controllo d'errore.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",
