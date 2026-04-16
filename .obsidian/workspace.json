@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/PSTN.md",
+                "file": "Approfondimenti P1/Modem.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "PSTN"
+              "title": "Modem"
             }
           }
         ],
@@ -226,11 +226,12 @@
   },
   "active": "372a64b700965d2b",
   "lastOpenFiles": [
+    "Parziale 1.md",
+    "Approfondimenti P1/Modem.md",
+    "Approfondimenti P1/PSTN.md",
     "img/Pasted image 20260416145250.png",
     "Pasted image 20260416165413.png",
-    "Approfondimenti P1/PSTN.md",
     "img/Pasted image 20260416165257.png",
-    "Parziale 1.md",
     "Approfondimenti P1/Comunicazioni satellitari.md",
     "img/Pasted image 20260416154704.png",
     "img/Pasted image 20260416154604.png",

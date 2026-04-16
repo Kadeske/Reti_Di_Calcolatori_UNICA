@@ -333,7 +333,7 @@ La **[[PSTN]]** (Public Switched Telephone Network) è nata per trasportare la v
 
 - **Problemi fisici:** _Attenuazione_ (il segnale perde potenza viaggiando), _Distorsione_ (le frequenze diverse viaggiano a velocità diverse, deformando il segnale d'arrivo), _Rumore_ (energia elettrica indesiderata).
     
-- **Modem:** Dato che la rete PSTN è fatta per segnali analogici (onde continue), i computer (digitali) usano il MOdem (MOdulatore/DEModulatore) per "travestire" i bit in suoni.
+- **[[Modem]]:** Dato che la rete PSTN è fatta per segnali analogici (onde continue), i computer (digitali) usano il MOdem (MOdulatore/DEModulatore) per "travestire" i bit in suoni.
     
 - **Banda Larga:** * _xDSL (es. ADSL):_ Sfrutta le frequenze alte del doppino in rame (che la voce non usa) per inviare dati. È Asimmetrica (A-DSL) perché offre più banda per scaricare che per caricare dati.
     
