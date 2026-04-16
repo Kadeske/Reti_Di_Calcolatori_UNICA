@@ -25,11 +25,3 @@ Ripensiamo a Fourier: i bordi netti e veloci della nostra onda quadra sono forma
     
 
 **La conclusione logica:** Avere un'onda ben squadrata significa poter "stringere" i bit, inviandoli l'uno vicinissimo all'altro senza che si confondano. Quindi, **una banda analogica più ampia comporta direttamente la possibilità di avere una banda digitale (velocità di trasmissione) più alta.**
-
----
-
-Per visualizzare esattamente cosa succede quando cerchiamo di spingere troppi dati in un "tubo" troppo stretto (fenomeno chiamato _Interferenza Intersimbolica_), ho creato questo simulatore.
-
-Prova a impostare una velocità altissima e una banda strettissima: vedrai i bit fondersi tra loro!
-
-Mostrami la visualizzazione

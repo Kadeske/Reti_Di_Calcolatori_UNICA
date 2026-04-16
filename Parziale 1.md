@@ -243,7 +243,7 @@ Il livello fisico ha un solo e unico scopo: **trasmettere bit grezzi (0 e 1) da 
 
 - **Analisi di Fourier:** Dimostra matematicamente che qualsiasi segnale periodico (come un'onda quadra che rappresenta i bit) può essere scomposto in una somma infinita di onde sinusoidali (armoniche) di frequenze diverse.
     
-- **Segnali a banda limitata:** I mezzi trasmissivi reali non possono trasportare frequenze infinite. Tagliare le frequenze alte "arrotonda" il segnale, mentre le **frequenze più basse** trasportano la maggior parte dell'energia. Se il canale taglia le frequenze basse, il segnale si distrugge e diventa illeggibile.
+- **[[Segnali a larghezza di banda limitata]]:** I mezzi trasmissivi reali non possono trasportare frequenze infinite. Tagliare le frequenze alte "arrotonda" il segnale, mentre le **frequenze più basse** trasportano la maggior parte dell'energia. Se il canale taglia le frequenze basse, il segnale si distrugge e diventa illeggibile.
     
 - **Cos'è la Banda:**
     

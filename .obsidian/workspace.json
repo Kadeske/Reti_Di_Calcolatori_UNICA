@@ -49,8 +49,7 @@
               "title": "Segnali a larghezza di banda limitata"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -238,10 +237,10 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "23e64bee6f491446",
+  "active": "f64345d97878053a",
   "lastOpenFiles": [
-    "Approfondimenti P1/Analisi di Fourier.md",
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
+    "Approfondimenti P1/Analisi di Fourier.md",
     "Parziale 1.md",
     "Approfondimenti P1/ITU.md",
     "img/Pasted image 20260415164619.png",
