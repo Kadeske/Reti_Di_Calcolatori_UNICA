@@ -31,7 +31,5 @@ Ecco i dati della tua immagine riassunti in una tabella da memorizzare:
 2. **MEO (Media Orbita):** Stanno in una via di mezzo (~10.000 km). Non sono fermi nel cielo, quindi le antenne a terra devono "inseguirli". Il loro uso principale oggi è per i sistemi di navigazione satellitare come il **GPS** o il Galileo europeo.
     
 3. **LEO (Bassa Orbita):** Sono vicinissimi alla Terra. Il segnale ci mette un attimo ad arrivare (latenza bassissima, simile a quella della fibra ottica). _Il problema?_ Essendo così vicini, vedono solo una piccolissima porzione di Terra e sfrecciano a velocità folli, scomparendo dietro l'orizzonte in pochi minuti. Per avere una connessione continua serve una "costellazione" immensa di decine (o migliaia, come Starlink) di satelliti che si passano la connessione l'un l'altro.
-    
 
-**Attenzione al dettaglio:** Perché ci sono dei grandi "buchi" vuoti tra i 5.000-10.000 km e tra i 15.000-20.000 km?
 
