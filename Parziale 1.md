@@ -306,7 +306,9 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
     
 - **[[Microonde]]:** Altamente direzionali (servono parabole allineate "a vista"). Non attraversano ostacoli solidi e sono assorbite dalla pioggia.
     
-- **Infrarossi e millimetriche:** Non attraversano i muri, a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (non possono essere intercettate dall'esterno).
+- **Onde infrarosse e millimetriche:** sono a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (*non possono essere intercettate dall'esterno*) e *non disturbano altre comunicazioni*. *Non attraversano i muri*. Viaggiano a frequenze THF (tremendamente alte), nell'ordine dei Ghz. Non richiedono nessuna licenza governativa.
+
+- **Onde luminose**
     
 - **Satelliti:** Funzionano come ripetitori a microonde nel cielo.
     
