@@ -49,7 +49,8 @@
               "title": "Spettro elettromagnetico"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -237,10 +238,11 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "372a64b700965d2b",
+  "active": "404eefb17cf28692",
   "lastOpenFiles": [
-    "Approfondimenti P1/Microonde.md",
+    "Pasted image 20260416144625.png",
     "Parziale 1.md",
+    "Approfondimenti P1/Microonde.md",
     "Approfondimenti P1/Onde Radio.md",
     "Approfondimenti P1/Spettro elettromagnetico.md",
     "Pasted image 20260416142814.png",
@@ -274,7 +276,6 @@
     "Approfondimenti P1/Primitive.md",
     "Approfondimenti P1/Controllo d'errore.md",
     "Approfondimenti P1/Quality of Service.md",
-    "Approfondimenti P1/Servizi orientati alla connessione e servizi privi di connessione.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",
