@@ -335,7 +335,9 @@ La **[[PSTN]]** (Public Switched Telephone Network) è nata per trasportare la v
     
 - **[[Modem]]:** Dato che la rete PSTN è fatta per segnali analogici (onde continue), i computer (digitali) usano il MOdem (MOdulatore/DEModulatore) per "travestire" i bit in suoni.
     
-- **Banda Larga:** * _xDSL (es. ADSL):_ Sfrutta le frequenze alte del doppino in rame (che la voce non usa) per inviare dati. È Asimmetrica (A-DSL) perché offre più banda per scaricare che per caricare dati.
+- **Banda Larga:**   
+	- **[[Linee DSL (Digital Subscriber line)]]**: Sfrutta le frequenze alte del doppino in rame (che la voce non usa) per inviare dati.
+	- **[[ADSL]]**: È Asimmetrica (A-DSL) perché offre più banda per scaricare che per caricare dati.
     
     - _FTTH (Fiber to the Home):_ Sostituisce il vecchio doppino portando la fibra ottica pura fino dentro casa, garantendo velocità Gigabit.
         
