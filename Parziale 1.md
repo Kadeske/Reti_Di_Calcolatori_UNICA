@@ -300,7 +300,7 @@ Ogni mezzo fisico è caratterizzato da:
 
 ### 3. Trasmissione senza filo (Wireless)
 
-Il segnale viaggia nello spazio libero irradiando energia dallo spettro elettromagnetico.
+Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro elettromagnetico]]***.
 
 - **Onde Radio:** Omnidirezionali, attraversano i muri. Soffrono di interferenze e attenuazione (soprattutto per rimbalzi multipli).
     

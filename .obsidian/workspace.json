@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Fibra ottica.md",
+                "file": "Approfondimenti P1/Spettro elettromagnetico.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fibra ottica"
+              "title": "Spettro elettromagnetico"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -223,12 +224,13 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "372a64b700965d2b",
+  "active": "4582ea20545e32a5",
   "lastOpenFiles": [
+    "Parziale 1.md",
+    "Approfondimenti P1/Spettro elettromagnetico.md",
     "Approfondimenti P1/Fibra ottica.md",
     "img/Pasted image 20260416141526.png",
     "img/Pasted image 20260416141037.png",
-    "Parziale 1.md",
     "Approfondimenti P1/Modello TCP-IP (De facto).md",
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
     "Approfondimenti P1/Interfacce e Servizi.md",
