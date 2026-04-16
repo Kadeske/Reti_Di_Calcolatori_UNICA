@@ -113,3 +113,7 @@ Questo metodo, invece, "taglia" fisicamente l'anello in ogni punto in cui c'è u
 - **Vantaggio (Distanze illimitate):** Dato che il segnale viene rigenerato a piena potenza da ogni singolo computer, i collegamenti tra un nodo e l'altro possono essere lunghi chilometri. **L'anello non ha praticamente limiti di dimensione totale.**
     
 - **Svantaggio (Bassa affidabilità):** È il tallone d'Achille di questo sistema. Se un solo ripetitore attivo perde corrente o si guasta, la luce non viene più rigenerata e non passa al nodo successivo. **L'intero anello si spezza** e la rete smette di funzionare per tutti.
+![[Pasted image 20260416141037.png]]
+
+### Stella passiva 
+Mentre nell'anello i computer sono collegati in fila l'uno all'altro, nella topologia a stella **tutti i computer si collegano a un unico punto centrale**.
