@@ -74,7 +74,7 @@ Se devi unire due cavi rotti o prolungarne uno, hai tre strade, con costi e prec
 
 1. **Connettori ottici:** Simili alle prese a muro. Si attaccano e staccano facilmente, ma perdono circa il 10-20% della luce al passaggio.
     
-2. **Splicing (Giunzione) meccanico:** Le due estremità vengono tagliate di netto, allineate in un tubetto e incollate con un gel speciale. Discreta precisione.
+2. **Splicing (Giunzione) meccanico:** Le due estremità vengono tagliate di netto, allineate in un tubetto e incollate con un gel speciale usando una macchinetta apposita. Discreta precisione.
     
 3. **Fusione ottica:** È il metodo migliore. Un macchinario speciale fonde letteralmente a caldo il vetro delle due estremità, unendole a livello molecolare. La perdita di luce è quasi zero.
     
