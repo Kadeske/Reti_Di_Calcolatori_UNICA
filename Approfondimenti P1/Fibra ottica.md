@@ -117,3 +117,36 @@ Questo metodo, invece, "taglia" fisicamente l'anello in ogni punto in cui c'è u
 
 ### Stella passiva 
 Mentre nell'anello i computer sono collegati in fila l'uno all'altro, nella topologia a stella **tutti i computer si collegano a un unico punto centrale**.
+
+![[Pasted image 20260416141526.png]]
+#### **Il "Cuore" della Rete: Il Cilindro di Silicio**
+
+Al centro di questa rete non c'è un router o uno switch elettronico complesso, ma un semplice pezzo di vetro/silicio: un **cilindro di silicio**.
+
+Ogni computer (nodo) della rete è collegato a questo cilindro centrale tramite due cavi in fibra ottica:
+
+- Una **fibra in entrata** (collegata al trasmettitore del computer), che viene fusa a un'estremità del cilindro.
+    
+- Una **fibra in uscita** (collegata al ricevitore, o fotodiodo, del computer), che viene fusa all'altra estremità del cilindro.
+    
+
+#### **La Trasmissione Generalizzata (Broadcast)**
+
+Questa è la caratteristica chiave. Cosa succede quando un computer vuole inviare un messaggio?
+
+1. Il computer emette un impulso luminoso attraverso la sua fibra in entrata verso il centro.
+    
+2. La luce entra nel cilindro di silicio e si **diffonde** (rimbalzando e illuminando tutto l'interno).
+    
+3. Poiché tutte le fibre in uscita degli altri computer sono attaccate all'altra estremità del cilindro, **la luce imbocca tutte le uscite contemporaneamente**.
+    
+    Di conseguenza, quando un nodo "parla", il suo segnale luminoso arriva a _tutti_ gli altri nodi della rete simultaneamente.
+    
+
+### **3. Il Limite Fisico: La divisione dell'energia**
+
+Perché si chiama "passiva"? Perché al centro non c'è corrente elettrica che amplifica il segnale (come nel ripetitore attivo che abbiamo visto prima). Il cilindro si limita a far rimbalzare la luce che riceve.
+
+Questo porta a un grande problema fisico: **l'energia luminosa in entrata si divide** equamente per tutte le linee in uscita.
+Quindi **il numero massimo di computer che puoi collegare a questa rete dipende dalla sensibilità dei fotodiodi**. 
+(Se ci sono troppi computer, la luce si divide in troppe parti e i ricevitori non riescono più a "vederla".)
