@@ -1,4 +1,3 @@
-Ecco la sintesi del modello **TCP/IP**, seguendo la struttura dei tuoi appunti e mantenendo lo stesso stile sintetico e preciso.
 
 Il modello **TCP/IP** (conosciuto anche come modello _Internet_ o _DoD_) è il modello di riferimento **de facto** su cui si basa l'intera rete globale. A differenza dell'ISO-OSI, è nato da esigenze pratiche e si divide in **4 livelli** principali:
 
