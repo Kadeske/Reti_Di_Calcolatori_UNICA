@@ -18,7 +18,8 @@ Dato che viaggiano dritte come un raggio laser, le microonde non possono seguire
 
 - Per risolvere il problema, si è costretti ad **aumentare l'altezza delle antenne** (più l'antenna è alta, più riesce a "guardare oltre" l'orizzonte) oppure a installare una catena di **ripetitori** intermedi.
     
-- L'immagine nei tuoi appunti riporta proprio la formula geometrica (e il relativo disegno) che lega la distanza raggiungibile all'altezza dell'antenna: $d = \sqrt{h \cdot 10^4 \cdot a}$ (dove $a$ è un fattore di correzione atmosferica).
+- L'immagine riporta proprio la formula geometrica (e il relativo disegno) che lega la distanza raggiungibile all'altezza dell'antenna: $d = \sqrt{h \cdot 10^4 \cdot a}$ (dove $a$ è un fattore di correzione atmosferica).
+![[Pasted image 20260416145250.png]]
     
 
 **3. I Punti Deboli (Edifici, Multipath e Pioggia)**
