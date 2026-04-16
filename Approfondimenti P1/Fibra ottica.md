@@ -90,3 +90,26 @@ Se devi unire due cavi rotti o prolungarne uno, hai tre strade, con costi e prec
 collegarsi ad una rete in fibra è più difficile rispetto a una ethernet.
 Per renderlo più semplice si può utilizzare una **rete ad anello**.
 
+L'interfaccia utilizzata su ciascun computer funge anche da giunzione a T.
+
+Per realizzare questa struttura si utilizzano due tipi di **interfaccie**:
+#### **L'Interfaccia Passiva**
+
+Pensa a questa interfaccia come a un tubo dell'acqua principale a cui viene saldato un tubicino secondario.
+
+- **Come è fatta:** Consiste in due piccole "derivazioni" (spine) di vetro che vengono letteralmente **fuse a caldo** direttamente sul cavo in fibra ottica principale dell'anello. Una derivazione usa un LED o Laser per immettere la luce (trasmissione), l'altra usa un fotodiodo per "leggere" la luce che passa (ricezione).
+    
+- **Vantaggio (Massima Affidabilità):** Poiché è un semplice pezzo di vetro fuso (passivo), non ha parti elettroniche che possono bloccarsi. Se il computer si spegne, o se il LED si brucia, **l'anello non si interrompe**. La luce continua a scorrere dritta nel cavo principale, ignorando semplicemente il computer guasto (che rimane isolato).
+    
+- **Svantaggio (Limiti di grandezza):** Ogni volta che fondi una spina sul cavo, un po' di luce viene assorbita o si disperde. A causa di questa perdita continua a ogni giunzione, non puoi attaccare infiniti computer, altrimenti il segnale luminoso diventerebbe troppo debole per fare il giro completo.
+    
+
+#### **Il Ripetitore Attivo**
+
+Questo metodo, invece, "taglia" fisicamente l'anello in ogni punto in cui c'è un computer.
+
+- **Come funziona:** La luce arriva all'interfaccia e viene fermata. Viene convertita in un segnale elettrico, letta dal computer (che si collega all'interfaccia con un normale cavo di rame), ed eventualmente rinvigorita (rigenerata) alla massima potenza. Poi, viene ritradotta in luce e "sparata" di nuovo verso il computer successivo.
+    
+- **Vantaggio (Distanze illimitate):** Dato che il segnale viene rigenerato a piena potenza da ogni singolo computer, i collegamenti tra un nodo e l'altro possono essere lunghi chilometri. **L'anello non ha praticamente limiti di dimensione totale.**
+    
+- **Svantaggio (Bassa affidabilità):** È il tallone d'Achille di questo sistema. Se un solo ripetitore attivo perde corrente o si guasta, la luce non viene più rigenerata e non passa al nodo successivo. **L'intero anello si spezza** e la rete smette di funzionare per tutti.
