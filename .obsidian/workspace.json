@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/Doppino telefonico.md",
+                "file": "Approfondimenti P1/Cavo coassiale.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Doppino telefonico"
+              "title": "Cavo coassiale"
             }
           },
           {
@@ -240,13 +240,14 @@
   },
   "active": "86308d71dc15b80c",
   "lastOpenFiles": [
-    "Pasted image 20260416121007.png",
+    "img/Pasted image 20260416121007.png",
+    "img/Pasted image 20260416121741.png",
     "Approfondimenti P1/Cavo coassiale.md",
-    "Approfondimenti P1/Fibra ottica.md",
-    "Approfondimenti P1/Doppino telefonico.md",
-    "Approfondimenti P1/Analisi di Fourier.md",
     "Parziale 1.md",
+    "Approfondimenti P1/Doppino telefonico.md",
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
+    "Approfondimenti P1/Fibra ottica.md",
+    "Approfondimenti P1/Analisi di Fourier.md",
     "Approfondimenti P1/ITU.md",
     "img/Pasted image 20260415164619.png",
     "802.3 CSMA/CD (802.3).md",
@@ -263,12 +264,10 @@
     "Approfondimenti P1/ATM.md",
     "img/Pasted image 20260415163702.png",
     "Approfondimenti P1/X.25.md",
-    "img/Pasted image 20260415163637.png",
     "Approfondimenti P1/RFID.md",
     "Approfondimenti P1/Frame Relay.md",
     "Approfondimenti P1/ARPANET.md",
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
-    "img/Pasted image 20260415163130.png",
     "Approfondimenti P1/Primitive.md",
     "Approfondimenti P1/Controllo d'errore.md",
     "Approfondimenti P1/Quality of Service.md",

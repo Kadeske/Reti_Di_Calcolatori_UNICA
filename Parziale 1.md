@@ -281,7 +281,7 @@ Ogni mezzo fisico è caratterizzato da:
 - installabiltà
 - manutenibilità
 
-- **Doppino Telefonico (Twisted Pair):** Due fili di rame intrecciati. L'intreccio serve a cancellare le reciproche interferenze elettromagnetiche (diafonia). Le **Categorie** (Cat 5, Cat 6, ecc.) differiscono per il numero di intrecci per centimetro: più intrecci = banda maggiore. Può essere _UTP_ (non schermato) o _STP_ (con guaina metallica per proteggere dai rumori esterni). Limite: alta attenuazione sulle lunghe distanze.
+- **[[Doppino telefonico]] (Twisted Pair):** Due fili di rame intrecciati. L'intreccio serve a cancellare le reciproche interferenze elettromagnetiche (diafonia). Le **Categorie** (Cat 5, Cat 6, ecc.) differiscono per il numero di intrecci per centimetro: più intrecci = banda maggiore. Può essere _UTP_ (non schermato) o _STP_ (con guaina metallica per proteggere dai rumori esterni). Limite: alta attenuazione sulle lunghe distanze.
     
 - **Cavo Coassiale:** Ha un'anima centrale in rame, isolante, maglia metallica (schermo) e guaina esterna. Differenza dal doppino: schermatura quasi perfetta, banda molto più ampia. Usato per vecchie LAN e TV via cavo.
     

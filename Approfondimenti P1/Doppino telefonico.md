@@ -38,7 +38,19 @@ I doppini UTP si dividono in categorie in base alle loro prestazioni.
 (*TIA/EIA:* norma tecnica principale per il cablaggio strutturato in edifici commerciali.)
  In **TIA/EIA** e versioni successive si definisce una classificazione dei sistemi per cavi e connettori impiegati in un doppino.
 
-Le categorie ufficialmente riconosciute sono: 
-- **Cat. 3**
-- **Cat. 5**
-- **Cat. 6**
+| **Categoria**   | **Riconoscimento TIA/EIA** | **Specifiche / Utilizzo**                      |
+| --------------- | -------------------------- | ---------------------------------------------- |
+| **Cat. 1**      | NO                         | Usata in passato per la rete telefonica        |
+| **Cat. 2**      | NO                         | Usata in passato per reti Token Ring 4 Mbit/s  |
+| **Cat. 3**      | Ufficialmente riconosciuta | Fino a **16 MHz** (Ethernet **10 Mbit/s**)     |
+| **Cat. 4**      | NO                         | Usata in passato per reti Token Ring 16 Mbit/s |
+| **Cat. 5**      | Ufficialmente riconosciuta | Fino a **100 MHz** (Ethernet **100 Mbit/s**)   |
+| **Cat. 6 e 6a** | Ufficialmente riconosciuta | Fino a **250 MHz** e fino a **500 MHz**        |
+| **Cat. 7 e 7a** | NO                         | Solo S/STP fino a 600 MHz e fino a 1000 MHz    |
+Fino alla cat. 6 sono identificati come UTP, mentre quelli di cat. 7 S/STP.
+
+La **distanza massima** raggiungibile da questi cavi è di **100 metri**.
+(In realtà quelli UTP arrivano massimo a 96 metri)
+
+Esempio di cat. diversi:
+![[Pasted image 20260416121741.png]]
