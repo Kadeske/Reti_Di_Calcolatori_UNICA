@@ -306,7 +306,7 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
     
 - **[[Microonde]]:** Altamente direzionali (servono parabole allineate "a vista"). Non attraversano ostacoli solidi e sono assorbite dalla pioggia.
     
-- **Infrarossi/Luminose:** Non attraversano i muri, a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (non possono essere intercettate dall'esterno).
+- **Infrarossi e millimetriche:** Non attraversano i muri, a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (non possono essere intercettate dall'esterno).
     
 - **Satelliti:** Funzionano come ripetitori a microonde nel cielo.
     
