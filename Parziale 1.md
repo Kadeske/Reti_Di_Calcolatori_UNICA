@@ -308,7 +308,10 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
     
 - **Onde infrarosse e millimetriche:** sono a cortissimo raggio (es. telecomandi). Eccellenti per la sicurezza locale (*non possono essere intercettate dall'esterno*) e *non disturbano altre comunicazioni*. *Non attraversano i muri*. Viaggiano a frequenze THF (tremendamente alte), nell'ordine dei Ghz. Non richiedono nessuna licenza governativa.
 
-- **Onde luminose**
+- **Onde luminose**: Sono segnali ottici visibili ad occhio nudo.
+	- Sono unidirezionali e f**acilmente disturbabili**
+	- Richiedono **grande precisione**
+	- Sono **poco utilizzate**
     
 - **Satelliti:** Funzionano come ripetitori a microonde nel cielo.
     
