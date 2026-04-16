@@ -15,7 +15,7 @@ Il principio di comunicazione è il più semplice possibile: si accende e si spe
 - **Convenzione:** Un impulso di luce = **bit 1**. Assenza di luce = **bit 0**.
     
 
-**3. Il Fenomeno della Riflessione Totale Interna**
+**3.  Come funzionaIl Fenomeno della Riflessione Totale Interna**
 
 Come fa la luce a curvare e seguire il cavo senza uscire fuori? Sfrutta la fisica dell'ottica.
 
@@ -33,6 +33,7 @@ I tuoi appunti fanno una distinzione cruciale su come la luce viaggia all'intern
 - **Fibra Multimodale:** Ha un core abbastanza largo (es. 50 o 62.5 micron). La luce entra formando vari raggi che rimbalzano sulle pareti con angolazioni diverse. Questi diversi percorsi sono chiamati "modi". Poiché i raggi fanno percorsi diversi, alcuni arrivano prima e altri dopo, "spalmando" il segnale nel tempo. È usata per distanze medie (es. all'interno di un campus).
     
 - **Fibra Monomodale (Single-mode):** Ha un core sottilissimo (circa 8-10 micron), grande quanto la lunghezza d'onda della luce stessa. La luce non può rimbalzare a zig-zag, ma è costretta a viaggiare in un'unica linea retta (un solo "modo"). Non c'è dispersione, rendendola perfetta per le grandissime distanze (dorsali oceaniche).
+	- La **velocità** teorica massima è di **100.000 Gbps**(100 Tbps), quella reale è di *10 Gbps*, che è il limite di conversione dei segnali elettrici in segnali luminosi (ottici).
     
 
 **5. Generazione e Ricezione del segnale**
@@ -40,7 +41,10 @@ I tuoi appunti fanno una distinzione cruciale su come la luce viaggia all'intern
 - **Come si genera (Sorgente):** Si usano due tecnologie. I **LED** (economici, luce più diffusa, usati per le fibre multimodali) oppure i diodi **Laser** (costosi, fascio precisissimo e potente, usati per le fibre monomodali).
     
 - **Come si riceve:** All'altro capo del cavo c'è un **Fotodiodo**. È un sensore che rileva gli impulsi luminosi in arrivo e li ritraduce istantaneamente in impulsi elettrici comprensibili per il computer.
-    
+
+Quindi la sorgente dati **invia una segnale elettrico**, che viene convertito dal *modulatore TX ottico* che converte il segnale elettrico in luminoso. Il segnale transita sul canale ottico (fibra ottica). Infine il segnale luminoso arriva al *demodulatore RX ottico* che trasforma la luce in segnale elettrico per il destinatario.
+![[Pasted image 20260416123846.png]]
+
 
 **6. Come si possono collegare le fibre (3 modi)**
 
@@ -60,8 +64,3 @@ Se devi unire due cavi rotti o prolungarne uno, hai tre strade, con costi e prec
 - **Differenza dal rame (Pro e Contro):** La fibra stravince per velocità e distanza. Tuttavia, le terminazioni e i macchinari per la fibra costano molto di più rispetto alle porte Ethernet. Inoltre, la fibra non può trasportare corrente per alimentare dispositivi (come fa il rame con il PoE) e, se piegata troppo bruscamente, il vetro interno si spezza irreparabilmente, mentre il rame si piega senza problemi.
     
 
----
-
-Per aiutarti a memorizzare la differenza tra i due tipi di fibra e il concetto di riflessione, ho creato questo simulatore. Puoi letteralmente "sparare" la luce dentro il cavo!
-
-Mostrami la visualizzazione
