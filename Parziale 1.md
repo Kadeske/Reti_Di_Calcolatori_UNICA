@@ -320,6 +320,7 @@ Il segnale viaggia nello spazio libero irradiando energia dallo ***[[Spettro ele
     - _MEO (Media orbita):_ ~10.000 km. Usati per il GPS.
         
     - _LEO (Bassa orbita):_ ~500-1500 km. Latenza minima (simile alla fibra), ma ruotano velocemente, quindi serve una costellazione di decine/centinaia di satelliti interconnessi (es. Iridium, Globalstar, Starlink).
+    - **VSAT (Very Small Aperture Terminal)**: 
         
     - _Wired vs Sat:_ Il satellite è insostituibile per navi, aerei o zone remote, ma la fibra vince sempre per latenza e banda nelle comunicazioni terrestri punto-punto.
         
