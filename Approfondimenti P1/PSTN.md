@@ -76,3 +76,31 @@ Gli appunti fanno un'osservazione importantissima per l'esame riguardo allo **SG
     
 - **Cosa succede quando cambi operatore a casa?** Nessun tecnico viene a scavar ti il giardino per posare un nuovo cavo. Molto semplicemente, allo SGU di competenza, un tecnico stacca il tuo cavo dal macchinario del vecchio provider e lo attacca a quello del nuovo provider. Il provider si preoccupa e paga solo per gestire i collegamenti da quello SGU in poi.
     
+### **Il Cuore Digitale della Rete**
+
+Nel corso degli anni, per gestire un traffico sempre maggiore, le grandi aziende telefoniche hanno sostituito tutti i vecchi cavi di rame a lunga distanza con **fibre ottiche e ponti radio a microonde**.
+
+Di conseguenza, l'intero "cuore" della rete telefonica (le centrali interurbane, i commutatori, le grandi dorsali che collegano le città come nella mappa dell'Italia in alto) è diventato **100% digitale**. I dati viaggiano sotto forma di impulsi di luce (0 e 1).
+
+### **Il "Dinosauro" Analogico: L'Ultimo Miglio**
+
+C'è un'unica, grandissima eccezione a questa rivoluzione digitale: il **collegamento locale** (il famoso "ultimo miglio" o _local loop_).
+
+Il cavo di rame che va dalla tua presa a muro fino alla primissima centralina in strada (UCR o End office) è rimasto quello originale di un secolo fa. Questo cavo è in grado di trasportare solo correnti elettriche continue e onde sinuose: è un **mezzo analogico**.
+
+### **Il Problema e la Soluzione: Il Modem e il Codec**
+
+Come fa un computer (che è una macchina puramente digitale e "pensa" a scatti di 0 e 1) a inviare dati su un cavo di rame che capisce solo onde analogiche continue?
+
+Seguendo lo schema in basso nei tuoi appunti, ecco il percorso che risolve il problema:
+
+1. **Il Computer** genera i dati digitali.
+    
+2. **Il Modem:** È l'apparecchio in casa tua. Prende gli 0 e 1 del computer e li "converte" in un fischio, un'onda sonora/elettrica continua. (Modem sta proprio per _MOdulatore-DEModulatore_).
+    
+3. **Il Local Loop (Doppino):** L'onda analogica viaggia sul vecchio cavo di rame fino alla centrale locale dell'azienda telefonica.
+    
+4. **Il Codec (nella Centrale):** Appena l'onda arriva in centrale, incontra un apparecchio chiamato Codec. Il suo compito è fare l'opposto del modem: prende l'onda analogica del doppino e la riconverte immediatamente in un flusso digitale pulitissimo ad altissima velocità.
+    
+5. **La Dorsale (Trunk):** Ora che il segnale è tornato digitale, viene "sparato" sulle fibre ottiche ad alta capacità (_Medium/High-bandwidth trunk_) verso l'ISP (Internet Service Provider) o verso un'altra città.
+    
