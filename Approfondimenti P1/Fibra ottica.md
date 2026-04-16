@@ -51,11 +51,21 @@ La fibra è composta da un cilindro interno (**Core** o nucleo) avvolto da un ci
 - **Come si genera (Sorgente):** Si usano due tecnologie. I **LED** (economici, luce più diffusa, usati per le fibre multimodali) oppure i diodi **Laser** (costosi, fascio precisissimo e potente, usati per le fibre monomodali).
     
 - **Come si riceve:** All'altro capo del cavo c'è un **Fotodiodo**. È un sensore che rileva gli impulsi luminosi in arrivo e li ritraduce istantaneamente in impulsi elettrici comprensibili per il computer.
+	- ha tempi di trasformazione di 
 
 Quindi la sorgente dati **invia una segnale elettrico**, che viene convertito dal *modulatore TX ottico* che converte il segnale elettrico in luminoso. Il segnale transita sul canale ottico (fibra ottica). Infine il segnale luminoso arriva al *demodulatore RX ottico* che trasforma la luce in segnale elettrico per il destinatario.
 ![[Pasted image 20260416123846.png]]
 
-Differenza tra LED e 
+Differenza tra LED e Laser per la generazione della luce:
+
+|**Elemento**|**LED**|**Laser a Semiconduttore**|
+|---|---|---|
+|_Tasso di trasmissione dati_|Bassa|Alta|
+|_Tipo di fibra_|Multimodale|Multimodale e monomodale|
+|_Distanza_|Breve|Lunga|
+|_Durata_|Lunga|Breve|
+|_Sensibilità alla temperatura_|Scarsa|Elevata|
+|_Costo_|Basso|Alto|
 
 
 **6. Come si possono collegare le fibre (3 modi)**
