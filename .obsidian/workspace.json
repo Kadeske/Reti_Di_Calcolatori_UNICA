@@ -49,8 +49,7 @@
               "title": "Spettro elettromagnetico"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -238,12 +237,12 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "404eefb17cf28692",
+  "active": "372a64b700965d2b",
   "lastOpenFiles": [
+    "Approfondimenti P1/Onde Radio.md",
     "Pasted image 20260416144625.png",
     "Parziale 1.md",
     "Approfondimenti P1/Microonde.md",
-    "Approfondimenti P1/Onde Radio.md",
     "Approfondimenti P1/Spettro elettromagnetico.md",
     "Pasted image 20260416142814.png",
     "Pasted image 20260416142634.png",
@@ -259,7 +258,6 @@
     "img/Pasted image 20260416124000.png",
     "img/Pasted image 20260416123846.png",
     "Approfondimenti P1/Cavo coassiale.md",
-    "img/Pasted image 20260416122121.png",
     "Approfondimenti P1/Doppino telefonico.md",
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
     "Approfondimenti P1/Analisi di Fourier.md",

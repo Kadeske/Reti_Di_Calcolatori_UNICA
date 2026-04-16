@@ -1,6 +1,6 @@
 ### **Trasmissioni Radio**
 
-Le onde radio sono il mezzo wireless per eccellenza perché sono facili da generare, viaggiano per lunghe distanze e riescono ad attraversare gli edifici.
+Le onde radio sono il mezzo wireless per eccellenza perché sono **facili da generare**, **viaggiano per lunghe distanze** e **riescono ad attraversare gli edifici**.
 
 **1. L'Omnidirezionalità**
 
