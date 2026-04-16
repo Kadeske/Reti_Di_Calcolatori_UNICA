@@ -20,5 +20,26 @@ Un’onda **elettromagnetica monocromatica** (con definita frequenza e lunghezza
 
 - **Velocità di propagazione ($c$):** È la velocità fisica a cui l'onda si muove nello spazio. Nel vuoto e nell'aria viaggia alla velocità della luce (circa 300.000 km/s), mentre nei cavi di rame o vetro subisce un rallentamento.
 
+### **La Nomenclatura ITU e le Bande di Frequenza**
+
+
 ![[Pasted image 20260416142814.png]]
 (Spettro elettromagnetico da sapere bene)
+
+I nomi ufficiali delle bande di frequenza sono stati assegnati dall'**ITU** (International Telecommunication Union) in base alla lunghezza d'onda.
+
+_Curiosità storica:_ Inizialmente, le frequenze vennero divise in **LF** (basse), **MF** (medie) e **HF** (alte). All'epoca nessuno pensava che la tecnologia avrebbe superato i 10 MHz. Quando questo accadde, gli scienziati dovettero inventarsi nomi sempre più "esagerati" per le nuove bande (Very, Ultra, Super, Extremely e Tremendously High).
+
+Di seguito la classificazione ufficiale dell'ITU. Noterai che man mano che la frequenza sale, la lunghezza d'onda si accorcia in modo inversamente proporzionale:
+
+|**Acronimo**|**Nome Completo**|**Lunghezza d'onda (λ)**|**Frequenza (f)**|
+|---|---|---|---|
+|**LF**|Low Frequency|Da 10 Km a 1 Km|30 KHz – 300 KHz|
+|**MF**|Medium Frequency|Da 1 Km a 100 m|300 KHz – 3000 KHz|
+|**HF**|High Frequency|Da 100 m a 10 m|3 MHz – 30 MHz|
+|**VHF**|Very High Frequency|Da 10 m a 1 m|30 MHz – 300 MHz|
+|**UHF**|Ultra High Frequency|Da 1 m a 10 cm|300 MHz – 3000 MHz|
+|**SHF**|Super High Frequency|Da 10 cm a 1 cm|3 GHz – 30 GHz|
+|**EHF**|Extremely High Frequency|Da 1 cm a 1 mm|30 GHz – 300 GHz|
+|**THF**|Tremendously High Frequency|Da 1 mm a 0,1 mm|300 GHz – 3000 GHz|
+La luce ultravioletta, i raggi X e i raggi gamma funzionerebbero anche meglio, per le loro elevate frequenze, ma sono difficili da generare e da modulare, non si propagano bene attraverso i muri e sono dannose per gli esseri viventi.
