@@ -341,7 +341,7 @@ La **[[PSTN]]** (Public Switched Telephone Network) è nata per trasportare la v
     
     - _FTTH (Fiber to the Home):_ Sostituisce il vecchio doppino portando la fibra ottica pura fino dentro casa, garantendo velocità Gigabit.
         
-- **Multiplexing:** Tecniche per far viaggiare più segnali contemporaneamente sullo stesso cavo.
+- **[[Multiplexing]]:** Tecniche per far viaggiare più segnali contemporaneamente sullo stesso cavo.
     
     - **FDM (Frequency Division):** Divide la banda disponibile in diverse frequenze (es. radio FM o i canali TV).
         

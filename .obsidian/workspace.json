@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Parziale 1.md",
+                "file": "Approfondimenti P1/Multiplexing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Parziale 1"
+              "title": "Multiplexing"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Approfondimenti P1/ADSL.md",
+                "file": "Parziale 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ADSL"
+              "title": "Parziale 1"
             }
           },
           {
@@ -63,8 +63,7 @@
               "title": "Modem"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -252,12 +251,13 @@
       "smart-connections:Smart Lookup: Open lookup view": false
     }
   },
-  "active": "3573e8fe413279db",
+  "active": "304b3b272d1f4f02",
   "lastOpenFiles": [
     "Parziale 1.md",
-    "Approfondimenti P1/Linee DSL (Digital Subscriber line).md",
-    "Pasted image 20260416172737.png",
     "Approfondimenti P1/ADSL.md",
+    "Approfondimenti P1/Multiplexing.md",
+    "Approfondimenti P1/Linee DSL (Digital Subscriber line).md",
+    "img/Pasted image 20260416172737.png",
     "Approfondimenti P1/Modem.md",
     "img/Pasted image 20260416170632.png",
     "img/Pasted image 20260416170600.png",
