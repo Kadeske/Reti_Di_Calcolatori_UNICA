@@ -24,8 +24,12 @@ Le frequenze utilizzate non percorrono lunghe distanze, quindi la grandezza dell
 Un **cluster** è un gruppo di n celle che ricoprono tutta la banda disponibile. Devono essere costruiti in modo tale che siano autonomi e che garantiscano l'intera copertura geografica.
 
 fenomeno del **fading**: 
-- lento: le frequenze vengono assorbite 
-- veloce: le frequenze rimbalzano sulle superfici
+- **lento**: le frequenze vengono assorbite 
+- **veloce**: le frequenze rimbalzano sulle superfici
+
+Per affrontare il problema del fadin si utilizzano 2 tecniche:
+- **Antenna diversity**: utilizza **2 antenne riceventi**: se un antenna non riceve segnale o è guasta, ci penserà l'altra antenna.
+- **Frequency hopping**: il segnale viene **trasmesso su fequenze diverse**, saltare da una frequenza all'altra riduce gli effetti delle interferenze
 
 Le celle sono dotate di **BTS (Bse Transceiver Station)**.
 La **distanza di riuso** è la distanza tra due antenne di celle diverse che operano alla stessa frequenza.
@@ -206,3 +210,236 @@ L'EIR funziona come un database diviso in tre liste:
 **Black** list (Lista nera): È la lista dei **telefoni denunciati come rubati**. Se il tuo IMEI finisce qui, la rete ti impedisce di telefonare.
 
 (Il testo fa una precisazione pragmatica: dato l'enorme numero di telefoni nel mondo, il controllo capillare su ogni singola chiamata ruberebbe troppe risorse, quindi spesso questi controlli vengono attivati in modo mirato durante specifiche indagini).
+
+#### **AuC** (Authentication Center)
+
+Viene attivato durante ogni inizio di comunicazione ed opera su rete fissa.
+
+Contiene:
+- IMSI
+- TMSI
+- $k_i$ 
+- A4
+- A8
+
+usa questi dati per identificare la persona che effettua la chiamata.
+
+#### **OMC** (Operation and Maintenance Center): "L'officina locale"
+
+L'OMC è il centro nevralgico per la gestione quotidiana. **È specifico per ogni singolo operatore** (es. TIM, Vodafone, ecc.) e si occupa di:
+
+**Monitoraggio**: Controlla che tutti gli elementi visti finora (antenne BTS, MSC, HLR, AuC, ecc.) funzionino correttamente e siano configurati bene.
+
+**Allarmi e Guasti**: Se un'antenna si rompe o c'è un malfunzionamento, l'allarme suona qui.
+
+**Fatturazione** (Accounting): **Raccoglie i dati** su quanto traffico generano gli utenti e quali tariffe usano, informazioni fondamentali per poi inviare le bollette o scalare il credito.
+
+
+#### **NMC** (Network Management Center): Il coordinamento generale
+Se l'OMC è l'officina che gestisce una determinata zona o un gruppo di macchinari, l'NMC è la sala di controllo principale. **Il suo compito è supervisionare e gestire tutti i vari OMC**, avendo così una visione globale e centralizzata dell'intera rete nazionale.
+
+
+## TDMA (Time Division Multiple Access)
+
+Immagina una torta (la frequenza radio) che non viene tagliata a fette spaziali, ma a "fette di tempo". Ognuno ha il diritto di mangiare l'intera torta, ma solo per una frazione di secondo a turno.
+
+### Time Slot e Frame
+
+La rete suddivide lo spazio radio (il canale da 200 kHz) in pezzettini di tempo minuscoli:
+
+- **Time Slot** (**0.577 ms**): È la fetta di tempo più piccola. Il tuo telefono riceve il permesso di trasmettere la tua voce solo per questo minuscolo istante (poco più di mezzo millisecondo).
+
+- **Frame** (**4.616 ms**): È composto da 8 Time Slot. In pratica, su una singola frequenza, la rete fa parlare 8 telefoni diversi, uno dopo l'altro, a turno. Ogni 4 millisecondi e rotti, tocca di nuovo a te.
+
+### Dai Frame all'Hyperframe
+
+Per organizzare miliardi di chiamate, la rete raggruppa questi microscopici "Frame" in blocchi sempre più grandi, un po' come i secondi formano i minuti, che formano le ore, che formano i giorni.
+
+1. **Multiframe** (**Traffico o Controllo**): I frame vengono raggruppati a pacchetti di 26 (per far viaggiare la tua voce, Traffico) o a pacchetti di 51 (per far comunicare i sistemi di rete tra loro, Controllo).
+
+2. **Superframe** (**6.12 secondi**): Moltiplicando i Multiframe tra loro, si crea un blocco più grande che dura poco più di 6 secondi.
+
+3. **Hyperframe** (**3 ore, 28 minuti, 53 secondi**): Mettendo insieme ben **2048 Superframe**, otteniamo il *blocco di tempo massimo gestibile dalla rete GSM*.
+
+I time slot sono sfalsati di circa 3 slot. Perché? 
+Perché **il telefono non è fisicamente in grado di trasmettere e ricevere nello stesso identico istante sulla stessa frequenza**. Questo sfasamento dà al dispositivo una microscopica "pausa" (pochi millisecondi) tra quando ascolta e quando parla. In quel preciso istante di vuoto, il telefono ha il tempo materiale di misurare il segnale delle antenne vicine e agganciarsi a una nuova antenna più potente, senza che tu o il tuo interlocutore percepiate alcun "buco" nella conversazione.
+
+
+
+# Livello DataLink
+
+Ricorda: *FISICO* <-> **DATALINK** <-> *NETWORK*
+
+Il livello DataLink è anche detto **livello di collegamento**.
+
+Questo livello ha diverse funzioni: 
+- fornire un **servizio** ben definito al **livello network**
+- **gestire gli errori di trasmissione**
+- **regolare il flusso di dati** (per evitare che un ricevitore lento venga soprafatto)
+
+
+Quando i dati arrivano dal livello sottostante (FISICO): riordina i bit in dei gruppi detti **trame**, li delimita da un inizio (**header**) e da una fine (**trailer**) seguendo delle regole di dimensione e codifica precisi, e li invia al livello successivo (NETWORK) mediande il suo **SAP** (DLSAP, DL: DataLink).
+
+Quando i dati arrivano dal livello superiore (NETWORK): inserisce una **intestazione** che indica da quale punto iniziano i dati e la chiude con un **trailer**.
+
+Organizzare i bit in gruppi è utile per identificare e sapere cosa reinviare in caso di trama non ricevuta o danneggiata. Altrimenti andrebbe rimandato tutto.
+
+### Servizi offerti
+
+- Servizio **senza conferma** e **senza connessione**: Non possiede un controlle d'errore e non crea nessuna connessione logica. Viene utilizzato quando la frequenza di errori è molto bassa.
+- Servizio **con conferma** ma **senza connessione**: Per ogni frame inviato si deve ricevere un **ack di pervenimento**. Se il mittente non lo riceve, riinvia il frame. Continua a non creare connessioni virtuali.
+- Servizio **con conferma** e **orientato alla connessione**: Le macchine sorgente e destinatario **stabiliscono una connessione** prima di trasferire dati. Ogni frame è numerato, lo strato DataLink garantisce l'ordine d'arrivo e la ricezione.
+
+
+## Framing
+
+Un frame (o pacchetto) è composto da:
+- **header**: segna l'inizio del frame e contiene dati come l'indirizzo del destinatario
+- **payload**: i dati veri da trasmettere
+- **trailer**: segna il termine del frame
+
+Il framing (o impacchettamento) è un operazione che si svolge al livello 2 (DataLink).
+
+In base alla direzione dei dati:
+- se **arrivano dal livello network** (quindi sto inviando al destinatario): impacchetta i dati.
+- se **arrivano dal livello fisico** (quindi sto ricevendo dei dati): il livello 2 deve riconoscere dove inizia e dove finisce il pacchetto e dividerlo nei vari frame per poterli poi leggere e utilizzare.
+
+E' possibile combinare due o più tecniche di framing per superare eventuali limiti ed offrire un servizio della comunicazione migliore (Qos).
+
+
+Diversi metodi di **suddivisione**:
+- conteggio dei caratteri
+- Flag Byte con Byte Stuffing
+- Flag Inizio/FIne con Bit Stuffing
+- Violazione Codifica Livello FIsico
+
+### Conteggio dei caratteri (o byte)
+
+Nel primo byte si inserisce la lunghezza del campo, non si ha la necessità di un trailer.
+Il problema si verifica se, a causa dell'alterazione del segnale, viene letto il numero sbagliato di lunghezza, sfalsando tutta la struttura del messaggio.
+
+
+### Flag Byte con Byte Stuffing
+
+Viene utilizzato un byte detto **flag byte** per delimitare inizio e fine di un frame.
+Solitamente si usano i codici (ASCII):
+- STX (Start) Flag
+- ETX (End) Flag
+
+Per indicare la fine di un frame e l'inizio del prossimo vengono usati due **flag byte** consecutivi.
+
+Il problema è che questi valori potrebbero apparite in modo naturale nel contenuto del messaggio ed essere scambiati per un flag byte. Per evitare ciò viene introdotto un **byte di escape** (*ESC*) prima di ogni occorrenza accidendale di un flag byte.
+
+Il limite di questo metodo è legato all'utilizzo di 8 bit, essendo basato su dei caratteri.
+
+### Flag Inizio/Fine con Byte Stuffing 
+
+Viene utilizzato un **byte indicatore**: 01111110
+questo *byte indicatore* indica l'inizio e la fine della trama.
+
+All'invio, il livello 2 (del mittente), quando trova 5 '1' di seguito ne aggiunge uno 0.
+Al contrario, durante la ricezione, il livello 2 (del destinatario), quando incontra 5 '1' consecutivi rimuove lo 0 che ne segue.
+
+In questo modo il confine tra due frame viene riconosciuto in modo inequivocabile.
+
+Lo svantaggio principale è che se all'interno del mesaggio si trova una sequenza uguale a al byte indicatore, il byte stuffing avviene più spesso, aumnentando il numero di bit trasmessi.
+
+### Violazioni della codifica del livello fisico
+
+Consiste in una variazione di tensione utile a rafforzare gli altri metodi di framing.
+
+Ogni bit logico viene commutato in 2 corrispettivi bit fisici.
+0 logico = 01
+1 logico = 10
+
+In questo modo, se si incontra una coppia di bit identica (00 o 11) si è in presenza di un errore di trasmissione.
+
+Presenta comunque dei problemi se si verificano numerosi errori.
+
+## Controllo degli errori
+
+E' tipico delle trasmissioni con conferma.
+Il controllo può essere *immediato*, quindi richiede un ack subito dopo la ricezione, o *distribuito nel tempo*, quindi l'ack di riscontro può venire richiesto più avanti.
+
+Il **controllo del flusso** si occupa di evitare che un mittente veloce 'intasi' di messaggi un destinatario lento.
+
+**Problemi** dei servizi con conferma:
+- **perdita di frame:** il mittente rimane in attesa di un ack senza riceverlo (si aggira impostando un tempo limite o timeout)
+- **perdita di riscontro**: il mittente ritrasmetti il frame credendo che sia stato perso (si aggira numerando i frame)
+
+Gli **errori** possono essere: 
+- **corretti**: oltre a madare la trama si aggiungono dai in grado di ricostruire il messaggio danneggiato
+- **rilevati**: si rilevano esclusivamente e si richiede l'invio
+
+Nell'ultimo periodo il rilevamento è il più utilizzato essendo i mezzi fisici più affidabili (es. fibre ottiche).
+
+
+### Codifica di Hamming
+
+E' una procedura per generare codici ridondanti correttivi. L'obiettivo è inidividuare i bit errati in una parola binaria.
+
+Si utilizzano dei **bit** detti di **parità** posti lungo le potenze del 2.
+il bit di parità 1 controllerà le posizioni in cui appare 1 nella posizione meno significativa della parola binaria.
+
+
+|     | BP 3 | BP 2 | BP 1 |
+| --- | ---- | ---- | ---- |
+| 1   |      |      | 1    |
+| 2   |      | 1    |      |
+| 3   |      | 1    | 1    |
+| 4   | 1    |      |      |
+| 5   | 1    |      | 1    |
+| 6   | 1    | 1    |      |
+| 7   | 1    | 1    | 1    |
+|     |      |      |      |
+Secondo la tabella il BP 1 controlla le posizioni 1,3,5,7.
+
+
+
+### Codifica ridondanza ciclica (CRC)
+
+Inserisce delle informazione per capire se esiste un errore all'interno del messaggio ricevuto.
+
+Utilizza un polinomio generatore e lo si applica ad una sequenza ottenendo un risultato.
+Se il destinatario, effettuando lo stesso calcolo sui dati ricevuti, ottiene un risultato diverso sa che il messaggio è stato danneggiato. 
+
+## Protocolli DataLink
+
+### Protocolli elementari
+
+- Simplex **non limitato**
+- Simplex **stop and wait**
+- simplex per **canale disturbato**
+
+#### Protocollo simplex non limitato
+
+Questo è un **modello teorico** di base che opera su assunzioni ideali per semplificare l'analisi della trasmissione dati.
+
+**Assunzioni**: Il canale è strettamente **unidirezionale** (simplex) e **non prevede feedback**. Si ipotizza che i **nodi di rete siano sempre pronti**, con **tempi di elaborazione trascurabili**. Il **destinatario dispone di un buffer infinito**, escludendo congestioni. Infine, si assume un'assoluta assenza di errori (nessuna perdita di dati).
+
+**Dinamica**: In queste condizioni, il mittente trasmette un flusso continuo di dati in un loop infinito, senza attese tra i pacchetti. Il destinatario riceve costantemente senza problemi. Il processo si interrompe solo per decisione unilaterale del mittente.
+
+#### Protocollo Simplex "Stop and Wait"
+
+Questo modello introduce un vincolo realistico: il **destinatario possiede un buffer finito**.
+
+Il **problema**: Un invio continuo di dati, come nel modello precedente, porterebbe rapidamente al **riempimento del buffer in ricezione**, causando la perdita dei frame in eccesso.
+
+La **soluzione** (ACK): Per evitare la saturazione, **il destinatario invia un messaggio di riscontro**, denominato ACK (Acknowledgment).
+
+**Dinamica**: Il mittente trasmette un set di frame e si ferma (Stop), attendendo la ricezione dell'ACK (Wait) prima di inviare i dati successivi. Questo meccanismo sincronizza la velocità di trasmissione con la capacità di ricezione.
+
+**Requisiti** del canale: Poiché i dati e gli ACK viaggiano in direzioni opposte, il traffico è tecnicamente bidirezionale. Tuttavia, data la rigida alternanza delle trasmissioni, è sufficiente un canale fisico half-duplex (una direzione alla volta).
+
+
+#### Protocollo Simplex per Canale Disturbato
+
+L'ultimo modello introduce il livello massimo di complessità reale: la **possibilità di errori sul canale**, che si traduce nella **potenziale perdita di frame o di ACK**.
+
+**Meccanismo di Timer**: All'invio di ogni frame, **il mittente avvia un timer**. Se l'ACK non viene ricevuto prima della scadenza di tale timer, il mittente presume che il pacchetto o la risposta siano andati persi e procede automaticamente alla ritrasmissione del frame.
+
+**Numeri di sequenza**: A causa delle ritrasmissioni, il destinatario potrebbe ricevere frame duplicati (ad esempio, se si perde l'ACK ma non il frame originale). Per risolvere questa ambiguità, è **necessario applicare un numero di sequenza ai frame trasmessi**. È sufficiente un solo bit (alternando 0 e 1) per distinguere univocamente un frame da quello immediatamente successivo.
+
+**Classificazione formale**: Questa tipologia di protocolli, in cui la sorgente avanza nella trasmissione solo dopo aver ricevuto un riscontro positivo, prende il nome di PAR (Positive Acknowledgement with Retransmission) o ARQ (Automatic Repeat reQuest).
+
+
