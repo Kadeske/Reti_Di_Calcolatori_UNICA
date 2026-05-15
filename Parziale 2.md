@@ -985,3 +985,6 @@ Matematicamente, l'efficienza è definita dalla formula:
 
 $$Efficienza = \frac{1}{1 + \frac{2BLe}{cF}}$$
 
+
+### Ethernet Commutata 
+
