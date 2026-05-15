@@ -792,4 +792,104 @@ Il protocollo organizza le stazioni della rete mappandole come le **foglie di un
 si tenta la trasmissione in un canale, se si trova libero se ne prende il controllo. In caso di collisione nell'intervallo 1, possono competere solo le stazioni che si trovano sotto il nodo 2, il successivo sarà il nodo 3, etc.
 Quindi, in caso di collisioni la ricerca continua nei figli posti a sinistra e poi a destra del nodo.
 
-### Protocolli WDMA (Wavelength Division Multiple Access )
+### Protocolli WDMA (Wavelength Division Multiple Access)
+
+Progettato per reti LAN completamente ottiche basate su una topologia a stella passiva. 
+Il protocollo utilizza la multiplazione a divisione di lunghezza d'onda per consentire comunicazioni parallele e simultanee.
+
+Ogni stazione è *collegata alla rete tramite due fibre* (una per il controllo a bassa lunghezza d'onda, una per i dati ad alta lunghezza d'onda) ed è equipaggiata con **quattro componenti ottici**:
+
+- **Ricevitore a lunghezza d'onda fissa:** Dedicato all'ascolto continuo del _proprio_ canale di controllo per rilevare richieste in arrivo.
+    
+- **Trasmettitore a lunghezza d'onda fissa:** Dedicato alla trasmissione esclusiva dei propri frame di dati.
+    
+- **Trasmettitore sintonizzabile:** Utilizzato per "spostarsi" sulle frequenze altrui e inviare pacchetti di controllo (es. richieste di connessione) alle altre stazioni.
+    
+- **Ricevitore sintonizzabile:** Utilizzato per "spostarsi" sulle frequenze dati altrui e ricevere le informazioni trasmesse dalle altre stazioni.
+
+Il sistema utilizza un singolo segnale di clock globale per sincronizzare tutti i canali, dividendoli in intervalli temporali discreti (slot).
+
+- **Canale di controllo:** Suddiviso in $m$ intervalli temporali.
+    
+- **Canale dati:** Suddiviso in $n + 1$ intervalli. I primi $n$ slot sono riservati al payload dei dati, mentre l'ultimo è lo **slot di stato (status slot)**. La stazione utilizza ciclicamente lo status slot per comunicare in broadcast quali dei propri intervalli (sia dati che controllo) sono attualmente liberi.
+
+
+**Gestione del traffico:**
+Il protocollo supporta tre classi di traffico: velocità costante (orientato alla connessione), velocità variabile (orientato alla connessione) e datagram (senza connessione).
+
+Per le classi orientate alla connessione, è necessario un processo di _handshake_. Se la Stazione A vuole trasferire un file alla Stazione B, esegue questa procedura:
+
+1. **Analisi dello Stato:** A sintonizza il proprio ricevitore dati sintonizzabile sulla lunghezza d'onda dati di B. Attende il passaggio dello _status slot_ per leggere la mappa degli intervalli di controllo liberi di B.
+    
+2. **Invio Richiesta:** A sceglie un intervallo di controllo libero tra quelli annunciati. Sintonizza il proprio trasmettitore di controllo sulla frequenza di B e, nel momento esatto di quello slot, invia un messaggio di `CONNECTION REQUEST`.
+    
+3. **Accettazione:** B, che monitora costantemente il proprio ricevitore di controllo fisso, rileva la richiesta di A. B elabora la richiesta e annuncia l'avvenuta assegnazione della risorsa (es. l'intervallo 4) aggiornando il proprio _status slot_ nel ciclo successivo.
+
+### Protocolli LAN Wireless
+
+Il problema principale è il **limitato raggio di copertura radio**.
+
+Il protocollo CSMA non è il più adatto: ora importa l'interferenza al ricevitore, non al trasmettitore.
+
+
+![[Pasted image 20260515151503.png]]
+
+**Problema del terminale nascosto**: A e B stanno comunicando, C non sente la comunicazione e pensa di poter trasmettere a B, così facendo crea interferenza attorno a B.
+
+**Problema del terminale esposto**: B sta trasmettendo ad A, quindi C sente del rumore  e pensa di non poter trasmettere a D.
+
+#### MACA (Multiple Access Collision Avoidance)
+
+Il trasmittente incita il ricevente a trasmettere un piccolo frame in modo che le stazioni vicine capiscano di dover 'fare silenzio' per non interferire.
+
+![[Pasted image 20260515151825.png]]
+Quindi: 
+A invia un **frame RTS (request to send)** a B: contiene la lunghezza del frame di dati che invierà.
+B risponde con un **frame CST (clear to send)**: contiene la lunghezza che ha scritto A (è una conferma).
+La trasmissione può iniziare.
+Tutte le stazioni hanno sentito il frame **RTS** e **CTS**, quindi rimarranno in silenzio.
+
+Nonostance ciò **possono ancora verificarsi collisioni**: es. *B* e *C* potrebbero inviare un *RTS* ad *A* allo stesso tempo.
+
+## Ethernet
+
+Ethernet è uno standard **CMSA/CD 1-persistente**, ne esistono 2 tipi:
+- Ethernet **classica**: risolve l'accesso multiplo con le tecniche viste prima.
+- Ethernet **commutata**: utilizza degli **switch** per connettere diversi computer.
+
+(Oggi viene usata principalmente quella commutata (o switched))
+
+### Ethernet classica (livello fisico)
+
+Funziona attraverso un singolo cavo lungo a cui si collegano tutti i computer.
+
+Si divide in 2 tipi:
+- **thick** ethernet: ricorda un tubo giallo da giardinaggio con segnali ogni 2,5 metri per collegare i computer.
+	- max 500 metri e 100 PC
+- **thin** ethernet: più flessibile, utilizzava dei connettori standard BNC. E' più economica e facile da installare.
+	- max 185 metri e 30 PC
+
+Più cavi potevano essere connessi attraverso dei ripetitori (repeater) che ricevono e amplificano il segnale ricevuto.
+
+**Tipologie di cablaggio:**
+- 10 base **5**: cavo **Coassiale thick** (500 metri)
+- 10 base **2**: cavo C**oassiale thin** (185 metri)
+- 10 base **T**: **doppino intrecciato** (100 metri)
+- 10 base **F**: f**ibra ottica** (2 km)
+
+#### Cablaggio 10 base 5
+
+Cavo **coassiale** **thick**.
+**500 metri**.
+max **100 utenti**.
+
+Costituito da **5 coppie**:
+- 2 per il **traffico** nei 2 versi 
+- 2 al **controllo** 
+- 1 (opzionale) per l'**alimentazione**
+
+**Problemi**:
+- cavo molto rigido 
+- difficile identificare la sorgente dei problemi
+- difficoltà di montaggio delle spine a vampiro
+
