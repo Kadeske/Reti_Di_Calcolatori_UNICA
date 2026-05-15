@@ -1031,4 +1031,35 @@ Nonostante lo switch elimini gran parte dei problemi di collisione sui cavi, le 
 - **Saturazione del Backplane:** La capacità di commutazione della scheda interna deve essere altissima, idealmente sufficiente a garantire il throughput di tutte le porte contemporaneamente a piena banda.
     
 - **Esaurimento dei Buffer (Packet Drop):** Se più porte trasmettono simultaneamente dati ad alta velocità verso un'unica porta di uscita (es. un server riceve 20 Mbps in ingresso ma la sua porta supporta solo 10 Mbps), il buffer della porta di uscita si riempie rapidamente. I frame in eccesso non possono essere gestiti e vengono scartati. Il recupero di questi dati persi e il controllo del flusso diventano quindi responsabilità dei livelli superiori del protocollo (es. TCP).
-    
+
+#### Fast ethernet 
+
+Protocollo sviluppato nel 1992 (IEEE 802.3) per trasmettere **100 Mbps**
+Mantiene la compatibilità con le altre ethernet esistenti, in quanto:
+- mantiene lo stesso formato del frame 
+- mantiene le stesse interfacce 
+- mentiene le stesse regole procedurali
+
+Prevede solo connessioni tramite hub o switch utilizzando:
+- **UTP cat. 3**: con *4 coppie **half** duplex* 
+- **UTP cat. 5**: con *2 coppie **full** duplex*
+- **Fibra ottica** 
+
+#### Gigabit ethernet
+
+Retrocompatibile con altre ethernet
+
+Cablaggi:
+- Fibra ottica **Multimodale** 1000base-**SX**
+- fibra ottica **mono o multimodale** 1000base-**LX**
+- **STP** 1000base-**CX**
+- **UTP** cat **5** 1000base-**T**
+
+#### 10 GIGABIT Ethernet 
+
+Apparve per la prima volta intorno al 2002, venne utilizzata dei data center e nelle centrali di commutazione.
+
+Supportano solo la modalità **full duplex**.
+
+
+### LAN Wireless 
