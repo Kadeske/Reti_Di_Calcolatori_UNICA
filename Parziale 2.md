@@ -181,7 +181,7 @@ Seguiamo il percorso di una chiamata che parte da una **MS** (Mobile Station).
 Quando avvio una chiamata il cellulare invia una richiesta alla prima BTS disponibile fornendosi di IMEI e SIM.
 Le antenne **BTS**, che fanno parte di una **BS** (Base Station) sono collegate ad una **BSC** (Base station Controller) la quale appartiene al provider e collega le antenne **BTS**.
 
-L'MSC (Mobile Switching Center) è ciò che instrada le chiamate, in italia ce ne sono poche poichè controllano diversi gruppi di BS.
+L'**MSC** (Mobile Switching Center) è ciò che instrada le chiamate, in italia ce ne sono poche poichè controllano diversi gruppi di BS.
 VLR (Visitor Locator Register): contengono i nostri dati riguardo la rete.
 
 L'MSC è collegato ad un sistema in grado di individuare la nostra posizione all'interno dell'area.
