@@ -578,3 +578,16 @@ La gerarchia (dal livello di rete al livello fisico) è la seguente: **IP -> PPP
 - **AAL5 (ATM Adaptation Layer 5):** Fa da intermediario tra PPP e ATM. Si occupa di segmentare e riassemblare i pacchetti in celle. Aggiunge un trailer (non un header) con la lunghezza totale e un CRC di 4 byte, inserendo byte di riempimento (_padding_) per far sì che la lunghezza sia un multiplo esatto di 48 byte.
     
 - **PPPoA (PPP over ATM):** È la specifica che definisce come incapsulare esattamente i frame PPP all'interno del payload di AAL5.
+
+
+# Sottolivello **MAC** ('di accesso al mezzo')
+
+Questo sottolivello comprendi i protocolli per allocare l'uso di un canale ad accesso multiplo.
+E' molto importante nelle LAN (e WLAN) dato che preferiscono le connessioni ad accesso multiplo.
+
+## Problemi i allocazione del canale
+
+
+### Allocazione statica 
+
+
