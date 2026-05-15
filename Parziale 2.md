@@ -492,3 +492,13 @@ Una _sliding window_ configurata a 1 bit ($n=1$) è operativamente equivalente a
     
 - **Finestra di Invio:** La sorgente possiede una finestra di dimensione $N > 1$, permettendo la *trasmissione continua di pacchetti in attesa di riscontro* (pipeline), fino al riempimento del buffer di invio.
 ![[Pasted image 20260515125342.png]]
+
+- **Ricezione corretta:** I frame 0 e 1 vengono ricevuti, validati e riscontrati (Ack0, Ack1). Il destinatario aggiorna la sua finestra aspettandosi il frame 2.
+    
+- **Errore (E):** Il frame 2 viene danneggiato o perso durante il transito. Non giungendo al destinatario o non superando i controlli di integrità, non viene generato alcun ACK.
+    
+- **Scarto sistematico (D - Discard):** La sorgente, ignara della perdita, continua a trasmettere i frame successivi presenti nella sua finestra di invio (frame 3, 4, 5, 6, 7, 8). Il destinatario riceve questi frame integri, ma poiché si aspetta rigorosamente il frame 2 (avendo finestra pari a 1), **rifiuta e scarta** automaticamente *tutti i frame fuori sequenza*, omettendo l'invio dei relativi ACK.
+
+- **Ritrasmissione:** L'assenza dell'Ack2 impedisce l'avanzamento della finestra di invio della sorgente. Allo scadere dell'intervallo di **timeout** associato al frame 2, la sorgente rileva l'anomalia.
+    
+- **Go-Back-N:** Il protocollo impone alla sorgente di "tornare indietro" al frame non riscontrato (il frame 2) e di **ritrasmettere in ordine tutti i frame** inviati successivamente, ricominciando l'intera sequenza (2, 3, 4, 5, 6, 7, 8...).
