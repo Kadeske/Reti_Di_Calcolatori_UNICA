@@ -394,7 +394,7 @@ il bit di parità 1 controllerà le posizioni in cui appare 1 nella posizione me
 |     |      |      |      |
 Secondo la tabella il BP 1 controlla le posizioni 1,3,5,7.
 
-
+i BP sono posti in modo da formare una parola pari insieme ai bit che controllano.
 
 ### Codifica ridondanza ciclica (CRC)
 
@@ -441,5 +441,7 @@ L'ultimo modello introduce il livello massimo di complessità reale: la **possib
 **Numeri di sequenza**: A causa delle ritrasmissioni, il destinatario potrebbe ricevere frame duplicati (ad esempio, se si perde l'ACK ma non il frame originale). Per risolvere questa ambiguità, è **necessario applicare un numero di sequenza ai frame trasmessi**. È sufficiente un solo bit (alternando 0 e 1) per distinguere univocamente un frame da quello immediatamente successivo.
 
 **Classificazione formale**: Questa tipologia di protocolli, in cui la sorgente avanza nella trasmissione solo dopo aver ricevuto un riscontro positivo, prende il nome di PAR (Positive Acknowledgement with Retransmission) o ARQ (Automatic Repeat reQuest).
+
+
 
 
