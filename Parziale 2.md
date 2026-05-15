@@ -622,3 +622,38 @@ $$T_{FDM} = \frac{1}{(\mu \cdot \frac{C}{N}) - (\frac{\lambda}{N})} = \frac{N}{\
 
 *L'assunto finale estende questa inefficienza matematica anche al*  **TDM (Time Division Multiplexing)**. Allocare staticamente intervalli di tempo (time slot) a $N$ utenti genera lo stesso livello di spreco prestazionale ogniqualvolta un utente non ha dati da trasmettere nel proprio turno.
 
+
+### Allocazione dinamica di canali
+
+Si hanno 5 premesse: 
+
+#### Modello di Traffico Indipendente
+
+Il sistema è composto da $N$ stazioni (o terminali) operanti in modo indipendente. La generazione dei frame per ogni stazione segue un modello statistico caratterizzato da una frequenza di trasmissione $\lambda$ costante, che definisce il tasso di arrivo di nuovi frame pronti per l'invio.
+
+#### Presupposto del Canale Singolo
+
+L'architettura prevede un unico mezzo trasmissivo condiviso. Tutte le stazioni utilizzano questo singolo canale sia per trasmettere che per ricevere dati. Dal punto di vista hardware, i nodi sono paritetici (equivalenti), demandando eventuali logiche di priorità esclusivamente al software di protocollo.
+
+#### Gestione e Presupposto delle Collisioni
+
+Se due o più frame vengono trasmessi contemporaneamente, si verifica una sovrapposizione temporale che distorce il segnale risultante. Questo evento è definito **collisione**. Il modello assume teoricamente che:
+
+- Le stazioni siano sempre in grado di rilevare l'avvenuta collisione.
+    
+- Le collisioni costituiscano l'unica causa di errore sul canale (non si considerano attenuazioni o disturbi fisici).
+    
+- Un frame corrotto da una collisione debba essere obbligatoriamente ritrasmesso.
+    
+
+#### Sincronizzazione Temporale
+
+La gestione dell'accesso al mezzo può seguire due paradigmi temporali:
+
+- **Tempo Continuo:** Non esiste un _clock_ globale per sincronizzare le stazioni.
+    
+    - _Vantaggi (da annotazione):_ Massima semplicità implementativa e latenza iniziale nulla, poiché una stazione immette il frame sul canale non appena questo è pronto.
+        
+    - _Svantaggi (da annotazione):_ Bassissima efficienza complessiva del canale, causata dall'elevata probabilità di collisioni continue (parziali o totali) a causa dell'accesso casuale e asincrono.
+        
+- **Tempo Diviso (Slotted Time):** Il tempo viene discretizzato in intervalli prefissati (_time slot_). La trasmissione di un frame è vincolata e deve coincidere esattamente con l'inizio di un intervallo. Un singolo slot temporale può registrare tre stati: vuoto (0 frame trasmessi), successo (1 frame trasmesso correttamente) o collisione (più frame trasmessi in concomitanza).
