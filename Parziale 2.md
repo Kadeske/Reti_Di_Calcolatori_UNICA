@@ -629,21 +629,21 @@ Si hanno 5 premesse:
 
 #### Modello di Traffico Indipendente
 
-Il sistema è composto da $N$ stazioni (o terminali) operanti in modo indipendente. La generazione dei frame per ogni stazione segue un modello statistico caratterizzato da una frequenza di trasmissione $\lambda$ costante, che definisce il tasso di arrivo di nuovi frame pronti per l'invio.
+Il sistema è composto da **$N$ stazioni** (o terminali) **operanti in modo indipendente**. La generazione dei frame per ogni stazione segue un modello statistico caratterizzato da una frequenza di trasmissione $\lambda$ costante, che definisce il tasso di arrivo di nuovi frame pronti per l'invio.
 
 #### Presupposto del Canale Singolo
 
-L'architettura prevede un unico mezzo trasmissivo condiviso. Tutte le stazioni utilizzano questo singolo canale sia per trasmettere che per ricevere dati. Dal punto di vista hardware, i nodi sono paritetici (equivalenti), demandando eventuali logiche di priorità esclusivamente al software di protocollo.
+L'architettura **prevede un unico mezzo trasmissivo condiviso**. Tutte le stazioni utilizzano questo singolo canale **sia per trasmettere che per ricevere dati**. Dal punto di vista hardware, i nodi sono paritetici (equivalenti), demandando eventuali logiche di priorità esclusivamente al software di protocollo.
 
 #### Gestione e Presupposto delle Collisioni
 
 Se due o più frame vengono trasmessi contemporaneamente, si verifica una sovrapposizione temporale che distorce il segnale risultante. Questo evento è definito **collisione**. Il modello assume teoricamente che:
 
-- Le stazioni siano sempre in grado di rilevare l'avvenuta collisione.
+- Le stazioni siano **sempre in grado di rilevare** l'avvenuta collisione.
     
-- Le collisioni costituiscano l'unica causa di errore sul canale (non si considerano attenuazioni o disturbi fisici).
+- Le collisioni costituiscano l'**unica causa di errore** sul canale (non si considerano attenuazioni o disturbi fisici).
     
-- Un frame corrotto da una collisione debba essere obbligatoriamente ritrasmesso.
+- Un **frame corrotto** da una collisione debba essere obbligatoriamente **ritrasmesso**.
     
 
 #### Sincronizzazione Temporale
@@ -652,8 +652,58 @@ La gestione dell'accesso al mezzo può seguire due paradigmi temporali:
 
 - **Tempo Continuo:** Non esiste un _clock_ globale per sincronizzare le stazioni.
     
-    - _Vantaggi (da annotazione):_ Massima semplicità implementativa e latenza iniziale nulla, poiché una stazione immette il frame sul canale non appena questo è pronto.
+    - _Vantaggi (da annotazione):_ *Massima semplicità implementativa* e *latenza iniziale nulla*, poiché una stazione immette il frame sul canale non appena questo è pronto.
         
-    - _Svantaggi (da annotazione):_ Bassissima efficienza complessiva del canale, causata dall'elevata probabilità di collisioni continue (parziali o totali) a causa dell'accesso casuale e asincrono.
+    - _Svantaggi (da annotazione):_ *Bassissima efficienza complessiva* del canale, causata dall'elevata probabilità di collisioni continue (parziali o totali) a causa dell'accesso casuale e asincrono.
         
-- **Tempo Diviso (Slotted Time):** Il tempo viene discretizzato in intervalli prefissati (_time slot_). La trasmissione di un frame è vincolata e deve coincidere esattamente con l'inizio di un intervallo. Un singolo slot temporale può registrare tre stati: vuoto (0 frame trasmessi), successo (1 frame trasmesso correttamente) o collisione (più frame trasmessi in concomitanza).
+- **Tempo Diviso (Slotted Time):** Il tempo viene discretizzato in intervalli prefissati (_time slot_). *La trasmissione di un frame deve coincidere esattamente con l'inizio di un intervallo*. Un singolo slot temporale può registrare tre stati: vuoto (0 frame trasmessi), successo (1 frame trasmesso correttamente) o collisione (più frame trasmessi in concomitanza).
+
+## Protocolli ad accesso multiplo 
+
+### ALOHA
+
+E' il promo protocollo multiaccesso.
+
+#### ALOHA puro 
+
+Ha l'idea di consentire agli utenti di trasmettere ogni volta che hanno dati da inviare.
+
+Grazie alla **proprietà di feedback** un trasmettitore potrà sempre ascoltare il canale per capire se il messaggio ha subito una collisione.
+Anche se il frame viene modificato di un solo bit dalla collisione, il frame viene considerato distrutto.
+
+Se non è possibile ascoltare il canale si deve adottare un sistema di acknowledgment: dopo una collisione, il trasmettitore attenderà un **tempo casuale** prima di ritentare l'iinvio.
+
+Efficienza? Quanti frame non subiscono collisioni?
+
+Avendo N frame per 'tempo di frame':
+- se N > 1 gli utenti stanno generando un tasso di frame che il canale non può gestire
+- con 0 < N < 1 possiamo sperare di avere un throughput adeguato.
+
+**ALOHA** non prevede ascolto del canale prima della trasmissione, ad ogni frame è associato un *periodo vulnerabile*. La trasmissione ha successo se nessun altro frame inizia durante il suo periodo vulnerabile.
+
+Il **throughput effettivo** è circa il **18%** di quello teorico del canale.
+
+#### ALHOA a slot 
+
+Diverso dal puro perchè **il tempo viene discretizzato**(diviso a slot).
+
+Prima di trasmettere ogni utente deve attendere l'inizio di un nuovo intervallo temporale.
+
+**Persistenza:** fenomeno che regola quante volte bisogna controllare prima di poter trasmettere.
+
+Questo cambiamento permette di dimezare il periodo vunerabile di un frame.
+
+Si dovrebbe poter sfruttare circa il **37% della capacità del canale**.
+
+
+### Protocolli ad accesso multiplo con rilevamento della portante
+
+Sono quei protocolli in cui gli utenti rimangono in ascolto di una portante.
+
+#### CSMA (persistente e non persistente)
+
+Prima di trasmettere una stazione ascolta il canale per capire se qualcuno sta trasmettendo in quel momento.
+Se il canale è occupato attende.
+Se il canale è libero trasmette un frame.
+
+In caso di collisione la stazione rimane in attesa per un intervallo casuale prima di ritentare
