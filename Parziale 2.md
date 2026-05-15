@@ -893,3 +893,41 @@ Costituito da **5 coppie**:
 - difficile identificare la sorgente dei problemi
 - difficoltà di montaggio delle spine a vampiro
 
+#### Cablaggio 10 base 2 
+
+Cavo **coassiale thin** 
+**185 metri**
+max **30 utenti**
+
+Vantaggi rispetto al 10 base 5:
+- **maneggevolezza**
+- **semplice da inserire** in nuove stazioni 
+- **connettori affidabili**
+
+#### Cablaggio 10 base T 
+
+**Doppino in rame intrecciato** 
+**100 metri**.
+**Nodi massimi 1024.**
+
+Ogni **stazione** è **collegata ad un hub** con un cavo UTP (cat 3 in su).
+
+L'**hub** **non elabora dati** ma è il punto di connessione dei vari nodi. 
+Copia, rigenera ed invia il segnale a tutti i dispositivi a lui connessi (tranni a chi l'ha inviato).
+
+**Vantaggi**: 
+- **semplicità di cablaggio** 
+- **semplicità di gestione** delle stazioni connesse (o da connettere)
+- **affidabilità meccanica**
+
+**Svantaggio**: distanza limitata a **100 m**
+
+
+#### Cablaggio 10 base F
+
+**Fibra ottica**.
+2000 m (**2 km**).
+max **1024 utenti**
+
+E' **immune alle interferenze** e **sicuro contro le intercettazioni**.
+
