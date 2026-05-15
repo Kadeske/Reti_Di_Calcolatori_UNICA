@@ -502,3 +502,8 @@ Una _sliding window_ configurata a 1 bit ($n=1$) è operativamente equivalente a
 - **Ritrasmissione:** L'assenza dell'Ack2 impedisce l'avanzamento della finestra di invio della sorgente. Allo scadere dell'intervallo di **timeout** associato al frame 2, la sorgente rileva l'anomalia.
     
 - **Go-Back-N:** Il protocollo impone alla sorgente di "tornare indietro" al frame non riscontrato (il frame 2) e di **ritrasmettere in ordine tutti i frame** inviati successivamente, ricominciando l'intera sequenza (2, 3, 4, 5, 6, 7, 8...).
+
+### Protocolo con ripetizione selettiva (sliding window)
+
+Il protocollo a **Ripetizione Selettiva** (Selective Repeat) è un'evoluzione progettata per superare l'inefficienza e lo spreco di banda caratteristici del protocollo Go-Back-N in presenza di canali soggetti a errori.
+
