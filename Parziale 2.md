@@ -443,5 +443,38 @@ L'ultimo modello introduce il livello massimo di complessità reale: la **possib
 **Classificazione formale**: Questa tipologia di protocolli, in cui la sorgente avanza nella trasmissione solo dopo aver ricevuto un riscontro positivo, prende il nome di PAR (Positive Acknowledgement with Retransmission) o ARQ (Automatic Repeat reQuest).
 
 
+#### Protocolli Sliding Windows
+
+I protocolli a **finestra scorrevole** (sliding window) sono meccanismi di controllo del flusso e degli errori utilizzati nelle reti di calcolatori per **gestire la trasmissione affidabile dei dati su canali bidirezionali (duplex)**. L'obiettivo principale è **massimizzare l'utilizzo della banda**, permettendo al mittente di inviare sequenze di pacchetti senza dover attendere il riscontro per ciascuno di essi.
+
+(Utilizza lo stesso canale per ricezione e invio)
+##### Parametri e Struttura
+
+- **Numeri di Sequenza:** Ogni frame viene contrassegnato da un identificativo numerico progressivo inserito nell'intestazione (header). Solitamente, la numerazione utilizza un campo di $n$ bit, permettendo valori che ciclicamente vanno da $0$ a $2^n - 1$.
+    
+- **Finestra di Invio:** È l'**intervallo logico dei frame che il nodo sorgente è autorizzato a trasmettere**. La dimensione massima della finestra definisce quanti frame possono rimanere contemporaneamente in transito senza aver ancora ricevuto conferma.
+    
+- **Finestra di Ricezione:** È l'**intervallo corrispondente sul nodo di destinazione**, che indica *quali numeri di sequenza il ricevitore è in grado di accettare e processare in quel determinato istante*. I frame che arrivano con numeri fuori da questa finestra vengono automaticamente scartati.
+    
+
+##### Dinamica di Scorrimento (Sliding)
+
+Il protocollo si basa sull'avanzamento dei limiti di queste finestre:
+
+- **Trasmissione:** Quando lo strato network passa un nuovo pacchetto al livello data link, viene assegnato il numero di sequenza successivo. Il limite superiore della finestra di invio avanza di una posizione.
+    
+- **Riscontro (ACK):** Quando la destinazione riceve correttamente i dati, genera un messaggio di _Acknowledgment_.
+    
+- **Scorrimento:** Alla ricezione dell'ACK, la sorgente sposta in avanti il limite inferiore della sua finestra. I frame confermati escono dalla finestra e vengono cancellati dalla memoria locale, liberando spazio per nuovi invii.
+    
+
+##### Gestione della Memoria (Buffer)
+
+Questo meccanismo impone vincoli hardware precisi. Il nodo mittente deve necessariamente mantenere in memoria (buffer) una copia di tutti i frame che si trovano all'interno della finestra di invio. Questo è fondamentale per garantire la tolleranza ai guasti: se un pacchetto viene perso nel canale fisico o scade il tempo massimo di attesa (timeout), la sorgente recupera il pacchetto dal buffer per effettuare la ritrasmissione.
+
+##### Piggybacking
+
+Per evitare lo spreco di banda dovuto all'invio continuo di piccoli pacchetti contenenti solo gli ACK, si utilizza la tecnica del _piggybacking_. Poiché il canale è bidirezionale, il destinatario attende che il proprio strato network debba inviare un pacchetto dati verso il mittente originale. A quel punto, inserisce il numero di ACK direttamente nell'intestazione di quel pacchetto dati. Solo se scade un determinato intervallo di attesa e non ci sono dati da inviare, viene generato un frame di controllo dedicato esclusivamente al trasporto dell'ACK.
+
 
 
