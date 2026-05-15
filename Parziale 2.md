@@ -706,4 +706,34 @@ Prima di trasmettere una stazione ascolta il canale per capire se qualcuno sta t
 Se il canale è occupato attende.
 Se il canale è libero trasmette un frame.
 
-In caso di collisione la stazione rimane in attesa per un intervallo casuale prima di ritentare
+In caso di collisione la stazione rimane in attesa per un intervallo casuale prima di ritentare.
+
+Protocollo **1-persistente** perchè la stazione trasmette con probabilità 1 quanto trova il canale libero.
+
+Per via del **Ritardo di propagazione** c'è una piccola probabilità che subito dopo l'inizio di una trasmissione, un altra stazione abbia iniziato a trasmettere non sentendo nulla sul canale, si verificherà una collisione. 
+
+CSMA **non persistente (0-p)**: Se trova il canale occupato *non sta in ascolto per capire quando si libera*, invece **aspetta un tempo casuale e poi trasmette**
+*Utilizza meglio il canale* ma *allunga i ritardi* già esistenti.
+
+CSMA **p-persistente**: si applica a canali divisi temporalmente. Ogni stazione controlla il canale, se lo trova libero *trasmette con probabilità p* e *rimanda* fino all'intervallo successivo con *probabilità 1-p*
+
+
+#### CSMA con rilevamento delle collisioni
+
+Miglioramento che *consente ad ogni stazione di annullare la propria trasmissione in caso di collisione*.
+
+Uno di questi protocolli è il **CSMA/CD** (CSMA con Collision Detection), ampiamente utilizzato nel sottolivello MAC delle LAN.
+Funzionamento: se se due o più stazioni trasmettono allo stesso tempo formando una collisione, ogni stazione interrompe la trasmissione e attende un periodo casuale di tempo prima di ritentare.
+
+
+### Protocolli MAC senza contesa
+
+#### Protocollo a mappa di bit
+
+Date N stazioni:
+
+Inizia con un **periodo di contesa di N intervalli**. Ogni stazione **prenota l'intervallo di tempo futuro** in cui trasmettere ponendo a 1 il bit corrispondente all'intervallo scelto, dopodiché **seguono l'ordine** e trasmettono.
+
+Con molte stazioni si perde efficienza, dato che aumenta il tempo di contesa.
+
+#### Protocolli token pasing
