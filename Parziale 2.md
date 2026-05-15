@@ -978,3 +978,10 @@ Il sistema divide il tempo in intervalli di attesa base (calcolati sul tempo di 
 
 se n è il numero di collisioni, aspetta un tempo tra 0 e $2^n$ intervalli.
 Se n > 16 ci si ferma comunque a $2^{16}$
+
+#### Prestazioni ethernet classico 
+
+Matematicamente, l'efficienza è definita dalla formula:
+
+$$Efficienza = \frac{1}{1 + \frac{2BLe}{cF}}$$
+
