@@ -750,3 +750,17 @@ Da qui derivano [[IEEE 802.4 -> Token Bus]] e [[IEEE 802.5 -> Token Ring]].
 
 #### Protocolli binary countdown
 
+
+- **Identificazione:** Ogni stazione utilizza un indirizzo binario univoco della stessa lunghezza.
+    
+- **Logica del Canale:** Il mezzo fisico combina le trasmissioni simultanee sovrapponendole tramite un **OR logico** (basta un singolo `1` per portare il canale a `1`).
+    
+- **Meccanismo di Arbitraggio:**
+    
+    1. Le stazioni in competizione iniziano a trasmettere il proprio indirizzo bit per bit, dal più significativo (MSB) al meno significativo (LSB).
+        
+    2. **Condizione di resa:** Se una stazione trasmette uno `0` ma rileva un `1` sul canale, si ritira immediatamente dalla competizione.
+        
+- **Esito (Deterministico):** Grazie all'eliminazione progressiva, vince sempre e solo la stazione con **l'indirizzo binario numericamente più alto**, la quale ottiene il diritto esclusivo di trasmettere il proprio frame di dati.
+
+### Protocolli a **contesa limitata**
