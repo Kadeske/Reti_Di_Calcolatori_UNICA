@@ -510,3 +510,18 @@ Il protocollo a **Ripetizione Selettiva** (Selective Repeat) è un'evoluzione pr
 - **Finestra di Ricezione:** A differenza del Go-Back-N, la ripetizione selettiva utilizza una finestra di ricezione di **dimensione maggiore di 1**. Questo permette al livello Data Link del destinatario di *accettare frame fuori sequenza*.
     
 - **Meccanismo di Buffer:** Se un frame risulta danneggiato o perso, viene scartato. Tuttavia, i frame successivi ricevuti correttamente **non vengono rifiutati**, ma allocati in un buffer di memoria locale in attesa del recupero del frame mancante.
+
+![[Pasted image 20260515130421.png]]
+
+Il diagramma illustra la sequenza operativa in caso di errore:
+
+1. **Errore e Salto:** I frame 0 e 1 sono riscontrati. Il frame 2 va perso.
+    
+2. **Buffering e NAK:** Arriva il frame 3. Il destinatario rileva il salto, genera un **NAK 2** e posiziona il frame 3 nel buffer. I successivi frame 4 e 5 in arrivo subiscono lo stesso trattamento di buffering.
+    
+3. **Ritrasmissione Selettiva:** La sorgente riceve il NAK 2 e trasmette immediatamente una nuova copia **solo** del frame 2 (non ritrasmette il 3, 4 o 5).
+    
+4. **Consegna Sequenziale:** Il destinatario riceve il frame 2. Ora la sequenza in memoria (2, 3, 4, 5) è continua e completa. Il livello Data Link scarica il buffer, passando i pacchetti nell'ordine corretto al livello di rete superiore, e fa avanzare la propria finestra generando i relativi ACK cumulativi o singoli.
+
+Se dovesse perdere il NAK la soergente andrebbe comunque in timeout per il frame 2, e lo ritrasmetterebbe, ma se ne accorgerebbe più tardi.
+
