@@ -1063,3 +1063,46 @@ Supportano solo la modalità **full duplex**.
 
 
 ### LAN Wireless 
+
+**LAN wireless o (standard IEEE 802.11)**
+
+Le reti 802.11 supportano due modalità di funzionamento:
+- **Modalità Infrastruttura:** Utilizza un nodo centrale chiamato **AP (Access Point)** che coordina la comunicazione tra i dispositivi.
+    
+- **Modalità Ad Hoc:** I computer associati comunicano direttamente tra loro creando una rete temporanea punto-punto, senza l'ausilio di un Access Point centrale.
+    
+
+
+A differenza del modello OSI classico, nei protocolli della famiglia 802 il livello **Data Link** è rigidamente s**uddiviso in due sottolivelli** per separare l'*accesso hardware* dalla *logica di rete*:
+
+- **Sottolivello MAC (Medium Access Control):** È il cuore operativo. Gestisce l'*allocazione del canale radio* e determina le r*egole per l'accesso al mezzo* (chi e quando può trasmettere).
+    
+- **Sottolivello LLC (Logical Link Control):** Funge da *interfaccia di raccordo verso i livelli superiori*. Il suo scopo è nascondere al livello di Rete (Network) le differenze hardware dei vari standard 802 sottostanti, identificando e incapsulando correttamente il protocollo di rete trasportato (ad esempio, IP).
+    
+- _Livello Fisico:_ *Varia a seconda dell'implementazione* e dell'anno di rilascio (es. 802.11a/b/g/n), adottando *diverse tecniche di modulazione del segnale radio* (come Frequency Hopping, OFDM o MIMO OFDM).
+    
+
+![[Pasted image 20260515165447.png]]
+Lo standard classifica i frame in tre categorie principali: **dati, controllo e gestione**. Il documento dettaglia la struttura dell'intestazione (header) di un tipico frame dati, che risulta molto più complessa rispetto al classico frame Ethernet:
+
+- **Frame Control (2 byte):** È un campo denso di metadati, suddiviso in specifici bit di flag, tra cui:
+    
+    - _Version, Type e Subtype:_ Identificano esattamente la natura del frame.
+        
+    - _To DS / From DS:_ Indicano se il frame è diretto o proviene dal _Distribution System_ (l'infrastruttura di rete dietro l'AP).
+        
+    - _More frag / Retry:_ Gestiscono rispettivamente la frammentazione dei pacchetti grandi e le ritrasmissioni.
+        
+    - _Pwr. mgt:_ Gestisce lo stato di risparmio energetico della stazione.
+        
+    - _Protected frame:_ Segnala se il payload è cifrato (sicurezza).
+        
+- **Duration (2 byte):** Utilizzato per prenotare virtualmente il canale, indicando il tempo necessario per completare la trasmissione.
+    
+- **Indirizzi 1, 2 e 3 (6 byte ciascuno):** A differenza di Ethernet (che ne usa due), il wireless richiede spesso tre indirizzi MAC per gestire l'instradamento attraverso l'Access Point: il destinatario finale, il mittente originale e l'indirizzo dell'AP (BSSID).
+    
+- **Sequence (2 byte):** Contiene il numero di sequenza per riordinare i frammenti e scartare i frame duplicati.
+    
+- **Dati (da 0 a 2312 byte):** Il payload effettivo (il pacchetto di livello superiore).
+    
+- **Check Sequence (4 byte):** Il codice CRC per il rilevamento degli errori di trasmissione.
