@@ -737,3 +737,16 @@ Inizia con un **periodo di contesa di N intervalli**. Ogni stazione **prenota l'
 Con molte stazioni si perde efficienza, dato che aumenta il tempo di contesa.
 
 #### Protocolli token pasing
+
+Il controllo dell'accesso al mezzo trasmissivo condiviso è regolato in modo deterministico tramite un messaggio di controllo univoco denominato **token**.
+
+- **Diritto di trasmissione:** Il possesso del token garantisce alla stazione l'autorizzazione esclusiva a inviare dati sul canale.
+    
+- **Dinamica di passaggio:** Se una stazione ha un frame in coda, lo trasmette quando riceve il token; successivamente, cede il token alla stazione seguente. Se non ha dati da trasmettere, passa immediatamente il token, garantendo una rotazione continua.
+
+Per impedire che un frame circoli all'infinito, alcune stazioni dovranno rimuoverlo dall'anello.
+
+Da qui derivano [[IEEE 802.4 -> Token Bus]] e [[IEEE 802.5 -> Token Ring]].
+
+#### Protocolli binary countdown
+
