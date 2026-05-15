@@ -588,6 +588,37 @@ E' molto importante nelle LAN (e WLAN) dato che preferiscono le connessioni ad a
 ## Problemi i allocazione del canale
 
 
-### Allocazione statica 
+### Allocazione statica di canali 
 
+L'allocazione statica tramite **FDM** suddivide lo spettro delle frequenze assegnando a ogni utente una porzione esclusiva di banda.
+
+Il testo evidenzia che questa soluzione è ingegneristicamente accettabile **solo se il numero di utenti $N$ è piccolo e rigorosamente costante**.
+
+I problemi emergono al variare di queste condizioni:
+
+- Se $N$ è **grande**, la porzione di banda allocata al singolo utente risulta troppo ridotta per trasmissioni efficienti.
+    
+- A causa della natura a raffiche (irregolare) del traffico dati, gran parte della banda assegnata a stazioni momentaneamente inattive rimane inutilizzata e viene quindi **sprecata**.
+    
+- Se $N$ **varia dinamicamente**, una divisione fissa porta o allo spreco di risorse (quando gli utenti diminuiscono) o al blocco delle comunicazioni (quando gli utenti aumentano oltre il numero di canali).
+
+
+#### Ritardo medio
+In assenza di competizione, calcolando l'accodamento in un'unica coda per un canale intero, il ritardo medio $T$ è:
+
+$$T = \frac{1}{\mu C - \lambda}$$
+
+Applicando FDM, il canale viene partizionato in $N$ sottocanali indipendenti. Di conseguenza:
+
+- La capacità di ogni sottocanale scende a $C/N$.
+    
+- La frequenza di input media su ogni sottocanale scende a $\lambda/N$.
+    
+
+Ricalcolando il ritardo medio ($T_{FDM}$) per queste nuove variabili, si ottiene:
+
+$$T_{FDM} = \frac{1}{(\mu \cdot \frac{C}{N}) - (\frac{\lambda}{N})} = \frac{N}{\mu C - \lambda} = N \cdot T$$
+
+
+*L'assunto finale estende questa inefficienza matematica anche al*  **TDM (Time Division Multiplexing)**. Allocare staticamente intervalli di tempo (time slot) a $N$ utenti genera lo stesso livello di spreco prestazionale ogniqualvolta un utente non ha dati da trasmettere nel proprio turno.
 
