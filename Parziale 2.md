@@ -764,3 +764,32 @@ Da qui derivano [[IEEE 802.4 -> Token Bus]] e [[IEEE 802.5 -> Token Ring]].
 - **Esito (Deterministico):** Grazie all'eliminazione progressiva, vince sempre e solo la stazione con **l'indirizzo binario numericamente più alto**, la quale ottiene il diritto esclusivo di trasmettere il proprio frame di dati.
 
 ### Protocolli a **contesa limitata**
+
+Combina le proprietà miglio dei protocolli ALHOA e quelli senza collisioni.
+
+Dividono le stazioni in gruppi: solo ai membri del gruppo 0 è permesso utilizzare lo slot (temporale) 0 e così via.
+
+Se l'intervallo 0 non viene utilizzato o si presenta una collisione, si passa allo slot successivo.
+
+Come assegnare i gruppi:
+- **1** membro per gruppo : 
+	- assenza di collisioni, è come il binary countdown
+- **2** stazioni per gruppo: 
+	- la probabilità di collisione è trascurabile
+- **tutte** le stazioni in un solo gruppo: 
+	- si ritorna al punto di partenza, come i protocolli ALOHA
+
+#### Protocollo Adaptive Tree Walk
+
+Il protocollo organizza le stazioni della rete mappandole come le **foglie di un albero binario**.
+
+- I nodi interni dell'albero non sono dispositivi fisici, ma rappresentano **gruppi logici** di stazioni.
+    
+- Il nodo radice (nell'esempio il nodo 1) rappresenta l'intera rete, ovvero l'insieme di tutte le stazioni (da A ad H). Il nodo 2 rappresenta la metà sinistra (A, B, C, D), il nodo 4 un quarto (A, B) e così via.
+- 
+![[Pasted image 20260515143725.png]]
+
+si tenta la trasmissione in un canale, se si trova libero se ne prende il controllo. In caso di collisione nell'intervallo 1, possono competere solo le stazioni che si trovano sotto il nodo 2, il successivo sarà il nodo 3, etc.
+Quindi, in caso di collisioni la ricerca continua nei figli posti a sinistra e poi a destra del nodo.
+
+### Protocolli WDMA (Wavelength Division Multiple Access )
