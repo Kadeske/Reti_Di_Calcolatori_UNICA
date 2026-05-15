@@ -1145,3 +1145,28 @@ Per risolvere il problema, i bridge utilizzano l'algoritmo di **Spanning Tree** 
 I bridge non servono solo per uffici ravvicinati, ma **possono essere usati per interconnettere LAN distanti geograficamente** (es. due sedi aziendali in città diverse), **facendole apparire ai computer come un'unica grande rete locale**. Per fare ciò, i due *bridge remoti vengono collegati tra loro utilizzando una connessione punto-punto*, come ad esempio linee private in affitto dalle compagnie telefoniche.
 
 ![[Pasted image 20260515170546.png]]
+
+
+### Virtual LAN
+
+Le **VLAN (Virtual LAN)** sono suddivisioni logiche di uno switch fisico che permettono di organizzare le porte come entità separate e indipendenti. In pratica, un frame inviato all'interno di una VLAN non viene mai inoltrato verso porte appartenenti a una VLAN differente, nemmeno in caso di traffico broadcast.
+
+
+**Caratteristiche Principali**:
+- **Isolamento logico:** Gli switch moderni possono essere configurati affinché gruppi di porte funzionino come se appartenessero a reti fisiche distinte.
+    
+- **Etichettatura (Tagging):** Per regolare l'instradamento, a ogni VLAN viene associata un'etichetta (spesso identificata nei diagrammi con colori o ID numerici).
+    
+- **Criteri di associazione:** Le tabelle degli switch possono associare queste etichette alle porte fisiche, agli indirizzi MAC, agli indirizzi IP o a specifici protocolli di livello 3.
+    
+- **Estensione:** È possibile connettere più switch tra loro per estendere la stessa VLAN su più apparati fisici; in questo caso, i link di collegamento trasportano il traffico di più VLAN contemporaneamente.
+    
+
+**Gestione del Traffico e Flooding**:
+Il comportamento dello switch cambia per garantire che il traffico rimanga confinato nel proprio dominio logico:
+
+1. **Traffico Unicast:** Se la posizione della destinazione è nota nella tabella dello switch, il frame viene inoltrato solo se la porta di destinazione appartiene alla stessa VLAN del mittente.
+    
+2. **Flooding e Broadcast:** Se un frame è di tipo broadcast o è diretto a un indirizzo sconosciuto, lo switch lo invia a **tutte e sole** le porte contrassegnate con l'etichetta VLAN corrispondente, ignorando completamente le porte delle altre VLAN.
+    
+3. **Esempio pratico:** Un hub collegato a una porta dello switch può contenere stazioni di VLAN diverse se quella specifica porta dello switch è configurata per accettare più etichette (porte grigie e nere nell'esempio del testo).
