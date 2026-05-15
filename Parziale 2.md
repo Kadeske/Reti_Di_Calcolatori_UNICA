@@ -1106,3 +1106,42 @@ Lo standard classifica i frame in tre categorie principali: **dati, controllo e 
 - **Dati (da 0 a 2312 byte):** Il payload effettivo (il pacchetto di livello superiore).
     
 - **Check Sequence (4 byte):** Il codice CRC per il rilevamento degli errori di trasmissione.
+
+## Commutazione a livello data link 
+
+Per collegare due tipi di reti che hanno protocolli diversi si può utilizzare un **bridge**.
+
+I bridge possono usare 2 algoritmi:
+- **Backward learning** (o 'con apprendimento'): per evitare l'invio di dati dove non è necessario;
+- **Spanning tree**: per interrompere i cicli quando gli switch vengono cablati insieme.
+
+### Bridge con Apprendimento (Backward Learning)
+
+A differenza degli hub che si limitano a ripetere il segnale elettrico, **i bridge dividono i domini di collisione e filtrano il traffico in modo intelligente**. Per farlo, operano in "modalità promiscua", analizzando ogni frame che viaggia sui cavi a cui sono collegati.
+
+Il **meccanismo di instradamento** si basa su una tabella hash interna e sull'algoritmo di **backward learning** (apprendimento all'indietro):
+
+- **Inizializzazione e Flooding:** Appena collegato, la tabella del bridge è vuota. Se riceve un frame destinato a una macchina sconosciuta, il bridge esegue un _flooding_ (inondazione), copiando e inoltrando il frame su tutte le sue porte tranne quella di provenienza.
+    
+- **Apprendimento:** Leggendo l'indirizzo _sorgente_ dei frame in ingresso, il bridge impara su quale porta si trova una specifica macchina e ne registra l'associazione nella sua tabella.
+    
+- **Gestione Dinamica:** Per adattarsi ai cambiamenti della rete (computer spenti o spostati), il bridge memorizza il tempo di arrivo di ogni frame. Periodicamente, analizza la tabella ed elimina le voci più vecchie (timeout).
+
+### Bridge con Spanning Tree (Prevenzione dei Loop)
+
+Nelle reti aziendali si inseriscono spesso collegamenti ridondanti tra i bridge, in modo che un guasto a un cavo non divida la rete in due tronconi isolati.
+
+Tuttavia, la ridondanza unita al meccanismo di flooding crea un grave problema: la formazione di **cicli (loop)**. Un frame con destinazione sconosciuta verrebbe copiato all'infinito tra i bridge ridondanti, saturando la rete per sempre.
+
+Per risolvere il problema, i bridge utilizzano l'algoritmo di **Spanning Tree** (Albero di copertura):
+
+- I bridge comunicano tra loro per sovrapporre alla topologia fisica (che contiene anelli) una topologia logica "virtuale" a forma di albero, **ignorando (disattivando logicamente) alcuni collegamenti fisici**.
+    
+- L'algoritmo inizia con l'elezione di un **bridge radice** (root bridge). I bridge si scambiano i rispettivi numeri di serie di fabbrica e quello con il numero più basso vince.
+    
+- Dal bridge radice si calcolano i percorsi più brevi verso ogni altra LAN, disabilitando le porte superflue. Se un collegamento si guasta, la struttura ad albero viene ricalcolata dinamicamente.
+### Bridge Remoti
+
+I bridge non servono solo per uffici ravvicinati, ma **possono essere usati per interconnettere LAN distanti geograficamente** (es. due sedi aziendali in città diverse), **facendole apparire ai computer come un'unica grande rete locale**. Per fare ciò, i due *bridge remoti vengono collegati tra loro utilizzando una connessione punto-punto*, come ad esempio linee private in affitto dalle compagnie telefoniche.
+
+![[Pasted image 20260515170546.png]]
