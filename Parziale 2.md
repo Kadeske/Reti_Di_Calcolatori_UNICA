@@ -988,3 +988,47 @@ $$Efficienza = \frac{1}{1 + \frac{2BLe}{cF}}$$
 
 ### Ethernet Commutata 
 
+L'**Ethernet commutata (Switched Ethernet)** nasce per *risolvere il problema della saturazione del traffico* nelle reti Ethernet classiche all'aumentare del numero di stazioni. Il dispositivo centrale di questa architettura è lo **switch** (commutatore).
+
+**Architettura Hardware**:
+Lo **switch** è composto da un circuito interno ad alta velocità (backplane) su cui si innestano diverse schede di linea, **ognuna dotata di porte a cui vengono collegati i singoli computer host tramite doppino dedicato**.
+
+Esistono due approcci hardware principali per la gestione di queste porte:
+
+- **LAN integrate su scheda:** *Tutte le porte di una determinata scheda formano un unico dominio di collisione* gestito tramite l'algoritmo di backoff esponenziale binario (CSMA/CD), permettendo una sola trasmissione per scheda alla volta, ma consentendo operazioni in parallelo tra schede diverse.
+    
+- **Porte bufferizzate (Full-Duplex):** Ogni porta di input è dotata di un buffer di memoria (RAM). I frame in arrivo vengono interamente memorizzati prima di essere inoltrati. Questo approccio **isola ogni singola porta in un dominio di collisione separato**, eliminando di fatto le collisioni hardware e consentendo comunicazioni simultanee in entrambe le direzioni (full duplex a piena banda).
+    
+
+
+
+
+Quando uno **switch riceve un frame** Ethernet standard, ne analizza la destinazione per instradarlo:
+
+- Se il destinatario si trova sulla **stessa porta di provenienza**, il frame viene **scartato** per evitare loop.
+    
+- Se il destinatario è su una **porta diversa ma della stessa scheda**, viene **inoltrato localmente**.
+    
+- Se il destinatario è su una **scheda diversa**, il frame **attraversa il backplane** ad alta velocità per raggiungere la scheda di destinazione.
+    
+
+Gli switch possono inoltre agire come concentratori in topologie ibride, collegandosi a vecchi Hub. I frame generati dalle stazioni sull'Hub devono prima sopravvivere alle collisioni sul loro mezzo condiviso; una volta entrati nello switch, vengono gestiti ad alta velocità come qualsiasi altro frame indipendente.
+
+
+ **L'Autoapprendimento (Backward Learning)**:
+Per instradare i pacchetti, lo switch **deve mantenere una tabella delle associazioni tra gli indirizzi MAC e le porte fisiche**. Poiché la configurazione manuale sarebbe insostenibile, lo switch utilizza un algoritmo di autoapprendimento:
+
+- **Apprendimento:** Inizialmente la tabella è vuota. Ogni volta che un frame entra in una porta, lo switch legge l'indirizzo del _mittente_ e lo registra nella tabella, associandolo alla porta da cui è appena arrivato.
+    
+- **Flooding (Inondamento):** Se lo switch deve instradare un pacchetto *ma non trova l'indirizzo del destinatario nella sua tabella*, è costretto a inoltrare (flood) una copia del frame su _tutte_ le porte attive, tranne quella di provenienza. Lo stesso avviene per i messaggi diretti ad indirizzi broadcast o multicast.
+    
+- **Timeout:** *Le voci della tabella hanno una scadenza*. In assenza di traffico da parte di una stazione, la sua associazione viene rimossa per mantenere la tabella pulita ed efficiente.
+    
+
+**Limiti e Colli di Bottiglia**:
+Nonostante lo switch elimini gran parte dei problemi di collisione sui cavi, le prestazioni sono vincolate dalla sua potenza interna:
+
+- **Saturazione del Backplane:** La capacità di commutazione della scheda interna deve essere altissima, idealmente sufficiente a garantire il throughput di tutte le porte contemporaneamente a piena banda.
+    
+- **Esaurimento dei Buffer (Packet Drop):** Se più porte trasmettono simultaneamente dati ad alta velocità verso un'unica porta di uscita (es. un server riceve 20 Mbps in ingresso ma la sua porta supporta solo 10 Mbps), il buffer della porta di uscita si riempie rapidamente. I frame in eccesso non possono essere gestiti e vengono scartati. Il recupero di questi dati persi e il controllo del flusso diventano quindi responsabilità dei livelli superiori del protocollo (es. TCP).
+    
