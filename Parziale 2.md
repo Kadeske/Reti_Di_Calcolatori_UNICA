@@ -507,3 +507,6 @@ Una _sliding window_ configurata a 1 bit ($n=1$) è operativamente equivalente a
 
 Il protocollo a **Ripetizione Selettiva** (Selective Repeat) è un'evoluzione progettata per superare l'inefficienza e lo spreco di banda caratteristici del protocollo Go-Back-N in presenza di canali soggetti a errori.
 
+- **Finestra di Ricezione:** A differenza del Go-Back-N, la ripetizione selettiva utilizza una finestra di ricezione di **dimensione maggiore di 1**. Questo permette al livello Data Link del destinatario di *accettare frame fuori sequenza*.
+    
+- **Meccanismo di Buffer:** Se un frame risulta danneggiato o perso, viene scartato. Tuttavia, i frame successivi ricevuti correttamente **non vengono rifiutati**, ma allocati in un buffer di memoria locale in attesa del recupero del frame mancante.
