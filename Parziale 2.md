@@ -931,3 +931,50 @@ max **1024 utenti**
 
 E' **immune alle interferenze** e **sicuro contro le intercettazioni**.
 
+### Protocollo del sottolivello MAC di Ethernet classica
+
+Il **protocollo del sottolivello MAC** (Medium Access Control) **di Ethernet classica** *definisce come le stazioni formattano e trasmettono i dati sul cavo condiviso*. Ethernet è nato per far comunicare in modo semplice e decentralizzato più computer su un unico mezzo fisico.
+
+Struttura del frame:
+
+![[Pasted image 20260515160845.png]]
+
+Il formato originale (Ethernet DIX) e lo standard ufficiale (IEEE 802.3) sono **quasi identici**, con una piccola ma fondamentale differenza nel modo in cui identificano il contenuto.
+
+1. **Preambolo (8 byte):** Una sequenza alternata di uno e zero (10101010). Serve per "svegliare" i riceventi e permettere ai loro orologi interni di *sincronizzarsi con il segnale in arrivo*. **Nello standard 802.3**, l'ultimo byte termina con `11` per indicare che il vero e proprio frame sta per iniziare (Start of Frame delimiter).
+    
+2. **Indirizzo di Destinazione (6 byte):** Specifica chi deve ricevere il frame. Può essere l'indirizzo di una singola scheda di rete, un indirizzo di _multicast_ (per un gruppo specifico di stazioni, indicato dal primo bit a 1), oppure un indirizzo di _broadcast_ (tutti i bit a 1), che indica a tutte le macchine della rete di accettare il pacchetto.
+    
+3. **Indirizzo di Origine (6 byte):** Specifica chi sta inviando il frame. Ogni indirizzo è univoco a livello mondiale.
+    
+4. **Type o Length (2 byte):** Qui risiede **la differenza tra i due standard**. *Ethernet DIX* usava questo campo come `Type` per indicare a quale protocollo superiore (es. IPv4) passare i dati ricevuti. *IEEE 802.3*, invece, lo usava come `Length` per indicare la dimensione in byte dei dati trasportati. Oggi, per far convivere i due sistemi, la regola è: se il valore è $\le 1536$ è considerato una Lunghezza, se è $> 1536$ è considerato un Tipo di protocollo.
+    
+5. **Dati (da 0 a 1500 byte):** Il carico utile del frame (il vero pacchetto di rete).
+    
+6. **Pad (Riempimento):** Byte aggiunti artificialmente se il campo Dati è troppo piccolo (meno di 46 byte).
+    
+7. **Checksum (4 byte):** Un codice di controllo degli errori a 32 bit (CRC). Se il frame viene corrotto durante il viaggio (a causa di disturbi elettrici o collisioni parziali), il ricevitore ricalcola questo codice; se non coincide con quello nel pacchetto, il frame viene distrutto.
+
+Una delle regole più importanti di Ethernet è che un frame valido **deve essere lungo almeno 64 byte** (dall'indirizzo di destinazione al checksum incluso). Di conseguenza, il campo dati non può mai essere inferiore a 46 byte; se lo è, viene "gonfiato" con il campo _Pad_.
+Perché questo limite? Ethernet usa il protocollo **CSMA/CD** (Carrier Sense Multiple Access with Collision Detection).  Per evitare collisioni date dalla trasmissione contemporanea, sia allunga il messaggio così da 'sentirsi prima e più forte'.
+
+#### Algoritmo di backoff esponenziale binario
+
+Cosa succede quando due stazioni collidono? Entrambe si fermano. *Se riprovassero subito*, colliderebbero di nuovo. Ethernet utilizza quindi l'algoritmo di **backoff esponenziale binario** per scaglionare i loro ritentativi.
+
+Il sistema divide il tempo in intervalli di attesa base (calcolati sul tempo di andata e ritorno nel caso peggiore, circa $51.2$ microsecondi).
+
+- Dopo la **1° collisione**, le stazioni "lanciano una moneta" virtuale: scelgono un tempo di attesa casuale di **0 oppure 1** intervallo.
+    
+- Se si scontrano ancora (hanno scelto entrambe 0 o entrambe 1), significa che la rete è affollata. Al tentativo successivo espandono il range: dopo la **2° collisione** scelgono casualmente tra **0, 1, 2, o 3** intervalli.
+    
+- Dopo la **3° collisione**, scelgono tra **0 e 7** intervalli ($2^3 - 1$).
+    
+- Questa finestra di scelta raddoppia esponenzialmente ad ogni tentativo fallito consecutivo (da 0 a $2^i - 1$, dove $i$ è il numero di collisioni).
+    
+- Per evitare attese infinite, dopo la decima collisione il limite massimo si congela a 1023 intervalli.
+    
+- Se una stazione fallisce per 16 volte consecutive, si arrende. La rete è considerata temporaneamente non funzionante e il problema viene segnalato ai livelli software superiori.
+
+se n è il numero di collisioni, aspetta un tempo tra 0 e $2^n$ intervalli.
+Se n > 16 ci si ferma comunque a $2^{16}$
