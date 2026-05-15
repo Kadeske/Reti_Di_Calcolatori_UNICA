@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "aad28f6b99310659",
@@ -171,8 +172,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           },
           {
@@ -190,8 +191,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -208,6 +208,7 @@
   },
   "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "img/Pasted image 20260515125342.png",
     "Approfondimenti P1/Multiplexing.md",
     "Parziale 2.md",
     "Approfondimenti P1/Modem.md",
@@ -243,7 +244,6 @@
     "Approfondimenti P1/ISO.md",
     "Approfondimenti P1/IAB.md",
     "Approfondimenti P1/ATM.md",
-    "Approfondimenti P1/X.25.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",

@@ -443,7 +443,7 @@ L'ultimo modello introduce il livello massimo di complessità reale: la **possib
 **Classificazione formale**: Questa tipologia di protocolli, in cui la sorgente avanza nella trasmissione solo dopo aver ricevuto un riscontro positivo, prende il nome di PAR (Positive Acknowledgement with Retransmission) o ARQ (Automatic Repeat reQuest).
 
 
-#### Protocolli Sliding Windows
+### Protocolli Sliding Window
 
 I protocolli a **finestra scorrevole** (sliding window) sono meccanismi di controllo del flusso e degli errori utilizzati nelle reti di calcolatori per **gestire la trasmissione affidabile dei dati su canali bidirezionali (duplex)**. L'obiettivo principale è **massimizzare l'utilizzo della banda**, permettendo al mittente di inviare sequenze di pacchetti senza dover attendere il riscontro per ciascuno di essi.
 
@@ -477,4 +477,18 @@ Questo meccanismo impone vincoli hardware precisi. Il nodo mittente deve necessa
 Per evitare lo spreco di banda dovuto all'invio continuo di piccoli pacchetti contenenti solo gli ACK, si utilizza la tecnica del _piggybacking_. Poiché il canale è bidirezionale, il destinatario attende che il proprio strato network debba inviare un pacchetto dati verso il mittente originale. A quel punto, inserisce il numero di ACK direttamente nell'intestazione di quel pacchetto dati. Solo se scade un determinato intervallo di attesa e non ci sono dati da inviare, viene generato un frame di controllo dedicato esclusivamente al trasporto dell'ACK.
 
 
+#### Sliding Window a 1 bit
 
+Una _sliding window_ configurata a 1 bit ($n=1$) è operativamente equivalente a un protocollo **Stop-and-Wait**.
+
+- **Meccanismo:** La sorgente è autorizzata a mantenere in transito **un solo frame alla volta**. La trasmissione del frame successivo è strettamente subordinata alla ricezione dell'ACK relativo al frame precedente.
+    
+- **Inefficienza (Spreco di banda):** Questo vincolo **genera periodi di inattività** (idle time). Il trasmettitore rimane in attesa per l'intera durata necessaria all'invio del frame e alla propagazione dell'ACK (Round Trip Time), non sfruttando la capacità trasmissiva del canale.
+
+
+#### Protocollo go back n (sliding window)
+
+- **Finestra di Ricezione:** La caratteristica fondamentale del Go-Back-N è l'utilizzo di una finestra di ricezione di **dimensione 1**. Questo implica che *il livello Data Link del nodo destinatario è programmato per accettare esclusivamente il frame successivo in ordine sequenziale* esatto rispetto a quello precedentemente consegnato al livello di Rete.
+    
+- **Finestra di Invio:** La sorgente possiede una finestra di dimensione $N > 1$, permettendo la *trasmissione continua di pacchetti in attesa di riscontro* (pipeline), fino al riempimento del buffer di invio.
+![[Pasted image 20260515125342.png]]
