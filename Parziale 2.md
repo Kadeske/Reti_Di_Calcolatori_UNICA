@@ -525,3 +525,56 @@ Il diagramma illustra la sequenza operativa in caso di errore:
 
 Se dovesse perdere il NAK la soergente andrebbe comunque in timeout per il frame 2, e lo ritrasmetterebbe, ma se ne accorgerebbe più tardi.
 
+### Esempi reali 
+
+#### La famiglia HDLC (Protocolli storici)
+
+Questi protocolli, derivati originariamente da IBM, rappresentano la base orientata ai bit per il controllo del data link.
+
+- **Struttura del Frame:** Utilizzano il _bit stuffing_ e sono delimitati da un flag di inizio/fine `01111110`. Contengono campi per indirizzo, controllo, dati (payload) e un checksum (CRC) per gli errori.
+    
+- **Tipologie di Frame:** Il campo di controllo definisce tre tipi di frame:
+    
+    1. _Informazioni:_ trasportano dati e numeri di sequenza per gli ACK (piggybacking).
+        
+    2. _Supervisione:_ gestiscono il flusso e gli errori (es. ACK positivi o negativi/rifiuti).
+        
+    3. _Senza numero:_ gestiscono la connessione (es. disconnessione o reset della linea).
+
+![[Pasted image 20260515131024.png]]![[Pasted image 20260515131054.png]]
+
+
+#### SLIP (Obsoleto):
+
+Protocollo basilare che utilizza il _byte stuffing_. 
+Non effettua correzione degli errori, non supporta l'assegnazione dinamica degli IP e non prevede autenticazione.
+Può risparmiare spazio comprimendo intestazioni di pacchetti consecutivi.
+
+
+#### PPP (Point-to-Point Protocol):
+
+È lo standard moderno, **orientato al carattere**, ampiamente usato per le connessioni WAN e ADSL. A differenza di SLIP, gestisce gli errori, supporta IP dinamici e permette l'autenticazione.
+
+Il PPP si basa su due sotto-protocolli fondamentali:
+
+- **LCP (Link Control Protocol):** Gestisce l'apertura, il test, la negoziazione dei parametri (come la lunghezza massima del frame) e la chiusura della linea fisica.
+    
+- **NCP (Network Control Protocol):** Subentra dopo LCP per configurare le opzioni specifiche del livello di rete sovrastante (come l'IP).
+
+**Fasi della connessione PPP:** La linea parte dallo stato `DEAD`, passa a `ESTABLISH` (negoziazione LCP), poi ad `AUTHENTICATE` (opzionale), entra in fase `NETWORK` (configurazione NCP), e infine arriva allo stato `OPEN` per la trasmissione dati, prima di terminare (`TERMINATE`).
+![[Pasted image 20260515131342.png]]
+
+
+#### ADSL 
+
+Per le connessioni a banda larga su doppino telefonico (ADSL), l'architettura utilizza una pila di protocolli sovrapposti.
+
+La gerarchia (dal livello di rete al livello fisico) è la seguente: **IP -> PPP -> AAL5 -> ATM -> ADSL**.
+
+- **ADSL (Livello Fisico):** Utilizza la modulazione digitale **OFDM** (Multiplazione a divisione di frequenze ortogonali).
+    
+- **ATM (Data Link):** Trasmette l'informazione in celle a lunghezza fissa in modo "asincrono" (ovvero, invia dati solo quando ce ne sono effettivamente, senza un flusso continuo forzato).
+    
+- **AAL5 (ATM Adaptation Layer 5):** Fa da intermediario tra PPP e ATM. Si occupa di segmentare e riassemblare i pacchetti in celle. Aggiunge un trailer (non un header) con la lunghezza totale e un CRC di 4 byte, inserendo byte di riempimento (_padding_) per far sì che la lunghezza sia un multiplo esatto di 48 byte.
+    
+- **PPPoA (PPP over ATM):** È la specifica che definisce come incapsulare esattamente i frame PPP all'interno del payload di AAL5.
