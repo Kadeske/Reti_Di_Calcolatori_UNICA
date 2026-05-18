@@ -11,14 +11,12 @@
             "id": "404eefb17cf28692",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Parziale 2.md",
-                "mode": "source",
-                "source": false
+                "file": "pdf/Appunti_RC.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Parziale 2"
+              "icon": "lucide-file-text",
+              "title": "Appunti_RC"
             }
           }
         ]
@@ -204,8 +202,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b5b5eb461e21f79d",
+  "active": "304b3b272d1f4f02",
   "lastOpenFiles": [
+    "pdf/Reti_di_calcolatori_3.pdf",
     "Parziale 2.md",
     "pdf/Appunti_RC.pdf.part",
     "img/Pasted image 20260515170546.png",
