@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "aad28f6b99310659",
@@ -157,13 +156,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Approfondimenti P1/Multiplexing.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Multiplexing"
+              "title": "Struttura"
             }
           },
           {
@@ -206,13 +204,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "404eefb17cf28692",
+  "active": "b5b5eb461e21f79d",
   "lastOpenFiles": [
-    "pdf/Appunti_RC.pdf.part",
-    "Pasted image 20260515170546.png",
-    "Pasted image 20260515165447.png",
-    "img/Pasted image 20260515160845.png",
     "Parziale 2.md",
+    "pdf/Appunti_RC.pdf.part",
+    "img/Pasted image 20260515170546.png",
+    "img/Pasted image 20260515165447.png",
+    "img/Pasted image 20260515160845.png",
     "Pasted image 20260515164810.png",
     "img/Pasted image 20260515153620.png",
     "img/Pasted image 20260515153619.png",
