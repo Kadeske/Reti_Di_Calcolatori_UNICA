@@ -141,7 +141,7 @@ E' possibile avere 2 SIM nello stesso apparecchio:
 BTS = Base Transceiver Station (ANTENNA)
 ME = Mobile Equipment (CELLULARE)
 
-Si vuole che il tempo massimo di comunicazione tra antenna e cellulare sia di al massimo di **33 microsecondi**, otttendo una distanza massima ideale di **70 km**.
+Si vuole che il tempo massimo di comunicazione tra antenna e cellulare sia di al massimo di **233 microsecondi**, otttendo una distanza massima ideale di **70 km**.
 
 la **distanza massima effettiva** è la metà, circa **35km**
 
