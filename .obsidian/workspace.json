@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Parziale 2.md",
+                "file": "Parziale 3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Parziale 2"
+              "title": "Parziale 3"
             }
           }
         ]
@@ -206,10 +206,11 @@
   },
   "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "Parziale 2.md",
+    "Parziale 3.md",
     "pdf/Appunti_RC.pdf",
     "pdf/Reti_di_calcolatori_3.pdf.part",
     "pdf/Reti_di_calcolatori_3.pdf",
-    "Parziale 2.md",
     "pdf/Appunti_RC.pdf.part",
     "img/Pasted image 20260515170546.png",
     "img/Pasted image 20260515165447.png",
@@ -252,7 +253,6 @@
     "pdf",
     "Senza nome 1.canvas",
     "Senza nome.canvas",
-    "img",
-    "Trascrizione_lezioni"
+    "img"
   ]
 }
