@@ -148,7 +148,11 @@ Quindi si possono considerare due livelli di routing (interno e di confine/ester
 
 ### Broadcast Routing
 
-3 metodologie per ottenere la trasmissione broadcast:
+4 metodologie per ottenere la trasmissione broadcast:
 Invio pacchetti distinti : pro e contro 
 flooding: pro e contro 
-multidestination routing: 
+multidestination routing: lista di destinazioni, invio delle copie fino a raggiungere un solo destinatario
+Il quarto utilizza il sink tree del routeer di trasmissioni e lo spanning tree per inoltrare i pacchetti.
+
+(ricorda definizione spanning tree CON IMMAGINE)
+
