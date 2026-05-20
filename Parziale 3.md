@@ -84,5 +84,21 @@ Cosa ci si aspetta da un algoritmo di routing  (6 punti)
 
 Con immagine da commentare (migliora di molto il commento, è troppo specifico all'esempio e mancano dei dettagli generali)
 
+- interdistanze 
 
+#### Flooding
+
+cosa fe 
+perche non conviene con molti pacchetti 
+
+Tecniche per migliorarne il traffico generato 
+(contatore di hop, scarta alla seconda vista, selective flooding)
+
+#### Flow based routing
+
+calcolo in anticipo
+
+Informazioni necessarie per applicarlo
+
+Assunzioni (2)
 
