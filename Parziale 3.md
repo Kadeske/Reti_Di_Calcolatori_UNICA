@@ -79,6 +79,7 @@ Cosa ci si aspetta da un algoritmo di routing  (6 punti)
 
 
 ### Principali Algoritmi di Routing Statici
+sono 3
 
 #### Shortest Path Routing 
 
@@ -102,3 +103,47 @@ Informazioni necessarie per applicarlo
 
 Assunzioni (2)
 
+$$\text{ritardo singola linea}=\frac{\text{traffico sulla linea}}{\text{traffico totale della rete}}$$
+Come calcolare il ritardo medio dell'intera rete: somma pesata dei ritardi delle linee  
+Su cosa si basa questo metodo (flow based routing) considerata una topologia nota(6 punti)
+
+### Principali algoritmi di routing dinamici 
+sono 2 
+
+#### Distance Vector
+
+Ho un vettore di ritardi per ciascun nodo che ho a disposizione.
+Quindi ciascun nodo avrà un vettore.
+(controlla poi, può confondere)
+
+Router stima i vicini con **pacchetti ECHO**, contando quanto ci mettono a tornare indietro. (viene fatto più volte come test)
+
+Ad ogni intervallo i router condividono le loro tabelle con i vicini. Ogni router ricalcola la propria in base alle nuove informazioni 
+
+Immagini con spiegazione (sono 3 tabelle, 2 simili tra loro)
+
+- Paradosso dello scambio all'infinito
+#### Link State Routing
+
+Ogni tot i router testano i loro vicini e condividono le info con gli altri.
+Ogni router ricostruisce localmente la topologia completa della rete.
+
+E' suddiviso in 5 passaggi: 
+Chi c'è vicino -> pacchetti HELLO
+Quanto sono lenti i vicini -> pacchetti ECHO (Costruisce la **Neighbour Table**)
+Viene costruito un pacchetto LSP (Link State Packet) che contiene ...
+Invio dell'LSP con flooding.
+Calcolo del cammino minimo tra tutti i router avendo ricevuto gli LSP.
+
+
+### Routing Gerarchico 
+
+Per sottoreti molto grandi.
+
+La rete viene divisa in regioni.
+
+I router all'interno della stessa regione si conoscono.
+Per comunicare con uno all'esterno, un router interno da da **router di confine**
+Quindi si possono considerare due livelli di routing (interno e di confine/esterno)
+
+### Broadcast Routing
