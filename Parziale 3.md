@@ -213,5 +213,8 @@ Fattori di congestionamento di un router
 
 Politica di congestion avoidance (riscrivila, può confondere)
 
+Come agiscono gli alg. di controllo della congestione
+L'approccio al problema della congestione si può ricondurre a 2 categorie (open loop, closed loop)
 
+### Choked Packet 
 
