@@ -46,3 +46,17 @@ Informazione divisa in unità di lunghezza massima predefinita: pacchetti.
 
 Modalità: datagramma; circuito virtuale
 
+### Spiegazione datagramma con immagine
+
+Conto proprio, intestazione con dati aggiuntivi
+
+ordine sparso, persi, duplicati.
+Molte cose insieme ma si possono perdere
+
+### Spiegazione circuito virtuale con immagine 
+
+Problema del continuo utilizzo di un percorso
+
+#### Algoritmi di routing
+Cosa fanno 
+Statici e dinamici
