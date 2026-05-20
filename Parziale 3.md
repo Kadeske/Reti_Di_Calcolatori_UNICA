@@ -152,7 +152,66 @@ Quindi si possono considerare due livelli di routing (interno e di confine/ester
 Invio pacchetti distinti : pro e contro 
 flooding: pro e contro 
 multidestination routing: lista di destinazioni, invio delle copie fino a raggiungere un solo destinatario
-Il quarto utilizza il sink tree del routeer di trasmissioni e lo spanning tree per inoltrare i pacchetti.
+Il quarto utilizza il sink tree del routeer di trasmissioni e lo spanning tree per inoltrare i pacchetti. (pro, contro)
 
 (ricorda definizione spanning tree CON IMMAGINE)
+
+Utilizzo di **reverse path forwarding** al posto dello **spanning tree**
+altra immagine con 3 topologie diverse: sottorete, sink tree, Albero realizzato dall'inoltro a percorso inverso.
+
+### Multicast Routing 
+
+Algoritmo per l'instradamento dei pacchetti multicast.
+
+(immagine con 4 grafi)
+
+Necessita la divisione e gestione dei gruppi.
+I router devono sapere quali host appartengono ad ogni gruppo. (host avvisano i router o router interrogano host).
+
+Ogni router elabora uno spanning tree che copre tutti gli altri router.
+
+### Internetworking
+
+Per collegare reti che utilizzano protocolli differenti, passando attraverso una rete multiprotocollo con apposito router.
+
+Il router consente di aprire un bridge o un tunnel a seconda dei casi.
+
+(immagine con vari nomi di protocolli conosiuti che passano attraverso una rete multiprotocollo)
+
+- tunneling: cosa è e quando usarlo
+
+(immagine più generica con rete X <-> rete Y <-> rete X)
+
+
+### Struttura generica di un pacchetto 
+
+sorgente e destinazione 
+lunghezza 
+protocollo
+percorso 
+versione-servizi
+frammentazione 
+Time To Live 
+checksum
+campo dati 
+(a volte anche timestamp)
+
+### Congestione 
+
+Va limitato il numero di collisioni tra pacchetti. (genera congestione)
+
+Agli alg. di routing si affiancano gli **Algoritmi di controllo della congestione**
+
+Buffer contenente pacchetti arrivati ma non ancora spediti/reinoltrati.
+
+(img con grafico pacchetti inontrati X pacchetti inviati)
+
+Peggioramento a causa del **Timeout and Retrasmission**
+- Congestion Collapse 
+
+Fattori di congestionamento di un router 
+
+Politica di congestion avoidance (riscrivila, può confondere)
+
+
 
