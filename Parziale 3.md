@@ -59,4 +59,11 @@ Problema del continuo utilizzo di un percorso
 
 #### Algoritmi di routing
 Cosa fanno 
-Statici e dinamici
+Statici e dinamici (o adattivi) -> in base a cosa differiscono tra loro
+
+Algoritmo in base al tipo di sottorete 
+- sessione di routing 
+
+Cosa ci si aspetta da un algoritmo di routing  (6 punti)
+
+
