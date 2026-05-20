@@ -66,4 +66,23 @@ Algoritmo in base al tipo di sottorete
 
 Cosa ci si aspetta da un algoritmo di routing  (6 punti)
 
+- metrica -> cosa è, cosa utilizza.
+	- metrica inferiore
+
+- Principio di ottimalità (CON IMG e spiegazione)
+
+- bilanciamento del carico
+	- modalità di load balancing (equal-cost e unequal-cost)
+
+- termine **convergenza**
+	- tempo di consistenza (ha senso solo per alg. dinamici)
+
+
+### Principali Algoritmi di Routing Statici
+
+#### Shortest Path Routing 
+
+Con immagine da commentare (migliora di molto il commento, è troppo specifico all'esempio e mancano dei dettagli generali)
+
+
 
