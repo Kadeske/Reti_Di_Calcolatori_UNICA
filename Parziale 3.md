@@ -147,3 +147,8 @@ Per comunicare con uno all'esterno, un router interno da da **router di confine*
 Quindi si possono considerare due livelli di routing (interno e di confine/esterno)
 
 ### Broadcast Routing
+
+3 metodologie per ottenere la trasmissione broadcast:
+Invio pacchetti distinti : pro e contro 
+flooding: pro e contro 
+multidestination routing: 
