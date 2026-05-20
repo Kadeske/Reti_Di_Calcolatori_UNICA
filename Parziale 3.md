@@ -216,7 +216,7 @@ Politica di congestion avoidance (riscrivila, può confondere)
 Come agiscono gli alg. di controllo della congestione
 L'approccio al problema della congestione si può ricondurre a 2 categorie (open loop, closed loop)
 
-### Choked Packet 
+### Choke Packet 
 
 Da riformulare meglio.
 Il router che sta ricevendo troppi pacchetti chiede al router più vicino alla sorgente di aumentare il buffer della sua linea e rallentare l'invio.
@@ -228,3 +228,24 @@ a = peso della storia passata (compreso tra 0 e 1)
 (1-a) = peso dato dall'informazione più recente
 
 $$M_{nuovo}=a*M_{vecchio}+(1-a)*U$$
+
+Alla ricezione di un **choke packet** il router diminuirà la velocità di invio dei pacchetti.
+Ogni router attende un intervallo di tempo prima di ricontrollare se è arrivato un nuovo choke packet.
+
+#### HOP-BY-HOP Choke Packet 
+Consiste nell'inviare un pacchetto di rallentamente su ogni router intermedio fino a raggiungere la fonte.
+All'arrivo alla fonte il flusso sarà già rallentato.
+
+Permette di sbloccare rapidamente la congestione nel punto in cui ha avuto origine.
+Richiede un maggiore utilizzo del buffer nei router lungo il percorso.
+
+### Drop Tail 
+
+Cancella i pacchetti in eccesso dal buffer.
+
+Non reagisce dinamicamente alle condizioni di traffico della rete.
+Ha diversi svantaggi:
+pessima sincronizzazione dei flussi
+non equa distribuzione della perdita di pacchetti tra connessioni
+scarso utilizzo delle risorse di rete 
+
