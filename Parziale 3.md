@@ -218,3 +218,13 @@ L'approccio al problema della congestione si può ricondurre a 2 categorie (open
 
 ### Choked Packet 
 
+Da riformulare meglio.
+Il router che sta ricevendo troppi pacchetti chiede al router più vicino alla sorgente di aumentare il buffer della sua linea e rallentare l'invio.
+
+E' quindi previsto che un router tenga d'occhio il gradi di utilizzo delle sue linee in uscita.
+U = utilizzo istantaneo
+M = Media esponenziale
+a = peso della storia passata (compreso tra 0 e 1)
+(1-a) = peso dato dall'informazione più recente
+
+$$M_{nuovo}=a*M_{vecchio}+(1-a)*U$$
