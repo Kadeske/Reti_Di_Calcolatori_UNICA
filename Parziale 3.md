@@ -17,7 +17,22 @@ Scelta della tecnica in base a: ...
 
 ### Commutazione di circuito
 
-img con spiegazione 
+img con spiegazione : 
+da spiegare meglio
 
 - router instradatori
 - ritardo di instaurazione
+
+
+## Commutazione di messaggio 
+
+- Store and forward 
+
+img da spiegare 
+
+Non c'è una connessione.
+
+Altra img da spiegare 
+
+- Ritardo di trasferimento 
+- 
