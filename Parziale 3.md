@@ -17,4 +17,7 @@ Scelta della tecnica in base a: ...
 
 ### Commutazione di circuito
 
-img 
+img con spiegazione 
+
+- router instradatori
+- ritardo di instaurazione
