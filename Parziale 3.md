@@ -35,4 +35,14 @@ Non c'è una connessione.
 Altra img da spiegare 
 
 - Ritardo di trasferimento 
-- 
+
+Il servizio di trasferimento non può consentire una comunicazione interattiva.
+
+Non va bene per grandi file, quindi si divide in pacchetti.
+
+## Commutazione di pacchetto 
+
+Informazione divisa in unità di lunghezza massima predefinita: pacchetti.
+
+Modalità: datagramma; circuito virtuale
+
