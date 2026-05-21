@@ -314,7 +314,8 @@ Dipende dalla tipologia delle reti:
 tecniche per ottenere un buon Qos:
 - bufferizzazione 
 - leaky bucket
-- token bucketflow specification
+- token bucket
+- flow specification
 - routing adattivo
 - sovradimensionamento
 
@@ -361,4 +362,21 @@ _In sintesi: Assicura un flusso di uscita rigido e costante, assorbendo piccole 
 - **Gestione dei picchi:** Grazie ai gettoni accumulati, se l'host deve inviare improvvisamente una grande mole di dati (un picco o _burst_), può farlo consumando tutti i gettoni presenti in un colpo solo. Una volta finiti i gettoni, dovrà aspettare che ne vengano generati di nuovi al ritmo prestabilito prima di inviare altri pacchetti.
     
 Come la stamina nei guochiuoi.
+
+### Flow specification
+
+Molto efficace se sorgente, sottorete e destinazione si accordano in merito.
+Ci si può accordare su: 
+- caratteristiche che si vuole inviare 
+- qualità del servizio 
+
+Questo accordo viene chiamato **flow specification** e consiste in una struttura dati che descrive le grandezze in questione.
+
+Il controllo della congestione è più semplice in reti 'in accordo'.
+
+Admission control: negare l'attivazione di nuovi circuiti virtuali quando non si hanno le risorse per gestirli.
+
+### Routing Adattivo 
+
+Si basa sulla suddivisione dei dati in percorsi differenti.
 
