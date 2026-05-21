@@ -251,4 +251,10 @@ scarso utilizzo delle risorse di rete
 
 ### Load Shedding
 
-Quando il buffer è pieno, scarta i pacchetti secondo delle regole
+Quando il buffer è pieno, scarta i pacchetti secondo delle regole.
+
+Regola del **wine**: vecchio meglio del nuovo, scarta i pacchetti nuovi e serve i primi arrivati (FIFO).
+
+Regola del **milk**: nuovo migliore del vecchio, scarca i pacchetti vecchi e serve quelli nuovi (LIFO).
+
+### Active Queue Management (AQM)
