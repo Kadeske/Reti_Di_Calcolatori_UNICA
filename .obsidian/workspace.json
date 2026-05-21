@@ -191,16 +191,17 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "markdown-importer:Apri importazione Markdown": false,
-      "bases:Crea nuova Base": false
+      "bases:Crea nuova Base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "pdf/Reti_di_calcolatori_3.pdf.part",
     "es 2.md",
     "Parziale 3.md",
     "Es 3.md",
     "Pasted image 20260520203351.png",
-    "pdf/Reti_di_calcolatori_3.pdf.part",
     "Parziale 2.md",
     "pdf/Appunti_RC.pdf",
     "pdf/Reti_di_calcolatori_3.pdf",
