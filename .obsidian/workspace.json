@@ -165,16 +165,6 @@
             }
           },
           {
-            "id": "b5b5eb461e21f79d",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
-          },
-          {
             "id": "4be5a997337b1a17",
             "type": "leaf",
             "state": {
@@ -201,15 +191,17 @@
       "templates:Inserisci modello": false,
       "command-palette:Apri riquadro comandi": false,
       "markdown-importer:Apri importazione Markdown": false,
-      "bases:Crea nuova Base": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Crea nuova Base": false
     }
   },
   "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "es 2.md",
+    "Parziale 3.md",
+    "Es 3.md",
+    "Pasted image 20260520203351.png",
     "pdf/Reti_di_calcolatori_3.pdf.part",
     "Parziale 2.md",
-    "Parziale 3.md",
     "pdf/Appunti_RC.pdf",
     "pdf/Reti_di_calcolatori_3.pdf",
     "pdf/Appunti_RC.pdf.part",
@@ -222,7 +214,6 @@
     "img/Pasted image 20260515151825.png",
     "img/Pasted image 20260515151503.png",
     "img/Pasted image 20260515143725.png",
-    "img/Pasted image 20260515131024.png",
     "Approfondimenti P1/Multiplexing.md",
     "Approfondimenti P1/Modem.md",
     "Parziale 1.md",
@@ -244,8 +235,6 @@
     "Approfondimenti P1/ITU.md",
     "802.3 CSMA/CD (802.3).md",
     "Approfondimenti P1/IEEE.md",
-    "Approfondimenti P1/ISO.md",
-    "Approfondimenti P1/IAB.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",
