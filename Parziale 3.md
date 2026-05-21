@@ -289,3 +289,46 @@ Con RED solitamente la coda viene misurata in byte, non in pacchetti.
 RED può essere modificato per rendere la *packet marking probability* proporzionale alla grandezza del pacchetto.
 
 Non agisce sulle **congestioni temporanee** le quali aumentano solo la *Queue lenght* per poco tempo, ma agisce sulle **congestioni a lunga durata** che aumentano invece la dimensione media della coda (quindi monitorata da RED).  
+
+
+tanti calcoli e 2 immagini (di calcoli)
+
+
+## Qualità del servizio 
+
+connessione: seguono lo stesso percorso 
+senza connessione: percorsi differenti per ogni pacchetto
+
+Parametri QoS:
+- affidabilità
+- ritardo 
+- jitter
+- banda
+
+Dipende dalla tipologia delle reti:
+- reti a velocità costante 
+- a velocità variabile in tempo reale
+- a velocità variabile non in tempo reale 
+- velocità disponibile 
+
+tecniche per ottenere un buon Qos:
+- bufferizzazione 
+- leaky bucket
+- token bucketflow specification
+- routing adattivo
+- sovradimensionamento
+
+### Bufferizzazione 
+
+Produco una quantità di pacchetti che memorizzo in un buffer. Quando avrò prodotto un buon numero di pacchetti, inizierò ad inviarli.
+Così facendo il destinatario li riceverà in maniera costante nel tempo.
+
+Il limite è il costo delle risorse (?)
+
+### Leaky bucket - Token bucket
+
+
+(img leakybucket) 
+(da spiegare meglio) -> host invia ciò che vuole, c'è il leaky bucket in mezzo autorizzato a riservare sulla rete pacchetti con certe caratteristiche 
+
+(img token bucket) 
