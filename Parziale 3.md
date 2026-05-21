@@ -249,3 +249,6 @@ pessima sincronizzazione dei flussi
 non equa distribuzione della perdita di pacchetti tra connessioni
 scarso utilizzo delle risorse di rete 
 
+### Load Shedding
+
+Quando il buffer è pieno, scarta i pacchetti secondo delle regole
