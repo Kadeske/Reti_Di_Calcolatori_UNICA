@@ -325,10 +325,40 @@ Così facendo il destinatario li riceverà in maniera costante nel tempo.
 
 Il limite è il costo delle risorse (?)
 
-### Leaky bucket - Token bucket
+### Leaky bucket
 
 
 (img leakybucket) 
-(da spiegare meglio) -> host invia ciò che vuole, c'è il leaky bucket in mezzo autorizzato a riservare sulla rete pacchetti con certe caratteristiche 
+**Scopo:** Trasformare un flusso di dati irregolare in un flusso costante e regolare (Traffic Shaping).
+
+**Come funziona:** Immagina un secchio con un buco sul fondo. L'acqua (i pacchetti di dati inviati dall'host) può essere versata nel secchio a fiotti irregolari. Tuttavia, l'acqua uscirà dal buco sul fondo sempre a una velocità costante e fissa. Nella rete:
+
+- L'host invia i pacchetti, che vengono temporaneamente immagazzinati in un buffer (il "secchio").
+
+- Il sistema preleva i pacchetti dal buffer e li immette nella rete a una **velocità fissa e costante** (il "data rate fissato").
+
+- **Gestione dei picchi:** Se l'host trasmette dati troppo velocemente e riempie completamente la capacità del buffer, i pacchetti in eccesso non trovano spazio e vengono **scartati (persi)**.
+
+
+_In sintesi: Assicura un flusso di uscita rigido e costante, assorbendo piccole irregolarità ma non tollerando grossi picchi improvvisi._
+
+### Token bucket
 
 (img token bucket) 
+
+**Scopo:** Limitare la velocità media del traffico, ma consentendo dei picchi di trasmissione improvvisi (Traffic Policing / Shaping elastico).
+
+**Come funziona:** In questo caso, il "secchio" non contiene i pacchetti, ma dei **gettoni (token)**. Nella rete:
+
+- Il sistema genera nuovi gettoni a una velocità costante e li inserisce nel secchio, fino al raggiungimento di una capacità massima.
+
+- Quando l'host vuole inviare un pacchetto, deve "pagare" prelevando un gettone dal secchio.
+
+- Se ci sono gettoni disponibili, il pacchetto viene inviato immediatamente.
+
+- Se l'host non ha trasmesso nulla per un po' di tempo, i gettoni si accumulano nel secchio.
+
+- **Gestione dei picchi:** Grazie ai gettoni accumulati, se l'host deve inviare improvvisamente una grande mole di dati (un picco o _burst_), può farlo consumando tutti i gettoni presenti in un colpo solo. Una volta finiti i gettoni, dovrà aspettare che ne vengano generati di nuovi al ritmo prestabilito prima di inviare altri pacchetti.
+    
+Come la stamina nei guochiuoi.
+
