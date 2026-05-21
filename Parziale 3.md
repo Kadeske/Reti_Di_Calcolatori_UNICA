@@ -196,7 +196,7 @@ checksum
 campo dati 
 (a volte anche timestamp)
 
-### Congestione 
+## Congestione 
 
 Va limitato il numero di collisioni tra pacchetti. (genera congestione)
 
@@ -258,3 +258,14 @@ Regola del **wine**: vecchio meglio del nuovo, scarta i pacchetti nuovi e serve 
 Regola del **milk**: nuovo migliore del vecchio, scarca i pacchetti vecchi e serve quelli nuovi (LIFO).
 
 ### Active Queue Management (AQM)
+
+E' una famiglia di tecniche usate dai router per gestire le congestioni in maniera dinamica.
+
+Controlla costantemente la coda del buffer, quando si sta riempiendo troppo, inizia ad intervenire. Tutto PRIMA che il buffer si riempia.
+E' quindi un metodo **pre-attivo**.
+
+Utilizza il **Dynamic Buffer Limiting (DBL)** per tenere traccia della lunghezza della coda per ogni flusso dei traffico entrante.
+Quando la lunghezza della coda è preoccupante, il DBL comincia a cancellare pacchetti o a impostare i bit **Explicit Congestione Notification (ECN)** nell'intestazione dei pacchetti a 1 (true).
+
+### Random Early Detection (RED)
+
