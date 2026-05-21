@@ -282,3 +282,10 @@ prob massima cancellazione
 
 (immagine grafico) -> RED gentle-version
 
+Quando la lunghezza media della coda cresce proporzionalmente al numero di connessioni attive nel sistema, l'algoritmo non riesce ad evitare la congestione.
+
+Con RED solitamente la coda viene misurata in byte, non in pacchetti.
+
+RED può essere modificato per rendere la *packet marking probability* proporzionale alla grandezza del pacchetto.
+
+Non agisce sulle **congestioni temporanee** le quali aumentano solo la *Queue lenght* per poco tempo, ma agisce sulle **congestioni a lunga durata** che aumentano invece la dimensione media della coda (quindi monitorata da RED).  
