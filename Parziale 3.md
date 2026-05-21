@@ -269,3 +269,16 @@ Quando la lunghezza della coda è preoccupante, il DBL comincia a cancellare pac
 
 #### Random Early Detection (RED)
 
+Più popolari AQM utilizzati in TCP/IP.
+Misura la dimensione media con un filtro pesaso.
+Cancella pacchetto con una determinata probabilità
+
+**Packet-marking-probability** in base:
+valore aq,
+tempo trascorso ultima cancellazione 
+prob massima cancellazione
+
+(immagine grafico) -> RED vesione classica 
+
+(immagine grafico) -> RED gentle-version
+
