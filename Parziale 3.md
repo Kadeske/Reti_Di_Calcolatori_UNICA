@@ -267,5 +267,5 @@ E' quindi un metodo **pre-attivo**.
 Utilizza il **Dynamic Buffer Limiting (DBL)** per tenere traccia della lunghezza della coda per ogni flusso dei traffico entrante.
 Quando la lunghezza della coda è preoccupante, il DBL comincia a cancellare pacchetti o a impostare i bit **Explicit Congestione Notification (ECN)** nell'intestazione dei pacchetti a 1 (true).
 
-### Random Early Detection (RED)
+#### Random Early Detection (RED)
 
