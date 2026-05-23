@@ -527,6 +527,10 @@ Non c'è una divisione netta basata sulla gerarchia. A causa dell'esaurimento de
 Attualmente, la maggior parte delle reti globali e locali utilizza una tecnica chiamata **"Dual Stack"**, ovvero i dispositivi e i router "parlano" _contemporaneamente_ sia IPv4 che IPv6 a tutti i livelli della rete, in attesa che il vecchio IPv4 venga definitivamente spento.
 
 
+#### DIFFERENZA TRA INTESTAZIONE E STRUTTURA 
+L'**intestazione** (o header) è l'insieme dei dati posti davanti al pacchetto da inviare. Come una lettera contiene varie informazioni tra le quali il destinatario.
+
+La **struttura** dell'indirizzo ip è la struttura del dato con cui si **identifica** una macchina o una rete.
 ### Intestazione IPv4
 
 (img intestazione ipv4)
@@ -593,4 +597,72 @@ Vengono usate raramente per scopi di test o sicurezza. _Correzione importante ri
 - **Timestamp:** Come il Record Route, ma ogni router aggiunge anche l'orario esatto del passaggio.
 
 ### Indirizzi IP (RFC 791)
+
+#### La Struttura dell'Indirizzo IPv4
+
+A differenza degli indirizzi MAC (Ethernet) che sono "piatti" (identificano solo la macchina fisica), gli indirizzi IP sono **gerarchici**. Un indirizzo IPv4 è composto da 32 bit ed è sempre diviso logicamente in due parti:
+
+- **Network ID (Parte di Rete):** Identifica la rete a cui appartiene il dispositivo (come il CAP o il nome della via in un indirizzo postale). Tutti gli host sulla stessa rete locale (LAN) condividono questo stesso blocco di bit, chiamato _prefisso_.
+    
+- **Host ID (Parte Host):** Identifica univocamente il singolo dispositivo all'interno di quella specifica rete (come il numero civico).
+    
+
+**Notazione Decimale Puntata:** Per comodità umana, i 32 bit non si leggono di seguito, ma vengono divisi in 4 blocchi da 8 bit (chiamati _ottetti_ o byte). Ogni blocco viene convertito in un numero decimale da 0 a 255 e separato da un punto (es. `128.208.2.151`).
+
+#### L'Indirizzamento per Classi (Classful Addressing)
+
+Prima del 1993, gli indirizzi IP venivano assegnati seguendo un rigido schema "a classi", in cui la dimensione della rete era fissa e determinata dai primissimi bit dell'indirizzo. I router capivano subito a quale classe apparteneva un IP semplicemente guardando **i primi bit del primo ottetto**:
+
+- **Classe A (Grandi reti):**
+    
+    - **Bit iniziali bloccati:** `0` (Gli indirizzi del primo ottetto vanno da 1 a 126).
+        
+    - **Struttura:** 8 bit per la Rete, 24 bit per gli Host.
+        
+    - **Capacità:** Pochissime reti disponibili a livello globale, ma ciascuna può contenere oltre **16 milioni di host**. Assegnate solo a governi o multinazionali enormi.
+        
+- **Classe B (Reti medie):**
+    
+    - **Bit iniziali bloccati:** `10` (Da 128 a 191).
+        
+    - **Struttura:** 16 bit per la Rete, 16 bit per gli Host.
+        
+    - **Capacità:** Permette circa 65.000 host per rete.
+        
+- **Classe C (Piccole reti):**
+    
+    - **Bit iniziali bloccati:** `110` (Da 192 a 223).
+        
+    - **Struttura:** 24 bit per la Rete, 8 bit per gli Host.
+        
+    - **Capacità:** Tante reti disponibili, ma ciascuna può avere al massimo **254 host** utilizzabili.
+        
+- **Classi D ed E:** La D (inizia con `1110`) è riservata al traffico Multicast (comunicazioni uno-a-molti), mentre la E (inizia con `1111`) era riservata per usi sperimentali futuri.
+    
+
+### 3. La Crisi degli Indirizzi e il "Problema dei Tre Orsi"
+
+Lo schema Classful aveva un difetto fatale: **lo spreco enorme di indirizzi**.
+
+La slide cita il simpatico _"Three Bears Problem"_ (ispirato alla fiaba di Riccioli d'Oro):
+
+- La Classe A è _troppo grande_.
+    
+- La Classe C è _troppo piccola_ (spesso le aziende avevano più di 250 dipendenti/computer).
+    
+- La Classe B sembrava _"quella giusta"_ (perfetta per le aziende).
+    
+
+Il risultato? Tutte le aziende chiedevano (e ottenevano) un indirizzo di Classe B. Tuttavia, un'azienda media aveva magari 500 computer, ma ricevendone una Classe B intera bloccava per sé 65.536 indirizzi, **sprecandone 65.000**. Questo portò, nei primi anni '90, al rischio di un collasso prematuro di Internet per esaurimento degli indirizzi IP.
+
+### Le Soluzioni all'Esaurimento
+
+Per tamponare la crisi prima di inventare sistemi moderni (come il NAT, il CIDR o l'IPv6), si intervenne su tre fronti:
+
+1. **Ripulitura:** Verificare e revocare le doppie assegnazioni o gli indirizzi assegnati per errore.
+    
+2. **Requisizione:** Riprendersi interi blocchi di Classe A o B assegnati ad enti che in realtà non li stavano utilizzando (o li stavano sottoutilizzando) per riassegnarli in modo più intelligente. (In Italia il GARR ha avuto un ruolo in queste gestioni accademiche).
+    
+3. **Subnetting ("Superfetazione" nelle slide):** Creare delle **Sottoreti**. Si prende la porzione Host di un indirizzo IP e le si "ruba" qualche bit per creare delle reti più piccole all'interno dell'azienda, frammentando in modo efficiente lo spazio a disposizione senza dover chiedere nuovi blocchi alla rete pubblica globale. _(Nota: "superfetazione" è un termine biologico, in ambito informatico e all'esame usa il termine "Subnetting" o "Sottoreti")._
+    
 
