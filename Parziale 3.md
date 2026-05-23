@@ -391,7 +391,7 @@ Quando si trasmettono flussi di dati multimediali o _real-time_ (come voce o vid
 
 ### protocollo RSVP
 
-(immagine con 2 schemi) e spiegazione 
+![[Pasted image 20260523151844.png]]  
 
 Il suo scopo è **prenotare in anticipo le risorse di rete** lungo tutto il percorso tra sorgente e destinazione.
 
@@ -407,7 +407,7 @@ Invece di far decidere ai router l'instradamento analizzando ogni volta il lungo
 
 **Collocazione nella pila ISO/OSI** L'intestazione (header) MPLS viene inserita tra l'header di Livello 2 (Collegamento Dati, es. Ethernet) e l'header di Livello 3 (Rete, es. IP). Per questo motivo, l'MPLS viene spesso definito un protocollo di **Livello 2.5**. Questa flessibilità è una delle ragioni del suo enorme successo nelle reti moderne.
 
-(img intestazione)
+![[Pasted image 20260523151823.png]]
 **I campi dell'intestazione MPLS (32 bit totali):** L'header MPLS è composto da 4 campi specifici:
 
 - **Etichetta (Label - 20 bit):** È l'indice vero e proprio utilizzato dai router per capire su quale linea di uscita inoltrare il pacchetto.
