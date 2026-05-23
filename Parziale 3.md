@@ -380,3 +380,22 @@ Admission control: negare l'attivazione di nuovi circuiti virtuali quando non si
 
 Si basa sulla suddivisione dei dati in percorsi differenti.
 
+### Sovradimensionamento
+
+Consiste nell' aumentare la capacità di calcolo, la dimensione del buffer e l'ampiezza di banda in singole tratte della sottorete.
+'Prevede un totale necessario e ne richiede di più per sicurezza'
+
+## Servizi integrati 
+
+Per flussi di dati multimediali o real time.
+Sono alg basati sui flussi/servizi integrati.
+Principalmente rivolti a unicast e multicast 
+
+### protocollo RSVP
+
+Si occupa principalmente della gestione delle prenotazioni.
+Ottimizza l'uso della banda ed elimina le collisioni.
+
+(immagine con 2 schemi) e spiegazione 
+
+
