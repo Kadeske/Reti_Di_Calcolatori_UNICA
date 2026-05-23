@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "aad28f6b99310659",
@@ -207,6 +208,9 @@
   },
   "active": "404eefb17cf28692",
   "lastOpenFiles": [
+    "Pasted image 20260523151658.png",
+    "Pasted image 20260523151604.png",
+    "Pasted image 20260523151529.png",
     "pdf/Reti_di_calcolatori_3.pdf.part",
     "es 2.md",
     "Parziale 3.md",
@@ -223,8 +227,6 @@
     "img/Pasted image 20260515153620.png",
     "img/Pasted image 20260515153619.png",
     "img/Pasted image 20260515151825.png",
-    "img/Pasted image 20260515151503.png",
-    "img/Pasted image 20260515143725.png",
     "Approfondimenti P1/Multiplexing.md",
     "Approfondimenti P1/Modem.md",
     "Parziale 1.md",
