@@ -591,3 +591,6 @@ Vengono usate raramente per scopi di test o sicurezza. _Correzione importante ri
 - **Record Route:** Ogni router attraversato scrive il proprio indirizzo IP in questo spazio, tracciando il percorso reale.
     
 - **Timestamp:** Come il Record Route, ma ogni router aggiunge anche l'orario esatto del passaggio.
+
+### Indirizzi IP (RFC 791)
+
