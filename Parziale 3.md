@@ -419,3 +419,39 @@ Invece di far decidere ai router l'instradamento analizzando ogni volta il lungo
 - **TTL (Time To Live - 8 bit):** Funziona esattamente come il TTL dell'IP. Viene decrementato di 1 a ogni passaggio in un router. Se arriva a 0, il pacchetto viene scartato per evitare cicli infiniti nella rete.
 
 **Forwarding Equivalence Class (FEC)** Nell'MPLS, **pacchetti diversi che richiedono lo stesso identico trattamento** (stesso percorso, stessa priorità) possono essere **raggruppati e associati alla medesima etichetta**. Questo gruppo di pacchetti prende il nome di **FEC (Forwarding Equivalence Class)**. Questo permette di creare circuiti virtuali sovrapposti alla normale infrastruttura IP, separando logicamente i flussi di traffico.
+
+## Service Level Agreement (SLA)
+
+Nelle reti di telecomunicazioni, la Quality of Service (QoS) non dipende solo dagli algoritmi usati, ma richiede che la rete e l'host (l'utente) si accordino su quali siano le prestazioni desiderate e quali risorse la rete possa effettivamente erogare.
+
+Per regolamentare questo rapporto nasce il **Service Level Agreement (SLA)** (Accordo sul Livello di Servizio). In pratica, l'SLA è un contratto che definisce delle **soglie di garanzia minima o massima** su parametri misurabili, assicurando che la rete fornisca all'host le prestazioni promesse.
+
+### I Parametri Tipici di un SLA
+
+Per misurare la qualità del servizio, un SLA standard prende in considerazione vari parametri:
+
+- **Throughput per port:** È la "produttività" minima garantita. Indica la quantità di dati che il router garantisce di poter inoltrare attraverso una sua porta (si misura in bit/sec, frame/sec o pacchetti/sec).
+    
+- **Data Delivery Ratio (DDR):** È il tasso di consegna. Rappresenta la garanzia sul livello minimo di dati che arriveranno effettivamente a destinazione (senza essere persi nella rete).
+    
+- **Constant Bit Rate (CBR):** È la garanzia che la rete *manterrà una velocità di consegna minima e costante*. È fondamentale per applicazioni in tempo reale (come voce o video) che non tollerano variazioni di velocità (tipico delle reti ATM).
+    
+- **Back-up di linea:** È la garanzia che la connessione non cada se il collegamento principale si guasta.
+    
+    - _A caldo (dinamico):_ La linea di riserva è già attiva. Il passaggio (switch) è immediato e si perdono pochissimi pacchetti.
+        
+    - _A freddo (statico):_ La linea di riserva va attivata al momento del guasto, comportando dei tempi di inattività stimati e concordati.
+        
+- **Back-up router:** Stesso concetto del back-up di linea, ma si applica al guasto del dispositivo fisico (il router). Anche questo può essere previsto _a caldo_ o _a freddo_.
+    
+- **Uptime:** È il tempo di disponibilità del servizio. Viene espresso in percentuale (es. **99.9%**) e indica per quanto tempo il servizio deve rimanere attivo e funzionante in un mese o in un anno.
+    
+- **Report Service Unit (RSU):** È la garanzia che l'host abbia a disposizione degli strumenti (dashboard/report) per visualizzare e monitorare le prestazioni della rete.
+    
+- **Management Service Unit (MSU):** A differenza del RSU, questi sono strumenti _attivi_. Permettono all'host di configurare la rete in autonomia (es. modificare la banda a disposizione o creare circuiti virtuali).
+
+### KPI (Key Performance Indicator)
+
+Poiché monitorare ogni singolo parametro dell'SLA può essere molto complesso, si utilizzano i **KPI (Key Performance Indicator)**.
+
+I KPI sono indicatori strutturati che raggruppano vari parametri in un unico set di dati più facile da leggere, offrendo una "fotografia" immediata dello stato di salute del servizio. L'ultima frase della slide (_"Se scende sotto 1, il servizio non sta funzionando come vorremmo"_) fa riferimento a un tipico indicatore a rapporto: se il rapporto tra il servizio _effettivamente erogato_ e quello _concordato_ nell'SLA scende sotto il valore di 1 (cioè sotto il 100% di quanto pattuito), significa che la rete sta violando il contratto.
