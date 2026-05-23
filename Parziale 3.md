@@ -531,4 +531,63 @@ Attualmente, la maggior parte delle reti globali e locali utilizza una tecnica c
 
 (img intestazione ipv4)
 
+L'intestazione IPv4 ha una dimensione **minima di 20 byte** (se non ci sono opzioni) e una **massima di 60 byte** (aggiungendo fino a 40 byte di opzioni). I dati sono organizzati in blocchi da 32 bit (4 byte).
 
+Possiamo dividere logicamente l'intestazione in 5 parti funzionali:
+
+#### PARTE 1: Informazioni Generali
+
+- **Version (4 bit):** Indica la versione del protocollo IP. In questo caso, conterrà il valore binario per "4" (0100). _Nota: IPv6 usa un formato di intestazione completamente diverso, non si usa questo campo per passare a IPv6._
+    
+- **IHL - Internet Header Length (4 bit):** Indica la lunghezza totale dell'intestazione. Poiché misura in "parole" da 32 bit (4 byte), il valore minimo è 5 ($5 \times 4 = 20$ byte) e il valore massimo è 15 ($15 \times 4 = 60$ byte).
+    
+- **Type of Service - ToS (8 bit):** Utilizzato per la Quality of Service (QoS). Serve a dare priorità ad alcuni pacchetti (es. voce o video) rispetto ad altri.
+    
+- **Total Length (16 bit):** Indica la lunghezza totale dell'intero pacchetto (Intestazione + Dati utili). Avendo 16 bit a disposizione, un pacchetto IP può teoricamente pesare fino a **65.535 byte**. _Attenzione alla slide:_ i 1500 byte citati sono il tipico limite fisico delle reti Ethernet (MTU), non una regola fissa del Total Length dell'IP.
+
+#### PARTE 2: Controllo della Frammentazione
+
+Se un pacchetto è troppo grande per passare in una specifica rete fisica (es. supera i 1500 byte), il router deve "spezzettarlo" in pacchetti più piccoli, chiamati frammenti. Questa riga dell'header gestisce proprio questo:
+
+- **Identification (16 bit):** Un "codice a barre" univoco generato dal mittente. Tutti i frammenti che derivano da uno stesso pacchetto originale avranno lo stesso numero di Identification, così il destinatario saprà quali rimettere insieme.
+    
+- **Flags (3 bit):**
+    
+    - _1° bit (Nullo/Riservato):_ Attualmente non usato, deve essere 0.
+        
+    - _DF (Don't Fragment):_ Se impostato a 1, ordina ai router di **non frammentare**. Se il pacchetto è troppo grosso per passare, il router lo scarta e manda un messaggio di errore al mittente.
+        
+    - _MF (More Fragments):_ Se impostato a 1, significa "attenzione, ci sono altri frammenti dopo di me". Nell'ultimo frammento della serie, questo bit viene messo a 0.
+        
+- **Fragment Offset (13 bit):** Indica la posizione esatta di quel frammento all'interno del pacchetto originale. Serve al destinatario per rimettere i pezzi in ordine corretto, come in un puzzle.
+#### PARTE 3: Vita e Protocollo
+
+- **TTL - Time to Live (8 bit):** _Attenzione qui:_ storicamente si misurava in secondi, ma oggi **rappresenta il numero di salti (hops) massimi**. Ogni router che il pacchetto attraversa sottrae 1 a questo valore. Se il TTL arriva a 0, il pacchetto viene scartato. Serve a evitare che un pacchetto vaghi all'infinito per Internet a causa di un errore di instradamento.
+    
+- **Protocol (8 bit):** Dice al livello di rete a chi deve consegnare i dati una volta arrivati a destinazione. Ad esempio, indicherà se il carico utile (payload) è un segmento TCP, un datagramma UDP o un messaggio ICMP.
+    
+- **Header Checksum (16 bit):** Una somma di controllo matematica usata per verificare che _solo l'intestazione_ (non i dati) non abbia subito corruzioni durante il viaggio.
+    
+
+#### PARTE 4: Indirizzamento
+
+Questa è la parte fondamentale per il recapito:
+
+- **Source Address (32 bit):** L'indirizzo IP di chi spedisce il pacchetto.
+    
+- **Destination Address (32 bit):** L'indirizzo IP di chi deve ricevere il pacchetto.
+    
+
+#### PARTE 5: Options (Opzionale, max 40 byte)
+
+Vengono usate raramente per scopi di test o sicurezza. _Correzione importante rispetto alla tua slide:_
+
+- **Security:** Specifica livelli di sicurezza o classificazione (usato in ambito militare).
+    
+- **Strict Source Routing:** Il mittente impone **tutti** i router esatti che il pacchetto deve attraversare. Se un router intermedio salta, il pacchetto viene scartato.
+    
+- **Loose Source Routing:** ⚠️ _ERRORE NELLA SLIDE:_ La slide dice "Elenco dei router dove non passare". È **Sbagliato**. Il Loose Source Routing contiene un elenco di router per i quali il pacchetto **DEVE obbligatoriamente passare**, ma lascia la libertà di attraversare _anche altri_ router intermedi non presenti in lista.
+    
+- **Record Route:** Ogni router attraversato scrive il proprio indirizzo IP in questo spazio, tracciando il percorso reale.
+    
+- **Timestamp:** Come il Record Route, ma ogni router aggiunge anche l'orario esatto del passaggio.
