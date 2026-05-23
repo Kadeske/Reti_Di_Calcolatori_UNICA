@@ -458,4 +458,18 @@ I KPI sono indicatori strutturati che raggruppano vari parametri in un unico set
 
 # Livello rete in internet
 
+Per far funzionare un'infrastruttura **globale** ed **eterogenea** come Internet, il protocollo di rete (IP) è stato progettato seguendo queste regole auree:
 
+- **Semplicità del nucleo centrale:** I protocolli di base (di livello basso) devono rimanere semplici, leggeri e veloci. Man mano che si aggiungono nuove funzioni complesse, queste devono essere gestite dai livelli superiori o agli estremi della rete (secondo il _principio End-to-End_), per non appesantire il lavoro dei router centrali.
+    
+- **Modularità (Indipendenza dei livelli):** È il concetto alla base della pila protocollare (come il TCP/IP o l'ISO/OSI). Ogni livello fa il suo lavoro in modo indipendente. Questo permette di modificare, aggiornare o sostituire un protocollo a un certo livello (es. passare dal Wi-Fi al cavo Ethernet) senza dover cambiare nulla nei livelli superiori o inferiori.
+    
+- **Gestione dell'eterogeneità:** Internet deve essere il "collante" universale. Deve poter connettere tra loro hardware, sistemi operativi e dispositivi completamente diversi (smartphone, server, sensori). Il protocollo IP è la lingua franca che tutti devono comprendere per parlarsi, indipendentemente dall'infrastruttura fisica.
+    
+- **Preferenza per algoritmi dinamici:** Rispetto alle vecchie reti telefoniche basate su parametri statici, Internet deve usare algoritmi dinamici (come i protocolli di routing). Questo permette alla rete di adattarsi automaticamente in tempo reale ai guasti, ricalcolando i percorsi alternativi.
+    
+- **Principio di Robustezza (Legge di Postel):** Sintetizzato dalla famosa frase dell'informatico Jon Postel: _"Sii rigoroso in ciò che invii, sii tollerante in ciò che ricevi"_. Un nodo deve formattare i pacchetti in uscita in modo impeccabile, ma deve essere programmato per tollerare imperfezioni (pacchetti in ritardo, disordinati, duplicati o leggermente malformati) quando riceve dati da altri, senza bloccarsi.
+    
+- **Scalabilità assoluta:** L'architettura non deve avere colli di bottiglia strutturali. Le soluzioni scelte devono funzionare bene sia per poche decine di macchine (le origini), sia per svariati miliardi di host (oggi). L'evoluzione dagli indirizzi IPv4 a IPv6 ne è l'esempio perfetto.
+    
+- **Rapporto costo/prestazioni:** Internet non è nata per fornire un servizio di lusso infallibile, ma come rete "Best-Effort" (fa del suo meglio, ma non garantisce nulla). Questo compromesso è stato scelto per mantenere l'hardware (i router) economico e semplice, favorendo l'espansione capillare e globale della rete. Se serve un'affidabilità assoluta, il costo elaborativo viene spostato sui computer degli utenti finali.
