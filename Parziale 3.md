@@ -598,9 +598,14 @@ Vengono usate raramente per scopi di test o sicurezza. _Correzione importante ri
 
 ### Indirizzi IP (RFC 791)
 
+##### Cosa significa RFC 791 
+**RFC** sta per **Request for Comments** (letteralmente: _Richiesta di commenti_). È il nome ufficiale che viene dato a tutti i documenti tecnici, le specifiche e gli standard che descrivono come funziona Internet. Questi documenti sono gestiti e pubblicati dall'**IETF** (Internet Engineering Task Force), l'organizzazione mondiale che si occupa di sviluppare e promuovere gli standard di rete.
+
+L'**RFC 791**, pubblicato nel settembre del **1981** (e curato dal famoso Jon Postel che abbiamo citato nella slide sui principi di Internet), è letteralmente **il documento fondativo del protocollo IPv4**.
+
 #### La Struttura dell'Indirizzo IPv4
 
-A differenza degli indirizzi MAC (Ethernet) che sono "piatti" (identificano solo la macchina fisica), gli indirizzi IP sono **gerarchici**. Un indirizzo IPv4 è composto da 32 bit ed è sempre diviso logicamente in due parti:
+A differenza degli indirizzi MAC (Ethernet) che sono "piatti" (identificano solo la macchina fisica), gli indirizzi IP sono **gerarchici**. Un indirizzo IPv4 è **composto da 32 bit** ed è sempre diviso logicamente in due parti:
 
 - **Network ID (Parte di Rete):** Identifica la rete a cui appartiene il dispositivo (come il CAP o il nome della via in un indirizzo postale). Tutti gli host sulla stessa rete locale (LAN) condividono questo stesso blocco di bit, chiamato _prefisso_.
     
@@ -610,6 +615,8 @@ A differenza degli indirizzi MAC (Ethernet) che sono "piatti" (identificano solo
 **Notazione Decimale Puntata:** Per comodità umana, i 32 bit non si leggono di seguito, ma vengono divisi in 4 blocchi da 8 bit (chiamati _ottetti_ o byte). Ogni blocco viene convertito in un numero decimale da 0 a 255 e separato da un punto (es. `128.208.2.151`).
 
 #### L'Indirizzamento per Classi (Classful Addressing)
+
+(img classifica di indirizzi)
 
 Prima del 1993, gli indirizzi IP venivano assegnati seguendo un rigido schema "a classi", in cui la dimensione della rete era fissa e determinata dai primissimi bit dell'indirizzo. I router capivano subito a quale classe apparteneva un IP semplicemente guardando **i primi bit del primo ottetto**:
 
