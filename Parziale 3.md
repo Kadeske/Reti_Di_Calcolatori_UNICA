@@ -473,3 +473,62 @@ Per far funzionare un'infrastruttura **globale** ed **eterogenea** come Internet
 - **Scalabilità assoluta:** L'architettura non deve avere colli di bottiglia strutturali. Le soluzioni scelte devono funzionare bene sia per poche decine di macchine (le origini), sia per svariati miliardi di host (oggi). L'evoluzione dagli indirizzi IPv4 a IPv6 ne è l'esempio perfetto.
     
 - **Rapporto costo/prestazioni:** Internet non è nata per fornire un servizio di lusso infallibile, ma come rete "Best-Effort" (fa del suo meglio, ma non garantisce nulla). Questo compromesso è stato scelto per mantenere l'hardware (i router) economico e semplice, favorendo l'espansione capillare e globale della rete. Se serve un'affidabilità assoluta, il costo elaborativo viene spostato sui computer degli utenti finali.
+
+### L'infrastruttura di Internet
+
+(img infrastruttura)
+
+Internet non è una singola rete, ma una **"rete di reti"**. La sua struttura è gerarchica e può essere divisa in livelli:
+
+- **Dorsali (Backbone):** Sono le "autostrade" ad altissima velocità di Internet (gestite dai provider di livello 1 o _Tier 1_). Attraversano continenti e oceani tramite cavi sottomarini in fibra ottica (le _linee affittate transoceaniche_).
+    
+- **Reti Nazionali e Regionali:** Si collegano alle dorsali per distribuire la connettività su aree geografiche più piccole (i provider _Tier 2_ o _Tier 3_). Un esempio italiano citato (con un errore di battitura nella slide) è il **GARR**, la rete nazionale per l'università e la ricerca.
+    
+- **Reti di Accesso (Edge):** Sono i margini della rete, dove si trovano gli utenti finali. Possono essere:
+    
+    - _Reti Domestiche:_ Collegate tramite tecnologie come la **DSL** (nella slide c'è un refuso "DLS") o la Fibra (FTTH).
+        
+    - _Reti Aziendali:_ Spesso basate su infrastrutture **Ethernet**.
+        
+    - _Reti Mobili/Wireless:_ Utilizzano antenne (4G/5G, WiMAX) per connettere dispositivi in mobilità.
+        
+
+_Nota sui router:_ Il passaggio tra una rete e l'altra avviene tramite **Router di confine (Edge/Boundary Router)**, che fungono da "dogana" per i dati.
+
+### Il Protocollo IP:
+
+Come possono reti fisicamente così diverse (Fibra, Rete Mobile, Rame) comunicare tra loro? Grazie al protocollo **IP (Internet Protocol)** al Livello di Rete.
+
+- **Universalità:** L'IP maschera le differenze fisiche sottostanti. Permette di trasportare dati da una sorgente a una destinazione senza preoccuparsi di quante e quali reti diverse ci siano in mezzo.
+    
+- **Servizio "Best-Effort":** L'IP fa "del suo meglio" per consegnare i pacchetti, ma **non garantisce nulla**. I pacchetti (chiamati _datagrammi_) possono essere persi, arrivare in ritardo o in disordine. Se serve affidabilità, se ne deve occupare il Livello di Trasporto (TCP).
+### Dimensione dei Pacchetti (MTU)
+
+Quando il Livello di Trasporto passa i dati al Livello di Rete, questi vengono divisi in pacchetti IP.
+
+- In teoria, un pacchetto IP potrebbe pesare fino a **64 KB**.
+    
+- Nella pratica, la dimensione massima è quasi sempre limitata a **1500 byte**.
+    
+- _Perché?_ Perché i pacchetti IP devono essere inseriti all'interno dei frame **Ethernet** (che è lo standard dominante per i collegamenti locali), la cui capacità massima (chiamata _MTU - Maximum Transmission Unit_) è storicamente di 1500 byte.
+### Ridondanza e Instradamento (Routing)
+
+Tra il computer di casa tua e un server aziendale ci possono essere decine di router intermedi.
+
+- Internet è progettata con un'alta **ridondanza**: le dorsali e i provider sono interconnessi tra loro in punti multipli.
+    
+- Se un cavo si rompe o un router si guasta, esistono molti percorsi alternativi. Spetta ai **protocolli di routing** (gli "algoritmi dinamici" citati nelle slide precedenti) calcolare costantemente la strada migliore e più veloce da far prendere ai pacchetti IP in quel preciso istante.
+
+
+## IPv4 e IPv6
+
+Non c'è una divisione netta basata sulla gerarchia. A causa dell'esaurimento degli indirizzi IPv4, il mondo sta passando a **IPv6 ovunque**, dalle dorsali fino agli smartphone dei singoli utenti.
+
+Attualmente, la maggior parte delle reti globali e locali utilizza una tecnica chiamata **"Dual Stack"**, ovvero i dispositivi e i router "parlano" _contemporaneamente_ sia IPv4 che IPv6 a tutti i livelli della rete, in attesa che il vecchio IPv4 venga definitivamente spento.
+
+
+### Intestazione IPv4
+
+(img intestazione ipv4)
+
+
