@@ -664,3 +664,4 @@ Per tamponare la crisi prima di inventare sistemi moderni (come il NAT, il CIDR 
 3. **Subnetting ("Superfetazione" nelle slide):** Creare delle **Sottoreti**. Si prende la porzione Host di un indirizzo IP e le si "ruba" qualche bit per creare delle reti più piccole all'interno dell'azienda, frammentando in modo efficiente lo spazio a disposizione senza dover chiedere nuovi blocchi alla rete pubblica globale. _(Nota: "superfetazione" è un termine biologico, in ambito informatico e all'esame usa il termine "Subnetting" o "Sottoreti")._
 
 
+### Indirizzi IP speciali 
