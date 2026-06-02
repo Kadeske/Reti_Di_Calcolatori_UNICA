@@ -668,10 +668,32 @@ Per tamponare la crisi prima di inventare sistemi moderni (come il NAT, il CIDR 
 
 Le assegnazioni degli indirizzi non seguono regole fisse, infatti esistono degli indirizzi IP speciali:
 
-(img con ip speciali)
+![[Pasted image 20260602141623.png]]
 
-- Tutto 0: l'host stesso 
-- Tutto 1: broadcast su una rete locale 
-- net-id = 0 e resto = 1 -> un host su questa rete
-- parte di net-id e poi tutti 1 -> broadcast su rete remota
-- indirizzi che iniziano per 127: riservati per controlli all'interno dell'host stesso (loopback)
+**"Questo Host" (Indirizzo Sconosciuto)**
+- **Come è fatto:** Tutti i 32 bit sono a `0` (In decimale: **`0.0.0.0`**).
+- Viene utilizzato _esclusivamente_ come indirizzo sorgente da un computer che si è appena acceso, è collegato alla rete, ma non ha ancora un indirizzo IP assegnato. In pratica dice: "Sono io, ma non so ancora chi sono". Lo si usa tipicamente mentre si sta chiedendo un indirizzo valido a un server DHCP. Non può mai essere usato come destinazione.
+
+"**Un host su questa rete"** 
+
+- **Come è fatto:** La parte Network (Net-ID) ha tutti i bit a `0`, mentre la parte Host ha un numero specifico.
+- Significa "Voglio contattare l'Host X che si trova nella mia stessa identica rete". Oggi questa forma è obsoleta e raramente utilizzata, ma storicamente serviva per riferirsi a una macchina sulla rete locale senza dover specificare qual era l'indirizzo della rete stessa.
+    
+
+**Broadcast Locale (Limited Broadcast)**
+- **Come è fatto:** Tutti i 32 bit sono a `1` (In decimale: **`255.255.255.255`**).
+- È l'equivalente di urlare in una stanza. Quando invii un pacchetto a questo indirizzo, **tutti** i computer collegati alla tua stessa rete locale lo riceveranno e lo leggeranno.
+- _Nota importante:_ I router sono programmati per "fermare" questi pacchetti. Non li fanno mai uscire dalla rete locale, altrimenti un singolo urlo inonderebbe l'intera Internet.
+
+**Broadcast Diretto (Directed Broadcast)**
+
+- **Come è fatto:** La parte Network (Net-ID) contiene l'indirizzo di una rete specifica, mentre la parte Host ha tutti i bit a `1` (Esempio: in una rete di classe C `192.168.1.X`, l'indirizzo sarebbe **`192.168.1.255`**).
+- Serve a inviare un pacchetto a **tutti** gli host di una specifica rete lontana. Il router recapita il pacchetto fino alla rete di destinazione, e l'ultimo router lo "esplode" inviandolo a tutti i computer di quella LAN.
+
+**Indirizzo di Loopback (Localhost)**
+
+- **Come è fatto:** Qualsiasi indirizzo in cui il primo byte è **`127`** (L'indirizzo usato universalmente è **`127.0.0.1`**).
+- È un indirizzo "specchio". Se un computer invia un pacchetto a questo indirizzo, la scheda di rete non lo fa nemmeno uscire sul cavo fisico: lo rimanda immediatamente indietro al computer stesso.
+- _Perché è utile:_ È fondamentale per gli sviluppatori o per i test di sistema. Ti permette di far comunicare due programmi sul tuo stesso computer usando i protocolli di rete (come se fossero su Internet), anche se non sei connesso al Wi-Fi o a un cavo.
+
+### Indirizzi IP privati

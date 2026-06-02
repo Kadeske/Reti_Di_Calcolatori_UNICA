@@ -93,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "aad28f6b99310659",
@@ -222,6 +223,7 @@
   },
   "active": "902f646cdef238f4",
   "lastOpenFiles": [
+    "img/Pasted image 20260602141623.png",
     "cose parte 3.md",
     "Parziale 1.md",
     "Approfondimenti P1/Interfacce e Servizi.md",
@@ -261,7 +263,6 @@
     "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
     "Approfondimenti P1/Analisi di Fourier.md",
     "Approfondimenti P1/ITU.md",
-    "802.3 CSMA/CD (802.3).md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",
