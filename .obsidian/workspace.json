@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cose parte 3.md",
+                "file": "Parziale 3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cose parte 3"
+              "title": "Parziale 3"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -219,13 +220,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "404eefb17cf28692",
+  "active": "902f646cdef238f4",
   "lastOpenFiles": [
-    "Approfondimenti P1/Interfacce e Servizi.md",
+    "cose parte 3.md",
     "Parziale 1.md",
+    "Approfondimenti P1/Interfacce e Servizi.md",
     "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
     "Parziale 3.md",
-    "cose parte 3.md",
     "img/Pasted image 20260523151529.png",
     "img/Pasted image 20260523151844.png",
     "img/Pasted image 20260523151823.png",

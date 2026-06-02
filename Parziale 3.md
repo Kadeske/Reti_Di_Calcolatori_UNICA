@@ -665,3 +665,13 @@ Per tamponare la crisi prima di inventare sistemi moderni (come il NAT, il CIDR 
 
 
 ### Indirizzi IP speciali 
+
+Le assegnazioni degli indirizzi non seguono regole fisse, infatti esistono degli indirizzi IP speciali:
+
+(img con ip speciali)
+
+- Tutto 0: l'host stesso 
+- Tutto 1: broadcast su una rete locale 
+- net-id = 0 e resto = 1 -> un host su questa rete
+- parte di net-id e poi tutti 1 -> broadcast su rete remota
+- indirizzi che iniziano per 127: riservati per controlli all'interno dell'host stesso (loopback)
