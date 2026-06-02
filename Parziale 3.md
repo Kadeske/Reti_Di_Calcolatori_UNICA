@@ -697,3 +697,8 @@ Le assegnazioni degli indirizzi non seguono regole fisse, infatti esistono degli
 - _Perché è utile:_ È fondamentale per gli sviluppatori o per i test di sistema. Ti permette di far comunicare due programmi sul tuo stesso computer usando i protocolli di rete (come se fossero su Internet), anche se non sei connesso al Wi-Fi o a un cavo.
 
 ### Indirizzi IP privati
+
+Poiché gli indirizzi IPv4 pubblici scarseggiavano, l'IETF ha deciso di riservare tre blocchi specifici di indirizzi per l'uso **esclusivamente locale (LAN)**.
+
+- Puoi usare questi indirizzi liberamente all'interno di casa tua o della tua azienda senza doverli chiedere a nessuno e senza pagarli.
+- La regola d'oro è che **questi indirizzi non sono instradabili su Internet**. I router di confine (dei provider) sono programmati per "scartare" immediatamente qualsiasi pacchetto che abbia un indirizzo sorgente o destinazione privato, impedendo che escano all'esterno.
