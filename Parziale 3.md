@@ -702,3 +702,28 @@ Poiché gli indirizzi IPv4 pubblici scarseggiavano, l'IETF ha deciso di riservar
 
 - Puoi usare questi indirizzi liberamente all'interno di casa tua o della tua azienda senza doverli chiedere a nessuno e senza pagarli.
 - La regola d'oro è che **questi indirizzi non sono instradabili su Internet**. I router di confine (dei provider) sono programmati per "scartare" immediatamente qualsiasi pacchetto che abbia un indirizzo sorgente o destinazione privato, impedendo che escano all'esterno.
+
+Il numeretto dopo la barra (es. `/8`) indica la **Subnet Mask (o Notazione CIDR)**. Rappresenta esattamente quanti bit (partendo da sinistra) sono "bloccati" per identificare la Rete (Net-ID).
+(Gianni chiama "mascheramento" la subnet mask)
+
+![[Pasted image 20260602142454.png]]
+Ecco i tre blocchi spiegati bene:
+- **Blocco a 24 bit (Derivato dalla Classe A):**
+    - **Range:** Da `10.0.0.0` a `10.255.255.255`
+    - **Notazione:** `10.0.0.0/8` (I primi 8 bit, cioè il `10`, sono fissi).
+    - **Capacità:** Offre un'unica gigantesca rete con quasi **17 milioni di host** disponibili. È usata dalle grandissime reti aziendali.
+        
+- **Blocco a 20 bit (Derivato dalla Classe B):**
+    - **Range:** Da `172.16.0.0` a `172.31.255.255`
+    - **Notazione:** `172.16.0.0/12` (I primi 12 bit sono fissi).
+    - **Capacità:** Raggruppa 16 reti di classe B contigue. Permette di indirizzare circa **1 milione di host**.
+        
+- **Blocco a 16 bit (Derivato dalla Classe C):**
+    - **Range:** Da `192.168.0.0` a `192.168.255.255`
+    - **Notazione:** `192.168.0.0/16` (I primi 16 bit, cioè `192.168`, sono fissi).
+    - **Capacità:** Raggruppa 256 reti di classe C contigue. Offre oltre **65.000 host**.
+
+Dato che questo indirizzo non può comunicare direttamente all'esterno, è necessario convertirlo in indirizzo ip pubblico all'uscita del router.
+
+Il meccanismo di conversione si chiama **NAT (Network Address Translation)**. 
+Funziona così: il tuo router di casa possiede _un solo_ indirizzo IP Pubblico e valido su Internet (fornito da TIM, Vodafone, ecc.). Quando il tuo computer (con IP privato) vuole aprire una pagina web, manda la richiesta al router. Il router "strappa" il tuo indirizzo privato dall'intestazione del pacchetto, ci "incolla" il suo indirizzo pubblico e lo manda su Internet (questo processo si chiama _IP Masquerading_. Quando il server risponde, il router fa l'operazione inversa e consegna i dati al tuo computer.
