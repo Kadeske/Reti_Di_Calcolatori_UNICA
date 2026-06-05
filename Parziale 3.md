@@ -796,3 +796,27 @@ Londra invia a New York una sola informazione: **`192.24.0.0/19`**. New York sal
 
 ### NAT (Network Address Translation)
 
+In realtà quello che nelle slide chiama NAT è più precisamente PAT (agisce sulle porte), lo chiamerò comunque NAT.
+
+**Come funziona il NAT**:
+L'idea di base è permettere a un'intera rete privata (es. `10.0.x.x`) di uscire su Internet presentandosi con **un solo indirizzo IP pubblico** (es. `198.60.42.12`).
+
+Il problema sorge quando il server web risponde al router: come fa il router a sapere a quale dei 50 computer interni deve consegnare la pagina web? La soluzione sfrutta il Livello di Trasporto (Livello 4): le **Porte Sorgente TCP/UDP**.
+
+![[Pasted image 20260605143128.png]]
+Ecco il flusso esatto (basato sul grafico):
+
+1. **In uscita:** Il PC interno (`10.0.0.1`) crea una connessione usando una porta a caso (es. `5544`). Il router intercetta il pacchetto, **cancella** l'indirizzo e la porta sorgente, e ci **scrive sopra** il proprio IP pubblico (`198.60.42.12`) e una nuova porta inventata da lui (es. `3344`).
+2. **La Tabella NAT:** Il router si segna questa sostituzione in una tabella interna: _"Ricordati che la mia porta esterna 3344 corrisponde al PC interno 10.0.0.1 sulla sua porta 5544"_.
+3. **In entrata:** Il Web Server risponde all'indirizzo pubblico del router sulla porta `3344`. Il router legge la porta, consulta la sua Tabella NAT, capisce che il pacchetto era per il PC `10.0.0.1`, fa la sostituzione inversa e glielo consegna.
+
+
+Per poter funzionare, il NAT infrange diverse regole architetturali:
+
+- **Viola l'autonomia dei livelli (Stratificazione):** Un router lavora al Livello 3 (Rete) e dovrebbe limitarsi a guardare gli indirizzi IP. Il NAT, invece, è costretto ad "aprire" la busta e curiosare nel Livello 4 (Trasporto) per leggere e modificare le porte TCP/UDP.
+- **Rompe il modello End-to-End:** Su Internet, chiunque dovrebbe poter contattare chiunque in ogni momento. Con il NAT, le connessioni **devono** per forza partire dall'interno verso l'esterno per creare la riga nella Tabella NAT. Se uno dall'esterno prova a contattare il tuo PC, il router non sa a chi mandare il pacchetto e lo scarta. (Per risolvere questo serve il cosiddetto _Port Forwarding_).
+- **Trasforma IP in un protocollo "Stateful" (Orientato alla connessione):** L'IP è nato per essere _connectionless_ (senza memoria delle connessioni). Il NAT costringe i router a mantenere in memoria una tabella di "Stato" di tutte le connessioni attive. Se il router NAT si riavvia e perde la tabella, tutte le connessioni di tutti i PC crollano.
+- **Ci incatena a TCP e UDP:** Poiché il NAT per funzionare _ha bisogno_ di leggere il campo "Porta", se un domani inventassimo un protocollo di trasporto migliore del TCP che non usa il concetto di "porte", il NAT non saprebbe come gestirlo e bloccherebbe tutto il traffico.
+- **Rompe alcune applicazioni (es. FTP):** Alcuni vecchi protocolli come l'FTP sono soliti scrivere il proprio indirizzo IP all'interno del "carico utile" (nei dati) del pacchetto. Il NAT cambia l'indirizzo sull'intestazione (sulla busta), ma non sa che dentro la lettera c'è scritto il vecchio indirizzo privato! Risultato: la comunicazione fallisce.
+    
+In sintesi: il NAT è un "trucco sporco" che viola i principi fondamentali delle reti, ma è stato un male assolutamente necessario per impedire che Internet collassasse esaurendo gli indirizzi IPv4 negli anni '90.
