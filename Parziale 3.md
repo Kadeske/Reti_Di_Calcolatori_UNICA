@@ -793,3 +793,6 @@ Londra invia a New York una sola informazione: **`192.24.0.0/19`**. New York sal
 
 ![[Pasted image 20260605130756.png]]
 
+
+### NAT (Network Address Translation)
+
