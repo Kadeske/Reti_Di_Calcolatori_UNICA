@@ -738,3 +738,11 @@ La soluzione è il **Subnetting**: si prende la porzione dedicata agli "Host" e 
 
 1. **Subnet ID (Sottorete):** Bit rubati agli host per creare reti interne più piccole.
 2. **Host ID:** I bit rimanenti, usati per i singoli computer di quella specifica sottorete.
+
+ **La Subnet Mask (Maschera di Sottorete)**:
+Per dire ai router esattamente _dove_ abbiamo fatto questo "taglio", si usa la **Subnet Mask**. È un numero a 32 bit composto rigorosamente da una sequenza ininterrotta di `1` seguita da una sequenza ininterrotta di `0`.
+
+- Gli **`1`** indicano la porzione di Rete + Sottorete.
+- Gli **`0`** indicano la porzione dedicata agli Host.
+
+**L'operazione AND:** Quando un router riceve un pacchetto, prende l'IP di destinazione, gli applica un'operazione matematica (AND logico) con la Subnet Mask, e il risultato "azzera" la parte host, restituendo esattamente l'indirizzo della sottorete a cui il pacchetto deve essere consegnato.
