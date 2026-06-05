@@ -770,3 +770,25 @@ Per ridurre le dimensioni delle tabelle, si usa il processo opposto al Subnettin
 Invece di annunciare su Internet 4 piccole reti separate (occupando 4 righe nella tabella del Core Router), le si "fonde" in un unico grande blocco, annunciando **un solo prefisso più corto** (occupando 1 sola riga).
 
 Questo è possibile grazie al **CIDR (Classless Inter-Domain Routing)**, che elimina le rigide Classi A, B e C, permettendo maschere di sottorete di qualsiasi lunghezza (es. `/21`, `/22`).
+
+
+**Come vengono assegnati gli indirizzi in base al fabbisogno:**
+Il provider ha a disposizione un grosso blocco e lo divide "su misura" (VLSM) per le università, guardando di quante macchine hanno bisogno:
+
+![[Pasted image 20260605130709.png]]
+- **Cambridge:** Ha bisogno di ~2000 IP. La potenza del 2 più vicina è $2^{11}$ (2048).    
+    - Bit per gli host: 11
+    - Bit per la rete: $32 - 11 = 21$
+    - **Assegnazione:** `192.24.0.0/21`
+- **Edimburgo:** Ha bisogno di ~1000 IP. Serve $2^{10}$ (1024).
+    - Bit per la rete: $32 - 10 = 22$
+    - **Assegnazione:** `192.24.8.0/22`
+- **Oxford:** Ha bisogno di ~4000 IP. Serve $2^{12}$ (4096).
+    - Bit per la rete: $32 - 12 = 20$
+    - **Assegnazione:** `192.24.16.0/20`
+
+Il router di Londra è collegato direttamente alle università, quindi nella sua tabella ha **3 righe separate** (più una per il blocco rimasto disponibile). Ma quando Londra deve dire al router di New York come raggiungere queste università, _non gli manda 4 righe_. Si accorge che tutti questi indirizzi sono adiacenti e possono essere inglobati in un'unica maschera più corta: **`/19`**.
+
+Londra invia a New York una sola informazione: **`192.24.0.0/19`**. New York salva **una sola riga** nella sua tabella. Qualsiasi pacchetto destinato a Cambridge, Oxford o Edimburgo farà "match" con quel `/19` e verrà spedito a Londra. Sarà poi Londra, che ha il dettaglio, a smistarlo all'università corretta. Questo salva la memoria dei router globali.
+
+![[Pasted image 20260605130756.png]]
