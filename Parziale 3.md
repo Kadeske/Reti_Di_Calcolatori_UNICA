@@ -770,14 +770,3 @@ Per ridurre le dimensioni delle tabelle, si usa il processo opposto al Subnettin
 Invece di annunciare su Internet 4 piccole reti separate (occupando 4 righe nella tabella del Core Router), le si "fonde" in un unico grande blocco, annunciando **un solo prefisso più corto** (occupando 1 sola riga).
 
 Questo è possibile grazie al **CIDR (Classless Inter-Domain Routing)**, che elimina le rigide Classi A, B e C, permettendo maschere di sottorete di qualsiasi lunghezza (es. `/21`, `/22`).
-
-> ⚠️ **Correzione Errori Slide 1:**
-> 
-> Nel penultimo paragrafo, l'autore ha sbagliato a scrivere le potenze. Dice che un prefisso `/22` contiene "210 indirizzi" e un `/20` ne contiene "212". **È un errore grave di formattazione.**
-> 
-> Intendeva dire:
-> 
-> - Un `/22` lascia 10 bit per gli host, quindi contiene **$2^{10} = 1024$** indirizzi.
->     
-> - Un `/20` lascia 12 bit per gli host, quindi contiene **$2^{12} = 4096$** indirizzi.
->
