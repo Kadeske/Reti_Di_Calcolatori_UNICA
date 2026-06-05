@@ -742,7 +742,13 @@ La soluzione è il **Subnetting**: si prende la porzione dedicata agli "Host" e 
  **La Subnet Mask (Maschera di Sottorete)**:
 Per dire ai router esattamente _dove_ abbiamo fatto questo "taglio", si usa la **Subnet Mask**. È un numero a 32 bit composto rigorosamente da una sequenza ininterrotta di `1` seguita da una sequenza ininterrotta di `0`.
 
+
+
+![[Pasted image 20260605125246.png]]
 - Gli **`1`** indicano la porzione di Rete + Sottorete.
 - Gli **`0`** indicano la porzione dedicata agli Host.
 
 **L'operazione AND:** Quando un router riceve un pacchetto, prende l'IP di destinazione, gli applica un'operazione matematica (AND logico) con la Subnet Mask, e il risultato "azzera" la parte host, restituendo esattamente l'indirizzo della sottorete a cui il pacchetto deve essere consegnato.
+
+**Visibilità: Interna vs Esterna**:
+**Il subnetting è un affare privato**. Se l'università ha l'indirizzo `128.208.0.0/16` e lo divide in 50 dipartimenti diversi, ai router di Internet non interessa. Internet vede solo la "porta principale" (il `/16`). Solo i router _interni_ dell'università conoscono l'esistenza delle sottoreti e usano le maschere per smistare i dati nei vari uffici. Questo meccanismo tiene le tabelle di routing mondiali piccole ed efficienti.
