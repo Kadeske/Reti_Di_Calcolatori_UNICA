@@ -727,3 +727,14 @@ Dato che questo indirizzo non può comunicare direttamente all'esterno, è neces
 
 Il meccanismo di conversione si chiama **NAT (Network Address Translation)**. 
 Funziona così: il tuo router di casa possiede _un solo_ indirizzo IP Pubblico e valido su Internet (fornito da TIM, Vodafone, ecc.). Quando il tuo computer (con IP privato) vuole aprire una pagina web, manda la richiesta al router. Il router "strappa" il tuo indirizzo privato dall'intestazione del pacchetto, ci "incolla" il suo indirizzo pubblico e lo manda su Internet (questo processo si chiama _IP Masquerading_. Quando il server risponde, il router fa l'operazione inversa e consegna i dati al tuo computer.
+
+
+### Subnetting 
+
+
+Se un'azienda riceve un blocco di indirizzi (es. una Classe B), non le conviene avere migliaia di computer tutti sulla stessa immensa rete locale: ci sarebbe troppo traffico inutile (broadcast) e poca sicurezza.
+
+La soluzione è il **Subnetting**: si prende la porzione dedicata agli "Host" e la si divide arbitrariamente in due parti:
+
+1. **Subnet ID (Sottorete):** Bit rubati agli host per creare reti interne più piccole.
+2. **Host ID:** I bit rimanenti, usati per i singoli computer di quella specifica sottorete.
