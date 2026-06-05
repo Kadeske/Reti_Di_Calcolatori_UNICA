@@ -752,3 +752,32 @@ Per dire ai router esattamente _dove_ abbiamo fatto questo "taglio", si usa la *
 
 **Visibilità: Interna vs Esterna**:
 **Il subnetting è un affare privato**. Se l'università ha l'indirizzo `128.208.0.0/16` e lo divide in 50 dipartimenti diversi, ai router di Internet non interessa. Internet vede solo la "porta principale" (il `/16`). Solo i router _interni_ dell'università conoscono l'esistenza delle sottoreti e usano le maschere per smistare i dati nei vari uffici. Questo meccanismo tiene le tabelle di routing mondiali piccole ed efficienti.
+
+### CIDR (Classless Interdomain Routing)
+
+**Il Problema: L'esplosione delle Tabelle di Routing**:
+
+- **Edge Router (Router di bordo):** I router delle università o delle aziende hanno un compito facile. Sanno come raggiungere le proprie sottoreti interne, ma per tutto il resto del mondo usano una _rotta di default_: "Se non conosci l'indirizzo, manda tutto al provider (ISP) e ci penserà lui".
+- **Core Router (La zona "Default-Free"):** I router giganti al centro di Internet (le dorsali) _non possono_ avere una rotta di default. Loro **devono sapere** dove si trova ogni singola rete del pianeta.
+    
+
+Se ogni piccola aziendina o università annunciasse la propria piccola rete a questi Core Router, le loro tabelle di instradamento (Routing Tables) esploderebbero, diventando lente da consultare e impossibili da mantenere in memoria.
+
+
+**Supernetting e CIDR**:
+Per ridurre le dimensioni delle tabelle, si usa il processo opposto al Subnetting: la **Route Aggregation (Aggregazione dei percorsi)** o **Supernetting**.
+
+Invece di annunciare su Internet 4 piccole reti separate (occupando 4 righe nella tabella del Core Router), le si "fonde" in un unico grande blocco, annunciando **un solo prefisso più corto** (occupando 1 sola riga).
+
+Questo è possibile grazie al **CIDR (Classless Inter-Domain Routing)**, che elimina le rigide Classi A, B e C, permettendo maschere di sottorete di qualsiasi lunghezza (es. `/21`, `/22`).
+
+> ⚠️ **Correzione Errori Slide 1:**
+> 
+> Nel penultimo paragrafo, l'autore ha sbagliato a scrivere le potenze. Dice che un prefisso `/22` contiene "210 indirizzi" e un `/20` ne contiene "212". **È un errore grave di formattazione.**
+> 
+> Intendeva dire:
+> 
+> - Un `/22` lascia 10 bit per gli host, quindi contiene **$2^{10} = 1024$** indirizzi.
+>     
+> - Un `/20` lascia 12 bit per gli host, quindi contiene **$2^{12} = 4096$** indirizzi.
+>
