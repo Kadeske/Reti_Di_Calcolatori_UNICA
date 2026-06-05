@@ -725,7 +725,7 @@ Ecco i tre blocchi spiegati bene:
 
 Dato che questo indirizzo non può comunicare direttamente all'esterno, è necessario convertirlo in indirizzo ip pubblico all'uscita del router.
 
-Il meccanismo di conversione si chiama **NAT (Network Address Translation)**. 
+Il meccanismo di conversione si chiama **NAT (Network Address Translation)**. (Approfondito dopo)
 Funziona così: il tuo router di casa possiede _un solo_ indirizzo IP Pubblico e valido su Internet (fornito da TIM, Vodafone, ecc.). Quando il tuo computer (con IP privato) vuole aprire una pagina web, manda la richiesta al router. Il router "strappa" il tuo indirizzo privato dall'intestazione del pacchetto, ci "incolla" il suo indirizzo pubblico e lo manda su Internet (questo processo si chiama _IP Masquerading_. Quando il server risponde, il router fa l'operazione inversa e consegna i dati al tuo computer.
 
 
@@ -792,3 +792,4 @@ Il router di Londra è collegato direttamente alle università, quindi nella sua
 Londra invia a New York una sola informazione: **`192.24.0.0/19`**. New York salva **una sola riga** nella sua tabella. Qualsiasi pacchetto destinato a Cambridge, Oxford o Edimburgo farà "match" con quel `/19` e verrà spedito a Londra. Sarà poi Londra, che ha il dettaglio, a smistarlo all'università corretta. Questo salva la memoria dei router globali.
 
 ![[Pasted image 20260605130756.png]]
+
