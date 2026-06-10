@@ -821,5 +821,5 @@ Per poter funzionare, il NAT infrange diverse regole architetturali:
     
 In sintesi: il NAT è un "trucco sporco" che viola i principi fondamentali delle reti, ma è stato un male assolutamente necessario per impedire che Internet collassasse esaurendo gli indirizzi IPv4 negli anni '90.
 
-
 ### IPV6
+
