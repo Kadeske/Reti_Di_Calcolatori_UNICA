@@ -872,3 +872,14 @@ L'header base a 40 byte c'è sempre. Se servono funzioni extra, si aggiungono "a
     - **In IPv6, i router non frammentano mai.** Se un router riceve un pacchetto troppo grande per la sua linea, lo scarta immediatamente e manda un messaggio di errore ICMP al mittente ("Packet Too Big").
         
     - Sarà il **mittente originario (l'host)** a dover spezzettare i dati inserendo questa intestazione estesa di frammentazione. Questa regola ha alleggerito immensamente il carico di lavoro dei router globali.
+
+
+## Protocolli di controllo Internet
+
+La rete internet è complessa e sempre più grande, per tenerla sotto controllo abbiamo bisogno di **protocolli di controllo** con diverse funzioni:
+- **ICMP**: è una suite di protcolli che verificano la correttezza interna della rete;
+- **ARP e RARP**: risolvolo la corrispondenza tra scheda di livello 2 e indirizzi IP (collega MAC e IP)
+- **DHCP** (Dynamic Host Configuration Protocol): permette l'assegnazione manuale o dinamica di indirizzi IP pubblici
+
+
+### ICMP

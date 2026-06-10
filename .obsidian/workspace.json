@@ -205,7 +205,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -222,15 +223,15 @@
   },
   "active": "902f646cdef238f4",
   "lastOpenFiles": [
-    "Pasted image 20260610142134.png",
-    "Pasted image 20260610142119.png",
-    "Pasted image 20260610142054.png",
-    "Pasted image 20260610141847.png",
-    "Pasted image 20260605143128.png",
-    "Pasted image 20260605130756.png",
-    "Pasted image 20260605130709.png",
-    "Pasted image 20260605125246.png",
-    "Pasted image 20260602142454.png",
+    "img/Pasted image 20260610142134.png",
+    "img/Pasted image 20260610142119.png",
+    "img/Pasted image 20260610142054.png",
+    "img/Pasted image 20260610141847.png",
+    "img/Pasted image 20260605143128.png",
+    "img/Pasted image 20260605130756.png",
+    "img/Pasted image 20260605130709.png",
+    "img/Pasted image 20260605125246.png",
+    "img/Pasted image 20260602142454.png",
     "img/Pasted image 20260602141623.png",
     "cose parte 3.md",
     "Parziale 1.md",
