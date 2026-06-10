@@ -929,3 +929,21 @@ L'Host 1 vuole inviare un messaggio all'Host 4 che si trova su **un altra rete**
 - Ora è il Router (tramite l'interfaccia E4) a fare una richiesta ARP sulla Rete EE chiedendo: _"Chi ha l'IP4?"_.
 - L'Host 4 risponde con il MAC `E6`.
 - Il Router crea una _nuova_ busta Ethernet (Sorgente `E4`, Destinazione `E6`) e recapita finalmente il pacchetto all'Host 4.
+
+Altro esempio:
+![[Pasted image 20260610145951.png]]
+
+
+TODO: spiegazione esempio 
+
+
+### RARP (Reverse Address Resolution Protocol)
+
+RARP fa il processo inverso di ARP: dato un indirizzo ethernet restituisce il corrispondente indirizzo IP.
+E' necessario un server RARP su ogni rete, dato che utilizza messaggi broadcast che non escono dalla rete stessa.
+
+### Boot Prococol (BOOTP)
+
+Utilizzato per risolvere i problemi dil RARP. A differenza di RARP, BOOTP utilizza messaggi UDP, spesso inoltrati attraverso i router, può quindi 'saltare' ad un altra rete locale.
+
+Il problema 
