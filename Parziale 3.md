@@ -883,3 +883,12 @@ La rete internet è complessa e sempre più grande, per tenerla sotto controllo 
 
 
 ### ICMP
+
+Protocollo di controllo di messaggio che consente di avere diverse informazioni.
+E' incapsulato nel pacchetto IP. Le informazioni riguardano:
+- **Destination unreachable**: Viene inviato al mittente del messaggio avvisandolo di una nota irraggiungibilità del destinatario.
+- **Time exceeded**: Viene inviato al mittente del pacchetto quando il contatore *TimeToLive* raggiunge lo 0.
+- **Redirect**: Viene utilizzato da un router quando pensa di aver ricevuto un pacchetto formulato in modo errato. Invita l'host trasmittente ad aggiornare la sua tabella di routing.
+- **Echo request, reply**: E' un meccanismo utilizzato per capire se una certa destinazione è raggiungibile. Si invia un messaggio ECHO e chi lo riceve deve rispondere con ECHO REPLY.
+- **Timestamp request, reply**: come l'echo ma annota anche il timestamp di arrivo dei messaggi per misurare le prestazioni della rete.
+- **Router Advertisement, solicitation**: Usati dagli host per trovare router vicini.
