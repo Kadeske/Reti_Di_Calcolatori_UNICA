@@ -892,3 +892,12 @@ E' incapsulato nel pacchetto IP. Le informazioni riguardano:
 - **Echo request, reply**: E' un meccanismo utilizzato per capire se una certa destinazione è raggiungibile. Si invia un messaggio ECHO e chi lo riceve deve rispondere con ECHO REPLY.
 - **Timestamp request, reply**: come l'echo ma annota anche il timestamp di arrivo dei messaggi per misurare le prestazioni della rete.
 - **Router Advertisement, solicitation**: Usati dagli host per trovare router vicini.
+
+### ARP
+
+In che modo gli indirizzi IP vengono associati agli indirizzi del livello data link?
+
+Esempio riguardante la rete di una università con subnet mask /24:
+![[Pasted image 20260610143954.png]]
+
+Le reti *CS* e *EE* sono delle Ethernet commutate, quindi sono collegati ad uno switch ethernet. Queste sono connesse tra loro attraverso un router IP
