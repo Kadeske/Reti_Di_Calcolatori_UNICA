@@ -820,3 +820,6 @@ Per poter funzionare, il NAT infrange diverse regole architetturali:
 - **Rompe alcune applicazioni (es. FTP):** Alcuni vecchi protocolli come l'FTP sono soliti scrivere il proprio indirizzo IP all'interno del "carico utile" (nei dati) del pacchetto. Il NAT cambia l'indirizzo sull'intestazione (sulla busta), ma non sa che dentro la lettera c'è scritto il vecchio indirizzo privato! Risultato: la comunicazione fallisce.
     
 In sintesi: il NAT è un "trucco sporco" che viola i principi fondamentali delle reti, ma è stato un male assolutamente necessario per impedire che Internet collassasse esaurendo gli indirizzi IPv4 negli anni '90.
+
+
+### IPV6
