@@ -955,3 +955,5 @@ I protocolli come ARP suppongono che esista una configurazione che associa gli i
 Il DHCP si occupa di creare questa associazione. E' possibile farla in modo manuale o automatico.
 
 ![[Pasted image 20260610151215.png]]
+
+Una volta acceso e collegato alla rete, un PC manda in broadcast un messaggio per richiedere il suo Indirizzo IP all'interno della rete. A rispondere sarà il server DHCP che gli fornirà un indirizzo IP privato 
