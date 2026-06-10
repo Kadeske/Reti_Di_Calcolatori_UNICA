@@ -946,4 +946,10 @@ E' necessario un server RARP su ogni rete, dato che utilizza messaggi broadcast 
 
 Utilizzato per risolvere i problemi dil RARP. A differenza di RARP, BOOTP utilizza messaggi UDP, spesso inoltrati attraverso i router, può quindi 'saltare' ad un altra rete locale.
 
-Il problema 
+Il problema  è che richiede una configurazione manuale delle tabelleche associano indirizi IP a indirizzi Ethernet. In pratica quando un utente si aggiunge alla LAN, BOOTP non lo conosce finchè non viene compilata la lista a mano (p.e. dall'amministratore).
+
+### DHCP (Dynamic Host Control Protocol)
+
+I protocolli come ARP suppongono che esista una configurazione che associa gli indirizzi IP a indirizzi ethernet.
+
+Il DHCP si occupa di creare questa associazione. E' possibile farla in modo manuale o automatico.
