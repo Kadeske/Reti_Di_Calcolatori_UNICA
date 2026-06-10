@@ -897,10 +897,35 @@ E' incapsulato nel pacchetto IP. Le informazioni riguardano:
 
 In che modo gli indirizzi IP vengono associati agli indirizzi del livello data link?
 
+**Indirizzi Logici != Indirizzi Fisici**
+- **Il Livello di Rete (IP):** Parla usando indirizzi IP logici (es. `192.32.65.7`). Sono come i nomi e cognomi delle persone: servono per trovare qualcuno nel mondo, ma non dicono nulla sull'hardware fisico.
+- **Il Livello Data Link (Ethernet):** Parla usando **Indirizzi MAC (o indirizzi Ethernet)** fisici (nella slide indicati per semplicità come `E1`, `E2`, ecc.). Sono indirizzi cablati fisicamente nella scheda di rete dal produttore.
+
+Il problema sorge quando un computer deve inviare fisicamente un segnale sul cavo: **la scheda di rete non capisce gli indirizzi IP**. Capisce solo gli indirizzi MAC. Quindi, come fa un computer a sapere a quale scheda di rete fisica mandare i dati se conosce solo l'indirizzo IP del destinatario?
+
+L'ARP è il protocollo che risolve questo problema. La sua unica funzione è rispondere a questa domanda: _"Conosco l'indirizzo IP X. Qual è l'indirizzo fisico (MAC) della scheda di rete associata a quell'IP?"_
+
+
 Esempio riguardante la rete di una università con subnet mask /24:
 ![[Pasted image 20260610143954.png]]
 
 Le reti *CS* e *EE* sono delle Ethernet commutate, quindi sono collegati ad uno switch ethernet. Queste sono connesse tra loro attraverso un router IP.
 Gli indirizzi ethernet sono segnati come E1, E2, ...
 
-In che modo l'utente dell'host 1 invia un pacchetto all'utente 2 sulla rete CS?
+L'Host 1 vuole inviare un messaggio all'Host 2, che si trova **sulla sua stessa rete locale (Rete CS)**:
+1. **Verifica locale:** L'Host 1 guarda l'IP di destinazione (`192.32.65.5`), applica la sua Subnet Mask (`/24`) e capisce: _"Questo computer è sulla mia stessa rete, posso parlargli direttamente"_.
+2. **L'Urlo (ARP Request):** L'Host 1 crea un pacchetto ARP speciale e lo invia in **Broadcast** su tutta la rete locale. È come se si affacciasse alla finestra e urlasse: _"Ehi a tutti! Chi di voi ha l'indirizzo IP 192.32.65.5? Per favore, mi dica qual è il suo indirizzo MAC!"_
+3. **Il Silenzio e la Risposta:** Tutte le macchine sulla rete (incluso il router) ricevono l'urlo. Tutti tranne l'Host 2 guardano l'IP, vedono che non è il loro e scartano il pacchetto in silenzio. L'Host 2, invece, si riconosce e invia una **ARP Reply** (questa volta in formato Unicast, direttamente all'Host 1): _"Sono io! Il mio indirizzo Ethernet è E2"_.
+4. **L'Incapsulamento e l'Invio:** Ora l'Host 1 ha tutto. Prende il suo pacchetto IP, lo "imbusta" dentro un _Frame Ethernet_, scrive `E2` come indirizzo di destinazione fisico e lo spedisce sul cavo. Lo switch leggerà `E2` e consegnerà il pacchetto fisicamente all'Host 2.
+
+L'Host 1 vuole inviare un messaggio all'Host 4 che si trova su **un altra rete**:
+- L'Host 1 guarda l'IP di Host 4 (`192.32.63.8`), usa la Subnet Mask e capisce: _"Non è sulla mia rete. Devo mandare questo pacchetto al mio Gateway (il Router E3)"_.
+- L'Host 1 **NON** fa un ARP per l'Host 4 (l'urlo broadcast non supererebbe il router). L'Host 1 fa un ARP per chiedere **l'indirizzo MAC del Router**.
+- Il Router risponde: _"Il mio MAC per questa interfaccia è E3"_.
+- L'Host 1 crea il pacchetto. _Attenzione alle due intestazioni:_
+    - **Intestazione IP (Il viaggio logico totale):** Sorgente: `IP1`, Destinazione: `IP4`.
+    - **Intestazione Ethernet (Il salto fisico immediato):** Sorgente: `E1`, Destinazione: `E3` (Il Router).
+- Il Router riceve il pacchetto, straccia la vecchia busta Ethernet e guarda l'IP. Capisce che deve mandarlo sulla Rete EE.
+- Ora è il Router (tramite l'interfaccia E4) a fare una richiesta ARP sulla Rete EE chiedendo: _"Chi ha l'IP4?"_.
+- L'Host 4 risponde con il MAC `E6`.
+- Il Router crea una _nuova_ busta Ethernet (Sorgente `E4`, Destinazione `E6`) e recapita finalmente il pacchetto all'Host 4.
