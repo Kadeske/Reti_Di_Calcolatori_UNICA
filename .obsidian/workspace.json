@@ -205,8 +205,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,6 +222,10 @@
   },
   "active": "902f646cdef238f4",
   "lastOpenFiles": [
+    "Pasted image 20260610142134.png",
+    "Pasted image 20260610142119.png",
+    "Pasted image 20260610142054.png",
+    "Pasted image 20260610141847.png",
     "Pasted image 20260605143128.png",
     "Pasted image 20260605130756.png",
     "Pasted image 20260605130709.png",
@@ -235,10 +238,6 @@
     "Approfondimenti P1/IEEE 802.3 -> CSMA-CD.md",
     "Parziale 3.md",
     "img/Pasted image 20260523151529.png",
-    "img/Pasted image 20260523151844.png",
-    "img/Pasted image 20260523151823.png",
-    "img/Pasted image 20260523151658.png",
-    "img/Pasted image 20260523151604.png",
     "pdf/Reti_di_calcolatori_3.pdf.part",
     "es 2.md",
     "Es 3.md",

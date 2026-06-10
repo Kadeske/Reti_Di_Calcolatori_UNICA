@@ -823,3 +823,52 @@ In sintesi: il NAT è un "trucco sporco" che viola i principi fondamentali delle
 
 ### IPV6
 
+**Il formato dell'Indirizzo IPv6 e la Compressione**
+Gli indirizzi IPv6 passano da 32 a **128 bit**. Questo significa un numero di IP disponibili talmente vasto da poter assegnare un IP a ogni granello di sabbia sulla Terra. Essendo troppo lunghi (16 byte), non si usa più la notazione decimale, ma quella **esadecimale**, dividendo i numeri in 8 gruppi separati da due punti (`:`).
+
+Per evitare di scrivere indirizzi lunghissimi pieni di zeri, esistono due regole di **compressione/ottimizzazione**:
+
+1. **Omissione degli zeri iniziali:** In ogni gruppo, gli zeri a sinistra si possono togliere (es. `0123` diventa `123`, `0000` diventa `0`).
+    
+2. **Compressione dei blocchi nulli (`::`):** Una sequenza contigua di blocchi fatti solo di zeri può essere sostituita dal simbolo `::`. **Regola d'oro:** questa sostituzione può essere fatta _una sola volta_ all'interno di un indirizzo, altrimenti il router non saprebbe quanti zeri ripristinare per tornare a 128 bit!
+    
+
+_Nota sugli indirizzi "ibridi":_ Per facilitare la transizione, un vecchio indirizzo IPv4 può essere "mascherato" dentro un IPv6 mettendo tutti zeri iniziali e l'IP in fondo (es. `::192.167.148.11`).
+
+***Intestazione (header) ipv6***
+La vera rivoluzione dell'IPv6 non è solo la dimensione, ma **l'efficienza**. L'intestazione IPv6 è stata "ripulita" rispetto a quella caotica dell'IPv4. Passa da 13 campi a **soli 7 campi**, e ha una dimensione fissa di **40 byte**. Questo permette ai router centrali di processare i pacchetti a velocità inaudite.
+
+![[Pasted image 20260610141847.png]]
+Ecco i 7 campi dell'Header Base:
+
+- **Version (4 bit):** Contiene il numero 6.
+- **Traffic Class (8 bit):** L'equivalente del "Type of Service" in IPv4. Serve per la QoS (Quality of Service) per dare priorità a traffico come voce o video.
+- **Flow Label (20 bit):** _Novità assoluta._ Serve a identificare un "flusso" specifico di pacchetti (es. uno streaming video). Permette ai router di applicare le stesse regole di instradamento a tutto il flusso senza dover ri-analizzare ogni singolo pacchetto. Crea una sorta di "corsia preferenziale" (pseudo-connessione).
+- **Payload Length (16 bit):** A differenza dell'IPv4 (che indicava la lunghezza _totale_), qui si indica solo la dimensione dei dati utili (il payload) _esclusa_ l'intestazione fissa di 40 byte.
+- **Next Header (8 bit):** Sostituisce il campo "Protocol" dell'IPv4. Dice al router cosa viene dopo: potrebbe essere l'intestazione TCP/UDP, oppure una delle nuove "Intestazioni Estese".
+- **Hop Limit (8 bit):** Sostituisce il "TTL" (Time to Live) dell'IPv4. Il funzionamento è identico (viene decrementato a ogni router e se arriva a 0 il pacchetto muore), ma il nome è finalmente corretto: conta i "salti", non i secondi.
+- **Source & Destination Address (128 bit ciascuno).**
+
+
+***Intestazioni ipv6 ESTESE***
+I campi mancanti di IPv4 sono ancora salutariamente necessari. Per introdurli nell'IPv6 si introduce il concetto di *intestazione estesa*.
+
+L'header base a 40 byte c'è sempre. Se servono funzioni extra, si aggiungono "a catena" tra l'header base e i dati veri e propri. Ecco le principali:
+
+![[Pasted image 20260610142054.png]]
+
+- **Hop-by-hop options:** L'unica estensione che **deve** essere letta da _tutti_ i router attraversati. Viene usata ad esempio per i _Jumbogrammi_ (pacchetti giganti che superano i 65.536 byte, utili per i supercomputer).
+    ![[Pasted image 20260610142119.png]]
+- **Destination options:** Lette solo dal destinatario finale, i router in mezzo le ignorano.
+    
+- **Routing:** Simile al _Loose Source Routing_ dell'IPv4. Il mittente impone un elenco di router che il pacchetto deve obbligatoriamente visitare lungo il tragitto.
+    ![[Pasted image 20260610142134.png]]
+- **Autenticazione & Carico Utile Cifrato (ESP):** L'IPv6 integra in modo nativo i protocolli di sicurezza IPsec per garantire che il pacchetto non sia stato contraffatto e che i dati siano illeggibili a chi cerca di intercettarli.
+    
+- **Frammentazione:**  **DIFFERENZA CON IPV4 **
+    
+    - In IPv4, se un pacchetto è troppo grande, _il router in mezzo alla rete_ perde tempo a spezzettarlo.
+        
+    - **In IPv6, i router non frammentano mai.** Se un router riceve un pacchetto troppo grande per la sua linea, lo scarta immediatamente e manda un messaggio di errore ICMP al mittente ("Packet Too Big").
+        
+    - Sarà il **mittente originario (l'host)** a dover spezzettare i dati inserendo questa intestazione estesa di frammentazione. Questa regola ha alleggerito immensamente il carico di lavoro dei router globali.
