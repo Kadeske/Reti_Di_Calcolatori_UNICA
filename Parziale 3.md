@@ -900,4 +900,7 @@ In che modo gli indirizzi IP vengono associati agli indirizzi del livello data l
 Esempio riguardante la rete di una università con subnet mask /24:
 ![[Pasted image 20260610143954.png]]
 
-Le reti *CS* e *EE* sono delle Ethernet commutate, quindi sono collegati ad uno switch ethernet. Queste sono connesse tra loro attraverso un router IP
+Le reti *CS* e *EE* sono delle Ethernet commutate, quindi sono collegati ad uno switch ethernet. Queste sono connesse tra loro attraverso un router IP.
+Gli indirizzi ethernet sono segnati come E1, E2, ...
+
+In che modo l'utente dell'host 1 invia un pacchetto all'utente 2 sulla rete CS?
