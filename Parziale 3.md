@@ -953,3 +953,5 @@ Il problema  è che richiede una configurazione manuale delle tabelleche associa
 I protocolli come ARP suppongono che esista una configurazione che associa gli indirizzi IP a indirizzi ethernet.
 
 Il DHCP si occupa di creare questa associazione. E' possibile farla in modo manuale o automatico.
+
+![[Pasted image 20260610151215.png]]
