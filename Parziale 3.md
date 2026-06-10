@@ -879,7 +879,8 @@ L'header base a 40 byte c'è sempre. Se servono funzioni extra, si aggiungono "a
 La rete internet è complessa e sempre più grande, per tenerla sotto controllo abbiamo bisogno di **protocolli di controllo** con diverse funzioni:
 - **ICMP**: è una suite di protcolli che verificano la correttezza interna della rete;
 - **ARP e RARP**: risolvolo la corrispondenza tra scheda di livello 2 e indirizzi IP (collega MAC e IP)
-- **DHCP** (Dynamic Host Configuration Protocol): permette l'assegnazione manuale o dinamica di indirizzi IP pubblici
+- **Bootstrap** (BOOTP): Protocollo utilizzato per avviare un host alla rete. Successivamente sostituito da DHCP.
+- **DHCP** (Dynamic Host Configuration Protocol): permette l'assegnazione manuale o dinamica di indirizzi IP a indirizzi ethernet.
 
 
 ### ICMP
@@ -960,3 +961,17 @@ Una volta acceso e collegato alla rete, un PC manda in broadcast un messaggio pe
 Solitamente il DHCP affitta l'indirizzo per un tempo limitato.
 
 Dato che i PC utilizzano messaggi broadcast (che non escono dal router) per cercare il DHCP, sorge un problema, in quanto il server DHCP potrebbe non essere nello stesso router. Per risolvere questo problema, e quindi utilizzare lo stesso server su reti distanti, si utilizza un agente di inoltre DHCP detto **DHCP Relay** il quale invierà il messaggio broadcast incapsulato alla rete distante.
+
+
+## Protocolli Interni alle reti (IGP)
+
+
+## Protocolli Esterni alle reti (EGP)
+
+
+## Internet multicasting
+
+
+
+# Livello di trasporto 
+
