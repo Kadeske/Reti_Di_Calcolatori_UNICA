@@ -956,4 +956,7 @@ Il DHCP si occupa di creare questa associazione. E' possibile farla in modo manu
 
 ![[Pasted image 20260610151215.png]]
 
-Una volta acceso e collegato alla rete, un PC manda in broadcast un messaggio per richiedere il suo Indirizzo IP all'interno della rete. A rispondere sarà il server DHCP che gli fornirà un indirizzo IP privato 
+Una volta acceso e collegato alla rete, un PC manda in broadcast un messaggio per richiedere il suo Indirizzo IP all'interno della rete. A rispondere sarà il server DHCP che gli fornirà un indirizzo IP privato.
+Solitamente il DHCP affitta l'indirizzo per un tempo limitato.
+
+Dato che i PC utilizzano messaggi broadcast (che non escono dal router) per cercare il DHCP, sorge un problema, in quanto il server DHCP potrebbe non essere nello stesso router. Per risolvere questo problema, e quindi utilizzare lo stesso server su reti distanti, si utilizza un agente di inoltre DHCP detto **DHCP Relay** il quale invierà il messaggio broadcast incapsulato alla rete distante.
