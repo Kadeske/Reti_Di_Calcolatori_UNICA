@@ -977,7 +977,7 @@ Alcuni protocolli IGP:
 ### Open Shortest Path First (OSPF)
 
 Rappresenta la rete reale come un grafo ed elabora il percorso più breve da ogni router ad ogni altro router tramite un algoritmo di link state.
-Se sono possibili più percorsi della stessa lunghezza, ricorda l'intero insieme dei percorsi più brevi e durante l'inoltro il traffico viene suddiviso tra essi.
+Se sono possibili più percorsi della stessa lunghezza, ricorda l'intero insieme dei percorsi più brevi e durante l'inoltro il traffico viene suddiviso tra espansione..
 
 ## Protocolli Esterni alle reti (EGP)
 
