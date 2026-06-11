@@ -1021,5 +1021,7 @@ A differenza delle Classi A, B e C, gli indirizzi di Classe D **non hanno una ma
 - **`224.0.0.5` e `224.0.0.6` (OSPF):** Usati dal protocollo di routing OSPF. I router li usano per scambiarsi aggiornamenti sulle mappe di rete senza disturbare i computer degli utenti.
 - **`224.0.0.251` (mDNS):** È il Multicast DNS. È quello che permette al tuo Mac o al tuo iPhone di trovare magicamente una stampante Wi-Fi o una Apple TV sulla rete domestica senza bisogno di configurazioni (tecnologia Bonjour/ZeroConf).
 
+L’**IGMP** (Internet Group Management Protocol) è un protocollo legato al multi-casting che permette di eseguire ulteriori controlli interni. Il multi-casting usa algoritmi Spanning tree con protocollo **PIM** (Protocol Indipendent Multicast).
+
 # Livello di trasporto 
 
