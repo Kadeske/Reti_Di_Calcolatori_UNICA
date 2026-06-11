@@ -1014,7 +1014,12 @@ Il BGP viene definito una variante del Distance Vector, chiamata più precisamen
 - **Affidabilità:** Poiché le tabelle BGP del mondo intero pesano centinaia di megabyte, non vengono inviate a caso in broadcast. I router BGP stabiliscono delle connessioni **TCP** dirette tra loro per scambiarsi gli aggiornamenti in modo sicuro e affidabile.
 ## Internet multicasting
 
+A differenza delle Classi A, B e C, gli indirizzi di Classe D **non hanno una maschera di sottorete (Subnet Mask)** e non sono divisi in "Rete" e "Host". I primi 4 bit sono sempre bloccati a `1110` (il che fa iniziare questi indirizzi da `224.0.0.0`), e i restanti **28 bit formano un "Group ID" (Identificativo di Gruppo)**.
 
+- **`224.0.0.1` (All Systems):** Indirizza _tutti gli host_ (computer, stampanti, ecc.) presenti sulla rete locale.
+- **`224.0.0.2` (All Routers):** Indirizza _solo i router_ presenti sulla rete locale.
+- **`224.0.0.5` e `224.0.0.6` (OSPF):** Usati dal protocollo di routing OSPF. I router li usano per scambiarsi aggiornamenti sulle mappe di rete senza disturbare i computer degli utenti.
+- **`224.0.0.251` (mDNS):** È il Multicast DNS. È quello che permette al tuo Mac o al tuo iPhone di trovare magicamente una stampante Wi-Fi o una Apple TV sulla rete domestica senza bisogno di configurazioni (tecnologia Bonjour/ZeroConf).
 
 # Livello di trasporto 
 
