@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Approfondimenti P1/Multiplexing.md",
+                "file": "Parziale 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Multiplexing"
+              "title": "Riferimenti a Parziale 3"
             }
           },
           {
@@ -184,8 +184,7 @@
               "title": "Source Control"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
@@ -207,6 +206,9 @@
   },
   "active": "902f646cdef238f4",
   "lastOpenFiles": [
+    "Pasted image 20260611144539.png",
+    "Pasted image 20260611144237.png",
+    "Pasted image 20260611144228.png",
     "Pasted image 20260611143903.png",
     "Pasted image 20260611142851.png",
     "Pasted image 20260611142336.png",
@@ -219,9 +221,6 @@
     "Pasted image 20260611125050.png",
     "Pasted image 20260611124316.png",
     "Pasted image 20260611122524.png",
-    "Pasted image 20260611122450.png",
-    "Pasted image 20260611121435.png",
-    "Pasted image 20260611121358.png",
     "pdf/Reti_di_calcolatori_3.pdf.part",
     "cose parte 3.md",
     "Approfondimenti P1/Interfacce e Servizi.md",

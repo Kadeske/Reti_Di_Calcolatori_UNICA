@@ -1228,3 +1228,40 @@ Se un host subisce un crash (ad esempio al secondo 70), quando si riavvia userà
 
 
 ### Three-Way Handshaking
+
+Nel 1975 (alla fine del periodo di ARPANET), **Tomlinson** inventò l'algoritmo _three-way handshaking_ per risolvere definitivamente il problema della duplicazione dei pacchetti. L'idea di base è geniale ma semplice: serve una **verifica reciproca da parte di entrambi i peer** per assicurarsi che l'attuale richiesta di connessione sia genuina e non un vecchio duplicato fantasma.
+
+
+
+![[Pasted image 20260611144237.png]]
+
+**A)** I tre passaggi fondamentali dell'instaurazione normale di una connessione:
+- **Passo 1:** Il richiedente (Host 1) invia un TPDU di tipo `CONNECTION REQUEST` (CR). All'interno ci mette un numero di sequenza iniziale **`x`**.
+
+- **Passo 2:** L'Host 2 riceve la richiesta e risponde con un TPDU contenente due cose:
+    - Un `ACK.x` (che dice: _"Ti do l'ack di x, la tua richiesta è arrivata correttamente"_).
+    - La proposta di un proprio **numero progressivo iniziale** (che il testo chiama **`y`**).
+    - 
+- **Passo 3:** Il richiedente (Host 1) riceve questa risposta e invia il terzo e ultimo TPDU. Questo pacchetto conterrà:
+    - I primi dati reali del dialogo.
+    - La **conferma di `y` (`ACK di y`)**.
+
+I valori iniziali di `x` e `y` possono (e devono) essere generati sfruttando l'orologio di sistema (come visto nella lezione precedente), in modo da avere valori di partenza ogni volta diversi.
+
+**B)** Cosa succede se un vecchio pacchetto `CONNECTION REQUEST` (con un vecchio numero `x`), rimasto incastrato nella rete, riappare all'improvviso e arriva all'Host 2?
+- Questo è il caso in cui **il primo segmento è duplicato e ritardato**. Arriva all'Host 2 senza che l'Host 1 lo sappia o lo voglia.
+- L'Host 2, credendo sia una nuova richiesta genuina, reagisce inviando all'Host 1 il segmento di risposta (`ACK = x`, propone il suo `y`).
+- In pratica, l'Host 2 sta chiedendo: _"Mi confermi che vuoi davvero aprire questa connessione con me?"_
+- L'Host 1 riceve questo pacchetto ma si accorge che non aveva mai iniziato questa conversazione (oppure l'aveva già chiusa da tempo). Quindi, **rifiuta il tentativo inviando un `REJECT`** (o _RST_ nel gergo TCP moderno).
+- Leggendo il `REJECT`, l'Host 2 comprende di essere stato ingannato dal duplicato in ritardo e abbandona la connessione. Il duplicato non ha fatto danni.
+
+**C)** Il caso peggiore: cosa succede se riappare non solo la vecchia richiesta, ma _anche_ il vecchio pacchetto dati contenente l'Ack?
+
+- Si verifica la presenza duplicata di una **CR ritardata** e di un **Ack ritardato**.
+- Come prima, l'Host 2 riceve la vecchia CR (`seq=x`) e risponde proponendo il suo nuovo numero di sequenza attuale (es. **`y`**), sapendo per certo che non ci sono in giro vecchi segmenti con il numero `y`.
+- A questo punto, il secondo segmento duplicato "fantasma" (quello dei vecchi dati) giunge all'Host 2.
+- _Il trucco che salva la rete:_ Questo vecchio segmento conteneva la conferma (`ACK`) per il numero di sequenza che l'Host 2 aveva usato _nella vecchia sessione_ (che il testo chiama **`z`**).
+- L'Host 2 legge il pacchetto e ragiona: _"Io ti ho appena proposto il numero `y`, ma tu mi stai mandando la conferma per il numero `z`! Questo è chiaramente un vecchio duplicato"_.
+- Il fatto che sia stato confermato `z` e non `y` suggerisce all'Host 2 l'inganno. La richiesta viene rigettata.
+
+### Rilascio della connessione
