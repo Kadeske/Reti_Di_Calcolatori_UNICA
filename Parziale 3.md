@@ -996,6 +996,27 @@ Il BGP è un **EGP (Exterior Gateway Protocol)** e serve a far parlare tra loro 
     - _Regola:_ Il traffico sul link di peering scambiato tra i due è **gratuito**.
         
     - **Il Peering non è transitivo:** Se l'AS2 fa peering con l'AS3, e l'AS3 è connesso ad AS4... l'AS2 **NON PUÒ** usare il link gratuito verso l'AS3 per raggiungere l'AS4! L'AS3 rifiuterà il traffico, dicendo: _"Facciamo peering gratis per i nostri dati, ma non faccio da provider gratuito per farti andare su Internet!"_
+    
+![[Pasted image 20260611122524.png]]
+
+_"La diffusione del routing viaggia in direzione opposta ai pacchetti"_:
+- Se l'AS4 vuole _ricevere_ traffico, deve "gridare" la sua esistenza verso sinistra (all'AS1, che lo dice all'AS2, ecc.).
+    
+- I pacchetti di dati veri e propri, poi, seguiranno le briciole di pane lasciate da quell'annuncio viaggiando da sinistra verso destra.
+
+![[Pasted image 20260611122450.png]]
+
+##### *Path vector*:
+Il BGP viene definito una variante del Distance Vector, chiamata più precisamente **Path Vector Protocol (Protocollo a Vettore di Percorso)**.
+
+- **La differenza:** Un protocollo distance vector normale dice solo "La rete X dista 3 salti". Il BGP invece si porta dietro un "diario di viaggio" completo, chiamato **AS-PATH**, che elenca esattamente nome e cognome di tutti gli AS attraversati (es. `AS1, AS2, AS3`).
+    
+- **Perché lo fa? (Prevenzione dei Loop):** Questo è cruciale! Registrando ogni singolo AS, si evitano i cicli infiniti. Se un router riceve un annuncio BGP e, leggendo l'AS-PATH, vede che il _proprio_ numero di AS è già presente nella lista, capisce che quell'annuncio ha fatto un giro a vuoto ed è tornato indietro. A quel punto, semplicemente, lo scarta.
+    
+- **Affidabilità:** Poiché le tabelle BGP del mondo intero pesano centinaia di megabyte, non vengono inviate a caso in broadcast. I router BGP stabiliscono delle connessioni **TCP** dirette tra loro per scambiarsi gli aggiornamenti in modo sicuro e affidabile.
+    
+
+Il concetto della politica di instradamento e della non-transitività del peering è la causa del 90% degli "strani" percorsi che i dati fanno su Internet. Ho creato un simulatore interattivo per permetterti di sperimentare queste regole in tempo reale.
 ## Internet multicasting
 
 
