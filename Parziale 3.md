@@ -1082,3 +1082,33 @@ Ma chi inizia la conversazione? Dipende dall'architettura:
 - **Architettura Peering (P2P):** È paritetica. Entrambi i computer sono allo stesso livello e possono scambiarsi i ruoli (come in BitTorrent), sarà uno scambio equilibrato.
 
 ![[Pasted image 20260611125331.png]]
+
+#### Socket di Berkeley
+
+Il Server è come un negoziante: deve aprire la saracinesca, mettere l'insegna e aspettare che entri qualcuno. Utilizza queste 4 primitive in sequenza:
+
+- **SOCKET:** Crea l'oggetto astratto, la "presa" vera e propria. Specifica che userà internet (IPv4) e il TCP (flusso affidabile). Riceve in cambio un numero identificativo (il descrittore).
+    
+- **BIND (Associa):** La socket appena creata è anonima. Con la BIND, il server le "appiccica" un Indirizzo IP e un Numero di Porta (es. la porta 80). È come mettere l'insegna col numero civico fuori dal negozio, così i client sanno dove trovarlo.
+    
+- **LISTEN (Ascolta):** Il server dice al sistema operativo: _"Da questo momento accetto connessioni su questa porta"_. Questa funzione crea anche una coda (una "sala d'attesa") in memoria, nel caso arrivassero più client contemporaneamente. Non blocca il programma.
+    
+- **ACCEPT (Accetta):** Qui il server si **blocca** e si mette in attesa. Aspetta fisicamente che un client bussi alla porta.
+    
+    - _Concetto fondamentale da esame:_ Quando un client si connette, l'ACCEPT **crea una nuova socket** dedicata esclusivamente a quel client e la restituisce al server. La socket originale (quella creata con la BIND) rimane intatta e continua ad ascoltare per accettare altri futuri client!
+
+Il Client è il cliente del negozio. Non ha bisogno di un'insegna, deve solo sapere dove andare. Il suo lavoro è molto più snello:
+
+- **SOCKET:** Crea anche lui la sua "presa" vuota e anonima.
+    
+- **CONNECT (Connetti):** Il client punta direttamente all'Indirizzo IP e alla Porta del Server (che deve conoscere in anticipo).
+    
+    - _Perché il client non fa la BIND?_ Perché al server non interessa da quale porta specifica arrivi la richiesta. Quando il client fa la CONNECT, il sistema operativo gli assegna automaticamente e di nascosto una porta libera a caso (chiamata porta effimera, es. 54321) per gestire la comunicazione.
+    
+Una volta che la `CONNECT` del client ha incontrato l'`ACCEPT` del server, il "tubo" logico è instaurato.
+
+- **SEND / RECEIVE:** I due programmi usano queste funzioni per scriversi e leggersi i dati a vicenda, proprio come se stessero scrivendo su un normale file di testo.
+    
+- **CLOSE:** Quando la comunicazione è finita, entrambi chiamano questa primitiva per chiudere la connessione e liberare la porta e la memoria RAM utilizzata.
+
+## Elementi dei protocolli di trasporto 
