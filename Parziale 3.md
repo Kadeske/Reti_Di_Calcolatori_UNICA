@@ -1279,3 +1279,16 @@ Questo modello permette due tipi di rilascio:
 ![[Pasted image 20260611144935.png]]
 
 
+#### Esempio dei due eserciti
+
+Il problema teorico alla base del rilascio sicuro di una connessione è perfettamente illustrato dal celebre paradosso dei due eserciti. 
+
+Immaginiamo un **esercito bianco** posizionato in una valle, con un **numero di soldati superiore a quello del singolo esercito blu 1 o dell'esercito blu 2**, i quali sono accampati sulle colline opposte.
+![[Pasted image 20260611154048.png]]
+
+
+La vittoria per i blu è sicura solamente se attaccano in modo simultaneo. Per coordinarsi, l'esercito 1 invia un messaggero proponendo di attaccare l'indomani alle 6, ma non si muoverà senza aver prima ricevuto una conferma. Se l'esercito 2 invia la conferma, a sua volta non attaccherà finché non saprà che l'esercito 1 ha effettivamente ricevuto tale conferma, innescando un processo iterativo senza fine. Nessuno ha mai la certezza assoluta che l'altro abbia ricevuto la comunicazione, arrivando al paradosso.
+
+![[Pasted image 20260611154113.png]]
+
+Proprio a causa di questa impossibilità logica, le tecniche elaborate per il rilascio evitano di imporre la necessità di un accordo perfetto. Il problema viene demandato a chi utilizza il livello di trasporto, facendo decidere i partecipanti in modo indipendente tramite l'uso di timer di sicurezza. Questo approccio si declina in quattro scenari principali.
