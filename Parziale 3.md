@@ -1144,3 +1144,40 @@ Per evitare questo spreco, i sistemi operativi moderni non tengono tutti i serve
 
 #### Modello Process Server 
 
+Invece di avere tutti i possibili server costantemente in ascolto su un proprio TSAP (Porta) noto, si utilizza un'architettura diversa per i servizi che vengono richiesti raramente.
+- Ogni macchina che offre servizi remoti esegue un singolo **process server** che agisce da _proxy_ (intermediario) per i servizi meno utilizzati.
+- Nel mondo UNIX, questo specifico server prende il nome di **inetd** (Internet Daemon).
+- Il suo compito è ascoltare **contemporaneamente su un insieme di porte** aspettando una richiesta di connessione.
+- Il libro definisce questo meccanismo come **protocollo di connessione iniziale**.
+
+Come avviene la comunicazione in pratica?
+- I potenziali utenti (Client) iniziano facendo una richiesta utilizzando la primitiva **CONNECT**, specificando l'indirizzo TSAP (Porta) del servizio che desiderano.
+- In questo primo momento, ottengono una connessione direttamente col _process server_ (che stava sorvegliando quella porta), non con il server finale.
+- Dopo aver ricevuto la richiesta, il _process server_ **genera** (crea "al volo") il server specifico richiesto dall'Host 1.
+- Il passaggio chiave è che il _process server_ permette al nuovo server appena generato di **ereditare la connessione** precedentemente instaurata con l'utente. Da quel momento, sarà il nuovo server a svolgere il lavoro richiesto, mentre _inetd_ torna ad ascoltare.
+
+
+Cosa succede scendendo nei dettagli dei livelli:
+- Quando i dati arrivano al Livello di Rete (identificato dal **NSAP**, l'indirizzo IP), questo interroga il Livello di Trasporto (il **TSAP**, la porta).
+- Il TSAP non risponde con un proprio server sempre attivo e dedicato. Invece, invoca il _process server_ che è già attivo su più porte.
+- Il _process server_ legge la richiesta, capisce quale servizio attivare (nell'esempio del diagramma: l'ora del giorno, ovvero il _Time-of-day server_) e "aggancia" quel servizio alla richiesta.
+
+![[Pasted image 20260611142851.png]]
+
+Questo modello permette di **sganciare** il momento della risposta (e l'attivazione del server che deve rispondere) dalla necessità di dover tenere tutti i server costantemente attivi in background.
+- **Vantaggi:** Ottimizzazione della capacità elaborativa, grande risparmio di energia ed elevata efficienza della macchina.
+- **Svantaggi:** Si perde "qualche frazione di secondo" nel passaggio in cui il _process server_ deve generare e avviare da zero il nuovo server.
+
+#### Modello Directory Server 
+
+Il "protocollo di connessione iniziale" (cioè il Process Server/`inetd`) funziona benissimo per quei server leggeri che possono essere creati o avviati solo in caso di effettiva necessità.
+Tuttavia, si verificano molto spesso situazioni in cui i **servizi esistono indipendentemente dal process server**.
+
+Per gestire le situazioni in cui i servizi sono già attivi ma le loro porte (TSAP) non sono note a priori al pubblico, si utilizza questo schema alternativo.
+
+- In questo modello viene introdotto un processo speciale chiamato **server dei nomi (name server)**, noto anche come **directory server**.
+- **La dinamica di ricerca:** Se un utente vuole scoprire l'indirizzo TSAP che corrisponde a un preciso nome di servizio (il testo riprende l'esempio del servizio "ora esatta"), non tenta di collegarsi a caso.
+- L'utente apre prima di tutto una connessione con il _server dei nomi_, il quale ascolta sempre su uno **TSAP noto** (una porta pubblica e famosa che tutti conoscono).
+- L'utente invia quindi un messaggio al _server dei nomi_ specificando il nome testuale del servizio che sta cercando.
+    
+- Il _server dei nomi_ risponde al client fornendogli l'indirizzo TSAP esatto a cui collegarsi. A quel punto, l'utente chiude la chiamata col directory server e si connette direttamente alla porta appena ricevuta.
