@@ -1112,3 +1112,35 @@ Una volta che la `CONNECT` del client ha incontrato l'`ACCEPT` del server, il "t
 - **CLOSE:** Quando la comunicazione è finita, entrambi chiamano questa primitiva per chiudere la connessione e liberare la porta e la memoria RAM utilizzata.
 
 ## Elementi dei protocolli di trasporto 
+
+Il servizio di trasporto è implementato da un **protocollo di trasporto**.
+Per certi versi ricordano i protocolli data link.
+
+### Indirizzamento
+
+Quando un applicativo vuole creare una connessione verso un processo remoto deve **specificare a quale intente connettersi**.
+Solitamente si definiscono degli indirizzi su cui i processi possono restare in ascolto delle richieste di connessione. Questo utilizza le **porte**, punti terminali.
+
+Questo colloquio avviene tramite uno specifico endpoint, i **T-SAP**.
+
+Per capire l'indirizzamento, l'analogia migliore è quella di un grande condominio:
+- **N-SAP (Network SAP):** È l'**Indirizzo IP**. Corrisponde all'indirizzo fisico del palazzo (es. Via Roma 10). Serve per far arrivare il pacchetto dal tuo PC fino al router del computer di destinazione.
+- **T-SAP (Transport SAP):** È la **Porta** (un numero a 16 bit). Corrisponde al numero dell'interno/appartamento dentro il palazzo. Serve per consegnare il pacchetto all'applicazione giusta (es. l'interno 80 è il server Web, l'interno 25 è il server Email). Su Internet, i T-SAP sono chiamati _Endpoint_ o _Porte_.
+
+![[Pasted image 20260611142336.png]]
+L'immagine mostra esattamente il viaggio di una richiesta:
+1. **La Partenza (Host 1):** Il Processo Applicativo del Client vuole conoscere l'ora esatta. Il sistema operativo gli assegna una porta (T-SAP) casuale e libera, ad esempio la **1208**.
+    
+2. **Il Viaggio:** La richiesta scende al Livello di Rete (N-SAP), viaggia sui cavi fisici (Livello Fisico) e arriva all'N-SAP dell'Host 2 (il server).
+    
+3. **L'Arrivo (Host 2):** L'N-SAP del server fa da "portiere". Legge l'intestazione del trasporto, vede che il pacchetto è destinato al T-SAP **1522** (la porta standard per il servizio dell'ora esatta) e lo smista al "Server 1", che è il programma in ascolto su quella specifica porta. (Ignorando il "Server 2" che è in ascolto sulla porta 1836 per fare tutt'altro).
+
+Se dovessimo seguire il modello classico in modo rigido, un Server aziendale dovrebbe avere 65.536 programmi diversi avviati contemporaneamente (uno per ogni porta), tutti bloccati in uno stato di `LISTEN` perenne, in attesa che magari qualcuno, un giorno, si connetta. Questo comporterebbe un **consumo enorme e inutile di memoria RAM e CPU**.
+
+Per evitare questo spreco, i sistemi operativi moderni non tengono tutti i server attivi, ma usano dei "trucchi" architetturali:
+- _Modello Process Server_
+- _Modello Directory Server_
+
+
+#### Modello Process Server 
+
