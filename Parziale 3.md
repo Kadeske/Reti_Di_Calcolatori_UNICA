@@ -1025,3 +1025,12 @@ L’**IGMP** (Internet Group Management Protocol) è un protocollo legato al mul
 
 # Livello di trasporto 
 
+E' l'ultimo livello che governa le sessioni tra due host che comunicano tra loro.
+Nel modello TCP/IP è sotto al livello applicativo, se fossimo nel modello ISO/OSI sarebbe sotto ai livelli sessione, presentazione, applicazione.
+
+Si basa sul livello rete per fornire il trasporto dei dati tra 2 macchine con un livello di affidabilità desiderato e **indipendente dalle reti fisiche in uso**.
+
+E' costituito da servizi orientati e non orientati alla connessione.
+I dati prendono il nome di **Segmento**(TPDU) e abbiamo una connessione **END-TO-END**.
+
+
