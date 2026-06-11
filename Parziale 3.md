@@ -1054,3 +1054,5 @@ Attenzione:
 - Tutto ciò che sta dal Livello di Rete in giù dipende dall'infrastruttura fisica (i cavi, i provider, i router sparsi per il mondo).
 - Il codice del Livello di Trasporto, invece, **gira esclusivamente sulle macchine terminali** (il tuo PC e il server di destinazione). È un protocollo strettamente _End-to-End_.
 
+In un mondo utopico senza errori, questo livello sarebbe effettivamente inutile. Ma nel mondo reale i router perdono pacchetti, si intasano e li consegnano in disordine. 
+Poiché **non abbiamo alcun controllo sui router di Internet** per correggere questi errori fisici, l'unica soluzione è delegare il controllo della qualità alle due macchine agli estremi della conversazione. Il Livello di Trasporto esiste per rimediare all'inaffidabilità della rete sottostante, garantendo (se richiesto) che i dati arrivino intatti e in ordine.
