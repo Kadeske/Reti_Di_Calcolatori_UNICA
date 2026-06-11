@@ -1034,3 +1034,23 @@ E' costituito da servizi orientati e non orientati alla connessione.
 I dati prendono il nome di **Segmento**(TPDU) e abbiamo una connessione **END-TO-END**.
 
 
+#### Servizi offerti ai livelli superiori 
+
+L'hardware o il software che si occupa di far funzionare questo livello prende il nome di **Entità di Trasporto**. Nella maggior parte dei computer moderni, questo "motore" si trova direttamente integrato nel **Kernel del Sistema Operativo** (è lui che gestisce le connessioni TCP/IP), ma in casi specifici può risiedere in librerie separate o persino nell'hardware della scheda di rete.
+
+![[Pasted image 20260611124316.png]]
+
+Per passare i dati da un livello all'altro, si usano delle "porte comunicanti" logiche chiamate **SAP**.
+
+- **N-SAP (Network SAP):** È il punto di contatto tra il Livello di Trasporto e il Livello di Rete (sottostante). Nella pratica di tutti i giorni, l'N-SAP corrisponde all'**Indirizzo IP**.
+    
+- **T-SAP (Transport SAP):** È il punto di contatto tra le Applicazioni e il Livello di Trasporto. Nel mondo di Internet, i T-SAP sono i **numeri di Porta**.
+    
+
+> Le porte vanno da **0 a 65535** (essendo un campo a 16 bit, i valori sono 65.536 ma si conta anche lo zero). 
+> Inoltre, le porte standard (da 0 a 1023) si chiamano **well-known ports** (letteralmente "porte ben note").
+
+Attenzione:
+- Tutto ciò che sta dal Livello di Rete in giù dipende dall'infrastruttura fisica (i cavi, i provider, i router sparsi per il mondo).
+- Il codice del Livello di Trasporto, invece, **gira esclusivamente sulle macchine terminali** (il tuo PC e il server di destinazione). È un protocollo strettamente _End-to-End_.
+
