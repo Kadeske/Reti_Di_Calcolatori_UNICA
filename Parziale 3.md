@@ -1329,3 +1329,20 @@ Per compensare queste differenze e gestire la memoria in arrivo, si utilizzano t
 
 ### Multiplexing 
 
+Nel livello di trasporto, l'esigenza del multiplexing nasce da un problema pratico di instradamento e di limiti della banda. Quando un computer possiede un solo indirizzo di rete (NSAP, che nel nostro mondo coincide con l'indirizzo IP), tutte le comunicazioni in entrata e in uscita devono obbligatoriamente passare per quell'unico punto di accesso. All'arrivo di un segmento, il sistema deve stabilire con precisione a quale processo o applicazione consegnarlo.
+
+Questa gestione dei flussi prende il nome di multiplexing e si divide in due architetture diametralmente opposte.
+
+**Upward Multiplexing (Multiplexing verso l'alto)** È la situazione più comune, quella che avviene costantemente sui nostri dispositivi. Hai a disposizione un solo collegamento fisico, un solo indirizzo MAC e un unico indirizzo IP (NSAP) fornito dal router. Tuttavia, stai richiedendo diversi servizi in simultanea: navighi sul web (HTTP, HTTPS), scarichi un file (FTP) e magari gestisci un terminale remoto (Telnet).
+
+![[Pasted image 20260611155135.png]]
+
+Per gestire tutto questo, da un singolo NSAP alla base, la connessione si "ramifica" verso l'alto. Il livello di trasporto applica il multiplexing prendendo l'unico flusso di dati in ingresso e smistandolo su molteplici porte di destinazione (TSAP). Una singola connessione di rete sostiene tante connessioni di trasporto.
+
+**Downward Multiplexing (Multiplexing verso il basso)** Qui ci troviamo nello scenario inverso, causato da un collo di bottiglia fisico. Immagina di dover trasferire una quantità di traffico dati impressionante, come il backup di un hard disk da 500 GB. Stai usando una singola applicazione (una sola sessione FTP), il che significa che il traffico è destinato a un unico TSAP.
+
+![[Pasted image 20260611155154.png]]
+
+Se l'infrastruttura di rete è lenta, una singola connessione IP non basta per svolgere il compito in tempi utili. La soluzione è instaurare più connessioni IP per dividere il carico di lavoro in modo proporzionale. Se una singola linea (l'esempio utilizza le classiche linee ISDN) offre una banda di 64 kbps, il trasferimento sarà lentissimo. Attivando una seconda linea il carico si divide e la velocità sale a 128 kbps. Attivandone 4, si arriva a 256 kbps.
+
+In pratica, si attivano 4 differenti indirizzi IP di connessione per dividere il carico da scaricare. La mole di dati viaggia frammentata sulle diverse linee di rete sottostanti (più NSAP) e, risalendo, converge in modo trasparente verso l'alto, riunendosi nell'unico TSAP che ha fatto la richiesta iniziale.
