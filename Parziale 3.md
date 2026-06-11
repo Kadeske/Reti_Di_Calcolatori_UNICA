@@ -1010,13 +1010,8 @@ _"La diffusione del routing viaggia in direzione opposta ai pacchetti"_:
 Il BGP viene definito una variante del Distance Vector, chiamata più precisamente **Path Vector Protocol (Protocollo a Vettore di Percorso)**.
 
 - **La differenza:** Un protocollo distance vector normale dice solo "La rete X dista 3 salti". Il BGP invece si porta dietro un "diario di viaggio" completo, chiamato **AS-PATH**, che elenca esattamente nome e cognome di tutti gli AS attraversati (es. `AS1, AS2, AS3`).
-    
 - **Perché lo fa? (Prevenzione dei Loop):** Questo è cruciale! Registrando ogni singolo AS, si evitano i cicli infiniti. Se un router riceve un annuncio BGP e, leggendo l'AS-PATH, vede che il _proprio_ numero di AS è già presente nella lista, capisce che quell'annuncio ha fatto un giro a vuoto ed è tornato indietro. A quel punto, semplicemente, lo scarta.
-    
 - **Affidabilità:** Poiché le tabelle BGP del mondo intero pesano centinaia di megabyte, non vengono inviate a caso in broadcast. I router BGP stabiliscono delle connessioni **TCP** dirette tra loro per scambiarsi gli aggiornamenti in modo sicuro e affidabile.
-    
-
-Il concetto della politica di instradamento e della non-transitività del peering è la causa del 90% degli "strani" percorsi che i dati fanno su Internet. Ho creato un simulatore interattivo per permetterti di sperimentare queste regole in tempo reale.
 ## Internet multicasting
 
 
