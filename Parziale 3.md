@@ -1291,4 +1291,15 @@ La vittoria per i blu è sicura solamente se attaccano in modo simultaneo. Per c
 
 ![[Pasted image 20260611154113.png]]
 
-Proprio a causa di questa impossibilità logica, le tecniche elaborate per il rilascio evitano di imporre la necessità di un accordo perfetto. Il problema viene demandato a chi utilizza il livello di trasporto, facendo decidere i partecipanti in modo indipendente tramite l'uso di timer di sicurezza. Questo approccio si declina in quattro scenari principali.
+Proprio a causa di questa impossibilità logica, le tecniche elaborate per il rilascio evitano di imporre la necessità di un accordo perfetto. Il problema viene demandato a chi utilizza il livello di trasporto, facendo decidere i partecipanti in modo indipendente tramite l'uso di timer di sicurezza. Questo approccio si declina in quattro scenari principali:
+
+- **a) Rilascio Normale (Three-way handshake di chiusura):** L'Host 1 decide di chiudere, invia una `DISCONNECTION REQUEST (DR)` e fa partire il suo timer. L'Host 2 riceve la richiesta, invia a sua volta una `DR` (facendo partire anche lui un timer di sicurezza) per confermare. Quando l'Host 1 riceve questa risposta, invia l'ultimo `ACK` e chiude definitivamente la connessione, cancellandola dalla memoria. Quando l'Host 2 riceve l'ACK, si chiude a sua volta. È lo scenario perfetto.
+    
+- **b) Perdita dell'ACK finale:** Tutto procede bene fino all'ultimo passaggio: l'Host 1 invia l'ACK finale e si spegne, ma questo pacchetto viene perso. L'Host 2 rimane in attesa. È qui che il timer salva la situazione: scaduto il tempo massimo senza aver ricevuto l'ACK, l'Host 2 rilascia comunque la connessione. Senza questo timer, l'Host 2 rimarrebbe bloccato all'infinito aspettando un messaggio che non arriverà mai.
+    
+- **c) Perdita della risposta intermedia (DR):** L'Host 1 invia la sua prima `DR`, l'Host 2 risponde con la sua `DR`, ma questa si perde nel tragitto. L'Host 1, non ricevendo nulla, attende fino allo scadere del suo timer. A quel punto, ipotizza che la sua prima richiesta sia andata persa e procede a ritrasmettere una nuova `DR`, permettendo al processo di sbloccarsi e andare avanti.
+    
+- **d) Il caso peggiore (Connessione aperta a metà):** I tentativi di trasmettere la `DR` falliscono ripetutamente (magari a causa di un cavo staccato temporaneamente). Dopo N tentativi a vuoto, l'Host 1 si arrende, chiude la sua parte di connessione e la considera terminata. L'Host 2, però, non ha mai ricevuto nulla e continua a credere che la comunicazione sia nel pieno del suo svolgimento. Si crea così una **connessione aperta a metà (Half-Open Connection)**.
+
+
+### Controllo di flusso e gestione dei buffer
