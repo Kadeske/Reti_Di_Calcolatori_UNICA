@@ -984,7 +984,18 @@ Se sono possibili più percorsi della stessa lunghezza, ricorda l'intero insieme
 ![[Pasted image 20260611121435.png]]
 ## Protocolli Esterni alle reti (EGP)
 
+Il BGP è un **EGP (Exterior Gateway Protocol)** e serve a far parlare tra loro reti di aziende diverse, chiamate **AS (Autonomous System)**. A questo livello, **la velocità passa in secondo piano rispetto ai contratti commerciali**. Un router BGP non sceglie la strada più breve, ma sceglie la strada che _rispetta gli accordi economici_ presi dalla sua azienda con le altre aziende.
 
+**Come comunicano economicamente gli AS tra loro?** Ci sono due modelli fondamentali:
+- **Servizio di Transito (Il modello Cliente-Fornitore):** Un AS piccolo (es. la rete di un'università) paga un AS grande (il Provider, es. Telecom) per avere accesso a _tutta_ Internet.
+    
+    - _Regola:_ Il provider annuncia al cliente tutte le rotte del mondo. Il cliente annuncia al provider solo le proprie rotte interne (perché non vuole e non può fare da passacarte per il traffico di altri).
+        
+- **Peering (Il modello tra Pari):** Due AS (es. Netflix e Telecom) si scambiano tantissimo traffico. Invece di far passare questo traffico dai rispettivi provider (pagando il transito a caro prezzo), tirano un cavo diretto tra i loro router (spesso incontrandosi fisicamente in un **IXP - Internet Exchange Point**).
+    
+    - _Regola:_ Il traffico sul link di peering scambiato tra i due è **gratuito**.
+        
+    - **Il Peering non è transitivo:** Se l'AS2 fa peering con l'AS3, e l'AS3 è connesso ad AS4... l'AS2 **NON PUÒ** usare il link gratuito verso l'AS3 per raggiungere l'AS4! L'AS3 rifiuterà il traffico, dicendo: _"Facciamo peering gratis per i nostri dati, ma non faccio da provider gratuito per farti andare su Internet!"_
 ## Internet multicasting
 
 
