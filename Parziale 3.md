@@ -1182,3 +1182,49 @@ Per gestire le situazioni in cui i servizi sono già attivi ma le loro porte (TS
 - Il _server dei nomi_ risponde al client fornendogli l'indirizzo TSAP esatto a cui collegarsi. A quel punto, l'utente chiude la chiamata col directory server e si connette direttamente alla porta appena ricevuta.
 
 In questo modello, c'è una regola fissa: ogni **nuovo servizio appena creato si deve registrare** sul server dei nomi.
+
+
+### Stabilire una connessione
+
+Stabilire una connessione sembra un'operazione banale (basterebbe inviare una richiesta `CONNECTION REQUEST` e attendere una risposta), ma in realtà è sorprendentemente complessa.
+
+La radice del problema risiede nell'inaffidabilità della rete sottostante, la quale **può perdere, memorizzare e duplicare i pacchetti**. Questo comportamento imprevedibile genera complicazioni serie, soprattutto legate ai pacchetti "fantasma" che rimangono intrappolati nei router e riappaiono quando meno ce lo si aspetta.
+
+
+Il primo scoglio affrontato è capire come **distruggere i pacchetti obsoleti che sono ancora in circolo**. Se non si sa con certezza che un vecchio pacchetto è "morto", c'è il rischio che arrivi a destinazione scambiato per uno nuovo. Il testo elenca tre potenziali soluzioni, scartandone subito due:
+1. **Avere una rete ristretta:** Su una rete piccola si potrebbe usare un clock unico per verificare se il pacchetto è defunto. Su una rete vasta, invece, servirebbe un metodo per impedire i cicli e contenere il ritardo massimo di attraversamento.
+2. **Mettere un contatore di salto in ogni pacchetto:** Questo contatore verrebbe decrementato a ogni salto (è il principio del TTL in IPv4), assicurando che il pacchetto muoia dopo un tot di hop.
+3. **Inserire un orario in ogni pacchetto:** Scartata, perché richiederebbe che i router di tutta Internet siano perfettamente sincronizzati, cosa praticamente impossibile da attuare.
+
+È necessario garantire matematicamente che un pacchetto e i relativi acknowledgement (le ricevute di ritorno) siano defunti.
+- Si definisce un **tempo T** (chiamato anche **area proibita**), che rappresenta il tempo massimo necessario per essere assolutamente certi che l'ultimo potenziale acknowledgement di un pacchetto non sia più in circolazione nella rete. Nella rete Internet, storicamente, questo tempo T è stato fissato a **120 secondi**.
+
+Per risolvere il problema, si può utilizzare il metodo inventato da **Tomlinson**.
+
+- L'idea centrale è che la sorgente deve etichettare i segmenti con **numeri di sequenza che non saranno riutilizzati per un numero di secondi pari a T**.
+- In pratica, lo spazio dei numeri di sequenza disponibili e la velocità di trasmissione definiscono la **dimensione dei numeri di sequenza**. Con questo vincolo, non può mai capitare che un duplicato in ritardo "batta sul tempo" un pacchetto nuovo a cui è stato assegnato lo stesso numero.
+
+Ipotizziamo lo scenario critico in cui un host subisce un malfunzionamento (crash) e perde la memoria dei numeri di sequenza che stava usando.
+- Un metodo rudimentale sarebbe tenere l'host inattivo per il tempo T dopo il riavvio, ma per reti estese T è troppo lungo.
+- L'alternativa proposta, sempre da Tomlinson, insieme a Sunshine e Dalai, prevede l'installazione di **orologi** sugli host. La particolarità è che funzionano come **contatori binari** e _non_ hanno bisogno di essere sincronizzati tra le varie macchine. L'unica assunzione vitale è che l'orologio continui a funzionare (magari a batteria) anche quando l'host crasha.
+
+**Il Meccanismo dell'Orologio:**
+- Quando viene instaurata una connessione, i **k bit di ordine più basso** del valore attuale dell'orologio vengono usati per definire il **primo numero di sequenza** (Initial Sequence Number).
+- Questo significa che ogni nuova connessione inizia a contare i segmenti partendo da un numero diverso, legato all'istante temporale.
+- Lo spazio della sequenza deve essere abbastanza grande da garantire che, quando i numeri si esauriscono e il conteggio ricomincia da zero, i vecchi segmenti con lo stesso numero siano spariti dalla rete da parecchio tempo.
+
+![[Pasted image 20260611143903.png]]
+La parte ombreggiata nei grafici rappresenta la **regione proibita**: un'area temporale in cui è assolutamente vietato riutilizzare un determinato numero di sequenza, per evitare confusioni letali.
+
+Se un host subisce un crash (ad esempio al secondo 70), quando si riavvia userà l'orologio per scegliere un nuovo numero di partenza, garantendo che questo numero cada _al di fuori_ della regione proibita legata ai pacchetti inviati prima del crash. Una volta d'accordo sul numero di partenza, si usa un **protocollo a finestra scorrevole** per trasmettere i dati veri e propri.
+
+**I due grandi pericoli per i numeri di sequenza:** Il testo impone due paletti matematici fondamentali per evitare che il ritmo di trasmissione finisca dentro la regione proibita:
+
+1. **Evitare di spedire troppo velocemente:** Se l'host invia dati a una velocità folle appena aperta la connessione, i numeri di sequenza si consumeranno molto più rapidamente dell'avanzare del tempo (orologio). Questo farebbe "sbattere" la linea del conteggio contro il bordo superiore dell'area proibita.
+    
+    - _Regola:_ Il **massimo tasso di invio dei dati** per qualsiasi connessione è limitato a **un segmento per ogni ciclo di clock**. L'entità di trasporto _deve_ aspettare il successivo "tic" dell'orologio prima di aprire una nuova connessione dopo un crash.
+        
+2. **Il vincolo dello spazio di sequenza (S/C>T):** Entrambe le dinamiche richiedono che l'orologio faccia un "tic" (un ciclo) molto velocemente (il testo indica 1 ps o meno). Per evitare che l'orologio "doppi" troppo velocemente i numeri di sequenza impiegati, c'è un vincolo: data una velocità C dell'orologio e uno spazio totale di numeri di sequenza disponibili S, il tempo necessario per esaurire tutti i numeri (S/C) **deve essere rigorosamente maggiore** del tempo di vita massimo del pacchetto (T).
+
+
+### Three-Way Handshaking
