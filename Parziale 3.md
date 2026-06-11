@@ -1303,3 +1303,29 @@ Proprio a causa di questa impossibilità logica, le tecniche elaborate per il ri
 
 
 ### Controllo di flusso e gestione dei buffer
+
+Il controllo del flusso al Livello di Trasporto affronta un problema molto simile a quello già visto nel Livello Data Link: evitare che un ricevitore lento venga letteralmente "affogato" da una macchina mittente che spedisce dati a velocità troppo elevate.
+
+La grande particolarità del Livello di Trasporto, però, è che **i segmenti (TPDU) non sono sempre uguali**. La loro dimensione è estremamente variabile e dipende dall'applicazione. Se un terminale bancario invia un singolo comando, produrrà un traffico molto piccolo (magari di soli 8 bit), ma se un server avvia il trasferimento di un file, produrrà un traffico massiccio.
+
+Questa estrema variabilità richiede una gestione molto intelligente della memoria (i buffer). Esistono due profili di traffico principali:
+
+- **Traffico bursty ma poco gravoso:** Per sessioni leggere come l'emulazione di un terminale, non è necessario allocare grandi buffer a destinazione. Basta mantenere i dati nel buffer della sorgente.
+- **Traffico gravoso:** Per i trasferimenti di file, è obbligatorio prevedere buffer cospicui a destinazione per poter sempre accettare la mole di dati in arrivo.
+
+
+Un aspetto cruciale riguarda l'affidabilità della rete sottostante. Se il servizio di rete è inaffidabile, il mittente è obbligato a conservare nel proprio buffer una copia di ogni singola TPDU inviata finché non viene confermata. Tuttavia, anche se la rete è affidabile, il mittente non può abbassare la guardia. L'acknowledgement (ACK) proveniente dal Livello di Rete certifica soltanto che la TPDU è arrivata a destinazione, **non garantisce che il ricevitore l'abbia effettivamente accettata** ed elaborata. Se il ricevitore ha i buffer pieni, scarterà il pacchetto. Pertanto, a meno che il ricevitore non garantisca sempre spazio libero, il mittente deve continuare a fare buffering.
+
+Per compensare queste differenze e gestire la memoria in arrivo, si utilizzano tre modelli architetturali per i buffer:
+
+![[Pasted image 20260611154838.png]]
+
+1. (a)**Buffer a dimensione fissa:** Se la maggior parte delle TPDU ha una grandezza simile, è naturale organizzare la memoria come un "pool" di blocchi tutti identici, allocando una TPDU per ogni blocco. È un metodo facilissimo da gestire, ma rischia di sprecare moltissimo spazio (frammentazione interna) se arrivano pacchetti molto più piccoli del blocco standard.
+    
+2. (b)**Buffer a dimensione variabile:** Utilizza porzioni di memoria modellate esattamente sulla grandezza del pacchetto in arrivo. Il vantaggio è un utilizzo perfetto della memoria senza sprechi interni, ma il prezzo da pagare è un algoritmo di gestione molto più complicato per il sistema operativo.
+    
+3. (c)**Buffer circolari per ogni tipo di connessione:** Si dedica un singolo buffer ad anello, molto grande, in via esclusiva per ogni connessione aperta. Questo sistema è formidabile e velocissimo quando tutte le connessioni sono sottoposte a un carico pesante e continuo. Diventa invece uno spreco inaccettabile se ci sono connessioni aperte ma inattive (o con pochissimo carico), poiché la memoria rimane bloccata e inutilizzabile per altri scopi.
+
+
+### Multiplexing 
+
