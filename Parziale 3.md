@@ -1176,8 +1176,9 @@ Tuttavia, si verificano molto spesso situazioni in cui i **servizi esistono indi
 Per gestire le situazioni in cui i servizi sono già attivi ma le loro porte (TSAP) non sono note a priori al pubblico, si utilizza questo schema alternativo.
 
 - In questo modello viene introdotto un processo speciale chiamato **server dei nomi (name server)**, noto anche come **directory server**.
-- **La dinamica di ricerca:** Se un utente vuole scoprire l'indirizzo TSAP che corrisponde a un preciso nome di servizio (il testo riprende l'esempio del servizio "ora esatta"), non tenta di collegarsi a caso.
+- **La dinamica di ricerca:** Se un utente vuole scoprire l'indirizzo TSAP che corrisponde a un preciso nome di servizio, non tenta di collegarsi a caso.
 - L'utente apre prima di tutto una connessione con il _server dei nomi_, il quale ascolta sempre su uno **TSAP noto** (una porta pubblica e famosa che tutti conoscono).
 - L'utente invia quindi un messaggio al _server dei nomi_ specificando il nome testuale del servizio che sta cercando.
-    
 - Il _server dei nomi_ risponde al client fornendogli l'indirizzo TSAP esatto a cui collegarsi. A quel punto, l'utente chiude la chiamata col directory server e si connette direttamente alla porta appena ricevuta.
+
+In questo modello, c'è una regola fissa: ogni **nuovo servizio appena creato si deve registrare** sul server dei nomi.
