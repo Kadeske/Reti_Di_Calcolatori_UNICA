@@ -1056,3 +1056,29 @@ Attenzione:
 
 In un mondo utopico senza errori, questo livello sarebbe effettivamente inutile. Ma nel mondo reale i router perdono pacchetti, si intasano e li consegnano in disordine. 
 Poiché **non abbiamo alcun controllo sui router di Internet** per correggere questi errori fisici, l'unica soluzione è delegare il controllo della qualità alle due macchine agli estremi della conversazione. Il Livello di Trasporto esiste per rimediare all'inaffidabilità della rete sottostante, garantendo (se richiesto) che i dati arrivino intatti e in ordine.
+
+#### Primitive del servizio
+
+Le quattro primitive astratte fondamentali sono:
+
+- **LISTEN:** Il server dichiara di essere pronto a ricevere chiamate su una certa porta. È un'azione passiva (si mette in attesa).
+- **CONNECT:** Il client tenta attivamente di "chiamare" il server per instaurare una sessione.
+- **SEND / RECEIVE:** Sono le primitive usate per lo scambio vero e proprio dei dati.
+- **DISCONNECT:** La richiesta di abbattere la connessione.
+
+
+L'**Imbustamento** (spesso chiamato _Incapsulamento_) (come le matrioske):
+- Il **Payload del Segmento** (i dati puri dell'applicazione) viene inserito in una "busta" a cui si aggiunge l'Intestazione del Trasporto (le Porte). Insieme formano la **TPDU** (Segmento).
+    
+- Questa TPDU viene calata nel Livello di Rete, che aggiunge la sua intestazione (gli IP). Tutto l'insieme diventa il **Pacchetto**.
+    
+- Il Pacchetto scende nel Livello Data Link, che aggiunge l'intestazione finale (i MAC Address). Diventa il **Frame (Trama)**.
+![[Pasted image 20260611125050.png]]
+
+Il passaggio da una primitiva all'altra fa muovere la **Macchina a Stati Finiti** (che abbiamo simulato in precedenza), passando da _IDLE_ (inattivo) a _ESTABLISHED_ (connesso), fino a tornare a _IDLE_.
+
+Ma chi inizia la conversazione? Dipende dall'architettura:
+- **Architettura Client-Server:** È asimmetrica. C'è un Server sempre acceso che fa da ascoltatore passivo, e tanti Client che iniziano la comunicazione attiva. (È il caso di quasi tutto il web moderno).
+- **Architettura Peering (P2P):** È paritetica. Entrambi i computer sono allo stesso livello e possono scambiarsi i ruoli (come in BitTorrent), sarà uno scambio equilibrato.
+
+![[Pasted image 20260611125331.png]]
