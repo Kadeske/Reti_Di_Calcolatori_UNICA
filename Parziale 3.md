@@ -1265,3 +1265,17 @@ I valori iniziali di `x` e `y` possono (e devono) essere generati sfruttando l'o
 - Il fatto che sia stato confermato `z` e non `y` suggerisce all'Host 2 l'inganno. La richiesta viene rigettata.
 
 ### Rilascio della connessione
+
+Il rilascio al livello di trasporto deve essere un **rilascio netto**. Il motivo è puramente legato all'efficienza delle risorse: le due macchine non devono mantenere "nulla di pendente" che continui a caricare o occupare inutilmente la rete.
+
+Quando avviene questo rilascio, l'entità di trasporto esegue due azioni obbligatorie:
+
+1. **Rimuove le informazioni** sulla connessione dalle proprie tavole di stato interne (liberando memoria RAM).
+2. **Informa l'utente** di livello superiore (ovvero il processo applicativo, come il browser) che la connessione è ufficialmente chiusa.
+
+Questo modello permette due tipi di rilascio:
+- **Rilascio Asimmetrico**: come se, mentre tu stai ancora parlando, l'altra persona riagganciasse di colpo il ricevitore.
+- **Rilascio simmetrico**: un host non si "spegne" all'improvviso, ma dichiara: "Io ho finito di trasmettere". Tuttavia, continua a rimanere in ascolto finché anche l'altro host non dichiara a sua volta di aver finito, realizzando così un **rilascio completo** senza perdite.
+![[Pasted image 20260611144935.png]]
+
+
