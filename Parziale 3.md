@@ -1346,3 +1346,7 @@ Per gestire tutto questo, da un singolo NSAP alla base, la connessione si "ramif
 Se l'infrastruttura di rete è lenta, una singola connessione IP non basta per svolgere il compito in tempi utili. La soluzione è instaurare più connessioni IP per dividere il carico di lavoro in modo proporzionale. Se una singola linea (l'esempio utilizza le classiche linee ISDN) offre una banda di 64 kbps, il trasferimento sarà lentissimo. Attivando una seconda linea il carico si divide e la velocità sale a 128 kbps. Attivandone 4, si arriva a 256 kbps.
 
 In pratica, si attivano 4 differenti indirizzi IP di connessione per dividere il carico da scaricare. La mole di dati viaggia frammentata sulle diverse linee di rete sottostanti (più NSAP) e, risalendo, converge in modo trasparente verso l'alto, riunendosi nell'unico TSAP che ha fatto la richiesta iniziale.
+
+
+### Ripristino dopo un crash 
+
