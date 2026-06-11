@@ -967,6 +967,8 @@ Dato che i PC utilizzano messaggi broadcast (che non escono dal router) per cerc
 Con **Interior Gateway Protocol (IGP)** si intendono i protocolli di routing utilizzati all'interno di una rete autonoma.
 Una rete autonoma (Autonomous System) è una porzione della rete amministrata da un unica entità (organizzazione, provider di servizi, etc.).
 
+![[Pasted image 20260611121358.png]]
+
 Gli IGP sono progettati per consentire il routing delle informazioni all'interno della rete.
 
 Alcuni protocolli IGP:
@@ -979,6 +981,7 @@ Alcuni protocolli IGP:
 Rappresenta la rete reale come un grafo ed elabora il percorso più breve da ogni router ad ogni altro router tramite un algoritmo di link state.
 Se sono possibili più percorsi della stessa lunghezza, ricorda l'intero insieme dei percorsi più brevi e durante l'inoltro il traffico viene suddiviso tra espansione..
 
+![[Pasted image 20260611121435.png]]
 ## Protocolli Esterni alle reti (EGP)
 
 
