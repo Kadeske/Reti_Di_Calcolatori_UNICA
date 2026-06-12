@@ -1473,9 +1473,27 @@ Infine, esiste un meccanismo per gestire le emergenze. Se c'è la necessità di 
 
 
 
+#### panoramica del protocollo TCP
 
+Una delle caratteristiche più distintive del TCP è che non si limita a numerare i segmenti interi (es. pacchetto 1, pacchetto 2), ma assegna un **proprio numero di sequenza a 32 bit a ogni singolo byte trasmesso**. Essendo un campo a 32 bit, ci sono oltre 4 miliardi di numeri a disposizione. In passato, con le vecchie connessioni lente, ci volevano ore per consumare tutti questi numeri e far ripartire il conteggio da zero. Oggi, con le connessioni in fibra ottica, questi numeri di sequenza vengono bruciati e riciclati molto rapidamente. Questi numeri sono essenziali perché indicano in ogni istante l'esatta posizione della _finestra scorrevole_ e permettono al ricevitore di confermare esattamente quale porzione di dati ha ricevuto.
 
+Quando il TCP prepara i dati per la spedizione, crea un segmento composto da due parti:
 
+- Un'**intestazione fissa di 20 byte** (il minimo sindacale per contenere le porte, i numeri di sequenza e i flag di controllo), a cui si possono aggiungere dei campi opzionali.
+- Seguita da **zero o più byte di dati** (il payload). È possibile avere zero byte di dati se il pacchetto serve solo a trasportare un ACK di controllo.
+
+Chi decide quanto fare grande il pacchetto? Il software TCP cerca di raggruppare i dati in modo efficiente, ma deve scontrarsi con i limiti fisici della rete, rappresentati dalla **MTU (Maximum Transfer Unit)**. L'MTU è la dimensione massima che un pacchetto può avere per attraversare un cavo senza essere "spezzettato". Se un segmento TCP è troppo grande e incontra un router con un'MTU più piccola lungo il suo percorso, subirà una **frammentazione**. In ambito di reti, la frammentazione è un'operazione costosa in termini di tempo ed elaborazione, che abbassa drasticamente le prestazioni generali. Per questo il TCP cerca sempre di calcolare preventivamente la dimensione ideale per evitarla.
+
+Il protocollo base che governa questo flusso è la **finestra scorrevole con dimensione dinamica**, che sfrutta una logica di tipo _go-back-n con timeout_.
+Il ciclo di vita di una trasmissione sicura funziona così:
+
+1. Il mittente invia un segmento e, nello stesso identico istante, fa partire un cronometro interno (**Timer**).
+2. Il segmento viaggia, arriva a destinazione e il ricevitore lo elabora.
+3. Il ricevitore risponde inviando indietro un _acknowledgment_ (ACK). Questo ACK è intelligentissimo perché contiene due informazioni cruciali per il mittente:
+    - Il **numero di sequenza successivo** che si aspetta di ricevere (in pratica dice: "Ho ricevuto tutto fino al byte 1000, ora mandami il 1001").
+    - La **dimensione della finestra disponibile**, ovvero quanto spazio libero gli è rimasto nel suo buffer per accogliere nuovi dati. In questo modo la finestra è _dinamica_: se il PC ricevente è sovraccarico, ridurrà questo numero costringendo il mittente a rallentare.
+        
+4. **La regola d'oro del ripristino:** Se il timer del mittente scade prima di aver ricevuto questo prezioso ACK di ritorno (perché il pacchetto originale o l'ACK stesso si sono persi nel traffico), il mittente taglia la testa al toro e **ritrasmette immediatamente il segmento**.
 
 
 ![[Pasted image 20260612120715.png]]
