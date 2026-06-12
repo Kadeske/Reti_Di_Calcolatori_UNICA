@@ -1448,3 +1448,7 @@ Scegliere il giusto Playback point è un gioco di delicati equilibri e dipende f
 Se un pacchetto subisce un ritardo eccezionale e arriva quando il suo momento di riproduzione è ormai passato (come il pacchetto numero 8 nel diagramma dei tempi), l'applicazione non può fare altro che scartarlo e perderlo definitivamente. La sequenza temporale non perdona.
 
 Le applicazioni moderne misurano costantemente il Jitter calcolando la differenza tra i timestamp RTP (quando il pacchetto è partito) e il tempo effettivo di arrivo. Grazie a queste misurazioni, i software **adattano dinamicamente il loro Playback point durante l'esecuzione**. Se la rete peggiora, aumentano il buffer (aumentando il ritardo per l'utente, ma salvando la fluidità); se la rete migliora, riducono il buffer. Se questo adattamento non viene fatto correttamente, l'utente subirà fastidiosi artefatti visivi o fastidiose interruzioni audio.
+
+
+## TCP (Transmission Control Protocol) RFC 793, 1122 e 192.32.63.8
+
