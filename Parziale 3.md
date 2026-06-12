@@ -1536,3 +1536,34 @@ Subito dopo la lunghezza dell'intestazione, troviamo una sequenza di bit singoli
 Il campo **Window Size (16 bit)** è il cuore del controllo di flusso. Indica esattamente la quantità di byte che il mittente può inviare prima di doversi fermare ad aspettare un nuovo ACK. Il destinatario usa questo campo per comunicare in tempo reale quanto spazio libero gli è rimasto nel buffer. Il caso estremo è la **finestra di dimensione zero (Zero Window)**: se il ricevitore è ingolfato, invia un pacchetto con Window Size = 0. Il mittente è obbligato a congelare l'invio dei dati all'istante, finché non riceverà un nuovo pacchetto con una finestra allargata.
 
 L'intestazione si chiude con il classico **Checksum** (16 bit) per verificare l'integrità dei dati contro le corruzioni fisiche, l'**Urgent Pointer**, e uno spazio per eventuali **Opzioni** aggiuntive prima di arrivare al _Payload_ (i Dati veri e propri).
+
+
+### Instaurazione di una connessione TCP (Three-Way Handshake)
+
+Tutto inizia con un server in attesa passiva. Il server esegue le primitive `LISTEN` e `ACCEPT`, mettendosi in ascolto su una porta specifica (es. la porta 80 per il web). Quando un client desidera connettersi, esegue una `CONNECT`. Sotto il cofano, questa azione genera il primo pacchetto TCP:
+
+1. Il client invia un segmento con il bit **SYN a 1** e l'**ACK a 0** (poiché non c'è ancora nulla da confermare). Inserisce un proprio numero di sequenza iniziale x. Questa è la _Connection Request_.
+    
+2. Il pacchetto arriva al server. Qui avviene un controllo vitale: il server verifica se c'è un'applicazione effettivamente in ascolto su quella _Destination Port_.
+    
+    - Se la porta è chiusa, il server respinge la richiesta inviando un segmento con il bit **RST a 1** (Reset).
+        
+    - Se la porta è aperta, il server "aggancia" la richiesta e risponde con la _Connection Accepted_: un segmento con **SYN a 1**, **ACK a 1** (per confermare la ricezione di x, chiedendo x+1) e un proprio numero di sequenza iniziale y.
+        
+3. Il client riceve l'accettazione e chiude la stretta di mano inviando un ultimo segmento con **ACK a 1** (confermando la ricezione di y, chiedendo y+1). La connessione è stabilita.
+    
+
+**L'anomalia della richiesta simultanea:** Cosa succede se due computer, per una coincidenza temporale perfetta, decidono di inviarsi un pacchetto SYN a vicenda nello stesso esatto istante? I due pacchetti SYN si incrociano sulla rete. Si potrebbe pensare che vengano create due connessioni separate, ma il TCP è più intelligente. Poiché una connessione è identificata esclusivamente dalle sue estremità (la coppia esatta di Indirizzi IP e Porte), il sistema si accorge che le due richieste riguardano lo stesso canale logico. Il risultato è la creazione di **una sola connessione** e di una singola voce nella tabella delle connessioni aperte del sistema operativo.
+
+
+##### **La Vulnerabilità: L'attacco SYN Flood**:
+Questo elegante meccanismo a tre vie nasconde una debolezza architetturale profonda. Nel momento in cui il server riceve il primo pacchetto SYN dal client e risponde con il suo SYN+ACK, entra in uno stato di mezza-connessione (Half-Open). Per poter riconoscere il terzo e ultimo pacchetto ACK quando (e se) arriverà, il server **deve allocare una porzione della sua memoria RAM** per ricordarsi i numeri di sequenza x e y di quella specifica conversazione in sospeso.
+
+Un malintenzionato può sfruttare questa necessità di memoria per compiere un attacco Denial of Service (DoS) chiamato **SYN Flood** (Inondazione di SYN). L'attaccante bombarda il server con migliaia di pacchetti SYN falsificati al secondo, ma si guarda bene dall'inviare mai il terzo pacchetto ACK finale. Il server alloca memoria per la prima richiesta, poi per la seconda, poi per la millesima, in attesa di risposte che non arriveranno mai. In pochissimo tempo, la tabella delle connessioni pendenti si riempie, la memoria si esaurisce e il server è costretto a ignorare le richieste di connessione dei clienti legittimi. Il server è di fatto paralizzato.
+
+##### La soluzione: I SYN Cookie
+Per difendersi da questo attacco letale senza modificare il protocollo TCP mondiale, gli ingegneri hanno inventato i **SYN Cookie**. L'obiettivo della difesa è semplice: il server deve rispondere al primo SYN _senza memorizzare assolutamente nulla_ nella propria RAM.
+
+Ecco come funziona la magia crittografica: Quando arriva un SYN, il server non salva i dati in una tabella. Invece, prende l'Indirizzo IP del mittente, la Porta, e una "password" segreta (conosciuta solo al server) e li frulla insieme usando un **algoritmo di crittografia** (un hash). Il risultato di questa operazione matematica complessa diventa il numero di sequenza iniziale y del server. Il server impacchetta questo numero, lo spedisce al client e **se ne dimentica istantaneamente**. Memoria occupata: zero.
+
+Se il client è un attaccante SYN Flood, la connessione muore lì e il server non ha sprecato un singolo byte di RAM. Se invece il client è legittimo, rispetterà le regole e invierà l'ultimo pacchetto ACK, che conterrà (per le regole del TCP) il numero y+1. Quando il server riceve questo ACK, prende di nuovo l'IP del client, la Porta e la sua password segreta, rifà il calcolo matematico, aggiunge 1 e controlla se il risultato coincide col numero contenuto nell'ACK. Se combaciano, il server ha la **prova matematica assoluta** che quel client aveva completato regolarmente il primo step, e instaura la connessione in totale sicurezza.
