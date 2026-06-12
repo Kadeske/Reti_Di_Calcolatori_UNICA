@@ -1629,7 +1629,7 @@ Dato che i tempi di attraversamento su Internet variano continuamente a causa de
 
 La formula matematica per aggiornare costantemente questo valore a ogni nuovo pacchetto inviato è:
 
-SRTT=α⋅SRTT+(1−α)⋅R
+$$SRTT=α⋅SRTT+(1−α)⋅R$$
 
 Dove:
 
@@ -1651,3 +1651,6 @@ Questo timer serve a prevenire uno stallo fatale (deadlock) legato alla gestione
 ##### Il Timed Wait (Il timer fantasma)
 
 Questo è l'ultimo timer utilizzato nel ciclo di vita di una connessione. Come abbiamo visto studiando il rilascio a 4 vie, quando una connessione viene chiusa, il sistema entra nello stato `TIMED WAIT`. Questo cronometro ha una durata prestabilita pari al **doppio del tempo di vita massimo di un pacchetto**. Il suo scopo è congelare quella specifica combinazione di porte e IP, garantendo che tutti i pacchetti ritardatari o duplicati appartenenti a quella vecchia conversazione "muoiano" definitivamente nella rete prima che quel socket possa essere riutilizzato per una nuova chiamata.
+
+
+### Controllo della congestione TCP
