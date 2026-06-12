@@ -64,9 +64,12 @@ Questo percorso iniziale non è istantaneo, ma genera un **ritardo di instaurazi
 
 ### Commutazione di messaggio 
 
-- Store and forward 
+In questo modello, non si crea più un "tubo" vuoto dedicato tra i due computer; si dà invece importanza prioritaria al messaggio stesso, che deve viaggiare in modo autonomo. Così facendo, un cavo di rete viene occupato e reso disponibile esclusivamente per il tempo strettamente necessario al passaggio dei dati. Scompare del tutto la fase iniziale di instaurazione del canale (sia fisico che logico), rendendo questa comunicazione orgogliosamente "senza connessione" (connectionless).
 
-img da spiegare 
+**La meccanica dello "Store and Forward"** Il cuore di questa tecnologia è il meccanismo di memorizzazione e inoltro, tecnicamente noto come **store and forward**.
+Affinché funzioni, ogni nodo intermedio della rete (i router) viene equipaggiato con una propria memoria di massa (come un disco rigido). Quando il messaggio — che è un blocco dati molto ampio contenente sia le informazioni che un'intestazione — raggiunge un nodo, viene prima di tutto immagazzinato per intero al suo interno. Il nodo esamina l'intestazione, usa le sue strategie di instradamento per decidere la direzione migliore e controlla lo stato del segmento di linea successivo. Se quel canale è libero, inoltra il messaggio; se invece il canale è occupato da altre comunicazioni, il messaggio viene semplicemente messo in coda e attende il suo turno fermo nella memoria. Per garantire la sicurezza, il nodo cancella la sua copia locale del messaggio solo dopo aver ricevuto una conferma di corretta ricezione dal nodo successivo.
+![[Pasted image 20260612142957.png]]
+
 
 Non c'è una connessione.
 
