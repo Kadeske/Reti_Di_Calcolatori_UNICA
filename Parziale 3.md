@@ -1610,3 +1610,44 @@ Per evitare che la rete venga inondata da pacchetti minuscoli e inefficienti, il
 **3. Silly Window Syndrome e la Soluzione di Clark (Lato Ricevente)** La "Sindrome della Finestra Stupida" si verifica quando il problema è sul lato del ricevitore. Se il buffer è pieno e l'applicazione legge i dati a una lentezza esasperante (es. **1 byte alla volta**), il ricevitore invierà al mittente un aggiornamento dicendo: _"Ho liberato 1 byte, la mia finestra è 1"_. Il mittente invierà 1 byte, riempiendo il buffer. L'applicazione leggerà un altro byte, generando un nuovo aggiornamento di 1 byte. Il ciclo continuerà all'infinito, paralizzando l'efficienza della rete. La **Soluzione di Clark** vieta esplicitamente questo comportamento: impedisce al ricevente di inviare un aggiornamento della finestra per 1 solo byte. Il ricevitore è obbligato a mentire (dichiarando WIN=0) e ad attendere finché non ha liberato una quantità di spazio significativa (es. metà del buffer vuoto o spazio sufficiente per un segmento massimo intero) prima di annunciare la disponibilità al mittente. Nagle e Clark lavorano in simbiosi perfetta: Nagle impedisce al mittente di inviare pacchetti piccoli, Clark impedisce al ricevente di richiederli.
 
 **4. Cumulative Acknowledgement (ACK Cumulativo)** Come già anticipato, la rete può disordinare i pacchetti. Se il destinatario riceve i segmenti in ordine sparso (es. riceve i pacchetti 0, 1, 2, poi saltano il 3 e arrivano il 4, 5, 6, 7), memorizza tutto nel buffer ma **non conferma gli arrivi isolati**. Invia un ACK cumulativo solo fino all'ultimo byte ricevuto in sequenza ininterrotta (in questo caso, conferma tutto fino al segmento 2 incluso). Quando il mittente andrà in timeout per il segmento 3 e lo ritrasmetterà, il ricevitore lo incastrerà nel "buco" del buffer e potrà improvvisamente inviare un ACK cumulativo enorme, confermando in un colpo solo la ricezione perfetta di tutti i dati fino al segmento 7.
+
+
+### Gestione del timer di TCP
+
+Il protocollo TCP si affida a diversi **timer** per gestire correttamente il flusso dei dati. Il meccanismo centrale di questa architettura è il timer **RTO** (Retransmission Timeout), direttamente responsabile di far scattare le ritrasmissioni.
+
+Il funzionamento pratico è scandito da logiche precise: al momento dell'invio di un segmento, parte un conto alla rovescia. Se la conferma di ricezione (l'acknowledgement) giunge a destinazione prima che questo tempo scada, il TCP provvede a fermare il cronometro. Al contrario, se l'attesa si prolunga oltre la scadenza prefissata senza alcun riscontro, il segmento viene considerato perso e spedito nuovamente, facendo ripartire il timer da zero.
+
+Il vero dilemma ingegneristico consiste nello stabilire l'esatta durata di questo intervallo di attesa. Per risolvere la questione, si adotta una soluzione basata su un algoritmo dinamico, capace di adattare la durata del timeout in tempo reale analizzando le misurazioni continue delle prestazioni effettive della rete. Nello specifico, per ogni singola connessione viene costantemente aggiornata una variabile chiamata **SRTT**, la quale fornisce una stima accurata del tempo necessario a un pacchetto per compiere un viaggio completo di andata e ritorno, noto come **round trip time**.
+##### Il Timer di Ritrasmissione (RTO - Retransmission Timeout)
+
+È il motore pulsante dell'affidabilità del TCP. Ogni volta che il mittente invia un segmento, fa partire questo cronometro. Se l'ACK di conferma arriva prima che il timer scada, il cronometro viene fermato e azzerato. Se invece il timer scade prima dell'arrivo dell'ACK, il segmento è considerato perso e viene immediatamente ritrasmesso (e il timer riavviato).
+
+La grande sfida ingegneristica è: **quanto deve durare questo intervallo di timeout?** Se è troppo breve, il mittente ritrasmetterà pacchetti che in realtà sono solo in leggero ritardo, intasando inutilmente la rete. Se è troppo lungo, il sistema reagirà con eccessiva lentezza a una vera perdita di dati, crollando in termini di prestazioni.
+
+Dato che i tempi di attraversamento su Internet variano continuamente a causa del traffico, un timer fisso è inutile. La soluzione è un **algoritmo dinamico** che calcola una media mobile basata sulle misurazioni continue dei ritardi. Per ogni connessione, il TCP mantiene una variabile chiamata **SRTT (Smoothed Round Trip Time)**, ovvero la stima "ammorbidita" del tempo di andata e ritorno.
+
+La formula matematica per aggiornare costantemente questo valore a ogni nuovo pacchetto inviato è:
+
+SRTT=α⋅SRTT+(1−α)⋅R
+
+Dove:
+
+- **R** è il Round Trip Time misurato per il pacchetto appena inviato (il nuovo campione).
+    
+- **α** (alfa) è un fattore di perequazione (smoothing). Determina quanto peso dare allo storico passato rispetto al nuovo campione appena rilevato.
+    
+- **L'ottimizzazione:** Tipicamente, α viene impostato al valore di **7/8**. Questa non è una scelta casuale: usare potenze di 2 permette ai programmatori del kernel di sostituire le complesse operazioni di moltiplicazione con un semplice _scorrimento di bit_ (bit shift) a livello hardware, rendendo il calcolo istantaneo e leggerissimo per la CPU.
+    
+
+##### Il Timer di Persistenza (Persistence Timer)
+
+Questo timer serve a prevenire uno stallo fatale (deadlock) legato alla gestione della finestra scorrevole. Immagina che il ricevente abbia il buffer pieno e invii un ACK con "Dimensione Finestra = 0". Il mittente si blocca. Poco dopo, il ricevente libera spazio e invia un aggiornamento della finestra per sbloccare la situazione, ma **questo pacchetto viene perso dalla rete**. Il risultato? Il mittente aspetta all'infinito un aggiornamento, e il ricevente aspetta all'infinito nuovi dati. Per spezzare questo stallo, il mittente usa il _timer di persistenza_. Quando scade, il mittente invia un pacchetto "sonda" (Window Probe). Il ricevente è obbligato a rispondere alla sonda comunicando la dimensione attuale della sua finestra. Se è ancora 0, il timer riparte; se è maggiore di 0, il flusso riprende.
+
+##### Il Timer Keep Alive
+
+È il timer del "sei ancora vivo?". Quando una connessione rimane inattiva e silenziosa per un lungo periodo, questo timer scade e spinge una delle due macchine a inviare un pacchetto di controllo per verificare se l'altra è ancora accesa e connessa. Se non si riceve alcuna risposta, la connessione viene terminata e le risorse liberate. È una funzionalità controversa: genera traffico di rete inutile e, peggio ancora, rischia di abbattere connessioni sanissime solo perché c'è stata una momentanea e temporanea interruzione fisica su un router intermedio.
+
+##### Il Timed Wait (Il timer fantasma)
+
+Questo è l'ultimo timer utilizzato nel ciclo di vita di una connessione. Come abbiamo visto studiando il rilascio a 4 vie, quando una connessione viene chiusa, il sistema entra nello stato `TIMED WAIT`. Questo cronometro ha una durata prestabilita pari al **doppio del tempo di vita massimo di un pacchetto**. Il suo scopo è congelare quella specifica combinazione di porte e IP, garantendo che tutti i pacchetti ritardatari o duplicati appartenenti a quella vecchia conversazione "muoiano" definitivamente nella rete prima che quel socket possa essere riutilizzato per una nuova chiamata.
