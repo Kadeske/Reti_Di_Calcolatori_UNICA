@@ -1452,3 +1452,30 @@ Le applicazioni moderne misurano costantemente il Jitter calcolando la differenz
 
 ## TCP (Transmission Control Protocol) RFC 793, 1122 e 192.32.63.8
 
+Il Transmission Control Protocol (TCP) è di gran lunga il protocollo di trasporto più utilizzato su Internet. Tutte le principali funzionalità di rete e le primitive fondamentali che permettono al web di esistere si appoggiano a lui.
+
+Il suo compito inizia ricevendo i dati puri dal livello Application. Poiché questi dati possono essere enormi, il TCP li deve frammentare e inserire all'interno di segmenti (le TPDU). La dimensione massima teorica di un segmento TCP è di 64 Kb, ma nella pratica quotidiana si utilizza tipicamente una dimensione di 1500 byte per adattarsi perfettamente al limite fisico imposto dalle reti Ethernet sottostanti.
+
+Una volta creato il segmento, il TCP lo consegna al livello di rete per la spedizione, ma ne conserva una copia nel proprio buffer locale. Se la rete perde il pacchetto o si verificano errori, il TCP utilizza questa copia per effettuare una ritrasmissione automatica. Solo quando riceve la conferma di corretta ricezione dall'altra parte, il buffer viene svuotato, liberando spazio per elaborare il segmento successivo.
+
+Sul fronte opposto, il TCP ricevente svolge un lavoro speculare e altrettanto vitale. Accoglie i segmenti dal livello di rete, i quali spesso arrivano in disordine o addirittura duplicati a causa dei percorsi caotici di Internet. Il protocollo li riordina scrupolosamente: elimina i doppioni, attende i frammenti mancanti per tappare i "buchi" e, solo quando la sequenza numerica è perfetta, consegna i dati ordinati al livello applicativo superiore.
+
+L'obiettivo ingegneristico del TCP è proprio questo: fornire un flusso di dati assolutamente affidabile partendo da una rete intrinsecamente inaffidabile come quella IP. Offre inoltre un servizio full-duplex, permettendo la trasmissione simultanea in entrambe le direzioni, ed è dotato di raffinati meccanismi per il controllo del flusso dei dati.
+
+Per poter instaurare questa comunicazione, si crea una connessione logica identificata da punti di accesso chiamati socket (che costituiscono i TSAP del TCP). Un socket number non è altro che l'unione matematica di due elementi: l'Indirizzo IP della macchina (a 32 bit) e il Numero di Porta del servizio (a 16 bit). La formula è quindi semplicemente: **Socket number = IP address : Port Number**.
+
+Il campo della porta, essendo a 16 bit, offre esattamente 65535 combinazioni possibili. È impossibile e inutile tenere attive decine di migliaia di porte contemporaneamente, ma alcune sono essenziali per il funzionamento della rete. Quasi tutti i servizi standard risiedono sotto la soglia della porta 1024. Questo blocco riservato prende il nome di **Well-known ports** (porte ben note). Le più famose, che rappresentano l'ossatura di Internet, includono la 20 e 21 per il trasferimento file (FTP), la 22 per l'accesso remoto sicuro (SSH), la 25 per la posta elettronica (SMTP), e ovviamente la 80 e la 443 per la navigazione web (HTTP e HTTPS).
+![[Pasted image 20260612120807.png]]
+
+Le connessioni TCP sono rigorosamente point-to-point (da un singolo punto a un altro singolo punto) e ogni specifica sessione è identificata in modo univoco da una **coppia di socket number** (uno all'estremità sorgente e uno all'estremità destinazione). Grazie a questa identificazione a coppie, è perfettamente normale che su un singolo computer ci siano più connessioni distinte che utilizzano localmente lo stesso socket number; ad esempio, un server web riesce a gestire migliaia di visitatori contemporaneamente usando sempre e solo la sua porta 80 locale, distinguendoli in base all'IP e alla porta di provenienza di ciascuno.
+
+Infine, esiste un meccanismo per gestire le emergenze. Se c'è la necessità di interrompere bruscamente una computazione remota già avviata (l'equivalente di premere la combinazione CTRL-C sulla tastiera durante una sessione di emulazione terminale), il TCP permette di inserire nel segmento un **flag URGENT**. Questo segnale indica al ricevitore di ignorare le code e le attese standard, processando quel dato specifico con la massima priorità per fermare l'operazione in corso il più velocemente possibile.
+
+
+
+
+
+
+
+
+![[Pasted image 20260612120715.png]]
