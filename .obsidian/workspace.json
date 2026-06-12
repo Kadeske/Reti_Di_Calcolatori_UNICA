@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Parziale 3.md",
+                "file": "Sezioni P3/Livello di rete.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Parziale 3"
+              "title": "Livello di rete"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Parziale 3.md",
+                "file": "Sezioni P3/Livello di rete.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Riferimenti a Parziale 3"
+              "title": "Riferimenti a Livello di rete"
             }
           },
           {
@@ -206,8 +206,12 @@
   },
   "active": "902f646cdef238f4",
   "lastOpenFiles": [
-    "img/Pasted image 20260612123850.png",
     "Parziale 3.md",
+    "Sezioni P3/Livello di rete.md",
+    "Sezioni P3/Livello di trasporto.md",
+    "Sezioni P3/Livello di rete in internet.md",
+    "Sezioni P3",
+    "img/Pasted image 20260612123850.png",
     "img/Pasted image 20260612122617.png",
     "img/Pasted image 20260612122105.png",
     "img/Pasted image 20260612120807.png",
@@ -243,15 +247,12 @@
     "Approfondimenti P1/Modello ISO-OSI (De jure).md",
     "Approfondimenti P1/Cavo coassiale.md",
     "Approfondimenti P1/Doppino telefonico.md",
-    "Approfondimenti P1/Segnali a larghezza di banda limitata.md",
-    "Approfondimenti P1/Analisi di Fourier.md",
     "802.3 CSMA",
     "Approfondimenti P1",
     "pdf/Reti part1c-2025.pdf",
     "pdf/Reti part1b-2025.pdf",
     "pdf",
     "Senza nome 1.canvas",
-    "Senza nome.canvas",
-    "img"
+    "Senza nome.canvas"
   ]
 }
