@@ -113,29 +113,66 @@ Per risolvere i problemi di disordine e perdita del datagramma, si usa il circui
     
 - **Svantaggio:** L'uso continuo dello stesso circuito può portare al degrado delle prestazioni del percorso scelto, causando rallentamenti nell'attraversamento.
 
-#### Algoritmi di routing
-Cosa fanno 
-Statici e dinamici (o adattivi) -> in base a cosa differiscono tra loro
+### Algoritmi di routing
+Gli algoritmi di routing sono i protocolli responsabili di decidere il percorso migliore che un pacchetto deve seguire all'interno della rete per giungere a destinazione.
 
-Algoritmo in base al tipo di sottorete 
-- sessione di routing 
+##### Statici vs Dinamici (Adattivi)
+Gli algoritmi si dividono in due grandi categorie:
+- **Statici:** Le decisioni di routing vengono prese a tavolino prima dell'avvio della rete. Sono adatti a reti piccole, permettendo al gestore un controllo totale.
+- **Dinamici:** Le decisioni vengono costantemente riformulate in base a vari fattori. Sono indispensabili nelle reti di grandi dimensioni per la loro alta tolleranza agli errori.
 
-Cosa ci si aspetta da un algoritmo di routing  (6 punti)
+**Differenze tra algoritmi dinamici** Gli algoritmi dinamici differiscono tra loro per tre aspetti chiave:
+1. _Come ricevono le informazioni_ (solo dai router adiacenti, da tutti i router, ecc.).
+2. _Quanto spesso rivedono le decisioni_ (a intervalli fissi, al variare del carico, al cambio della topologia).
+3. _Quale metrica di valutazione adottano_ (es. distanza, salti, tempo stimato).
 
-- metrica -> cosa è, cosa utilizza.
-	- metrica inferiore
+##### Algoritmo in base al tipo di sottorete
 
-- Principio di ottimalità (CON IMG e spiegazione)
+L'applicazione dell'algoritmo cambia drasticamente a seconda dell'architettura sottostante:
+- **Sottorete Datagram:** L'algoritmo calcola un nuovo percorso per ogni singolo pacchetto (o piccola serie) in transito.
+- **Sottorete a Circuiti Virtuali:** L'algoritmo viene eseguito una sola volta, esclusivamente durante la fase iniziale di creazione del circuito. Questo specifico caso prende il nome di **session routing**.
 
-- bilanciamento del carico
-	- modalità di load balancing (equal-cost e unequal-cost)
+##### Cosa ci si aspetta da un algoritmo di routing (I 6 requisiti)
 
-- termine **convergenza**
-	- tempo di consistenza (ha senso solo per alg. dinamici)
+Un buon algoritmo deve garantire sei caratteristiche fondamentali:
 
+1. **Correttezza:** Deve inoltrare il pacchetto alla destinazione giusta.
+2. **Semplicità:** L'implementazione software non deve essere eccessivamente complicata.
+3. **Robustezza:** Deve continuare a funzionare anche se cadono le linee o si bloccano dei router.
+4. **Stabilità:** Deve convergere rapidamente verso una soluzione stabile.
+5. **Equità:** Non deve favorire o privilegiare l'inoltro di pacchetti specifici a discapito di altri.
+6. **Ottimalità:** Deve sempre scegliere la soluzione che risulti globalmente la migliore per l'intera rete.
+##### Metrica
+
+La metrica è lo strumento matematico utilizzato per misurare come si sta utilizzando la rete. Può basarsi su vari parametri, come il numero di pacchetti in coda, la capacità bidirezionale, il ritardo, o il numero di salti (hop) tra i nodi. Di regola, l'algoritmo seleziona sempre il percorso associato alla **metrica inferiore** (il "costo" minore). Alcuni protocolli avanzati riescono a combinare differenti metriche per calcolare un percorso ancora più ottimizzato.
+
+##### Il Principio di Ottimalità e il Sink Tree
+
+Questo principio stabilisce una regola logica fondamentale: se un router J si trova sul cammino ottimale per andare dal router I al router K, allora anche il cammino da J a K si troverà sulla stessa identica strada.
+![[Pasted image 20260612143930.png]]
+La logica è ferrea: se esistesse una strada migliore tra J e K, l'algoritmo l'avrebbe già scelta, modificando di conseguenza anche il percorso originale tra I e K. La conseguenza visiva e strutturale di questo principio è che l'insieme di tutti i cammini ottimali provenienti da ogni router verso una specifica destinazione assume sempre la forma di un albero senza cicli chiusi, chiamato **sink tree**.
+
+![[Pasted image 20260612143946.png]]
+
+##### Load Balancing (Bilanciamento del Carico)
+
+È la capacità vitale di distribuire il traffico su percorsi differenti ma diretti verso la stessa destinazione. Serve ad aumentare l'efficienza e permette il re-instradamento automatico se un percorso fallisce. Le modalità principali sono due:
+
+- **Equal-cost:** Distribuisce il traffico equamente solo su percorsi che hanno la stessa identica metrica (lo stesso "costo").
+- **Unequal-cost:** Sfrutta anche percorsi con metriche peggiori. Il traffico viene diviso in maniera inversamente proporzionale: il percorso con il costo minore riceve più traffico, quello con il costo maggiore ne riceve meno.
+##### Convergenza e Tempo di Consistenza
+
+Nelle reti dinamiche, quando un cavo si rompe o si aggiunge un nuovo router (modifica della topologia), i router devono scambiarsi informazioni per aggiornare le loro mappe.
+
+- La **convergenza** è proprio questo processo attraverso il quale tutte le tabelle di routing dei vari nodi vengono aggiornate fino a raggiungere un nuovo stato di "consistenza" globale (tutti hanno la stessa visione corretta della rete).
+    
+- Il **tempo di consistenza** è il tempo fisico necessario affinché questo aggiornamento sia completato su tutti i nodi. Ovviamente, ha senso parlare di convergenza solo riferendosi agli algoritmi dinamici.
 
 ### Principali Algoritmi di Routing Statici
-sono 3
+sono 3: 
+- Shortest Path Routing
+- Flooding
+- Flow-based Routing
 
 #### Shortest Path Routing 
 
