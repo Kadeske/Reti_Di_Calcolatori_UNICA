@@ -46,12 +46,21 @@ Quando si progetta una sottorete, la scelta di come implementare questa commutaz
 
 ### Commutazione di circuito
 
+È una tecnica rigorosamente orientata alla connessione (connection-oriented) e il suo intero ciclo di vita si articola in tre fasi obbligatorie: l'instaurazione (call setup), il trasferimento dei dati veri e propri e, infine, il rilascio della connessione (call clear-down).
 ![[Pasted image 20260612142334.png]]
-da spiegare meglio
 
-- router instradatori
-- ritardo di instaurazione
+**La fase di instaurazione e l'ostacolo del ritardo** Tutto inizia quando l'host chiamante invia alla sottorete le informazioni necessarie per individuare il destinatario. Affinché la comunicazione possa iniziare, il segnale di richiesta deve fisicamente attraversare i vari nodi intermedi della rete, ovvero i **router instradatori**.
 
+Questo percorso iniziale non è istantaneo, ma genera un **ritardo di instaurazione** (call set-up delay). Come mostra il grafico temporale degli appunti, questo ritardo è la somma di due fattori fisici:
+
+- Il tempo materiale di trasmissione delle informazioni di segnalazione lungo i cavi.
+    
+- I tempi di elaborazione interni dei router: un nodo intermedio non inoltra il segnale immediatamente, ma deve prima svolgere dei calcoli per selezionare il percorso corretto. Inoltre, il nodo finale a ridosso del destinatario richiede ancora più tempo, poiché deve confermare che l'intero percorso di trasmissione è valido e pronto.
+    
+
+**Il trasferimento dati e il limite del costo** Se la fase di instaurazione va a buon fine, la rete "blocca" quegli specifici router e cavi appena interpellati. In sostanza, viene resa disponibile una **connessione fisica dedicata** in via esclusiva per quei due host.
+
+È qui che emerge il principale limite di questo sistema: impegna totalmente le risorse di rete lungo tutto il percorso per quel singolo collegamento. Questo vincolo rimane attivo per tutta la durata della chiamata, **anche nei momenti in cui i due host non si stanno scambiando alcun dato** (ad esempio, durante una pausa in una conversazione telefonica). Questo enorme spreco di risorse bloccate e inutilizzate rende il sistema della commutazione di circuito costosissimo da mantenere.
 
 ### Commutazione di messaggio 
 
