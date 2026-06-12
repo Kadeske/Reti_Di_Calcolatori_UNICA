@@ -1366,3 +1366,6 @@ Passiamo alla seconda strategia del server: **Prima scrittura, poi ACK**. Anche 
 ![[Pasted image 20260611155814.png]]
 
 Incrociando le strategie del client (ritrasmettere sempre, mai, solo in S0 o solo in S1) con le strategie e le tempistiche di crash del server, emerge una verità matematica e architetturale ineluttabile, nota come il problema del ripristino: **non esiste una singola strategia per l'host mittente che garantisca un risultato corretto (OK) in ogni singola situazione.** Qualsiasi scelta si faccia sul client, ci sarà sempre almeno una precisa combinazione temporale del crash sul server che porterà inevitabilmente a una perdita di dati (LOST) o a una duplicazione indesiderata (DUP).
+
+## UDP (User Datagram Protocol)
+
