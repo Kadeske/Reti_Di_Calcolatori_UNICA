@@ -1402,3 +1402,9 @@ L'idea alla base di questo modello consiste nel creare un'illusione perfetta di 
 4. **La Ricezione:** Il messaggio in ingresso viene intercettato dal kernel del server e passato allo stub del server.
     
 5. **L'Esecuzione reale:** Lo stub del server esegue l'operazione inversa (l'unmarshalling): spacchetta i parametri, invoca la _vera_ procedura del server, le fa svolgere il lavoro e ne raccoglie il risultato. A questo punto, la risposta viene re-impacchettata e fa il percorso esatto a ritroso, tornando al client che è rimasto beatamente all'oscuro di tutta questa complessa macchinazione.
+
+### Protocolli di trasporto real-time 
+Sono protocolli che preferiscono la velocità.
+E' preferibile perdere qualche segmento ma avere una continuità di dati.
+
+#### RTP (Real-time Transport Protocol)
