@@ -1496,4 +1496,43 @@ Il ciclo di vita di una trasmissione sicura funziona così:
 4. **La regola d'oro del ripristino:** Se il timer del mittente scade prima di aver ricevuto questo prezioso ACK di ritorno (perché il pacchetto originale o l'ACK stesso si sono persi nel traffico), il mittente taglia la testa al toro e **ritrasmette immediatamente il segmento**.
 
 
+
+
+### Header di un pacchetto TCP
+
+
+A differenza del leggerissimo header UDP di soli 8 byte, l'intestazione TCP ha una dimensione fissa di base di **20 byte**, divisa in campi estremamente specifici.
+
 ![[Pasted image 20260612120715.png]]
+
+I primi campi identificano chi parla e a che punto della conversazione ci si trova:
+
+- **Source Port e Destination Port (16 bit ciascuno):** Identificano le porte delle applicazioni mittente e destinatario.
+    
+- **Sequence Number (32 bit):** Come abbiamo visto, numera il primo byte di dati trasportato in questo specifico segmento, garantendo il riordino.
+    
+- **Acknowledgement Number (32 bit):** Questo è cruciale. L'ACK del TCP è **cumulativo** e indica sempre il **successivo byte previsto**, non l'ultimo ricevuto. Se un computer riceve perfettamente tutti i byte da 0 a 1000, inserirà in questo campo il numero 1001. Significa: _"Ho ricevuto tutto fino a 1000 senza buchi, ora sto aspettando il 1001"_.
+
+Subito dopo la lunghezza dell'intestazione, troviamo una sequenza di bit singoli (chiamati **Flag**). Sono interruttori logici (accesi a 1 o spenti a 0) che definiscono lo scopo esatto di quel segmento e guidano la Macchina a Stati Finiti:
+
+- **CWR ed ECE:** Lavorano in coppia per gestire la congestione di rete (ECN). L'ECE segnala al mittente di rallentare perché i router si stanno intasando, mentre il CWR è la risposta del mittente che conferma di aver ridotto la sua finestra di trasmissione.
+    
+- **URG (Urgent):** Se impostato a 1, dice al ricevitore di guardare il campo _Urgent Pointer_, il quale indica a quale offset (a quanti byte di distanza) si trovano dei dati urgenti da elaborare immediatamente scavalcando la coda (es. il comando CTRL-C per interrompere un processo).
+    
+- **ACK:** Se vale 1, significa che il campo _Acknowledgement Number_ contiene un valore valido e deve essere letto. Nella pratica, a parte il primissimo messaggio di apertura, questo bit è sempre a 1.
+    
+- **PSH (Push):** È un ordine perentorio per il ricevitore: _"Non parcheggiare questi dati nel tuo buffer in attesa che si riempia, consegnali immediatamente all'applicazione soprastante!"_.
+    
+- **RST (Reset):** È il pulsante antipanico. Viene usato per abbattere istantaneamente una connessione diventata confusa, o per rifiutare categoricamente un tentativo di connessione non valido. Se arriva un RST, c'è un problema grave.
+    
+- **SYN (Synchronize):** È il bit usato esclusivamente per instaurare la connessione (il famoso Three-Way Handshake).
+    
+    - Un segmento con `SYN = 1` e `ACK = 0` è la **Richiesta di Connessione**.
+        
+    - Un segmento con `SYN = 1` e `ACK = 1` è la **Connessione Accettata**.
+        
+- **FIN (Finish):** Segnala il rilascio della connessione. Indica che il mittente ha finito i dati da trasmettere. La connessione può comunque rimanere "aperta a metà" per continuare a ricevere dati dall'altra parte.
+
+Il campo **Window Size (16 bit)** è il cuore del controllo di flusso. Indica esattamente la quantità di byte che il mittente può inviare prima di doversi fermare ad aspettare un nuovo ACK. Il destinatario usa questo campo per comunicare in tempo reale quanto spazio libero gli è rimasto nel buffer. Il caso estremo è la **finestra di dimensione zero (Zero Window)**: se il ricevitore è ingolfato, invia un pacchetto con Window Size = 0. Il mittente è obbligato a congelare l'invio dei dati all'istante, finché non riceverà un nuovo pacchetto con una finestra allargata.
+
+L'intestazione si chiude con il classico **Checksum** (16 bit) per verificare l'integrità dei dati contro le corruzioni fisiche, l'**Urgent Pointer**, e uno spazio per eventuali **Opzioni** aggiuntive prima di arrivare al _Payload_ (i Dati veri e propri).
