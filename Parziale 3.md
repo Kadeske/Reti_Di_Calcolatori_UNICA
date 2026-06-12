@@ -1367,5 +1367,20 @@ Passiamo alla seconda strategia del server: **Prima scrittura, poi ACK**. Anche 
 
 Incrociando le strategie del client (ritrasmettere sempre, mai, solo in S0 o solo in S1) con le strategie e le tempistiche di crash del server, emerge una verità matematica e architetturale ineluttabile, nota come il problema del ripristino: **non esiste una singola strategia per l'host mittente che garantisca un risultato corretto (OK) in ogni singola situazione.** Qualsiasi scelta si faccia sul client, ci sarà sempre almeno una precisa combinazione temporale del crash sul server che porterà inevitabilmente a una perdita di dati (LOST) o a una duplicazione indesiderata (DUP).
 
-## UDP (User Datagram Protocol)
+## UDP (User Datagram Protocol) RFC768
 
+L'UDP trasporta **datagrammi**. La sua caratteristica fondamentale è la velocità pura, ottenuta eliminando quasi completamente l'overhead di controllo. Non ha meccanismi di "conferma" e non perde tempo a instaurare una sessione prima di parlare. L'UDP si attiva, prende i dati e cerca di farli arrivare a destinazione nel modo più rapido possibile, sfruttando la disponibilità immediata delle linee di rete.
+
+Per funzionare bene, queste caratteristiche presuppongono che ci sia alla base una rete fisica piuttosto efficiente. Tuttavia, si sceglie di usare l'UDP in due scenari ben precisi:
+1. Quando ci si trova all'interno di **reti locali (LAN) già estremamente affidabili**, dove la perdita di pacchetti è quasi nulla.
+2. Quando si ha a che fare con traffico in cui **la perdita di qualche dato non è considerata importante**. Il classico esempio sono le sessioni _real-time_ come le videochiamate VoIP o lo streaming in diretta: se un pacchetto contenente un fotogramma video va perso, è molto meglio subire un microscopico scatto a schermo piuttosto che bloccare l'intera telefonata in attesa che il protocollo ritrasmetta il dato mancante.
+
+![[Pasted image 20260612114557.png]]
+
+Proprio per garantire questa estrema snellezza, l'header (l'intestazione) dell'UDP è uno dei più piccoli esistenti nel mondo delle reti (è superato in piccolezza solo dall'intestazione delle celle ATM).
+
+Osservando lo schema a blocchi da 32 bit, vediamo che l'header è composto da soli 8 byte totali, suddivisi in quattro campi semplicissimi da 16 bit ciascuno:
+- **Source Port (Porta Sorgente - 16 bit):** Identifica la porta del processo applicativo che sta inviando i dati.
+- **Destination Port (Porta Destinazione - 16 bit):** Identifica la porta del processo che deve ricevere i dati sul computer remoto.
+- **UDP Length (Lunghezza - 16 bit):** Indica la dimensione totale del datagramma, calcolata in byte, comprendendo sia questa intestazione sia i dati trasportati (il payload).
+- **UDP Checksum (Controllo errori - 16 bit):** È un valore matematico usato dal ricevitore per verificare se i dati si sono accidentalmente corrotti (cambiando gli 0 e gli 1) durante il viaggio sui cavi. L'aspetto più interessante di questo campo è che **può non essere considerato**. Proprio per assecondare la fame di prestazioni delle sessioni real-time, i programmatori possono decidere di disattivare il calcolo del checksum (impostandolo tutto a zero) per risparmiare preziosi millisecondi di elaborazione sulle macchine.
