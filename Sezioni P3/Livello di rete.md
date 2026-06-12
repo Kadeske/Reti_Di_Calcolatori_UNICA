@@ -32,13 +32,21 @@ Le decisioni progettuali si traducono nella scelta di offrire un servizio affida
 - Tutta la complessità viene demandata ai vari host periferici: saranno i loro livelli di trasporto a dover fornire la necessaria affidabilità e l'orientamento alla connessione se richiesto dall'applicazione.
 ## Principi di commutazione 
 
-Definizione commutazione 
+La **commutazione** è il processo fondamentale che permette di trasferire i dati da un computer sorgente (host di origine) a uno di destinazione.
 
-Scelta della tecnica in base a: ...
+La caratteristica chiave di questo processo è la sua **dinamicità**: le destinazioni non sono fisse o pre-cablate, ma variano di volta in volta per adattarsi alle specifiche esigenze del servizio richiesto in quel momento.
+
+Dal punto di vista pratico, questo smistamento delle informazioni viene eseguito materialmente da dispositivi hardware dedicati, i quali sono strategicamente posizionati nei **nodi** (i punti di incrocio) della rete.
+
+Quando si progetta una sottorete, la scelta di come implementare questa commutazione si restringe essenzialmente a tre tecniche principali, una scelta cruciale perché influenza direttamente la **Qualità del Servizio (QoS)**:
+
+- **Commutazione di circuito**
+- **Commutazione di messaggio**
+- **Commutazione di pacchetto**
 
 ### Commutazione di circuito
 
-img con spiegazione : 
+![[Pasted image 20260612142334.png]]
 da spiegare meglio
 
 - router instradatori
