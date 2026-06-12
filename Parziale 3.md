@@ -1413,8 +1413,38 @@ RTP lavora in stretta sinergia con UDP, ma con una differenza architetturale imp
 
 Dato che sfrutta le fondamenta dell'UDP, i router della rete non fanno alcuna distinzione: trattano i pacchetti RTP esattamente come qualsiasi altro datagramma, senza riservare loro corsie preferenziali.
 
+La funzione base di RTP è quella di eseguire il multiplexing di flussi di
+dati real-time in un singolo flusso di pacchetti UDP.
 L'applicazione genera i dati (ad esempio, un frammento di voce), RTP ci attacca la sua intestazione e tutto questo blocco diventa il _payload_ (il carico utile) che viene annegato all'interno di un normale segmento UDP. A sua volta, UDP viene inserito nel pacchetto IP e infine nel frame Ethernet.
 
 
 ![[Pasted image 20260612115523.png]]
 
+
+#### RTCP (Real-Time Transport Protocol)
+
+A supporto del protocollo RTP lavora sempre un protocollo gemello chiamato **RTCP (Real-time Transport Control Protocol)**. Se RTP si occupa di trasportare fisicamente i dati multimediali, RTCP fa da "supervisore": non trasporta media, ma gestisce le retroazioni (feedback) verso la sorgente. Invia costantemente report sullo stato della rete, sulle perdite di pacchetti e gestisce la sincronizzazione dei flussi.
+
+Il problema più grande che RTCP aiuta a monitorare e mitigare è il **Jitter** (la variazione del ritardo o tremolio).
+
+Immagina un server che invia un flusso audio spedendo un pacchetto esattamente ogni 10 millisecondi, con la precisione di un metronomo. A causa del traffico caotico sui router, questi pacchetti non arriveranno mai a destinazione con la stessa cadenza perfetta. Alcuni subiranno un ritardo di 12 ms, altri di 15 ms, altri arriveranno quasi accavallati. Questa continua variazione nei tempi di arrivo è il Jitter.
+
+Se il ricevitore tentasse di riprodurre l'audio istantaneamente non appena un pacchetto arriva, il risultato sarebbe inascoltabile: la voce subirebbe continue accelerazioni, rallentamenti e micro-interruzioni.
+
+La soluzione universale per colmare questo problema è l'utilizzo di un **Buffer di Jitter**. Il trucco consiste nel ritardare intenzionalmente l'inizio della riproduzione. Quando arriva il primo pacchetto, l'applicazione non lo riproduce subito, ma lo salva nel buffer e attende un certo periodo di tempo prefissato. Questa attesa permette ai pacchetti successivi, anche se in ritardo, di accumularsi in modo sicuro. Terminato il tempo di attesa, l'applicazione inizia a estrarre i pacchetti dal buffer a un ritmo perfettamente costante, garantendo all'utente una rappresentazione audiovisiva fluida e continua.
+
+![[Pasted image 20260612115910.png]]
+
+Il momento esatto in cui l'applicazione inizia a estrarre i dati dal buffer prende il nome di **Playback point** (Punto di riproduzione).
+
+Scegliere il giusto Playback point è un gioco di delicati equilibri e dipende fortemente dall'entità del Jitter, come mostrano i grafici a campana:
+![[Pasted image 20260612120013.png]]
+
+- **Jitter Basso (curva stretta):** I pacchetti arrivano quasi tutti con un ritardo simile. Il Playback point può essere impostato molto vicino al tempo di arrivo. L'utente percepirà la comunicazione in tempo reale (bassa latenza).
+    
+- **Jitter Alto (curva larga):** I ritardi sono molto altalenanti. Per poter catturare il 99% dei segmenti ed evitare interruzioni, il Playback point deve essere spinto abbondantemente in avanti, creando un tempo di attesa molto lungo. Questo meccanismo di accumulo prolungato è il motivo per cui nelle classiche trasmissioni televisive via satellite, o nei collegamenti dei telegiornali intercontinentali, si nota quel fastidioso _delay_ di un paio di secondi prima che l'interlocutore risponda.
+    
+
+Se un pacchetto subisce un ritardo eccezionale e arriva quando il suo momento di riproduzione è ormai passato (come il pacchetto numero 8 nel diagramma dei tempi), l'applicazione non può fare altro che scartarlo e perderlo definitivamente. La sequenza temporale non perdona.
+
+Le applicazioni moderne misurano costantemente il Jitter calcolando la differenza tra i timestamp RTP (quando il pacchetto è partito) e il tempo effettivo di arrivo. Grazie a queste misurazioni, i software **adattano dinamicamente il loro Playback point durante l'esecuzione**. Se la rete peggiora, aumentano il buffer (aumentando il ritardo per l'utente, ma salvando la fluidità); se la rete migliora, riducono il buffer. Se questo adattamento non viene fatto correttamente, l'utente subirà fastidiosi artefatti visivi o fastidiose interruzioni audio.
