@@ -53,7 +53,7 @@ da spiegare meglio
 - ritardo di instaurazione
 
 
-## Commutazione di messaggio 
+### Commutazione di messaggio 
 
 - Store and forward 
 
@@ -69,7 +69,7 @@ Il servizio di trasferimento non può consentire una comunicazione interattiva.
 
 Non va bene per grandi file, quindi si divide in pacchetti.
 
-## Commutazione di pacchetto 
+### Commutazione di pacchetto 
 
 Informazione divisa in unità di lunghezza massima predefinita: pacchetti.
 
