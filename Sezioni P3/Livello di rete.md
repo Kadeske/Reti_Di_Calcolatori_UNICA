@@ -273,6 +273,10 @@ Viene costruito un pacchetto LSP (Link State Packet) che contiene ...
 Invio dell'LSP con flooding.
 Calcolo del cammino minimo tra tutti i router avendo ricevuto gli LSP.
 
+![[Pasted image 20260612220418.png]]
+
+![[Pasted image 20260612220430.png]]
+
 
 ### Routing Gerarchico 
 
@@ -284,6 +288,10 @@ I router all'interno della stessa regione si conoscono.
 Per comunicare con uno all'esterno, un router interno da da **router di confine**
 Quindi si possono considerare due livelli di routing (interno e di confine/esterno)
 
+![[Pasted image 20260612220449.png]]
+
+![[Pasted image 20260612220459.png]]
+
 ### Broadcast Routing
 
 4 metodologie per ottenere la trasmissione broadcast:
@@ -293,15 +301,17 @@ multidestination routing: lista di destinazioni, invio delle copie fino a raggiu
 Il quarto utilizza il sink tree del routeer di trasmissioni e lo spanning tree per inoltrare i pacchetti. (pro, contro)
 
 (ricorda definizione spanning tree CON IMMAGINE)
+![[Pasted image 20260612220518.png]]
 
 Utilizzo di **reverse path forwarding** al posto dello **spanning tree**
 altra immagine con 3 topologie diverse: sottorete, sink tree, Albero realizzato dall'inoltro a percorso inverso.
+![[Pasted image 20260612220542.png]]
 
 ### Multicast Routing 
 
 Algoritmo per l'instradamento dei pacchetti multicast.
 
-(immagine con 4 grafi)
+![[Pasted image 20260612220556.png]]
 
 Necessita la divisione e gestione dei gruppi.
 I router devono sapere quali host appartengono ad ogni gruppo. (host avvisano i router o router interrogano host).
@@ -314,11 +324,11 @@ Per collegare reti che utilizzano protocolli differenti, passando attraverso una
 
 Il router consente di aprire un bridge o un tunnel a seconda dei casi.
 
-(immagine con vari nomi di protocolli conosiuti che passano attraverso una rete multiprotocollo)
+![[Pasted image 20260612220610.png]]
 
 - tunneling: cosa è e quando usarlo
 
-(immagine più generica con rete X <-> rete Y <-> rete X)
+![[Pasted image 20260612220623.png]]
 
 
 ### Struttura generica di un pacchetto 
@@ -342,7 +352,7 @@ Agli alg. di routing si affiancano gli **Algoritmi di controllo della congestion
 
 Buffer contenente pacchetti arrivati ma non ancora spediti/reinoltrati.
 
-(img con grafico pacchetti inontrati X pacchetti inviati)
+![[Pasted image 20260612220657.png]]
 
 Peggioramento a causa del **Timeout and Retrasmission**
 - Congestion Collapse 
@@ -387,6 +397,8 @@ pessima sincronizzazione dei flussi
 non equa distribuzione della perdita di pacchetti tra connessioni
 scarso utilizzo delle risorse di rete 
 
+![[Pasted image 20260612220723.png]]
+
 ### Load Shedding
 
 Quando il buffer è pieno, scarta i pacchetti secondo delle regole.
@@ -416,9 +428,11 @@ valore aq,
 tempo trascorso ultima cancellazione 
 prob massima cancellazione
 
-(immagine grafico) -> RED vesione classica 
+![[Pasted image 20260612220742.png]]
+RED vesione classica 
 
-(immagine grafico) -> RED gentle-version
+![[Pasted image 20260612220757.png]]
+RED gentle-version
 
 Quando la lunghezza media della coda cresce proporzionalmente al numero di connessioni attive nel sistema, l'algoritmo non riesce ad evitare la congestione.
 
@@ -464,10 +478,12 @@ Così facendo il destinatario li riceverà in maniera costante nel tempo.
 
 Il limite è il costo delle risorse (?)
 
+![[Pasted image 20260612220833.png]]
+
 ### Leaky bucket
 
 
-(img leakybucket) 
+![[Pasted image 20260612220844.png]]
 **Scopo:** Trasformare un flusso di dati irregolare in un flusso costante e regolare (Traffic Shaping).
 
 **Come funziona:** Immagina un secchio con un buco sul fondo. L'acqua (i pacchetti di dati inviati dall'host) può essere versata nel secchio a fiotti irregolari. Tuttavia, l'acqua uscirà dal buco sul fondo sempre a una velocità costante e fissa. Nella rete:
@@ -483,7 +499,7 @@ _In sintesi: Assicura un flusso di uscita rigido e costante, assorbendo piccole 
 
 ### Token bucket
 
-(img token bucket) 
+![[Pasted image 20260612220859.png]]
 
 **Scopo:** Limitare la velocità media del traffico, ma consentendo dei picchi di trasmissione improvvisi (Traffic Policing / Shaping elastico).
 
