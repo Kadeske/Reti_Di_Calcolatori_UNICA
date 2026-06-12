@@ -1384,3 +1384,21 @@ Osservando lo schema a blocchi da 32 bit, vediamo che l'header è composto da so
 - **Destination Port (Porta Destinazione - 16 bit):** Identifica la porta del processo che deve ricevere i dati sul computer remoto.
 - **UDP Length (Lunghezza - 16 bit):** Indica la dimensione totale del datagramma, calcolata in byte, comprendendo sia questa intestazione sia i dati trasportati (il payload).
 - **UDP Checksum (Controllo errori - 16 bit):** È un valore matematico usato dal ricevitore per verificare se i dati si sono accidentalmente corrotti (cambiando gli 0 e gli 1) durante il viaggio sui cavi. L'aspetto più interessante di questo campo è che **può non essere considerato**. Proprio per assecondare la fame di prestazioni delle sessioni real-time, i programmatori possono decidere di disattivare il calcolo del checksum (impostandolo tutto a zero) per risparmiare preziosi millisecondi di elaborazione sulle macchine.
+
+### RPC (Remote Procedure Call)
+
+Un'altra applicazione perfetta per la velocità estrema dell'UDP sono le **RPC (Remote Procedure Call)**, ovvero le Chiamate di Procedura Remota.
+
+L'idea alla base di questo modello consiste nel creare un'illusione perfetta di località. Quando un programmatore scrive il software per il client, vuole poter richiamare una funzione (ad esempio, farsi restituire dei dati da un database) esattamente come se quella funzione si trovasse sul suo stesso computer, ignorando completamente l'esistenza della rete. Il client non deve accorgersi che sta interrogando una macchina distante; tutto deve essere trasparente e immediato. Ci si serve dell'UDP proprio per la sua velocità nell'eseguire queste operazioni fulminee.
+
+![[Pasted image 20260612114925.png]]
+
+1. **La finta chiamata:** Il programma client chiama una procedura all'interno dello stub del client. Dal punto di vista del software, è una normalissima funzione locale: inserisce i parametri necessari nello stack della memoria e si mette in attesa del risultato.
+    
+2. **Il Marshalling:** Qui interviene la magia dello stub del client. Prende i parametri appena ricevuti e li "impacchetta" in un formato standard (un messaggio) adatto a viaggiare sui cavi. Questa delicata operazione di traduzione e impacchettamento prende il nome tecnico di **marshalling**. Subito dopo, lo stub effettua una chiamata di sistema per chiedere al sistema operativo di spedire il pacchetto.
+    
+3. **Il Viaggio (UDP):** Il messaggio viene affidato al kernel del sistema operativo, che lo spara velocemente sulla rete facendolo arrivare al server remoto.
+    
+4. **La Ricezione:** Il messaggio in ingresso viene intercettato dal kernel del server e passato allo stub del server.
+    
+5. **L'Esecuzione reale:** Lo stub del server esegue l'operazione inversa (l'unmarshalling): spacchetta i parametri, invoca la _vera_ procedura del server, le fa svolgere il lavoro e ne raccoglie il risultato. A questo punto, la risposta viene re-impacchettata e fa il percorso esatto a ritroso, tornando al client che è rimasto beatamente all'oscuro di tutta questa complessa macchinazione.
