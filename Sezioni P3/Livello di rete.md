@@ -70,16 +70,15 @@ In questo modello, non si crea più un "tubo" vuoto dedicato tra i due computer;
 Affinché funzioni, ogni nodo intermedio della rete (i router) viene equipaggiato con una propria memoria di massa (come un disco rigido). Quando il messaggio — che è un blocco dati molto ampio contenente sia le informazioni che un'intestazione — raggiunge un nodo, viene prima di tutto immagazzinato per intero al suo interno. Il nodo esamina l'intestazione, usa le sue strategie di instradamento per decidere la direzione migliore e controlla lo stato del segmento di linea successivo. Se quel canale è libero, inoltra il messaggio; se invece il canale è occupato da altre comunicazioni, il messaggio viene semplicemente messo in coda e attende il suo turno fermo nella memoria. Per garantire la sicurezza, il nodo cancella la sua copia locale del messaggio solo dopo aver ricevuto una conferma di corretta ricezione dal nodo successivo.
 ![[Pasted image 20260612142957.png]]
 
+**Il prezzo da pagare: la latenza** Il grande vantaggio di questa tecnica è l'efficienza: la singola linea viene occupata solo per il tempo di trasferimento della porzione di dati, ottimizzando le risorse di rete.
 
+![[Pasted image 20260612143125.png]]
+
+Tuttavia, il difetto fatale risiede nel **ritardo di trasferimento**. Poiché ogni singolo nodo lungo il percorso deve ricevere, salvare su disco ed elaborare l'intero messaggio prima di farlo ripartire, il ritardo si accumula enormemente. Questo tempo dipende dalla lunghezza del messaggio, dalla velocità dei cavi e dai tempi di elaborazione dei nodi. A causa di questa latenza imprevedibile e dilatata, questo sistema **non può assolutamente supportare comunicazioni interattive** in tempo reale (come una telefonata o una videochiamata).
+
+**L'evoluzione verso i pacchetti** Un'ulteriore criticità emerge quando i dati da spedire sono davvero immensi: far scaricare a ogni router un file gigantesco paralizza comunque il sistema, facendo crollare l'efficienza. Proprio per superare quest'ultimo ostacolo, si è capito che era molto meglio suddividere l'enorme messaggio in tanti frammenti più piccoli. Da questa intuizione nasce la **commutazione di pacchetto**, la tecnologia definitiva che permette di sfruttare i canali per mandare innumerevoli comunicazioni diverse contemporaneamente, ed è quella su cui si basa l'Internet di oggi.
 Non c'è una connessione.
 
-Altra img da spiegare 
-
-- Ritardo di trasferimento 
-
-Il servizio di trasferimento non può consentire una comunicazione interattiva.
-
-Non va bene per grandi file, quindi si divide in pacchetti.
 
 ### Commutazione di pacchetto 
 
