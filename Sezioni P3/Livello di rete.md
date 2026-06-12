@@ -176,10 +176,21 @@ sono 3:
 
 #### Shortest Path Routing 
 
-Con immagine da commentare (migliora di molto il commento, è troppo specifico all'esempio e mancano dei dettagli generali)
+In questo modello, a ogni linea di collegamento della rete viene assegnato un **peso** (una metrica, tipicamente basata sulla velocità o sulla larghezza di banda). L'obiettivo è instradare i pacchetti lungo il percorso in cui la somma di questi pesi sia la minore possibile. Se si vuole scoraggiare il passaggio su una linea, le si assegna un peso molto alto; viceversa per favorirlo.
 
-- interdistanze 
+L'algoritmo calcola la rotta ottimale costruendo una mappa di **interdistanze** partendo da zero:
+1. **Inizializzazione:** Al nodo di partenza si assegna un peso pari a zero. A tutti gli altri nodi della rete si assegna provvisoriamente un peso infinito.
+2. **Selezione:** Si parte dal nodo con il peso più basso (all'inizio è la sorgente) e si osservano tutti i suoi vicini diretti.
+3. **Calcolo:** Per ogni vicino, si somma il peso del nodo corrente al peso del collegamento per raggiungerlo.
+4. **Aggiornamento (La regola d'oro):** Se il costo appena calcolato è _inferiore_ al costo attualmente registrato su quel vicino, si aggiorna l'etichetta del vicino inserendo il nuovo costo minore e il nodo di provenienza.
+5. **Iterazione:** Si ripete il ciclo esplorando tutti i nodi finché l'intera rete non è stata esaminata. Il risultato finale è una tabella statica con i percorsi più brevi verso ogni destinazione.
 
+![[Pasted image 20260612144151.png]]
+Guardando la sequenza dei grafi, l'aspetto più importante da notare è come l'algoritmo "cambia idea" quando trova una strada migliore:
+- Partendo da **A**, l'algoritmo vede che il costo diretto per raggiungere **G** è **6**. L'etichetta provvisoria di G diventa `(6, A)`.
+- Successivamente, l'algoritmo esplora il percorso passando per la parte superiore della rete: va da **A a B** (costo 2), poi da **B a E** (costo 2). Arrivati in E, il costo cumulato è 4.
+- Da **E**, c'è un collegamento verso **G** che costa solo 1.
+- L'algoritmo fa la somma: 4+1=5. Poiché il costo **5** del percorso `A-B-E-G` è strettamente inferiore al costo **6** del percorso diretto `A-G`, il sistema aggiorna l'etichetta di G in `(5, E)`. Il percorso fisicamente più lungo si rivela essere quello "meno costoso".
 #### Flooding
 
 cosa fe 
