@@ -1587,3 +1587,15 @@ Come abbiamo imparato studiando il "Paradosso dei due eserciti", l'ultimo ACK di
 
 ### Criterio di trasmissione a finestra scorrevole TCP
 
+La gestione della finestra scorrevole in TCP disaccoppia due concetti fondamentali: la conferma di corretta ricezione dei dati (l'ACK) e la gestione dello spazio fisico nella memoria del ricevitore (l'allocazione del buffer).
+
+La dimensione della finestra non è fissa, ma viene continuamente adattata attraverso un dialogo costante. Ogni volta che la destinazione invia un ACK di conferma, comunica contestualmente al mittente quanti ulteriori byte è in grado di accettare in quel preciso istante.
+
+![[Pasted image 20260612122617.png]]
+
+##### La Dinamica del Blocco (Finestra a 0)
+Analizzando lo scambio di messaggi, emerge una dinamica cruciale legata alla velocità. Immaginiamo che il mittente scarichi dati molto velocemente (es. 2 KB alla volta) verso una macchina ricevente che ha un buffer totale di soli 4 KB ed è lenta a elaborarli. Il mittente invia i primi 2 KB, poi altri 2 KB. Il buffer del ricevente si satura istantaneamente. A questo punto, la velocità di trasmissione si dimostra superiore alla velocità di elaborazione.
+
+Il ricevente è costretto a inviare un ACK confermando la ricezione, ma dichiara una **finestra di ricezione pari a 0 (WIN = 0)**. Questo è un segnale di stop assoluto: la macchina mittente si blocca completamente. Il mittente rimarrà bloccato finché l'applicazione sul ricevitore non deciderà di leggere i dati (svuotando il buffer) e il ricevitore non invierà un nuovo aggiornamento con una finestra maggiore di zero.
+
+Cosa succede se questo messaggio di "sblocco" (aggiornamento della finestra) va perso nella rete? Per evitare uno stallo infinito (deadlock), il TCP prevede il **Window Probe (Pacchetto Sonda)**. Il mittente bloccato ha il diritto di inviare periodicamente un microscopico segmento di 1 byte. Questo pacchetto forza il ricevente a rispondere, annunciando nuovamente il successivo byte atteso e, soprattutto, la dimensione aggiornata della sua finestra.
