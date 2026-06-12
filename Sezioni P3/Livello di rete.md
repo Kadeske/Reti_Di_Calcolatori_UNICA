@@ -84,18 +84,34 @@ Non c'è una connessione.
 
 Informazione divisa in unità di lunghezza massima predefinita: pacchetti.
 
-Modalità: datagramma; circuito virtuale
+Queste reti possono funzionare in due modalità:
+- datagramma;
+- circuito virtuale
 
-### Spiegazione datagramma con immagine
+##### Datagramma 
 
-Conto proprio, intestazione con dati aggiuntivi
+È l'evoluzione diretta della commutazione di messaggio. L'informazione viene divisa in pacchetti chiamati datagrammi.
+![[Pasted image 20260612143359.png]]
 
-ordine sparso, persi, duplicati.
-Molte cose insieme ma si possono perdere
+- **Indipendenza:** Ogni datagramma viaggia per conto proprio nella rete.
+- **Intestazione necessaria:** Poiché viaggiano separati, ogni pacchetto deve avere un'intestazione con indirizzo di origine e destinazione.
+- **Svantaggi:**
+    
+    - I pacchetti possono arrivare con un **ordine diverso** rispetto a quello di partenza; il destinatario deve riordinarli.
+    - C'è un alto rischio di pacchetti persi o duplicati.
+    - Si trasmette un **numero maggiore di informazioni** totali a causa delle ripetute intestazioni.
 
-### Spiegazione circuito virtuale con immagine 
+##### circuito virtuale
 
-Problema del continuo utilizzo di un percorso
+Per risolvere i problemi di disordine e perdita del datagramma, si usa il circuito virtuale.
+![[Pasted image 20260612143533.png]]
+- **Percorso fisso:** Tutti i pacchetti della stessa comunicazione seguono l'esatto stesso percorso logico. Questo percorso può differire per le due direzioni di trasferimento.
+    
+- **Vantaggio:** Garantisce la sequenzialità delle informazioni e l'integrità del messaggio.
+    
+- **Fasi operative:** Come la commutazione di circuito classica, è connection-oriented. Richiede tre fasi: instaurazione, trasferimento e rilascio.
+    
+- **Svantaggio:** L'uso continuo dello stesso circuito può portare al degrado delle prestazioni del percorso scelto, causando rallentamenti nell'attraversamento.
 
 #### Algoritmi di routing
 Cosa fanno 
