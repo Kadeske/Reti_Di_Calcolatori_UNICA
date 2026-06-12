@@ -193,11 +193,14 @@ Guardando la sequenza dei grafi, l'aspetto più importante da notare è come l'a
 - L'algoritmo fa la somma: 4+1=5. Poiché il costo **5** del percorso `A-B-E-G` è strettamente inferiore al costo **6** del percorso diretto `A-G`, il sistema aggiorna l'etichetta di G in `(5, E)`. Il percorso fisicamente più lungo si rivela essere quello "meno costoso".
 #### Flooding
 
-cosa fe 
-perche non conviene con molti pacchetti 
+Il _flooding_ è una tecnica di instradamento in cui ogni pacchetto in arrivo viene duplicato e inoltrato su **tutte** le linee di uscita del router, eccetto quella da cui il pacchetto è provenuto.
 
-Tecniche per migliorarne il traffico generato 
-(contatore di hop, scarta alla seconda vista, selective flooding)
+Questa tecnica genera un numero enorme di pacchetti duplicati, saturando rapidamente la banda disponibile. Per questo motivo, è utilizzabile **solo in reti di dimensioni molto ridotte**.
+
+Per evitare che il _flooding_ faccia collassare la rete, si possono adottare tre strategie correttive:
+1. **Contatore di hop (TTL - Time To Live):** Ogni pacchetto contiene un contatore che viene decrementato a ogni salto (hop) tra i router. Quando il contatore raggiunge lo zero, il pacchetto viene scartato, evitando che giri all'infinito nella rete.
+2. **Scarto alla seconda vista:** Ogni pacchetto riporta l'identificativo del router sorgente e un numero di sequenza unico. Ogni router mantiene traccia dei pacchetti visti: se un router riceve un pacchetto che ha già elaborato in precedenza, lo scarta immediatamente.
+3. **Selective Flooding:** Il router non trasmette il pacchetto su _tutte_ le linee, ma solo su quelle che vanno orientativamente nella "giusta direzione" verso la destinazione. Questo richiede che i router mantengano apposite tabelle di instradamento a bordo.
 
 #### Flow based routing
 
