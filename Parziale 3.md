@@ -1408,3 +1408,13 @@ Sono protocolli che preferiscono la velocità.
 E' preferibile perdere qualche segmento ma avere una continuità di dati.
 
 #### RTP (Real-time Transport Protocol)
+
+RTP lavora in stretta sinergia con UDP, ma con una differenza architetturale importante: mentre UDP risiede nel kernel del sistema operativo, RTP viene solitamente implementato direttamente nello spazio utente, all'interno dell'applicazione multimediale stessa.
+
+Dato che sfrutta le fondamenta dell'UDP, i router della rete non fanno alcuna distinzione: trattano i pacchetti RTP esattamente come qualsiasi altro datagramma, senza riservare loro corsie preferenziali.
+
+L'applicazione genera i dati (ad esempio, un frammento di voce), RTP ci attacca la sua intestazione e tutto questo blocco diventa il _payload_ (il carico utile) che viene annegato all'interno di un normale segmento UDP. A sua volta, UDP viene inserito nel pacchetto IP e infine nel frame Ethernet.
+
+
+![[Pasted image 20260612115523.png]]
+
