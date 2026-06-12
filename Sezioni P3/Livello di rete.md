@@ -1,14 +1,35 @@
 
 # Livello di rete 
 
-Di cosa si fa carico 
+Il livello di rete ha il compito fondamentale di trasferire i pacchetti, provenienti dal livello di trasporto, partendo dalla sorgente fino alla destinazione finale. Questo trasferimento avviene attraversando molteplici sistemi intermedi, che tipicamente sono i router, all'interno della sottorete di comunicazione.
 
-Compiti principali
+Per portare a termine la sua responsabilità, il livello di rete deve assolvere a quattro compiti principali:
+- Conoscere la topologia della sottorete di comunicazione.
+- Scegliere di volta in volta il cammino migliore per i pacchetti, un'operazione nota come **routing**.
+- Gestire il flusso dei dati e le eventuali congestioni (tramite _flow control_ e _congestion control_).
+- Gestire le problematiche derivanti dalla presenza di reti diverse tra loro, ovvero l'**internetworking**.
 
-In base a cosa si realizza il livello di rete (principi/decisioni)
+Quando si progetta e si realizza il livello di rete di un'architettura, le decisioni ingegneristiche si basano essenzialmente su due parametri:
+- I servizi che si intende offrire al livello superiore.
+- L'organizzazione interna della sottorete di comunicazione.
 
-Servizi con e senza connessione
+##### Servizi offerti: Con e Senza Connessione
+Le decisioni progettuali si traducono nella scelta di offrire un servizio affidabile orientato alla connessione, oppure un servizio non affidabile senza connessione.
 
+**Servizi orientati alla connessione (Connection oriented)** Questo tipo di servizio è strutturato in tre fasi distinte: l'instaurazione della connessione, la trasmissione delle informazioni e infine il rilascio della connessione. Per poter creare questo servizio devono verificarsi precise condizioni:
+
+- Le entità paritetiche (peer entities) stabiliscono una connessione negoziando i parametri, alla quale viene associato un identificatore univoco.
+- Questo identificatore viene inserito in ogni singolo pacchetto inviato.
+- La comunicazione è bidirezionale e i pacchetti viaggiano rigorosamente in sequenza lungo il cammino assegnato.
+- Il controllo di flusso viene fornito in modo automatico dall'infrastruttura.
+    
+
+**Servizi non orientati alla connessione (Connectionless)** Questo servizio è molto più snello ed è inteso come un'operazione che si esaurisce in un'unica fase. Presenta condizioni operative completamente diverse:
+
+- La sottorete è considerata inaffidabile alla base; per questo motivo, sono gli host stessi a dover provvedere per conto proprio alla correzione degli errori e al controllo del flusso.
+- I pacchetti (che in questo contesto specifico prendono il nome di **datagram**) vengono inoltrati nella sottorete in maniera totalmente indipendente l'uno dall'altro.
+- Poiché viaggiano in modo indipendente, ogni pacchetto deve contenere obbligatoriamente l'indirizzo di destinazione.
+- Tutta la complessità viene demandata ai vari host periferici: saranno i loro livelli di trasporto a dover fornire la necessaria affidabilità e l'orientamento alla connessione se richiesto dall'applicazione.
 ## Principi di commutazione 
 
 Definizione commutazione 
