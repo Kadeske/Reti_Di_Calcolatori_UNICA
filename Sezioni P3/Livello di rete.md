@@ -238,20 +238,29 @@ Ne esistono principalmente 2:
 
 #### Distance Vector
 
-Ho un vettore di ritardi per ciascun nodo che ho a disposizione.
-Quindi ciascun nodo avrà un vettore.
-(controlla poi, può confondere)
+Ogni nodo della rete mantiene un **vettore dei ritardi**, ovvero una tabella che elenca, per ogni possibile destinazione:
+- La distanza stimata (costo) per raggiungerla.
+- La linea in uscita da utilizzare.
 
-Router stima i vicini con **pacchetti ECHO**, contando quanto ci mettono a tornare indietro. (viene fatto più volte come test)
+Per conoscere la distanza dai vicini immediati, il router invia speciali **pacchetti ECHO**. Misurando il tempo necessario affinché la risposta torni indietro, il router stima il tempo di raggiungibilità. Questa operazione è ripetuta più volte per ottenere un dato attendibile.
 
-Ad ogni intervallo i router condividono le loro tabelle con i vicini. Ogni router ricalcola la propria in base alle nuove informazioni 
+A intervalli regolari, ogni router invia la propria tabella a tutti i vicini. Ricevute le nuove informazioni, il router ricalcola la tabella scegliendo la concatenazione che minimizza la somma:
+$$Distanza(Router stesso→Vicino)+Distanza(Vicino→Destinazione)$$
 
 ![[Pasted image 20260612145143.png]]
 
 ![[Pasted image 20260612145208.png]]
 
 
-- Paradosso dello scambio all'infinito
+L'algoritmo è efficiente nel diffondere "buone notizie" (nuovi percorsi), ma è molto lento nel gestire le "brutte notizie" (guasti).
+
+Si verifica il paradosso quando un nodo (es. A) smette di funzionare:
+1. Il router B sa di non poter più raggiungere A direttamente.
+2. Tuttavia, il router C (non ancora aggiornato) comunica a B: "Io posso raggiungere A in 2 passi".
+3. B, basandosi su questa informazione, conclude: "Se C raggiunge A in 2 passi e io arrivo a C in 1, allora posso raggiungere A in 3 passi".
+4. B aggiorna la sua tabella, poi C aggiornerà la sua basandosi su quella di B, incrementando ulteriormente il conteggio.
+
+Questo ciclo continua indefinitamente (scambio all'infinito), poiché i nodi si scambiano informazioni obsolete senza rendersi conto che la destinazione non è più raggiungibile.
 #### Link State Routing
 
 Ogni tot i router testano i loro vicini e condividono le info con gli altri.
