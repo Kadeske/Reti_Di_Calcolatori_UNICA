@@ -1654,3 +1654,42 @@ Questo è l'ultimo timer utilizzato nel ciclo di vita di una connessione. Come a
 
 
 ### Controllo della congestione TCP
+
+Quando la rete viene inondata da una quantità di dati superiore alla sua capacità fisica, i router intermedi iniziano a riempire i loro buffer. Se il carico non diminuisce, i buffer si saturano e i router sono costretti a scartare (distruggere) i pacchetti in arrivo. Questa è la congestione. La soluzione principale per affrontarla è una sola: i mittenti devono accorgersi del problema e **ridurre drasticamente la loro velocità di trasmissione**.
+
+In passato, era difficile capire se un pacchetto fosse andato perso per un'interferenza elettrica sul cavo o per un router intasato. Nelle reti moderne, molto più affidabili fisicamente, la perdita di un pacchetto è quasi sempre sintomo di traffico eccessivo. Per questo motivo, gli algoritmi TCP adottano un presupposto fondamentale e insindacabile: **ogni timeout è causato da una congestione**.
+
+##### Il Vincolo della Doppia Finestra
+Come fa il mittente a sapere a che velocità trasmettere senza intasare nulla? Deve rispettare due limiti ben distinti: la memoria del computer ricevente e la capacità dei cavi di rete nel mezzo.
+
+Per gestire questo equilibrio, il mittente mantiene attive e aggiornate **due finestre separate**:
+
+1. La **finestra garantita dal ricevente (Receiver Window)**: indica quanto spazio libero c'è nel buffer del PC di destinazione.
+    
+2. La **finestra di congestione (Congestion Window)**: è una stima calcolata dinamicamente di quanta banda è attualmente libera sui router della rete.
+    
+
+La regola d'oro della trasmissione impone che il mittente possa inviare solo un numero di byte pari alla **dimensione minore tra queste due finestre**. Se il destinatario ha spazio per 32 KB, ma la rete è congestionata e può sopportare solo 4 KB, il TCP invierà 4 KB per proteggere i router. Viceversa, se la rete è libera e può viaggiare a 32 KB, ma il destinatario ha solo 8 KB di RAM libera, il TCP invierà 8 KB per non far "affogare" il ricevitore.
+
+![[Pasted image 20260612123850.png]]
+
+##### L'Algoritmo di Avvio Lento (Slow Start)
+Mentre la finestra del ricevitore viene comunicata esplicitamente tramite l'header TCP, la capacità della rete è un mistero assoluto. Il mittente deve "tastare il terreno" per scoprirla. Lo fa utilizzando l'algoritmo di **Slow Start** (Avvio lento).
+
+L'obiettivo dello Slow Start è aumentare la quantità di dati inviati fino a trovare il punto esatto in cui la rete inizia a congestionarsi, per poi assestarsi appena sotto quel limite.
+
+La dinamica funziona in questo modo: Al momento della connessione, si parte con estrema cautela impostando la finestra di congestione a un valore minimo (ad esempio 1 KB). Se il pacchetto arriva a destinazione e il mittente riceve regolarmente l'ACK, significa che la rete ha retto. A questo punto, la velocità viene raddoppiata: si inviano 2 KB. Arrivano gli ACK, e si raddoppia ancora a 4 KB, poi 8 KB, 16 KB e così via.
+
+Nonostante il nome "Avvio lento", la crescita di questo algoritmo segue in realtà un **andamento esponenziale**, utilizzando le potenze del 2. La finestra si allarga a dismisura e in pochissimo tempo satura la linea.
+
+##### Il Crash e il Ricalcolo della Soglia
+Questo raddoppio brutale continua finché la rete non ce la fa più. Raggiunto il limite fisico dei router (nel grafico dell'esempio, questo avviene quando la finestra raggiunge i 40 KB), un pacchetto viene scartato e si verifica il temuto **timeout**.
+
+Di fronte al timeout, il TCP interviene con due azioni correttive immediate:
+
+1. Abbassa brutalmente la finestra di congestione **riportandola al valore iniziale minimo** (1 KB). Il flusso di dati viene quasi azzerato per dare il tempo alla rete di smaltire le code.
+    
+2. Impara dal proprio errore impostando un limite di sicurezza per il futuro. Prende il valore in cui si è verificato il crash e lo riduce per calcolare una nuova **Soglia (Threshold)**. Nel grafico, il crash a 40 KB genera una soglia di sicurezza abbassata a 20 KB.
+    
+
+Da questo momento, il processo riparte da 1 KB e raddoppia di nuovo velocemente, ma **solo fino al raggiungimento della nuova soglia** di 20 KB. Superata questa soglia sicura, l'algoritmo abbandonerà la crescita esponenziale per passare a un aumento molto più cauto e lineare, evitando di causare immediatamente un nuovo disastro.
