@@ -204,18 +204,37 @@ Per evitare che il _flooding_ faccia collassare la rete, si possono adottare tre
 
 #### Flow based routing
 
-calcolo in anticipo
+L'algoritmo stima il traffico atteso su ogni linea per prevederne il ritardo medio e basare su questi dati le scelte di instradamento.
 
-Informazioni necessarie per applicarlo
+Per applicare il metodo sono indispensabili:
+- La **topologia** della rete.
+- La **matrice delle quantità di traffico** T(i,j) stimate tra ogni coppia di router.
+- Le **capacità** delle linee punto a punto.
 
-Assunzioni (2)
+**Assunzioni**:
+1. Il traffico è **stabile** nel tempo e noto in anticipo.
+2. Il ritardo su una linea aumenta con il traffico e diminuisce all'aumentare della velocità di linea (secondo la Teoria delle Code).
 
+
+**Ritardo medio dell'intera rete**:
+È espresso come una **somma pesata** dei ritardi delle singole linee. Il peso di ogni linea è calcolato così:
 $$\text{ritardo singola linea}=\frac{\text{traffico sulla linea}}{\text{traffico totale della rete}}$$
-Come calcolare il ritardo medio dell'intera rete: somma pesata dei ritardi delle linee  
-Su cosa si basa questo metodo (flow based routing) considerata una topologia nota(6 punti)
+(Come calcolare il ritardo medio dell'intera rete: somma pesata dei ritardi delle linee)
+
+###### Metodo (basi su topologia nota)
+Il sistema segue questi 6 passaggi:
+1. Considera la matrice di traffico.
+2. Determina i percorsi per ogni coppia di router.
+3. Calcola il traffico incidente su ogni linea (somma di tutti i T(i,j) instradati su quella linea).
+4. Calcola il ritardo di ogni singola linea.
+5. Calcola il ritardo medio dell'intera rete.
+6. Determina l'algoritmo di routing che minimizza tale ritardo medio.
 
 ### Principali algoritmi di routing dinamici 
-sono 2 
+Si adattano automaticamente alla rete.
+Ne esistono principalmente 2:
+- Distance Vector
+- Link State Routing
 
 #### Distance Vector
 
@@ -227,7 +246,10 @@ Router stima i vicini con **pacchetti ECHO**, contando quanto ci mettono a torna
 
 Ad ogni intervallo i router condividono le loro tabelle con i vicini. Ogni router ricalcola la propria in base alle nuove informazioni 
 
-Immagini con spiegazione (sono 3 tabelle, 2 simili tra loro)
+![[Pasted image 20260612145143.png]]
+
+![[Pasted image 20260612145208.png]]
+
 
 - Paradosso dello scambio all'infinito
 #### Link State Routing
