@@ -1542,6 +1542,8 @@ L'intestazione si chiude con il classico **Checksum** (16 bit) per verificare l'
 
 Tutto inizia con un server in attesa passiva. Il server esegue le primitive `LISTEN` e `ACCEPT`, mettendosi in ascolto su una porta specifica (es. la porta 80 per il web). Quando un client desidera connettersi, esegue una `CONNECT`. Sotto il cofano, questa azione genera il primo pacchetto TCP:
 
+![[Pasted image 20260612122105.png]]
+
 1. Il client invia un segmento con il bit **SYN a 1** e l'**ACK a 0** (poiché non c'è ancora nulla da confermare). Inserisce un proprio numero di sequenza iniziale x. Questa è la _Connection Request_.
     
 2. Il pacchetto arriva al server. Qui avviene un controllo vitale: il server verifica se c'è un'applicazione effettivamente in ascolto su quella _Destination Port_.
@@ -1567,3 +1569,21 @@ Per difendersi da questo attacco letale senza modificare il protocollo TCP mondi
 Ecco come funziona la magia crittografica: Quando arriva un SYN, il server non salva i dati in una tabella. Invece, prende l'Indirizzo IP del mittente, la Porta, e una "password" segreta (conosciuta solo al server) e li frulla insieme usando un **algoritmo di crittografia** (un hash). Il risultato di questa operazione matematica complessa diventa il numero di sequenza iniziale y del server. Il server impacchetta questo numero, lo spedisce al client e **se ne dimentica istantaneamente**. Memoria occupata: zero.
 
 Se il client è un attaccante SYN Flood, la connessione muore lì e il server non ha sprecato un singolo byte di RAM. Se invece il client è legittimo, rispetterà le regole e invierà l'ultimo pacchetto ACK, che conterrà (per le regole del TCP) il numero y+1. Quando il server riceve questo ACK, prende di nuovo l'IP del client, la Porta e la sua password segreta, rifà il calcolo matematico, aggiunge 1 e controlla se il risultato coincide col numero contenuto nell'ACK. Se combaciano, il server ha la **prova matematica assoluta** che quel client aveva completato regolarmente il primo step, e instaura la connessione in totale sicurezza.
+
+
+### Rilascio di una connessione TCP
+
+Le connessioni TCP sono **full-duplex**, il che significa che i dati possono fluire simultaneamente e in modo del tutto indipendente in entrambe le direzioni. Per chiudere la comunicazione senza rischiare di tranciare i dati in volo, il protocollo tratta la disconnessione come se dovesse chiudere **due connessioni simplex indipendenti**. Non si stacca la spina all'improvviso, ma ogni lato deve dichiarare esplicitamente di aver finito il proprio lavoro.
+
+Ecco la sequenza esatta del rilascio:
+
+1. **La prima richiesta di chiusura:** Quando una delle due parti (ad esempio, il Client) non ha più alcun dato da trasmettere, genera e invia un segmento TCP con il **bit FIN (Finish) posto a 1**.
+2. **La conferma e lo stato "Half-Close":** Il Server riceve il FIN e risponde con un normale **ACK** di conferma. In questo preciso istante, la connessione in uscita dal Client viene rilasciata. Il Client non può più inviare nuovi dati. Tuttavia, l'altra direzione rimane "pendente". Il Server potrebbe avere ancora file da finire di scaricare verso il Client, e il Client è ancora perfettamente in grado di riceverli. Questa situazione si chiama connessione "aperta a metà" (Half-Closed).
+3. **La seconda richiesta di chiusura:** Quando anche il Server ha terminato definitivamente le sue operazioni di invio, innesca lo stesso identico procedimento: invia a sua volta un segmento con il **bit FIN a 1** verso il Client.
+4. **La chiusura definitiva:** Il Client riceve l'ultimo FIN, risponde con un **ACK** finale e la connessione full-duplex termina definitivamente per entrambi.
+
+Come abbiamo imparato studiando il "Paradosso dei due eserciti", l'ultimo ACK di conferma potrebbe perdersi nella rete, lasciando un host in un'attesa infinita. Per disinnescare questo pericolo, il TCP si affida a dei **Timer** di sicurezza. Nello specifico, il protocollo imposta un conto alla rovescia pari al doppio della vita massima stimata di un pacchetto nella rete. Se il timer scade senza che siano arrivate le conferme previste dalla macchina a stati finiti, la connessione viene comunque forzatamente abbattuta per liberare la memoria.
+
+
+### Criterio di trasmissione a finestra scorrevole TCP
+
