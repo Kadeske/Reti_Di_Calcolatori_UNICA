@@ -460,24 +460,41 @@ Più popolari AQM utilizzati in TCP/IP.
 Misura la dimensione media con un filtro pesaso.
 Cancella pacchetto con una determinata probabilità
 
-**Packet-marking-probability** in base:
-valore aq,
-tempo trascorso ultima cancellazione 
-prob massima cancellazione
+Il RED monitora la lunghezza media della coda (utilizzando un filtro pesato) e reagisce cancellando o contrassegnando preventivamente i pacchetti in base a una determinata probabilità. La probabilità di scarto (**packet-marking probability**) viene calcolata tenendo conto di tre fattori:
+- Il valore della lunghezza media della coda (Average Queue Length, o AQL).
+- Il tempo trascorso dall'ultima cancellazione.
+- Un parametro fisso maxp​, ovvero la probabilità massima di cancellazione che non deve essere superata durante la normale operatività.
 
 ![[Pasted image 20260612220742.png]]
-RED vesione classica 
+**RED Classico**
+- L'algoritmo definisce una soglia minima (minth​) e una soglia massima (maxth​).
+- Se l'AQL è sotto il minimo, non succede nulla. Se è nel mezzo, la probabilità sale linearmente.
+- Tuttavia, se la lunghezza media della coda supera la soglia massima maxth​, la probabilità salta istantaneamente a 1: **tutti** i pacchetti vengono scartati. Questa azione radicale presenta un'insufficienza rilevante, perché può causare una "sincronizzazione globale" (tutti i mittenti TCP rallentano di colpo contemporaneamente).
 
 ![[Pasted image 20260612220757.png]]
-RED gentle-version
+**Gentle RED**
+- Per evitare il salto brusco, questa versione usa due linee di inclinazione diverse.
+- Quando l'AQL supera la soglia massima maxth​, la probabilità non diventa subito 1 (il 100%), ma continua a crescere, seppur più velocemente.
+- Diventa 1 solo quando la lunghezza della coda raggiunge 2⋅maxth​. Questo distanzia gli scarti nel tempo, evitando crolli improvvisi del traffico.
+
+**Misurazione in byte:** Spesso si decide di misurare la lunghezza della coda in byte anziché in pacchetti. Questo garantisce che un pacchetto enorme (es. trasferimento FTP) abbia matematicamente più probabilità di essere scartato rispetto a un pacchetto piccolissimo (es. un comando TELNET), riflettendo l'effettivo "peso" della congestione indotta.    
+
+**Ignorare le congestioni temporanee:** Essendo basato sulla media, non agisce sulle **congestioni temporanee** le quali aumentano solo la *Queue lenght* per poco tempo, ma agisce sulle **congestioni a lunga durata** che aumentano invece la dimensione media della coda (quindi monitorata da RED).  
 
 Quando la lunghezza media della coda cresce proporzionalmente al numero di connessioni attive nel sistema, l'algoritmo non riesce ad evitare la congestione.
 
-Con RED solitamente la coda viene misurata in byte, non in pacchetti.
-
 RED può essere modificato per rendere la *packet marking probability* proporzionale alla grandezza del pacchetto.
 
-Non agisce sulle **congestioni temporanee** le quali aumentano solo la *Queue lenght* per poco tempo, ma agisce sulle **congestioni a lunga durata** che aumentano invece la dimensione media della coda (quindi monitorata da RED).  
+ **I vantaggi del RED**:
+Nonostante alcune complessità, la gestione preventiva del RED offre prestazioni di gran lunga superiori rispetto ai vecchi algoritmi (come il Drop-Tail) portando a diversi benefici:
+
+1. **Evitare la congestione:** Agendo d'anticipo, si perdono meno dati e si evitano ritrasmissioni massicce.
+2. **Tempi appropriati:** Dà alla rete un tempo fisiologico (un Round Trip Time) per mostrare una diminuzione del traffico dopo uno scarto.
+3. **Nessuna sincronizzazione globale:** La scelta casuale e scaglionata dei pacchetti da scartare previene il collasso simultaneo delle connessioni TCP.
+4. **Semplicità:** Può essere implementato nei router con pochissimo carico computazionale.
+5. **Massimizzazione del potere globale:** Offre un eccellente bilanciamento tra l'alta velocità dei dati e il ritardo limitato.
+6. **Gestione equa:** Statisticamente, chi consuma una fetta maggiore di banda avrà più probabilità di subire scarti, ripristinando un equilibrio.
+7. **Adattabilità:** Funziona egregiamente in una vasta gamma di ambienti, con diversi RTT e capacità di rete.
 
 
 #### Algoritmo RED
