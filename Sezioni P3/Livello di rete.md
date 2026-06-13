@@ -480,6 +480,8 @@ RED può essere modificato per rendere la *packet marking probability* proporzio
 Non agisce sulle **congestioni temporanee** le quali aumentano solo la *Queue lenght* per poco tempo, ma agisce sulle **congestioni a lunga durata** che aumentano invece la dimensione media della coda (quindi monitorata da RED).  
 
 
+#### Algoritmo RED
+
 tanti calcoli e 2 immagini (di calcoli)
 
 
