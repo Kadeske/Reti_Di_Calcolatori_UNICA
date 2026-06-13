@@ -418,7 +418,7 @@ Alla ricezione di un **choke packet** il router diminuirà la velocità di invio
 Ogni router attende un intervallo di tempo prima di ricontrollare se è arrivato un nuovo choke packet.
 
 #### HOP-BY-HOP Choke Packet 
-Consiste nell'inviare un pacchetto di rallentamente su ogni router intermedio fino a raggiungere la fonte.
+Consiste nell'inviare un pacchetto di rallentamento su ogni router intermedio fino a raggiungere la fonte.
 All'arrivo alla fonte il flusso sarà già rallentato.
 
 Permette di sbloccare rapidamente la congestione nel punto in cui ha avuto origine.
@@ -552,19 +552,23 @@ Dato che il valore count si incrementa per ogni pacchetto in arrivo, il denomina
 connessione: seguono lo stesso percorso 
 senza connessione: percorsi differenti per ogni pacchetto
 
-Parametri QoS:
-- affidabilità
-- ritardo 
-- jitter
-- banda
+A seconda del tipo di rete (connection-oriented, dove i pacchetti seguono lo stesso percorso, o connectionless, dove seguono percorsi diversi), a ciascun flusso di dati è possibile associare una determinata "Qualità del Servizio".
 
-Dipende dalla tipologia delle reti:
-- reti a velocità costante 
-- a velocità variabile in tempo reale
-- a velocità variabile non in tempo reale 
-- velocità disponibile 
+La QoS si valuta e si classifica in base a quattro parametri tecnici fondamentali:
 
-tecniche per ottenere un buon Qos:
+- **Affidabilità:** È la garanzia che nessun bit venga trasmesso in modo scorretto e che non si perdano pacchetti. Si valuta anche in base alla stabilità della rete, ovvero quanto spesso riesce a garantire il servizio senza subire interruzioni (down).
+- **Ritardo (Delay):** Deve essere un valore valutabile e controllabile. Spesso si misura verificando la differenza tra le prestazioni teoriche fornite dal contratto dell'ISP (Internet Service Provider) e quelle che giungono realmente al cliente.
+- **Jitter (Tremolio):** Indica la variabilità del ritardo. Rappresenta i picchi di malfunzionamento che causano una variazione (incoerenza) nel tempo di arrivo dei singoli pacchetti, rendendo il flusso instabile.
+- **Banda:** Rappresenta la capacità di trasmissione. Per un buon servizio, è necessario fornire una Banda Minima Garantita (BMG).
+
+Sulla base di come un'applicazione tollera (o non tollera) variazioni nei parametri appena visti, la QoS viene divisa in quattro categorie principali:
+1. **Reti a Velocità Costante:** Forniscono una banda uniforme e un ritardo rigorosamente uniforme. Sono essenziali per flussi che non ammettono interruzioni, come le classiche reti telefoniche per le chiamate vocali.
+2. **Reti a Velocità Variabile in tempo reale:** Gestiscono flussi che variano di dimensione ma che necessitano di tempi di consegna immediati, come le videoconferenze.
+3. **Reti a Velocità Variabile non in tempo reale:** Gestiscono flussi variabili dove un leggero ritardo iniziale è tollerabile poiché i dati possono essere pre-caricati (bufferizzati), come lo streaming video on-demand (es. Netflix o YouTube).
+4. **Velocità Disponibile:** È la categoria "best-effort", destinata alle applicazioni che non sono minimamente sensibili al ritardo o allo jitter. Un esempio classico è il file transfer (download di un file): non importa se i pacchetti arrivano a intervalli irregolari, l'importante è che arrivino tutti intatti alla fine.
+
+
+Tecniche per ottenere un buon Qos:
 - bufferizzazione 
 - leaky bucket
 - token bucket
