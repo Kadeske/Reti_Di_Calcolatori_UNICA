@@ -499,9 +499,54 @@ Nonostante alcune complessità, la gestione preventiva del RED offre prestazioni
 
 #### Algoritmo RED
 
-tanti calcoli e 2 immagini (di calcoli)
+Il codice dettagliato per il funzionamento del RED si basa su diverse variabili chiave:
+- **avg**: La lunghezza media della coda calcolata.
+- **q_time**: L'istante di tempo che indica quando la coda è entrata in stato di inattività (cioè è rimasta vuota).
+- **count**: Il numero di pacchetti instradati senza problemi dall'ultima volta che un pacchetto è stato marcato (o scartato).
+- **wq​**: Il parametro del peso della coda, fondamentale per il funzionamento del filtro passa-basso.
+- **minth​** e **maxth​**: I limiti (soglie) minimo e massimo della coda.
+- **maxp​**: Il valore massimo della probabilità di marcare un pacchetto (pb​).
+- **pa​**: La probabilità finale che il pacchetto _attuale_ in arrivo venga marcato.
+- **q**: La lunghezza istantanea (attuale) della coda.
 
+![[Pasted image 20260613124815.png]]
 
+##### Calcolo della Lunghezza Media della Coda (avg)
+Il RED non usa la lunghezza istantanea della coda (q); utilizza invece un **filtro passa-basso** per ignorare i picchi temporanei e concentrarsi sulla congestione prolungata. Questo filtro è una **Media Dinamica Pesata Esponenziale (EWMA - Exponential Weighted Moving Average)**.
+
+Se la coda _non è vuota_ all'arrivo di un pacchetto, la nuova media si calcola come:
+
+avg=(1−wq​)⋅avg+wq​⋅q
+
+Se la coda _è vuota_, il calcolo deve prendere in considerazione il periodo di inattività (q_time). L'algoritmo stima quanti pacchetti (m) _sarebbero potuti_ arrivare al router durante quel periodo utilizzando una funzione lineare f(t) e aggiorna la media di conseguenza:
+
+$$avg=(1−wq​)m⋅avg$$
+
+**Scelta del Limite per il Peso (wq​):**
+- **Limite Superiore:** Se wq​ è troppo grande, il metodo di calcolo della media non riesce a filtrare la congestione iniziale improvvisa.
+- **Limite Inferiore:** Se wq​ è troppo piccolo, la media della coda non reagisce abbastanza rapidamente e il router non riesce a rendersi conto della congestione nascente. Nella maggior parte dei simulatori si utilizza un valore di 0.002.
+##### Assegnazione delle Soglie
+
+- **minth​**: Deve essere impostato abbastanza alto se si vuole mantenere un traffico molto intenso per abbastanza tempo senza che i ritardi influenzino l'affidabilità del collegamento.
+    
+- **maxth​**: Dipende in gran parte dal massimo ritardo medio che il router è disposto ad accettare. Una regola quasi sempre adatta è quella di scegliere un maxth​ uguale almeno al doppio di minth​ (maxth​≥2⋅minth​).
+
+##### Calcolo della Probabilità di Marcare un Pacchetto (pa​)
+Quando avg si trova nel range tra la soglia minima e massima (minth​≤avg≤maxth​), il RED calcola la probabilità in due passaggi per assicurarsi che le marcature siano distanziate correttamente nel tempo.
+
+**Fase A: La Probabilità Iniziale (pb​)** La probabilità iniziale è calcolata come una funzione lineare della lunghezza media della coda, basata sulla posizione della media rispetto alle due soglie:
+
+$$pb​=maxp​⋅maxth​−minth​avg−minth​​$$
+
+_(Nota in alternativa: come accennato in precedenza, l'algoritmo può essere modificato includendo la dimensione del pacchetto: pb​=pb​⋅MaximumPacketSizePacketSize​, in questo modo verrà marcato con più probabilità un pacchetto grande rispetto a uno piccolo)._
+
+**Fase B: La Probabilità Finale (pa​) utilizzando la variabile count** Se il RED utilizzasse semplicemente pb​ (una variabile geometrica random), si potrebbero creare intervalli troppo brevi o troppo grandi tra due pacchetti marcati, portando alla sincronizzazione globale.
+
+Per ovviare a ciò, viene utilizzata una **variabile uniforme random**. Questa regola la probabilità finale (pa​) basandosi sul numero di pacchetti arrivati _senza_ essere stati marcati dopo l'ultimo scarto (count):
+
+pa​=1−count⋅pb​pb​​
+
+Dato che il valore count si incrementa per ogni pacchetto in arrivo, il denominatore diventa progressivamente più piccolo, facendo aumentare inesorabilmente pa​. Questo meccanismo garantisce un calcolo distribuito equamente. Non appena un pacchetto viene effettivamente marcato (o scartato), la variabile count viene azzerata.
 ## Qualità del servizio 
 
 connessione: seguono lo stesso percorso 
