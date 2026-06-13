@@ -263,20 +263,28 @@ Si verifica il paradosso quando un nodo (es. A) smette di funzionare:
 Questo ciclo continua indefinitamente (scambio all'infinito), poiché i nodi si scambiano informazioni obsolete senza rendersi conto che la destinazione non è più raggiungibile.
 #### Link State Routing
 
-Ogni tot i router testano i loro vicini e condividono le info con gli altri.
-Ogni router ricostruisce localmente la topologia completa della rete.
+In questo modello, invece di condividere l'intera tabella solo con i vicini, ogni router condivide lo stato dei suoi collegamenti diretti con _tutti_ gli altri nodi. In questo modo, ciascun router ricostruisce localmente la topologia completa della rete e calcola in autonomia il cammino minimo.
 
-E' suddiviso in 5 passaggi: 
-Chi c'è vicino -> pacchetti HELLO
-Quanto sono lenti i vicini -> pacchetti ECHO (Costruisce la **Neighbour Table**)
-Viene costruito un pacchetto LSP (Link State Packet) che contiene ...
-Invio dell'LSP con flooding.
-Calcolo del cammino minimo tra tutti i router avendo ricevuto gli LSP.
+I protocolli moderni che sfruttano questa logica sono l'**OSPF** e l'**IS-IS**.
+
+
+Il funzionamento si articola in cinque fasi precise:
+1. **Scoperta dei vicini:** Il router invia pacchetti **HELLO** sulle linee in uscita per rilevare l'indirizzo dei nodi adiacenti.
+2. **Misurazione del ritardo:** Invia pacchetti **ECHO** ai vicini, calcola il tempo di risposta e compila una _Neighbour Table_.
+3. **Creazione del pacchetto (LSP):** Genera un **Link State Packet** che contiene: la propria identità, la lista dei vicini con i relativi ritardi, un **numero di sequenza** (per distinguere i pacchetti nuovi dai vecchi) e l'**Età** (un tempo di vita che scala fino a zero per evitare che i pacchetti vaghino all'infinito).
+4. **Distribuzione (Flooding):** L'LSP viene inviato a tutti gli altri router della rete usando la tecnica del flooding, permettendo alla rete di convergere su tabelle coerenti.
+5. **Calcolo del cammino minimo:** Con la topologia completa a disposizione, il router calcola le rotte migliori. Per gestire reti enormi senza creare tabelle infinite, l'algoritmo viene strutturato gerarchicamente (a livelli).
 
 ![[Pasted image 20260612220418.png]]
 
-![[Pasted image 20260612220430.png]]
+Per usare il flooding senza saturare la rete con pacchetti duplicati o infiniti, i router utilizzano una rigida struttura dati (un buffer) per gestire i pacchetti _non ancora elaborati_.
+Ogni riga del buffer traccia l'Origine, la Sequenza, l'Età e usa dei bit di **Flag** per smistare il traffico:
+- **Send Flags:** Indicano su quali linee il pacchetto deve essere inoltrato.
 
+- **ACK Flags:** Indicano a quali nodi bisogna inviare la conferma di ricezione.
+    
+![[Pasted image 20260612220430.png]]
+**Esempio pratico sul Router B (con vicini A, C, F):** Se il router B riceve un pacchetto proveniente da A, imposterà i Send Flag a 1 per le linee **C** e **F** (inoltrando il pacchetto al resto della rete) e imposterà l'ACK Flag a 1 per la linea **A** (inviando la conferma a chi glielo ha appena passato). Se lo stesso pacchetto dovesse arrivare da due strade diverse contemporaneamente, il router sa quali flag ha già soddisfatto ed evita invii superflui.
 
 ### Routing Gerarchico 
 
