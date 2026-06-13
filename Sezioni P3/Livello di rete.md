@@ -296,10 +296,26 @@ I router all'interno della stessa regione si conoscono.
 Per comunicare con uno all'esterno, un router interno da da **router di confine**
 Quindi si possono considerare due livelli di routing (interno e di confine/esterno)
 
+
+Quando una rete cresce a dismisura contenendo un numero elevato di nodi, pretendere che ogni singolo router memorizzi l'intera topologia (come nel Link State) diventa insostenibile: le tabelle diventano enormi e i calcoli troppo onerosi.
+
+Per ovviare a questo problema, la rete viene suddivisa in blocchi logici chiamati **zone** o **regioni**. Questo crea una divisione dei compiti e due tipologie di nodi:
+1. **Router Interni:** Conoscono alla perfezione la topologia e i percorsi per raggiungere tutti gli altri router che si trovano _all'interno della loro stessa regione_.
+2. **Router di Confine (Border Routers):** Sono i "caselli autostradali". Quando un router interno deve spedire dati verso un'altra regione, non calcola l'intero percorso, ma si limita a inviare le informazioni al proprio router di confine. Quest'ultimo si occuperà di inoltrare il traffico verso il router di confine della regione di destinazione.
+
+Di conseguenza, il routing viene gestito su due livelli separati: uno interno (locale) e uno tra i nodi di confine.
+
 ![[Pasted image 20260612220449.png]]
+Questa gerarchia snellisce drasticamente le tabelle di memoria dei dispositivi.
+- **Cosa memorizza un router interno:** Ha una riga per ogni nodo della sua regione, ma per il resto del mondo ha solo delle voci generiche (una per ogni _regione_ esterna) che puntano al proprio router di confine.
+- **Cosa memorizza un router di confine:** Ha una riga per ogni regione esterna, indicando quale altro router di confine contattare e quale linea usare.
 
 ![[Pasted image 20260612220459.png]]
+Guardando le tabelle nell'immagine per il router **1A** (che si trova nella Regione 1):
+- Con una _tabella completa_ (piatta), il router 1A dovrebbe avere **17 righe**, una per ogni singolo nodo esistente in tutte le 5 regioni.
+- Con la _tabella gerarchica_, le righe crollano a **7**. Il router 1A mantiene il dettaglio solo per i suoi vicini locali (1B e 1C). Per raggiungere qualsiasi nodo della Regione 5, non gli interessa sapere l'esatto percorso finale; gli basta un'unica riga riassuntiva che dice: _"Per andare nella Regione 5, butta il pacchetto verso la linea 1C"_.
 
+Questo modello è estremamente flessibile. Se due livelli (Regione e Confine) non sono sufficienti per gestire reti su scala mondiale, il concetto viene semplicemente ripetuto aggiungendo ulteriori livelli gerarchici (ad esempio: Rete Locale → Regione → Nazione → Continente).
 ### Broadcast Routing
 
 4 metodologie per ottenere la trasmissione broadcast:
