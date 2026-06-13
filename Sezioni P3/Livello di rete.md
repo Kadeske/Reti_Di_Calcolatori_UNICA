@@ -319,18 +319,32 @@ Questo modello è estremamente flessibile. Se due livelli (Regione e Confine) no
 ### Broadcast Routing
 
 4 metodologie per ottenere la trasmissione broadcast:
-Invio pacchetti distinti : pro e contro 
-flooding: pro e contro 
-multidestination routing: lista di destinazioni, invio delle copie fino a raggiungere un solo destinatario
-Il quarto utilizza il sink tree del routeer di trasmissioni e lo spanning tree per inoltrare i pacchetti. (pro, contro)
 
-(ricorda definizione spanning tree CON IMMAGINE)
+
+- **Pacchetti Distinti:** È l'approccio più banale. Il mittente crea una copia separata del pacchetto per ogni singolo destinatario. Sebbene consumi poca banda per singolo invio, ha il grave svantaggio di obbligare la sorgente a possedere una lista completa e aggiornata di tutte le destinazioni della rete.
+    
+- **Flooding:** Come visto in precedenza, consiste nell'inviare il pacchetto su tutte le linee. Il difetto fatale è l'enorme generazione di pacchetti duplicati, con conseguente spreco di banda.
+    
+- **Multidestination Routing:** Ogni pacchetto viene dotato di una lista di destinazioni nell'intestazione. Quando un router riceve il pacchetto, controlla le destinazioni e genera copie _esclusivamente_ sulle linee necessarie per raggiungerle. È un metodo efficiente perché, come dicono gli appunti, sui percorsi condivisi "uno solo paga il biglietto, mentre gli altri viaggiano gratis". Tuttavia, richiede ancora che il mittente conosca tutte le destinazioni a priori.
+
+- Il quarto metodo si basa sull'utilizzo dello **spanning tree** (albero di copertura). Si tratta di un sottoinsieme di percorsi che collega tutti i router della rete senza creare mai collegamenti ridondanti o cicli chiusi. In questo scenario, un router che riceve un pacchetto broadcast lo copia su tutte le sue linee tranne quella di ingresso. Questo garantisce un utilizzo eccellente della banda e il minor numero possibile di pacchetti generati. **Il problema:** Richiede che ogni router conosca l'esatta conformazione dello spanning tree, un'informazione globale che spesso i singoli nodi non possiedono.
+
+Per aggirare l'impossibilità di conoscere la mappa completa, si usa un trucco logico brillante ed efficiente chiamato **Reverse Path Forwarding** (Inoltro sul percorso inverso).
+
+L'algoritmo non ha bisogno di mappe, ma si basa su una semplice regola decisionale locale:
+- Quando un router riceve un pacchetto broadcast, guarda da quale router precedente (linea) è arrivato.
+- Poi si pone una domanda: _"Questa linea da cui è appena arrivato il pacchetto, è la stessa linea che io uso abitualmente per mandare i miei dati verso la sorgente originale di questo broadcast?"_
+- **Se SÌ (Accettazione):** C'è un'altissima probabilità che questo pacchetto abbia seguito il percorso ottimale e sia la prima copia originale. Il router lo accetta e lo inoltra su tutte le sue altre linee.
+- **Se NO (Scarto):** Significa che il pacchetto ha fatto un giro più lungo ed è un duplicato. Il router lo scarta immediatamente.
+
 ![[Pasted image 20260612220518.png]]
 
 Utilizzo di **reverse path forwarding** al posto dello **spanning tree**
 altra immagine con 3 topologie diverse: sottorete, sink tree, Albero realizzato dall'inoltro a percorso inverso.
 ![[Pasted image 20260612220542.png]]
+L'ultima immagine mostra l'RPF in azione partendo dal router I. L'albero in figura (c) mostra l'esplosione dei pacchetti salto per salto. I cerchi indicano i pacchetti arrivati dal percorso "preferito" (quindi accettati e inoltrati), mentre le lettere senza cerchio sono i pacchetti arrivati da percorsi secondari (identificati come duplicati e scartati).
 
+Il bilancio finale dell'esempio è chiaro: la trasmissione con RPF termina dopo 5 salti generando 24 pacchetti complessivi. Se si fosse usato un costoso spanning tree perfetto, ne sarebbero bastati 14 in 4 salti. Tuttavia, il costo leggermente superiore dell'RPF è ampiamente giustificato dal suo enorme vantaggio: un'efficienza e facilità di implementazione assolute, dato che non richiede la minima conoscenza della topologia della rete.
 ### Multicast Routing 
 
 Algoritmo per l'instradamento dei pacchetti multicast.
@@ -341,7 +355,6 @@ Necessita la divisione e gestione dei gruppi.
 I router devono sapere quali host appartengono ad ogni gruppo. (host avvisano i router o router interrogano host).
 
 Ogni router elabora uno spanning tree che copre tutti gli altri router.
-
 ### Internetworking
 
 Per collegare reti che utilizzano protocolli differenti, passando attraverso una rete multiprotocollo con apposito router.
